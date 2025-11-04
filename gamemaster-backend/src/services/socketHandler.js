@@ -1,4 +1,5 @@
 const roomService = require('./roomService');
+const scenarioService = require('./scenarioService');
 
 // Gestion des connexions WebSocket pour GameMaster L5R
 function socketHandler(io) {
@@ -24,12 +25,32 @@ function socketHandler(io) {
     // Créer une room (ack via callback)
     socket.on('create-room', (data, callback) => {
       try {
-        const { name, gmId, gmName, maxPlayers = 6, isPublic = true } = data || {};
+        const { name, gmId, gmName, maxPlayers = 6, isPublic = true, scenarioId, scenario, generateScenario, generateOptions } = data || {};
         if (!name || !gmId || !gmName) {
           return callback && callback({ ok: false, error: 'Paramètres manquants (name, gmId, gmName)' });
         }
 
-        const room = roomService.createRoom(name, gmId, gmName);
+        // Préparer le scénario si fourni/demandé
+        let scenarioData = null;
+        try {
+          if (scenarioId) {
+            const found = scenarioService.get(scenarioId);
+            if (found) scenarioData = found.toJSON ? found.toJSON() : found;
+          } else if (generateScenario || generateOptions) {
+            const created = scenarioService.generate(generateOptions || {});
+            scenarioData = created;
+          } else if (typeof scenario === 'object' && scenario) {
+            // Si un objet scénario est passé directement
+            const created = scenarioService.create(scenario);
+            scenarioData = created;
+          } else if (typeof scenario === 'string') {
+            scenarioData = scenario; // simple titre/label
+          }
+        } catch (e) {
+          console.warn('create-room: scénario ignoré suite à erreur:', e.message);
+        }
+
+        const room = roomService.createRoom(name, gmId, gmName, scenarioData);
         // Ajuster options de la room selon la demande du front
         room.maxPlayers = Math.max(1, Math.min(10, Number(maxPlayers) || 6));
         room.isPrivate = !isPublic;
@@ -364,6 +385,71 @@ function socketHandler(io) {
           type: 'GM_ACTION_ERROR',
           message: error.message 
         });
+      }
+    });
+
+    // Définir la scène courante du scénario (GM seulement)
+    // Attendu: { roomId, sceneIndex?: number, title?: string }
+    socket.on('set-current-scene', (data, callback) => {
+      try {
+        const userInfo = connectedUsers.get(socket.id);
+        if (!userInfo || userInfo.userType !== 'gm') {
+          if (typeof callback === 'function') return callback({ ok: false, error: 'Action réservée au GM' });
+          return socket.emit('error', { type: 'GM_ONLY', message: 'Action réservée au GM' });
+        }
+
+        const { roomId, sceneIndex, title } = data || {};
+        const room = roomService.getRoomById(roomId);
+        if (!room) {
+          if (typeof callback === 'function') return callback({ ok: false, error: 'Room non trouvée' });
+          return socket.emit('error', { type: 'ROOM_NOT_FOUND', message: 'Room non trouvée' });
+        }
+
+        // Trouver la scène dans room.scenario.scenes si possible
+        let currentScene = null;
+        const scenes = Array.isArray(room?.scenario?.scenes) ? room.scenario.scenes : null;
+        if (scenes) {
+          if (typeof sceneIndex === 'number' && scenes[sceneIndex]) {
+            currentScene = { index: sceneIndex, ...scenes[sceneIndex] };
+          } else if (title) {
+            const idx = scenes.findIndex(s => s.title === title);
+            if (idx >= 0) currentScene = { index: idx, ...scenes[idx] };
+          }
+        }
+
+        // Si aucune scène trouvée mais un titre fourni, stocker un stub
+        if (!currentScene && title) {
+          currentScene = { title };
+        }
+
+        // Mettre à jour la scène courante et l'historique
+        const historyEntry = currentScene ? {
+          index: currentScene.index ?? null,
+          title: currentScene.title || (currentScene?.description ? undefined : null),
+          at: new Date(),
+          by: userInfo.userName
+        } : { title, at: new Date(), by: userInfo.userName };
+
+        const history = Array.isArray(room.gameData.scenesHistory) ? room.gameData.scenesHistory.slice() : [];
+        history.push(historyEntry);
+        if (history.length > 50) history.splice(0, history.length - 50);
+
+        room.updateGameData({ currentScene: currentScene, scenesHistory: history });
+
+        // Diffuser aux clients de la room
+        io.to(roomId).emit('scene-changed', {
+          roomId,
+          currentScene,
+          by: userInfo.userName,
+          timestamp: new Date()
+        });
+
+        if (typeof callback === 'function') return callback({ ok: true, currentScene });
+
+      } catch (error) {
+        console.error('Erreur set-current-scene:', error);
+        if (typeof callback === 'function') return callback({ ok: false, error: error.message });
+        socket.emit('error', { type: 'SCENE_SET_ERROR', message: error.message });
       }
     });
 

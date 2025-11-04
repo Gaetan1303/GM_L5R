@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const roomService = require('../services/roomService');
+const scenarioService = require('../services/scenarioService');
 const { v4: uuidv4 } = require('uuid');
 
 // GET /api/rooms - Obtenir toutes les rooms publiques
@@ -345,3 +346,91 @@ router.delete('/:roomId', (req, res) => {
 });
 
 module.exports = router;
+
+// Routes avancées pour session + scénario
+// POST /api/rooms/with-scenario - Créer une room et attacher un scénario (id, objet, ou génération)
+router.post('/with-scenario', (req, res) => {
+  try {
+    const { name, gmName, isPrivate = false, password, scenarioId, scenario, generate } = req.body || {};
+
+    if (!name || !gmName) {
+      return res.status(400).json({ success: false, message: 'name et gmName sont requis' });
+    }
+
+    const gmId = uuidv4();
+
+    // Préparer le scénario
+    let scenarioData = null;
+    if (scenarioId) {
+      const found = scenarioService.get(scenarioId);
+      if (!found) return res.status(404).json({ success: false, message: 'Scénario introuvable' });
+      scenarioData = found.toJSON ? found.toJSON() : found;
+    } else if (generate) {
+      // generate peut être true ou un objet d'options
+      const created = scenarioService.generate(typeof generate === 'object' ? generate : {});
+      scenarioData = created;
+    } else if (scenario) {
+      // si fournit une structure de scénario, on la (ré)crée côté service
+      scenarioData = scenarioService.create(scenario);
+    }
+
+    const room = roomService.createRoom(
+      name.trim(),
+      gmId,
+      gmName.trim(),
+      scenarioData || 'Scénario libre',
+      isPrivate,
+      password?.trim()
+    );
+
+    res.status(201).json({
+      success: true,
+      room: room.toJSON(),
+      gmId,
+      scenario: room.scenario,
+    });
+  } catch (error) {
+    console.error('Erreur création room with-scenario:', error);
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
+
+// PUT /api/rooms/:roomId/scenario/scene - Définir la scène courante
+router.put('/:roomId/scenario/scene', (req, res) => {
+  try {
+    const { sceneIndex, title } = req.body || {};
+    const room = roomService.getRoomById(req.params.roomId);
+    if (!room) return res.status(404).json({ success: false, message: 'Room non trouvée' });
+
+    // Accepte soit un index de scène, soit un titre
+    let currentScene = null;
+    const scenariosScenes = room?.scenario?.scenes;
+    if (Array.isArray(scenariosScenes)) {
+      if (typeof sceneIndex === 'number' && scenariosScenes[sceneIndex]) {
+        currentScene = { index: sceneIndex, ...scenariosScenes[sceneIndex] };
+      } else if (title) {
+        const idx = scenariosScenes.findIndex(s => s.title === title);
+        if (idx >= 0) currentScene = { index: idx, ...scenariosScenes[idx] };
+      }
+    }
+
+    // Mettre à jour la scène et l'historique
+    const entry = (currentScene || title) ? {
+      index: currentScene?.index ?? null,
+      title: currentScene?.title || title || null,
+      at: new Date(),
+      by: 'HTTP'
+    } : null;
+
+    const history = Array.isArray(room.gameData.scenesHistory) ? room.gameData.scenesHistory.slice() : [];
+    if (entry) history.push(entry);
+    if (history.length > 50) history.splice(0, history.length - 50);
+
+    room.updateGameData({ currentScene: currentScene || (title ? { title } : null), scenesHistory: history });
+
+    res.json({ success: true, room: room.toJSON() });
+  } catch (error) {
+    console.error('Erreur update current scene:', error);
+    res.status(500).json({ success: false, message: error.message });
+  }
+});

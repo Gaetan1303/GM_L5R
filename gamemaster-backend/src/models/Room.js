@@ -19,7 +19,8 @@ class Room {
       currentScene: null,
       notes: '',
       initiative: [],
-      conditions: []
+      conditions: [],
+      scenesHistory: []
     };
   }
 
