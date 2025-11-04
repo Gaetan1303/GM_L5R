@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "L5R 4e Kiho Schema",
+  "description": "Canonical schema for monastic kiho techniques",
+  "type": "object",
+  "required": ["id", "nom", "element", "maitrise"],
+  "properties": {
+    "id": {"type": "string", "description": "Unique identifier"},
+    "nom": {"type": "string", "description": "Nom du kiho"},
+    "element": {"type": "string", "enum": ["Air", "Eau", "Feu", "Terre", "Vide"], "description": "Élément du kiho"},
+    "maitrise": {"type": "integer", "minimum": 1, "description": "Rang de maîtrise requis"},
+    "type": {"type": "string", "enum": ["interne", "externe", "mystique"], "description": "Type de kiho"},
+    "activation": {"type": "string", "description": "Condition d'activation (Action, Point Vide, etc.)"},
+    "effet": {"type": "string", "description": "Effet complet du kiho"},
+    "duree": {"type": "string", "description": "Durée de l'effet"},
+    "prerequis": {"type": "string", "description": "Prérequis (Anneau Vide, compétences, etc.)"},
+    "keywords": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Mots-clés (combat, mouvement, guérison, etc.)"
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "livre": {"type": "string"},
+        "page": {"type": "integer"}
+      }
+    },
+    "canon_status": {"type": "string", "enum": ["verified", "to-verify", "homebrew"], "default": "to-verify"}
+  }
+}

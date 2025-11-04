@@ -1,0 +1,57 @@
+{
+  "anneaux": [
+    {
+      "nom": "Terre",
+      "traits": [
+        "Force",
+        "Constitution"
+      ],
+      "representation": "Résilience, endurance, volonté physique",
+      "utilisation": "Résistance, points de vie, jets de Force/Constitution"
+    },
+    {
+      "nom": "Eau",
+      "traits": [
+        "Perception",
+        "Volonté"
+      ],
+      "representation": "Adaptabilité, conscience, perspicacité",
+      "utilisation": "Perception, force mentale, guérison"
+    },
+    {
+      "nom": "Feu",
+      "traits": [
+        "Agilité",
+        "Intelligence"
+      ],
+      "representation": "Rapidité, vivacité d'esprit, passion",
+      "utilisation": "Initiative, intellect, vélocité"
+    },
+    {
+      "nom": "Air",
+      "traits": [
+        "Réflexes",
+        "Conscience"
+      ],
+      "representation": "Rapidité, grâce, précision",
+      "utilisation": "Défense, jets de Réflexes, attention"
+    },
+    {
+      "nom": "Vide",
+      "traits": [
+        "Vide (unique)"
+      ],
+      "representation": "Illumination spirituelle, potentiel",
+      "utilisation": "Points de Vide dépensables, lien spirituel",
+      "special": "Pas de Traits associés, utilisé tel quel"
+    }
+  ],
+  "calcul_derives": {
+    "initiative": "Réflexes + Perception (Insight)",
+    "armure_tn": "Réflexes x5 + 5 + bonus armure",
+    "blessures_base": "Terre x2 (rang Healthy)",
+    "blessures_par_niveau": "Terre x1 pour chaque rang suivant",
+    "insight": "Somme de tous les Anneaux + somme de toutes les Compétences",
+    "insight_rang": "Insight détermine Rang du personnage (150 = Rang 2, etc.)"
+  }
+}

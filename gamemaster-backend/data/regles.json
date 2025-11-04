@@ -1,0 +1,34 @@
+{
+  "lancer_garder": {
+    "description": "Système Roll & Keep (Lancer et Garder)",
+    "notation": "XkY où X = dés lancés, Y = dés gardés",
+    "exemple": "5k3 = lancer 5d10, garder les 3 meilleurs",
+    "explosion": "Dé montrant 10 explose: relancer et additionner"
+  },
+  "nombre_cible": {
+    "description": "ND (Nombre Cible) ou TN (Target Number) à battre",
+    "echelle": {
+      "5": "Trivial",
+      "10": "Facile",
+      "15": "Moyen",
+      "20": "Difficile",
+      "25": "Très difficile",
+      "30": "Héroïque",
+      "40": "Légendaire"
+    }
+  },
+  "relances": {
+    "description": "Augmenter ND de +5 pour effet supplémentaire",
+    "usage": "Annoncer avant de lancer. Chaque +5 au jet = 1 Relance (Raise)"
+  },
+  "points_de_vide": {
+    "description": "Points dépensables pour bonus",
+    "nombre": "Égal à Anneau de Vide",
+    "usage": [
+      "+1k1 à un jet (avant ou après lancer)",
+      "Réduire ND de 10",
+      "Activer certaines capacités spéciales"
+    ],
+    "recuperation": "Tous les points récupérés après 8h de sommeil"
+  }
+}

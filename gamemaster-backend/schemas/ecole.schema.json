@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "L5R 4e École Schema",
+  "description": "Canonical schema for a samurai/courtisan/shugenja school",
+  "type": "object",
+  "required": ["id", "nom", "clan", "type", "rang_initial"],
+  "properties": {
+    "id": {"type": "string", "description": "Unique identifier (snake_case)"},
+    "nom": {"type": "string", "description": "Nom officiel FR/EN de l'école"},
+    "clan": {"type": "string", "description": "ID du clan propriétaire (ou 'ronin', 'imperial', etc.)"},
+    "type": {"type": "string", "enum": ["bushi", "courtisan", "shugenja", "moine", "ninja"], "description": "Type d'école"},
+    "rang_initial": {"type": "integer", "minimum": 1, "description": "Rang de départ (typiquement 1)"},
+    "bonus_trait": {"type": "string", "description": "Trait favori (+1 au départ)"},
+    "competences_ecole": {
+      "type": "array",
+      "items": {"type": "object", "properties": {"nom": {"type": "string"}, "rang": {"type": "integer"}}},
+      "description": "Compétences de départ avec rangs"
+    },
+    "competences_bugei": {"type": "integer", "description": "Nombre de compétences bugei requises"},
+    "competences_hautes": {"type": "integer", "description": "Nombre de compétences hautes requises"},
+    "competences_marchandes": {"type": "integer", "description": "Nombre de compétences marchandes requises"},
+    "competences_basses": {"type": "integer", "description": "Nombre de compétences basses requises"},
+    "honneur_depart": {"type": "number", "description": "Honneur de base (ex: 3.5, 5.5)"},
+    "argent_depart": {"type": "string", "description": "Koku de départ (ex: '5 koku')"},
+    "equipement_depart": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Liste équipement (outfit) de départ"
+    },
+    "techniques": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "rang": {"type": "integer", "minimum": 1, "maximum": 5},
+          "nom": {"type": "string"},
+          "description": {"type": "string"},
+          "effet": {"type": "string"}
+        }
+      },
+      "description": "Techniques par rang d'école"
+    },
+    "affinite": {"type": "string", "description": "Affinité élémentaire (shugenja)"},
+    "deficience": {"type": "string", "description": "Déficience élémentaire (shugenja)"},
+    "sorts_depart": {"type": "integer", "description": "Nombre de sorts de rang 1 au départ (shugenja)"},
+    "source": {
+      "type": "object",
+      "properties": {
+        "livre": {"type": "string", "description": "Nom du livre source (ex: 'L5R 4e Core')"},
+        "page": {"type": "integer", "description": "Numéro de page"}
+      },
+      "description": "Référence source pour validation"
+    },
+    "canon_status": {"type": "string", "enum": ["verified", "to-verify", "homebrew"], "default": "to-verify"}
+  }
+}

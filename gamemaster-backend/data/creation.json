@@ -1,0 +1,58 @@
+{
+  "etapes": [
+    {
+      "ordre": 1,
+      "nom": "Choisir le Clan et la Famille",
+      "description": "Sélectionner un Grand Clan et une famille associée",
+      "bonus": "Bonus de +1 à un Anneau selon la famille"
+    },
+    {
+      "ordre": 2,
+      "nom": "Choisir l'École",
+      "description": "Sélectionner une école de Bushi, Shugenja ou Courtisan",
+      "bonus": "Compétences de départ et technique de Rang 1"
+    },
+    {
+      "ordre": 3,
+      "nom": "Personnaliser les Anneaux",
+      "description": "Distribuer points pour augmenter Anneaux (Terre, Eau, Feu, Air, Vide)",
+      "points": "Tous les Anneaux commencent à 2. +40 points à distribuer.",
+      "cout": "Nouveau rang x3 points par augmentation (ex: passer de 2 à 3 = 9 points)"
+    },
+    {
+      "ordre": 4,
+      "nom": "Personnaliser les Compétences",
+      "description": "Distribuer points dans compétences de l'école et autres",
+      "points": "+40 points de compétence à distribuer",
+      "cout": "Nouveau rang x1 point pour compétences d'école, x2 pour autres"
+    },
+    {
+      "ordre": 5,
+      "nom": "Avantages et Désavantages",
+      "description": "Acheter Avantages et prendre Désavantages pour points bonus",
+      "limite": "Max 10 points de Désavantages"
+    },
+    {
+      "ordre": 6,
+      "nom": "Sorts (Shugenja uniquement)",
+      "description": "Shugenja commencent avec 3 sorts de rang 1 de leurs affinités"
+    },
+    {
+      "ordre": 7,
+      "nom": "Honneur, Gloire, Statut",
+      "description": "Noter valeurs de départ selon École et Clan",
+      "base": "Honneur et Gloire selon école, Statut = 1.0 pour samurai"
+    },
+    {
+      "ordre": 8,
+      "nom": "Équipement de départ",
+      "description": "Recevoir l'équipement (outfit) de l'école",
+      "inclus": "Armes, armure, vêtements, objets divers selon école"
+    },
+    {
+      "ordre": 9,
+      "nom": "Détails personnels",
+      "description": "Nom, âge, apparence, personnalité, objectifs"
+    }
+  ]
+}

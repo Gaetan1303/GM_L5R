@@ -1,0 +1,29 @@
+[
+  {
+    "id": "frappe_devastatrice_crabe",
+    "nom": "Frappe Dévastatrice du Crabe",
+    "clan": "crabe",
+    "ecole": "Hida Bushi",
+    "type": "technique",
+    "rang": 2,
+    "prerequis": "École Hida Bushi Rang 2",
+    "effet": "+1k0 aux dégâts avec les armes lourdes. Peut ignorer 5 points de réduction d'armure lorsque vous utilisez une arme lourde.",
+    "mastery": "Force",
+    "keywords": ["combat", "offensif", "clan"],
+    "source": {"livre": "L5R 4e Core", "page": 95},
+    "canon_status": "verified"
+  },
+  {
+    "id": "mouvement_fluide_kata",
+    "nom": "Kata du Mouvement Fluide",
+    "clan": "universel",
+    "type": "kata",
+    "rang": 1,
+    "prerequis": "Kenjutsu 3+, Jiujutsu 2+",
+    "effet": "Vous pouvez vous déplacer de +1,5 mètres supplémentaires par round sans dépenser d'action. Ce kata vous permet de maintenir une mobilité constante.",
+    "mastery": "Agilité",
+    "keywords": ["mouvement", "defense", "universel"],
+    "source": {"livre": "L5R 4e Core", "page": 210},
+    "canon_status": "verified"
+  }
+]

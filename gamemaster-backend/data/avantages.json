@@ -1,0 +1,182 @@
+{
+  "advantages": [
+    {
+      "id": "ambidextre",
+      "name": "Ambidextre",
+      "cost": 2,
+      "category": "Physique",
+      "description": "Vous pouvez utiliser votre main non-dominante sans pénalité."
+    },
+    {
+      "id": "reflexes-rapides",
+      "name": "Réflexes rapides",
+      "cost": 4,
+      "category": "Physique",
+      "description": "+2 à votre Initiative."
+    },
+    {
+      "id": "resistance-poison",
+      "name": "Résistance au poison",
+      "cost": 3,
+      "category": "Physique",
+      "description": "+2k0 aux jets de résistance contre les poisons."
+    },
+    {
+      "id": "endurance",
+      "name": "Endurance",
+      "cost": 4,
+      "category": "Physique",
+      "description": "+2 dans votre total de Blessures."
+    },
+    {
+      "id": "forme-parfaite",
+      "name": "Forme parfaite",
+      "cost": 3,
+      "category": "Physique",
+      "description": "+1k0 aux jets d'Athlétisme et de Performance."
+    },
+    {
+      "id": "memoire-parfaite",
+      "name": "Mémoire parfaite",
+      "cost": 6,
+      "category": "Mental",
+      "description": "Vous vous souvenez parfaitement de tout ce que vous avez vu ou entendu."
+    },
+    {
+      "id": "sens-du-danger",
+      "name": "Sens du danger",
+      "cost": 4,
+      "category": "Mental",
+      "description": "+2k0 aux jets d'Initiative et de Perception pour détecter les embuscades."
+    },
+    {
+      "id": "calcul-mental",
+      "name": "Calcul mental",
+      "cost": 2,
+      "category": "Mental",
+      "description": "+1k0 aux jets de Commerce et d'Investigation impliquant des calculs."
+    },
+    {
+      "id": "concentration",
+      "name": "Concentration",
+      "cost": 3,
+      "category": "Mental",
+      "description": "+1k0 aux jets de Méditation et aux jets pour maintenir un sort."
+    },
+    {
+      "id": "status-superieur",
+      "name": "Statut supérieur",
+      "cost": 6,
+      "category": "Social",
+      "description": "Votre statut social est supérieur à la normale pour votre école."
+    },
+    {
+      "id": "allies",
+      "name": "Alliés",
+      "cost": 3,
+      "category": "Social",
+      "description": "Vous avez des alliés puissants qui peuvent vous aider."
+    },
+    {
+      "id": "contacts",
+      "name": "Contacts",
+      "cost": 2,
+      "category": "Social",
+      "description": "Vous avez des contacts dans différentes couches de la société."
+    },
+    {
+      "id": "beaute-saisissante",
+      "name": "Beauté saisissante",
+      "cost": 4,
+      "category": "Social",
+      "description": "+1k0 aux jets sociaux avec les personnes attirées par votre apparence."
+    },
+    {
+      "id": "faveur-des-fortunes",
+      "name": "Faveur des Fortunes",
+      "cost": 5,
+      "category": "Spirituel",
+      "description": "Une fois par session, relancez un jet de dés."
+    },
+    {
+      "id": "clairvoyance",
+      "name": "Clairvoyance",
+      "cost": 6,
+      "category": "Spirituel",
+      "description": "Vous pouvez parfois percevoir des événements futurs ou distants."
+    },
+    {
+      "id": "resistance-magie",
+      "name": "Résistance à la magie",
+      "cost": 4,
+      "category": "Spirituel",
+      "description": "+2k0 aux jets de résistance contre les sorts."
+    },
+    {
+      "id": "richesse",
+      "name": "Richesse",
+      "cost": 5,
+      "category": "Matériel",
+      "description": "Vous disposez de ressources financières importantes. Vous commencez avec 50 koku supplémentaires.",
+      "grantedEquipment": [
+        {
+          "name": "Koku (Richesse)",
+          "type": "item",
+          "category": "Argent",
+          "cost": "50",
+          "description": "50 koku supplémentaires accordés par l'avantage Richesse"
+        }
+      ]
+    },
+    {
+      "id": "equipement-superieur",
+      "name": "Équipement supérieur",
+      "cost": 3,
+      "category": "Matériel",
+      "description": "Vous possédez une armure de qualité exceptionnelle qui offre une meilleure protection.",
+      "grantedEquipment": [
+        {
+          "name": "Armure légère supérieure",
+          "type": "armor",
+          "category": "Armure",
+          "reduction": 3,
+          "TN": 20,
+          "cost": "20",
+          "description": "Armure légère de qualité exceptionnelle",
+          "special": "Réduction : 3 (au lieu de 2 pour l'armure légère standard)"
+        }
+      ]
+    },
+    {
+      "id": "ancestral-daisho",
+      "name": "Daisho ancestral",
+      "cost": 4,
+      "category": "Matériel",
+      "description": "Vous possédez un daisho transmis de génération en génération. Ces armes de qualité exceptionnelle offrent +1k0 aux jets d'attaque.",
+      "grantedEquipment": [
+        {
+          "name": "Katana ancestral",
+          "type": "weapon",
+          "category": "Épée",
+          "damage": "3k2",
+          "reach": 1,
+          "TN": 15,
+          "cost": "25",
+          "description": "Katana ancestral de qualité exceptionnelle transmis de génération en génération",
+          "special": "Peut être utilisé à deux mains pour +1k1 aux dégâts. +1k0 aux jets d'attaque (qualité exceptionnelle)"
+        },
+        {
+          "name": "Wakizashi ancestral",
+          "type": "weapon",
+          "category": "Épée courte",
+          "damage": "2k2",
+          "reach": 1,
+          "TN": 20,
+          "cost": "15",
+          "description": "Wakizashi ancestral de qualité exceptionnelle accompagnant le katana",
+          "special": "Peut être utilisé en combat à deux armes. +1k0 aux jets d'attaque (qualité exceptionnelle)"
+        }
+      ]
+    }
+  ]
+}

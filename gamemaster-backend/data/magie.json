@@ -1,0 +1,18 @@
+{
+  "source": "part-3",
+  "principes": {
+    "test_de_lancement": "Anneau de l’élément + Rang d’École Shugenja contre ND du sort",
+    "temps_d_incantation": "Souvent Action complexe ; certains sorts rapides sont en Action simple",
+    "maintiens": "Certains sorts nécessitent un maintien (action) à chaque round pour persister",
+    "relances": "Relances modifient Portée, Durée, Zone ou Dégâts selon le sort",
+    "vide": "Dépenser 1 point de Vide : +1k1 au jet de lancement ou effets spéciaux du sort"
+  },
+  "interruptions": {
+    "blessure": "Prendre des dégâts pendant l’incantation peut faire échouer le sort (jet de Volonté) ",
+    "perturbation": "Silence, liens, obstacles physiques peuvent empêcher les gestes/paroles requis"
+  },
+  "special": {
+    "maho": "Maho consomme du sang ; ND variables, effets puissants et corrompus",
+    "kiho": "Kiho sont des techniques monastiques, se déclenchent par jets spécifiques et consommation de Vide"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "L5R 4e Maho Schema",
+  "description": "Canonical schema for blood magic (maho) spells",
+  "type": "object",
+  "required": ["id", "nom", "maitrise"],
+  "properties": {
+    "id": {"type": "string", "description": "Unique identifier"},
+    "nom": {"type": "string", "description": "Nom du sort maho"},
+    "maitrise": {"type": "integer", "minimum": 1, "description": "Rang de maîtrise requis"},
+    "portee": {"type": "string", "description": "Portée"},
+    "zone": {"type": "string", "description": "Zone d'effet"},
+    "duree": {"type": "string", "description": "Durée"},
+    "cout_sang": {"type": "string", "description": "Quantité de sang requise (Blessures)"},
+    "souillure_gain": {"type": "integer", "description": "Points de Souillure gagnés à l'utilisation"},
+    "description": {"type": "string", "description": "Effet complet du sort maho"},
+    "nd_lancement": {"type": "integer", "description": "ND de lancement (si spécifique)"},
+    "relances": {"type": "string", "description": "Effets des relances"},
+    "keywords": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Mots-clés (offensif, manipulation, invocation, etc.)"
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "livre": {"type": "string"},
+        "page": {"type": "integer"}
+      }
+    },
+    "canon_status": {"type": "string", "enum": ["verified", "to-verify", "homebrew"], "default": "to-verify"}
+  }
+}

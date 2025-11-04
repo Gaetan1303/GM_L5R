@@ -1,0 +1,68 @@
+{
+  "meta": {"version": "0.1", "canon_status": "to-verify"},
+  "dangers": {
+    "chute": {
+      "description": "Dommages en cas de chute depuis une hauteur.",
+      "regles": {
+        "degats": "1k1 par ~3 mètres (arrondir au supérieur)",
+        "attenuation": "Athlétisme TN 15 pour réduire de 1k1 ; surfaces molles réduisent de moitié",
+        "choc": "+5 ND à toutes actions pendant 1 round si dégâts reçus > Terre"
+      }
+    },
+    "suffocation": {
+      "description": "Manque d'air (noyade, étranglement, fumées)",
+      "regles": {
+        "apnee": "Rounds d'apnée = Terre x 2 (activité) ; x4 (immobile)",
+        "etouffement": "Après apnée, perd 1k1 Blessures/round + test Volonté ND 15 pour agir",
+        "asphyxie": "À 0 Blessures, inconscient ; mort si non secouru"
+      }
+    },
+    "feu": {
+      "description": "Exposition aux flammes et brûlures",
+      "regles": {
+        "degats": "1k1 à 3k2 par round selon intensité",
+        "propagation": "+1k0 dégâts par round si non éteint",
+        "eteindre": "Action simple pour éteindre (Agilité/Athlétisme TN 15)"
+      }
+    },
+    "froid": {
+      "description": "Climat glacial, hypothermie",
+      "regles": {
+        "fatigue": "-1k0 aux jets après 10 min sans protection",
+        "degats": "1 Blessure/10 min ; peut monter à 1k1/10 min extrême",
+        "protection": "Vêtements adaptés annulent ou réduisent"
+      }
+    },
+    "chaleur": {
+      "description": "Canicule et coup de chaleur",
+      "regles": {
+        "fatigue": "-1k0 par heure d'effort soutenu",
+        "degats": "1k1 Blessures/heure sévère",
+        "hydratation": "Eau et repos suppriment pénalités"
+      }
+    },
+    "poisons": {
+      "description": "Toxines naturelles ou artificielles",
+      "schema": {"nom": "string", "type": "contact/ingestion/injection/inhalation", "nd_resistance": "number", "effets": "string", "latence": "string"},
+      "exemples": [
+        {"nom": "Venin de serpent", "type": "injection", "nd_resistance": 15, "effets": "1k1 Blessures/round x3, -1k0 aux jets", "latence": "immédiat"},
+        {"nom": "Poudre d'obsidienne", "type": "inhalation", "nd_resistance": 20, "effets": "Aveuglement, toux (-1 action)", "latence": "1 round"}
+      ]
+    },
+    "maladies": {
+      "description": "Affections contagieuses ou environnementales",
+      "schema": {"nom": "string", "nd_resistance": "number", "progression": "string", "effets": "string", "traitement": "string"},
+      "exemples": [
+        {"nom": "Fièvre des marais", "nd_resistance": 15, "progression": "1k1 Blessures/jour", "effets": "Fatigue, -1k0 Perception", "traitement": "Repos, Médecine TN 15"}
+      ]
+    },
+    "meteo": {
+      "description": "Pluie, neige, vent, tempêtes",
+      "effets": [
+        {"type": "Pluie forte", "impact": "+5 ND tir, terrains boueux (mouvement -50%)"},
+        {"type": "Vent violent", "impact": "+10 ND tir, flammes éteintes"},
+        {"type": "Brouillard dense", "impact": "Vision réduite, Perception (vue) -1k1"}
+      ]
+    }
+  }
+}

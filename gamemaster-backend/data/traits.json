@@ -1,0 +1,91 @@
+{
+  "anneaux": [
+    {
+      "id": "terre",
+      "nom": "Terre",
+      "description": "Résistance physique et mentale",
+      "traits": [
+        {
+          "id": "endurance",
+          "nom": "Endurance",
+          "description": "Résistance physique et capacité à encaisser"
+        },
+        {
+          "id": "volonte",
+          "nom": "Volonté",
+          "description": "Force mentale et détermination"
+        }
+      ]
+    },
+    {
+      "id": "eau",
+      "nom": "Eau",
+      "description": "Adaptabilité et fluidité",
+      "traits": [
+        {
+          "id": "force",
+          "nom": "Force",
+          "description": "Puissance physique brute"
+        },
+        {
+          "id": "perspicacite",
+          "nom": "Perspicacité",
+          "description": "Compréhension et intuition"
+        }
+      ]
+    },
+    {
+      "id": "feu",
+      "nom": "Feu",
+      "description": "Passion et rapidité",
+      "traits": [
+        {
+          "id": "agilite",
+          "nom": "Agilité",
+          "description": "Dextérité et coordination"
+        },
+        {
+          "id": "intelligence",
+          "nom": "Intelligence",
+          "description": "Raisonnement et mémoire"
+        }
+      ]
+    },
+    {
+      "id": "air",
+      "nom": "Air",
+      "description": "Grâce et subtilité",
+      "traits": [
+        {
+          "id": "reflexes",
+          "nom": "Réflexes",
+          "description": "Vitesse de réaction"
+        },
+        {
+          "id": "conscience",
+          "nom": "Conscience",
+          "description": "Perception de l'environnement"
+        }
+      ]
+    },
+    {
+      "id": "vide",
+      "nom": "Vide",
+      "description": "Spiritualité et instinct",
+      "traits": [
+        {
+          "id": "vide",
+          "nom": "Vide",
+          "description": "Connexion spirituelle et chance"
+        }
+      ]
+    }
+  ],
+  "valeurs_initiales": {
+    "tous_traits": 2,
+    "vide": 2
+  },
+  "points_distribution": {
+    "creation": 40
+  }
+}

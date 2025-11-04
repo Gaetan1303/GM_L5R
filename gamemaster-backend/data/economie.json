@@ -1,0 +1,445 @@
+{
+  "meta": {
+    "version": "0.1",
+    "description": "Système économique L5R 4e : prix, rareté, qualité, commerce, artisanat",
+    "last_updated": "2025-11-03",
+    "canon_status": "to-verify",
+    "note": "1 koku = 5 bu = 50 zeni. 1 koku nourrit 1 personne pendant 1 an"
+  },
+  "monnaie": {
+    "description": "Système monétaire de Rokugan",
+    "unites": [
+      {
+        "nom": "Koku",
+        "valeur_relative": 1,
+        "description": "Unité de base, environ 180 kg de riz",
+        "usage": "Transactions importantes, salaires annuels, taxes",
+        "equivalence": "5 bu ou 50 zeni"
+      },
+      {
+        "nom": "Bu",
+        "valeur_relative": 0.2,
+        "description": "1/5 de koku, pièce d'or oblongue",
+        "usage": "Commerce quotidien de valeur moyenne",
+        "equivalence": "10 zeni"
+      },
+      {
+        "nom": "Zeni",
+        "valeur_relative": 0.02,
+        "description": "Petite pièce de cuivre carrée avec trou central",
+        "usage": "Menus achats quotidiens",
+        "equivalence": "Unité minimale"
+      }
+    ],
+    "contexte_social": {
+      "samurai": "Parler d'argent est vulgaire. Les samouraïs confient leur bourse aux serviteurs.",
+      "marchands": "Seuls à manipuler l'argent directement sans honte",
+      "paysans": "Utilisent surtout le troc, zeni pour taxes"
+    }
+  },
+  "rarete": {
+    "description": "Disponibilité des biens selon les régions",
+    "niveaux": [
+      {
+        "niveau": "Commun",
+        "description": "Disponible partout sans difficulté",
+        "nd_obtention": 5,
+        "delai": "Immédiat à 1 jour",
+        "modificateur_prix": "×1"
+      },
+      {
+        "niveau": "Disponible",
+        "description": "Trouvable dans la plupart des villes",
+        "nd_obtention": 10,
+        "delai": "1-3 jours",
+        "modificateur_prix": "×1.5"
+      },
+      {
+        "niveau": "Rare",
+        "description": "Seulement dans grandes villes ou sur commande",
+        "nd_obtention": 20,
+        "delai": "1-2 semaines",
+        "modificateur_prix": "×3"
+      },
+      {
+        "niveau": "Très Rare",
+        "description": "Import spécialisé ou artisan réputé uniquement",
+        "nd_obtention": 30,
+        "delai": "1-3 mois",
+        "modificateur_prix": "×10"
+      },
+      {
+        "niveau": "Exotique",
+        "description": "Pratiquement introuvable, souvent importé de l'étranger",
+        "nd_obtention": 40,
+        "delai": "3-12 mois",
+        "modificateur_prix": "×50 ou plus"
+      }
+    ],
+    "competence_obtention": "Commerce (Intelligence) ou Courtisan (Charisme) selon contexte"
+  },
+  "qualite": {
+    "description": "Niveau de fabrication et d'ornementation",
+    "niveaux": [
+      {
+        "niveau": "Médiocre",
+        "description": "Fabrication bâclée, matériaux bas de gamme",
+        "modificateur_prix": "×0.5",
+        "modificateur_usage": "-1k0 aux jets si applicable",
+        "duree_vie": "Réduite de 50%"
+      },
+      {
+        "niveau": "Standard",
+        "description": "Qualité normale d'artisan compétent",
+        "modificateur_prix": "×1",
+        "modificateur_usage": "Aucun",
+        "duree_vie": "Normale"
+      },
+      {
+        "niveau": "Supérieure",
+        "description": "Œuvre d'artisan talentueux, matériaux choisis",
+        "modificateur_prix": "×3",
+        "modificateur_usage": "+0k1 aux jets",
+        "duree_vie": "Doublée"
+      },
+      {
+        "niveau": "Exceptionnelle",
+        "description": "Chef-d'œuvre d'artisan célèbre",
+        "modificateur_prix": "×10",
+        "modificateur_usage": "+1k0 aux jets",
+        "duree_vie": "Plusieurs générations",
+        "note": "Souvent objet nommé avec histoire"
+      },
+      {
+        "niveau": "Légendaire",
+        "description": "Artefact unique, souvent magique",
+        "modificateur_prix": "Inestimable (50+ koku)",
+        "modificateur_usage": "+1k1 ou effets spéciaux",
+        "duree_vie": "Éternelle",
+        "note": "Reliques familiales, trésors impériaux"
+      }
+    ]
+  },
+  "prix_equipement": {
+    "armes": [
+      { "nom": "Katana", "prix_koku": 5, "prix_bu": 0, "rarete": "Disponible", "qualite": "Standard", "note": "Âme du samouraï" },
+      { "nom": "Wakizashi", "prix_koku": 3, "prix_bu": 0, "rarete": "Disponible", "qualite": "Standard" },
+      { "nom": "Tanto", "prix_koku": 1, "prix_bu": 0, "rarete": "Commun", "qualite": "Standard" },
+      { "nom": "Yari (lance)", "prix_koku": 3, "prix_bu": 0, "rarete": "Commun", "qualite": "Standard" },
+      { "nom": "Naginata", "prix_koku": 5, "prix_bu": 0, "rarete": "Disponible", "qualite": "Standard" },
+      { "nom": "Tetsubo", "prix_koku": 4, "prix_bu": 0, "rarete": "Disponible", "qualite": "Standard" },
+      { "nom": "Dai-tsuchi (maillet)", "prix_koku": 3, "prix_bu": 0, "rarete": "Commun", "qualite": "Standard" },
+      { "nom": "No-dachi", "prix_koku": 10, "prix_bu": 0, "rarete": "Rare", "qualite": "Standard" },
+      { "nom": "Arc long (yumi)", "prix_koku": 3, "prix_bu": 0, "rarete": "Disponible", "qualite": "Standard" },
+      { "nom": "Flèches (20)", "prix_koku": 0, "prix_bu": 2, "rarete": "Commun", "qualite": "Standard" },
+      { "nom": "Flèches de chasse (20)", "prix_koku": 0, "prix_bu": 1, "rarete": "Commun", "qualite": "Standard" },
+      { "nom": "Flèches sifflantes (20)", "prix_koku": 0, "prix_bu": 3, "rarete": "Disponible", "qualite": "Standard" },
+      { "nom": "Sarbacane", "prix_koku": 0, "prix_bu": 3, "rarete": "Rare", "qualite": "Standard" },
+      { "nom": "Shuriken (10)", "prix_koku": 0, "prix_bu": 1, "rarete": "Rare", "qualite": "Standard", "note": "Arme de ninja" }
+    ],
+    "armures": [
+      { "nom": "Armure légère (ashigaru)", "prix_koku": 5, "prix_bu": 0, "rarete": "Commun", "qualite": "Standard", "nd_armure": 3 },
+      { "nom": "Armure lourde (do-maru)", "prix_koku": 10, "prix_bu": 0, "rarete": "Disponible", "qualite": "Standard", "nd_armure": 5 },
+      { "nom": "Armure complète (o-yoroi)", "prix_koku": 20, "prix_bu": 0, "rarete": "Rare", "qualite": "Standard", "nd_armure": 5, "reduction": 3 },
+      { "nom": "Casque (kabuto)", "prix_koku": 2, "prix_bu": 0, "rarete": "Disponible", "qualite": "Standard" },
+      { "nom": "Masque facial (mempo)", "prix_koku": 1, "prix_bu": 0, "rarete": "Disponible", "qualite": "Standard" }
+    ],
+    "vetements": [
+      { "nom": "Kimono simple (heimin)", "prix_koku": 0, "prix_bu": 0, "prix_zeni": 5, "rarete": "Commun", "qualite": "Médiocre" },
+      { "nom": "Kimono (samouraï)", "prix_koku": 0, "prix_bu": 2, "rarete": "Commun", "qualite": "Standard" },
+      { "nom": "Kimono formel", "prix_koku": 1, "prix_bu": 0, "rarete": "Disponible", "qualite": "Supérieure" },
+      { "nom": "Kimono de cour", "prix_koku": 5, "prix_bu": 0, "rarete": "Rare", "qualite": "Exceptionnelle", "note": "Broderies, soies rares" },
+      { "nom": "Hakama", "prix_koku": 0, "prix_bu": 1, "rarete": "Commun", "qualite": "Standard" },
+      { "nom": "Sandales (zori)", "prix_koku": 0, "prix_bu": 0, "prix_zeni": 2, "rarete": "Commun", "qualite": "Standard" },
+      { "nom": "Geta (sabots)", "prix_koku": 0, "prix_bu": 0, "prix_zeni": 3, "rarete": "Commun", "qualite": "Standard" }
+    ],
+    "voyage": [
+      { "nom": "Sac à dos", "prix_koku": 0, "prix_bu": 0, "prix_zeni": 5, "rarete": "Commun", "qualite": "Standard" },
+      { "nom": "Couverture", "prix_koku": 0, "prix_bu": 0, "prix_zeni": 3, "rarete": "Commun", "qualite": "Standard" },
+      { "nom": "Tente (2 personnes)", "prix_koku": 0, "prix_bu": 1, "rarete": "Disponible", "qualite": "Standard" },
+      { "nom": "Briquet à silex", "prix_koku": 0, "prix_bu": 0, "prix_zeni": 2, "rarete": "Commun", "qualite": "Standard" },
+      { "nom": "Corde (10m)", "prix_koku": 0, "prix_bu": 0, "prix_zeni": 5, "rarete": "Commun", "qualite": "Standard" },
+      { "nom": "Grappin", "prix_koku": 0, "prix_bu": 1, "rarete": "Disponible", "qualite": "Standard" },
+      { "nom": "Lanterne", "prix_koku": 0, "prix_bu": 2, "rarete": "Disponible", "qualite": "Standard" },
+      { "nom": "Huile (1 litre)", "prix_koku": 0, "prix_bu": 0, "prix_zeni": 10, "rarete": "Commun", "qualite": "Standard" },
+      { "nom": "Rations de voyage (1 jour)", "prix_koku": 0, "prix_bu": 0, "prix_zeni": 3, "rarete": "Commun", "qualite": "Standard" },
+      { "nom": "Sake (bouteille)", "prix_koku": 0, "prix_bu": 0, "prix_zeni": 5, "rarete": "Commun", "qualite": "Standard" },
+      { "nom": "Sake de qualité", "prix_koku": 0, "prix_bu": 2, "rarete": "Disponible", "qualite": "Supérieure" }
+    ],
+    "animaux": [
+      { "nom": "Cheval de guerre (destrier)", "prix_koku": 30, "prix_bu": 0, "rarete": "Rare", "qualite": "Supérieure", "note": "Entraîné au combat" },
+      { "nom": "Cheval de monte", "prix_koku": 15, "prix_bu": 0, "rarete": "Disponible", "qualite": "Standard" },
+      { "nom": "Poney", "prix_koku": 5, "prix_bu": 0, "rarete": "Commun", "qualite": "Standard" },
+      { "nom": "Bœuf de trait", "prix_koku": 8, "prix_bu": 0, "rarete": "Commun", "qualite": "Standard" },
+      { "nom": "Faucon de chasse", "prix_koku": 10, "prix_bu": 0, "rarete": "Rare", "qualite": "Supérieure", "note": "Dressé" },
+      { "nom": "Chien de chasse", "prix_koku": 2, "prix_bu": 0, "rarete": "Disponible", "qualite": "Standard" }
+    ],
+    "services": [
+      { "nom": "Auberge (nuit, qualité médiocre)", "prix_koku": 0, "prix_bu": 0, "prix_zeni": 5, "rarete": "Commun" },
+      { "nom": "Auberge (nuit, qualité standard)", "prix_koku": 0, "prix_bu": 0, "prix_zeni": 20, "rarete": "Commun" },
+      { "nom": "Auberge (nuit, qualité supérieure)", "prix_koku": 0, "prix_bu": 2, "rarete": "Disponible" },
+      { "nom": "Repas simple (heimin)", "prix_koku": 0, "prix_bu": 0, "prix_zeni": 2, "rarete": "Commun" },
+      { "nom": "Repas (samouraï)", "prix_koku": 0, "prix_bu": 0, "prix_zeni": 10, "rarete": "Commun" },
+      { "nom": "Banquet (par personne)", "prix_koku": 0, "prix_bu": 3, "rarete": "Disponible" },
+      { "nom": "Passage en ferry", "prix_koku": 0, "prix_bu": 0, "prix_zeni": 1, "rarete": "Commun" },
+      { "nom": "Lettre (envoi par messager)", "prix_koku": 0, "prix_bu": 0, "prix_zeni": 5, "rarete": "Disponible", "note": "Par 50km" },
+      { "nom": "Scribe (journée)", "prix_koku": 0, "prix_bu": 1, "rarete": "Disponible" },
+      { "nom": "Médecin (consultation)", "prix_koku": 0, "prix_bu": 2, "rarete": "Disponible" },
+      { "nom": "Shugenja (rituel mineur)", "prix_koku": 1, "prix_bu": 0, "rarete": "Rare", "note": "Bénédiction, purification simple" },
+      { "nom": "Shugenja (rituel majeur)", "prix_koku": 5, "prix_bu": 0, "rarete": "Très Rare", "note": "Exorcisme, guérison grave" }
+    ],
+    "artisanat_materiaux": [
+      { "nom": "Papier (10 feuilles)", "prix_koku": 0, "prix_bu": 0, "prix_zeni": 5, "rarete": "Disponible", "qualite": "Standard" },
+      { "nom": "Papier de riz fin (10 feuilles)", "prix_koku": 0, "prix_bu": 1, "rarete": "Rare", "qualite": "Supérieure" },
+      { "nom": "Encre et pinceau", "prix_koku": 0, "prix_bu": 1, "rarete": "Disponible", "qualite": "Standard" },
+      { "nom": "Bois (planche, 1m)", "prix_koku": 0, "prix_bu": 0, "prix_zeni": 2, "rarete": "Commun", "qualite": "Standard" },
+      { "nom": "Fer (1 kg brut)", "prix_koku": 0, "prix_bu": 2, "rarete": "Disponible", "qualite": "Standard" },
+      { "nom": "Acier tamahagane (1 kg)", "prix_koku": 2, "prix_bu": 0, "rarete": "Rare", "qualite": "Supérieure", "note": "Pour katanas" },
+      { "nom": "Soie (rouleau)", "prix_koku": 1, "prix_bu": 0, "rarete": "Rare", "qualite": "Supérieure" },
+      { "nom": "Jade (petit morceau)", "prix_koku": 3, "prix_bu": 0, "rarete": "Très Rare", "qualite": "Exceptionnelle", "note": "Protection Souillure" },
+      { "nom": "Cristal (petit)", "prix_koku": 5, "prix_bu": 0, "rarete": "Exotique", "qualite": "Exceptionnelle", "note": "Fokus magiques" }
+    ]
+  },
+  "salaires_revenus": {
+    "description": "Revenus annuels typiques par statut",
+    "salaires": [
+      { "position": "Ronin (sans maître)", "koku_annuel": 0, "note": "Vit de petits boulots, dons" },
+      { "position": "Samouraï débutant (Rang 1)", "koku_annuel": 3, "note": "Stipend minimal" },
+      { "position": "Samouraï (Rang 2-3)", "koku_annuel": 10, "note": "Stipend standard" },
+      { "position": "Samouraï accompli (Rang 4-5)", "koku_annuel": 30, "note": "Avec responsabilités" },
+      { "position": "Commandant/Magistrat", "koku_annuel": 100, "note": "Plus terres et soldats" },
+      { "position": "Daimyo mineur", "koku_annuel": 500, "note": "Plus revenus de domaine" },
+      { "position": "Daimyo majeur", "koku_annuel": 5000, "note": "Contrôle provinces" },
+      { "position": "Champion de Clan", "koku_annuel": 50000, "note": "Revenus du clan entier" },
+      { "position": "Heimin (paysan)", "koku_annuel": 0.3, "note": "Survie minimale après taxes" },
+      { "position": "Heimin (artisan compétent)", "koku_annuel": 2, "note": "Peut économiser" },
+      { "position": "Marchand prospère", "koku_annuel": 50, "note": "Riche mais bas statut social" }
+    ],
+    "depenses_courantes": {
+      "description": "Dépenses mensuelles moyennes par statut",
+      "categories": [
+        { "statut": "Samouraï modeste", "koku_mois": 0.5, "note": "Logement simple, repas basiques" },
+        { "statut": "Samouraï confortable", "koku_mois": 1.5, "note": "Logement décent, serviteur" },
+        { "statut": "Samouraï aisé", "koku_mois": 5, "note": "Belle résidence, plusieurs serviteurs" },
+        { "statut": "Daimyo", "koku_mois": 50, "note": "Palais, cour, gardes, fêtes" }
+      ]
+    }
+  },
+  "commerce": {
+    "description": "Règles de commerce et de négociation",
+    "negociation": {
+      "competence": "Commerce (Intelligence)",
+      "nd_base": 15,
+      "modificateurs": [
+        { "situation": "Acheteur pressé", "modificateur": "-1k0 pour acheteur" },
+        { "situation": "Vendeur pressé", "modificateur": "-1k0 pour vendeur" },
+        { "situation": "Objet rare/unique", "modificateur": "+1k1 pour vendeur" },
+        { "situation": "Marché surchargé", "modificateur": "+1k0 pour acheteur" },
+        { "situation": "Connaissance du marché local", "modificateur": "+1k0" }
+      ],
+      "resultat": {
+        "echec_20+": "Prix augmente de 50%",
+        "echec_10-19": "Prix augmente de 25%",
+        "echec_1-9": "Prix augmente de 10%",
+        "reussite": "Prix normal",
+        "reussite_10+": "Prix réduit de 10%",
+        "reussite_20+": "Prix réduit de 25%",
+        "reussite_30+": "Prix réduit de 50%"
+      }
+    },
+    "routes_commerciales": {
+      "description": "Principales voies commerciales de Rokugan",
+      "routes": [
+        {
+          "nom": "Route de la Soie (vers Medinaat-al-Salaam)",
+          "origine": "Terres du Licorne",
+          "destination": "Terres étrangères (ouest)",
+          "marchandises": ["Soie", "Épices", "Chevaux gaijin", "Artefacts exotiques"],
+          "duree": "6-12 mois (aller)",
+          "dangers": "Bandits, déserts, gaijin hostiles",
+          "nd_voyage": 30
+        },
+        {
+          "nom": "Route côtière sud",
+          "origine": "Terres de la Grue",
+          "destination": "Terres du Scorpion",
+          "marchandises": ["Poisson", "Sel", "Perles", "Teintures"],
+          "duree": "2-4 semaines",
+          "dangers": "Pirates, tempêtes",
+          "nd_voyage": 15
+        },
+        {
+          "nom": "Route impériale",
+          "origine": "Otosan Uchi (capitale)",
+          "destination": "Toutes terres",
+          "marchandises": "Toutes",
+          "duree": "Variable",
+          "dangers": "Bandits occasionnels",
+          "nd_voyage": 10,
+          "note": "Protégée par Magistrats d'Émeraude"
+        },
+        {
+          "nom": "Route du fleuve",
+          "origine": "Terres du Dragon",
+          "destination": "Terres du Crabe/Lion",
+          "marchandises": ["Bois", "Minerais", "Artisanat de montagne"],
+          "duree": "1-3 semaines",
+          "dangers": "Rapides, bandits de montagne",
+          "nd_voyage": 20
+        }
+      ]
+    },
+    "marche_noir": {
+      "description": "Commerce illégal et contrebande",
+      "nd_obtention": 30,
+      "nd_discretion": 25,
+      "risque": "Très élevé - exil ou exécution si pris",
+      "marchandises": [
+        { "objet": "Armes de contrebande", "prix_multiplier": "×5", "rarete": "Très Rare" },
+        { "objet": "Opium/drogues", "prix_multiplier": "×10", "rarete": "Très Rare", "note": "Illégal sauf usage médical" },
+        { "objet": "Artefacts maho", "prix_multiplier": "×50", "rarete": "Exotique", "note": "Possession = mort certaine" },
+        { "objet": "Secrets de clan", "prix_multiplier": "Variable", "rarete": "Exotique", "note": "Informations, techniques" },
+        { "objet": "Gaijin pepper", "prix_multiplier": "×20", "rarete": "Exotique", "note": "Épice étrangère prisée" }
+      ]
+    }
+  },
+  "artisanat": {
+    "description": "Création d'objets et d'œuvres d'art",
+    "competences": {
+      "armes": "Artisanat : Forgeron d'armes",
+      "armures": "Artisanat : Forgeron d'armures",
+      "calligraphie": "Calligraphie",
+      "peinture": "Art : Peinture",
+      "poesie": "Art : Poésie",
+      "sculpture": "Artisanat : Sculpteur",
+      "ceramique": "Artisanat : Potier",
+      "cuisine": "Artisanat : Cuisinier",
+      "jardinage": "Artisanat : Jardinier",
+      "origami": "Artisanat : Origami",
+      "ikebana": "Artisanat : Ikebana (arrangement floral)"
+    },
+    "creation": {
+      "description": "Processus de création d'un objet ou œuvre",
+      "temps_base": {
+        "arme_simple": "1 semaine",
+        "katana": "1-3 mois",
+        "katana_exceptionnel": "6-12 mois",
+        "armure_legere": "2 semaines",
+        "armure_complete": "2-3 mois",
+        "oeuvre_art": "Variable (heures à mois)"
+      },
+      "nd_creation": {
+        "qualite_mediocre": 10,
+        "qualite_standard": 20,
+        "qualite_superieure": 30,
+        "qualite_exceptionnelle": 40,
+        "qualite_legendaire": 50
+      },
+      "modificateurs": [
+        { "situation": "Matériaux de qualité supérieure", "bonus": "+1k0" },
+        { "situation": "Matériaux médiocres", "malus": "-1k0" },
+        { "situation": "Atelier bien équipé", "bonus": "+0k1" },
+        { "situation": "Conditions difficiles", "malus": "-1k0" },
+        { "situation": "Temps double", "bonus": "+1k0" },
+        { "situation": "Temps réduit de moitié", "malus": "-2k0" }
+      ],
+      "resultat": {
+        "echec_10+": "Objet détruit, matériaux perdus",
+        "echec": "Objet de qualité inférieure",
+        "reussite": "Objet de qualité visée",
+        "reussite_10+": "Objet de qualité supérieure au visé",
+        "reussite_20+": "Chef-d'œuvre, renommée de l'artisan"
+      }
+    },
+    "valeur_oeuvres": {
+      "description": "Prix des œuvres d'art selon qualité et renommée",
+      "base": [
+        { "type": "Calligraphie médiocre", "prix_koku": 0.1 },
+        { "type": "Calligraphie standard", "prix_koku": 0.5 },
+        { "type": "Calligraphie supérieure", "prix_koku": 3 },
+        { "type": "Calligraphie exceptionnelle", "prix_koku": 20 },
+        { "type": "Peinture médiocre", "prix_koku": 0.5 },
+        { "type": "Peinture standard", "prix_koku": 2 },
+        { "type": "Peinture supérieure", "prix_koku": 10 },
+        { "type": "Peinture exceptionnelle", "prix_koku": 50 },
+        { "type": "Sculpture bois standard", "prix_koku": 1 },
+        { "type": "Sculpture bois supérieure", "prix_koku": 5 },
+        { "type": "Sculpture jade", "prix_koku": 30 },
+        { "type": "Céramique tea bowl standard", "prix_koku": 0.5 },
+        { "type": "Céramique tea bowl exceptionnelle", "prix_koku": 50 }
+      ],
+      "modificateur_artiste": {
+        "inconnu": "×1",
+        "reputation_locale": "×2",
+        "reputation_regionale": "×5",
+        "reputation_empire": "×10",
+        "maitre_legendaire": "×50+"
+      }
+    }
+  },
+  "propriete": {
+    "description": "Possession de terres et revenus fonciers",
+    "types": [
+      {
+        "type": "Résidence urbaine modeste",
+        "prix_koku": 50,
+        "revenu_annuel": 0,
+        "note": "Maison en ville pour samouraï"
+      },
+      {
+        "type": "Résidence urbaine confortable",
+        "prix_koku": 200,
+        "revenu_annuel": 0,
+        "note": "Belle maison avec jardin"
+      },
+      {
+        "type": "Domaine rural (petit)",
+        "prix_koku": 500,
+        "revenu_annuel": 20,
+        "note": "Village avec quelques fermes"
+      },
+      {
+        "type": "Domaine rural (moyen)",
+        "prix_koku": 2000,
+        "revenu_annuel": 100,
+        "note": "Plusieurs villages, 100-500 heimin"
+      },
+      {
+        "type": "Domaine rural (grand)",
+        "prix_koku": 10000,
+        "revenu_annuel": 500,
+        "note": "Petite province, 1000+ heimin"
+      },
+      {
+        "type": "Province",
+        "prix_koku": 50000,
+        "revenu_annuel": 5000,
+        "note": "Gouvernée par Daimyo"
+      }
+    ],
+    "gestion": {
+      "competence": "Commerce (Intelligence) ou Connaissance : Droit",
+      "nd_gestion_annuelle": 20,
+      "resultat": {
+        "echec_majeur": "Revenu réduit de 50%, mécontentement des heimin",
+        "echec": "Revenu réduit de 25%",
+        "reussite": "Revenu normal",
+        "reussite_10+": "Revenu augmenté de 25%",
+        "reussite_20+": "Revenu augmenté de 50%, loyauté accrue"
+      }
+    }
+  },
+  "taxes": {
+    "description": "Système de taxation impérial et de clan",
+    "taux": {
+      "heimin_vers_seigneur": "50-70% de production",
+      "clan_vers_empereur": "10% de revenus du clan",
+      "note": "Les samouraïs ne paient pas de taxes mais doivent service militaire"
+    },
+    "exemptions": [
+      "Temples et monastères (partielles)",
+      "Terres impériales directes",
+      "Récompenses impériales temporaires"
+    ]
+  }
+}

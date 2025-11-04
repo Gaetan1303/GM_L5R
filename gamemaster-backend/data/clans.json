@@ -1,0 +1,228 @@
+{
+  "clans": [
+    {
+      "id": "crabe",
+      "nom": "Clan du Crabe",
+      "description": "Défenseurs de l'Empire contre l'Outremonde",
+      "trait_bonus": "Force",
+      "familles": [
+        {
+          "id": "hida",
+          "nom": "Hida",
+          "trait_bonus": "Endurance",
+          "bonus_competence": "Kenjutsu"
+        },
+        {
+          "id": "hiruma",
+          "nom": "Hiruma",
+          "trait_bonus": "Agilité",
+          "bonus_competence": "Chasse"
+        },
+        {
+          "id": "kaiu",
+          "nom": "Kaiu",
+          "trait_bonus": "Intelligence",
+          "bonus_competence": "Artisanat"
+        },
+        {
+          "id": "kuni",
+          "nom": "Kuni",
+          "trait_bonus": "Volonté",
+          "bonus_competence": "Connaissance de l'Outremonde"
+        },
+        {
+          "id": "yasuki",
+          "nom": "Yasuki",
+          "trait_bonus": "Perspicacité",
+          "bonus_competence": "Commerce"
+        }
+      ]
+    },
+    {
+      "id": "grue",
+      "nom": "Clan de la Grue",
+      "description": "Maîtres des arts et de la cour",
+      "trait_bonus": "Perspicacité",
+      "familles": [
+        {
+          "id": "asahina",
+          "nom": "Asahina",
+          "trait_bonus": "Volonté",
+          "bonus_competence": "Calligraphie"
+        },
+        {
+          "id": "daidoji",
+          "nom": "Daidoji",
+          "trait_bonus": "Agilité",
+          "bonus_competence": "Jiujutsu"
+        },
+        {
+          "id": "doji",
+          "nom": "Doji",
+          "trait_bonus": "Perspicacité",
+          "bonus_competence": "Courtisan"
+        },
+        {
+          "id": "kakita",
+          "nom": "Kakita",
+          "trait_bonus": "Agilité",
+          "bonus_competence": "Iaijutsu"
+        }
+      ]
+    },
+    {
+      "id": "dragon",
+      "nom": "Clan du Dragon",
+      "description": "Mystiques et philosophes des montagnes",
+      "trait_bonus": "Endurance",
+      "familles": [
+        {
+          "id": "agasha",
+          "nom": "Agasha",
+          "trait_bonus": "Intelligence",
+          "bonus_competence": "Connaissance de la magie"
+        },
+        {
+          "id": "kitsuki",
+          "nom": "Kitsuki",
+          "trait_bonus": "Perspicacité",
+          "bonus_competence": "Investigation"
+        },
+        {
+          "id": "mirumoto",
+          "nom": "Mirumoto",
+          "trait_bonus": "Agilité",
+          "bonus_competence": "Kenjutsu"
+        },
+        {
+          "id": "tamori",
+          "nom": "Tamori",
+          "trait_bonus": "Volonté",
+          "bonus_competence": "Artisanat"
+        }
+      ]
+    },
+    {
+      "id": "lion",
+      "nom": "Clan du Lion",
+      "description": "Guerriers d'élite et gardiens de l'honneur",
+      "trait_bonus": "Force",
+      "familles": [
+        {
+          "id": "akodo",
+          "nom": "Akodo",
+          "trait_bonus": "Intelligence",
+          "bonus_competence": "Commandement"
+        },
+        {
+          "id": "ikoma",
+          "nom": "Ikoma",
+          "trait_bonus": "Volonté",
+          "bonus_competence": "Sincérité"
+        },
+        {
+          "id": "kitsu",
+          "nom": "Kitsu",
+          "trait_bonus": "Volonté",
+          "bonus_competence": "Méditation"
+        },
+        {
+          "id": "matsu",
+          "nom": "Matsu",
+          "trait_bonus": "Agilité",
+          "bonus_competence": "Kenjutsu"
+        }
+      ]
+    },
+    {
+      "id": "phenix",
+      "nom": "Clan du Phénix",
+      "description": "Maîtres de la magie et de la connaissance",
+      "trait_bonus": "Intelligence",
+      "familles": [
+        {
+          "id": "asako",
+          "nom": "Asako",
+          "trait_bonus": "Perspicacité",
+          "bonus_competence": "Connaissance"
+        },
+        {
+          "id": "isawa",
+          "nom": "Isawa",
+          "trait_bonus": "Volonté",
+          "bonus_competence": "Calligraphie"
+        },
+        {
+          "id": "shiba",
+          "nom": "Shiba",
+          "trait_bonus": "Agilité",
+          "bonus_competence": "Jiujutsu"
+        }
+      ]
+    },
+    {
+      "id": "scorpion",
+      "nom": "Clan du Scorpion",
+      "description": "Maîtres de la manipulation et des secrets",
+      "trait_bonus": "Agilité",
+      "familles": [
+        {
+          "id": "bayushi",
+          "nom": "Bayushi",
+          "trait_bonus": "Agilité",
+          "bonus_competence": "Tromperie"
+        },
+        {
+          "id": "shosuro",
+          "nom": "Shosuro",
+          "trait_bonus": "Perspicacité",
+          "bonus_competence": "Acteur"
+        },
+        {
+          "id": "soshi",
+          "nom": "Soshi",
+          "trait_bonus": "Intelligence",
+          "bonus_competence": "Connaissance de la magie"
+        },
+        {
+          "id": "yogo",
+          "nom": "Yogo",
+          "trait_bonus": "Volonté",
+          "bonus_competence": "Connaissance de l'Outremonde"
+        }
+      ]
+    },
+    {
+      "id": "licorne",
+      "nom": "Clan de la Licorne",
+      "description": "Voyageurs et cavaliers des steppes",
+      "trait_bonus": "Agilité",
+      "familles": [
+        {
+          "id": "ide",
+          "nom": "Ide",
+          "trait_bonus": "Intelligence",
+          "bonus_competence": "Courtisan"
+        },
+        {
+          "id": "iuchi",
+          "nom": "Iuchi",
+          "trait_bonus": "Perspicacité",
+          "bonus_competence": "Connaissance de la magie"
+        },
+        {
+          "id": "moto",
+          "nom": "Moto",
+          "trait_bonus": "Agilité",
+          "bonus_competence": "Équitation"
+        },
+        {
+          "id": "shinjo",
+          "nom": "Shinjo",
+          "trait_bonus": "Agilité",
+          "bonus_competence": "Équitation"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "L5R 4e Technique Schema",
+  "description": "Canonical schema for clan/school techniques",
+  "type": "object",
+  "required": ["id", "nom", "type", "rang"],
+  "properties": {
+    "id": {"type": "string", "description": "Unique identifier"},
+    "nom": {"type": "string", "description": "Nom de la technique"},
+    "clan": {"type": "string", "description": "Clan d'origine (ou 'universel')"},
+    "ecole": {"type": "string", "description": "École associée (optionnel si universel)"},
+    "type": {"type": "string", "enum": ["technique", "kata", "kiho"], "description": "Type de technique"},
+    "rang": {"type": "integer", "minimum": 1, "description": "Rang requis ou rang de maîtrise"},
+    "prerequis": {"type": "string", "description": "Prérequis (compétences, traits, etc.)"},
+    "effet": {"type": "string", "description": "Description complète de l'effet mécanique"},
+    "mastery": {"type": "string", "description": "Trait ou compétence de maîtrise"},
+    "keywords": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Mots-clés (combat, social, défensif, etc.)"
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "livre": {"type": "string"},
+        "page": {"type": "integer"}
+      }
+    },
+    "canon_status": {"type": "string", "enum": ["verified", "to-verify", "homebrew"], "default": "to-verify"}
+  }
+}

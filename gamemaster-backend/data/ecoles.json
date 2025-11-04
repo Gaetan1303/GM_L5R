@@ -1,0 +1,482 @@
+{
+  "ecoles": [
+    {
+      "id": "hida_bushi",
+      "nom": "École Bushi Hida",
+      "clan": "crabe",
+      "type": "bushi",
+      "rang_initial": 1,
+      "bonus_trait": "Constitution",
+      "competences_ecole": [
+        {
+          "nom": "Art de la Guerre",
+          "rang": 1
+        },
+        {
+          "nom": "Défense",
+          "rang": 1
+        },
+        {
+          "nom": "Kenjutsu",
+          "rang": 1
+        },
+        {
+          "nom": "Jiujutsu",
+          "rang": 1
+        },
+        {
+          "nom": "Kyujutsu",
+          "rang": 1
+        },
+        {
+          "nom": "Armes Lourdes",
+          "rang": 1
+        }
+      ],
+      "competences_bugei": 5,
+      "competences_hautes": 0,
+      "competences_marchandes": 0,
+      "competences_basses": 1,
+      "honneur_depart": 3.5,
+      "argent_depart": "5 koku",
+      "equipement_depart": [
+        "Armure légère",
+        "Armure lourde ou arme de clan Kaiu",
+        "Katana",
+        "Wakizashi",
+        "Arc ou arme lourde",
+        "Couteau",
+        "Kimono de voyage",
+        "Nécessaire de calligraphie",
+        "10 koku"
+      ],
+      "techniques": [
+        {
+          "rang": 1,
+          "nom": "Le Chemin du Crabe",
+          "description": "Technique emblématique du Crabe : défense absolue",
+          "effet": "Vous pouvez réduire le montant des blessures subies d'un montant égal à votre rang d'école × 2. Le montant peut être réparti entre plusieurs attaques."
+        }
+      ],
+      "source": {
+        "livre": "L5R 4e Core",
+        "page": 92
+      },
+      "canon_status": "verified"
+    },
+    {
+      "id": "doji_courtisan",
+      "clan_id": "grue",
+      "nom": "Courtisan de la famille Doji",
+      "type": "courtisan",
+      "trait_favori": "conscience",
+      "competences": [
+        {
+          "competence": "calligraphie",
+          "rang": 1
+        },
+        {
+          "competence": "cour",
+          "rang": 1
+        },
+        {
+          "competence": "defense",
+          "rang": 1
+        },
+        {
+          "competence": "eloquence",
+          "rang": 1
+        },
+        {
+          "competence": "etiquette",
+          "rang": 1
+        },
+        {
+          "competence": "sincerite",
+          "rang": 1
+        },
+        {
+          "competence": "the",
+          "rang": 1
+        }
+      ],
+      "competences_bugei": 1,
+      "competences_hautes": 5,
+      "competences_marchandes": 0,
+      "competences_basses": 1,
+      "honneur": 5.5,
+      "argent": "10 koku",
+      "equipement": [
+        "Kimono de soie",
+        "Wakizashi",
+        "Couteau",
+        "Nécessaire de calligraphie",
+        "Eventail",
+        "10 koku"
+      ],
+      "techniques": [
+        {
+          "rang": 1,
+          "nom": "La Voie de la Grue",
+          "description": "Vous gagnez un bonus de +1K0 à tous les Jets Sociaux. De plus, lors d'un Duel formel, vous pouvez ajouter votre rang d'Etiquette à votre Initiative."
+        }
+      ]
+    },
+    {
+      "id": "mirumoto_bushi",
+      "clan_id": "dragon",
+      "nom": "Bushi de la famille Mirumoto",
+      "type": "bushi",
+      "trait_favori": "agilite",
+      "competences": [
+        {
+          "competence": "defense",
+          "rang": 1
+        },
+        {
+          "competence": "iaijutsu",
+          "rang": 1
+        },
+        {
+          "competence": "kenjutsu",
+          "rang": 2
+        },
+        {
+          "competence": "kyujutsu",
+          "rang": 1
+        },
+        {
+          "competence": "meditation",
+          "rang": 1
+        }
+      ],
+      "competences_bugei": 5,
+      "competences_hautes": 1,
+      "competences_marchandes": 0,
+      "competences_basses": 1,
+      "honneur": 4.5,
+      "argent": "3 koku",
+      "equipement": [
+        "Armure légère",
+        "2 Katanas",
+        "Wakizashi",
+        "Arc ou Yari",
+        "Couteau",
+        "Kimono de voyage",
+        "Nécessaire de calligraphie",
+        "5 koku"
+      ],
+      "techniques": [
+        {
+          "rang": 1,
+          "nom": "La Voie du Dragon",
+          "description": "Vous pouvez combattre avec deux katanas simultanément. Si vous le faites, les pénalités liées au combat à deux armes sont réduites de 5."
+        }
+      ]
+    },
+    {
+      "id": "akodo_bushi",
+      "clan_id": "lion",
+      "nom": "Bushi de la famille Akodo",
+      "type": "bushi",
+      "trait_favori": "perspicacite",
+      "competences": [
+        {
+          "competence": "art_de_la_guerre",
+          "rang": 1
+        },
+        {
+          "competence": "defense",
+          "rang": 1
+        },
+        {
+          "competence": "iaijutsu",
+          "rang": 1
+        },
+        {
+          "competence": "jiujutsu",
+          "rang": 1
+        },
+        {
+          "competence": "kenjutsu",
+          "rang": 2
+        },
+        {
+          "competence": "kyujutsu",
+          "rang": 1
+        }
+      ],
+      "competences_bugei": 6,
+      "competences_hautes": 0,
+      "competences_marchandes": 0,
+      "competences_basses": 1,
+      "honneur": 5.5,
+      "argent": "3 koku",
+      "equipement": [
+        "Armure légère",
+        "Katana",
+        "Wakizashi",
+        "Arc ou Yari",
+        "Couteau",
+        "Kimono de voyage",
+        "Nécessaire de calligraphie",
+        "5 koku"
+      ],
+      "techniques": [
+        {
+          "rang": 1,
+          "nom": "Le Chemin du Lion",
+          "description": "Vous gagnez un bonus de +1K0 à tous les jets d'attaque. Si vous prenez une Posture d'Attaque Totale, ce bonus passe à +2K0."
+        }
+      ]
+    },
+    {
+      "id": "isawa_shugenja",
+      "nom": "École Shugenja Isawa",
+      "clan": "phenix",
+      "type": "shugenja",
+      "rang_initial": 1,
+      "bonus_trait": "Intelligence",
+      "competences_ecole": [
+        {
+          "nom": "Calligraphie",
+          "rang": 1
+        },
+        {
+          "nom": "Connaissance (Théologie)",
+          "rang": 1
+        },
+        {
+          "nom": "Divination",
+          "rang": 1
+        },
+        {
+          "nom": "Étiquette",
+          "rang": 1
+        },
+        {
+          "nom": "Méditation",
+          "rang": 1
+        },
+        {
+          "nom": "Lancer de Sorts",
+          "rang": 1
+        }
+      ],
+      "competences_bugei": 0,
+      "competences_hautes": 5,
+      "competences_marchandes": 0,
+      "competences_basses": 2,
+      "honneur_depart": 4.5,
+      "argent_depart": "3 koku",
+      "equipement_depart": [
+        "Kimono de qualité",
+        "Wakizashi",
+        "Couteau",
+        "Nécessaire de calligraphie",
+        "Parchemins de sorts",
+        "Kit de voyage",
+        "5 koku"
+      ],
+      "affinite": "Choix d'un élément",
+      "deficience": "Aucune",
+      "sorts_depart": 3,
+      "techniques": [
+        {
+          "rang": 1,
+          "nom": "Le Chemin du Phénix",
+          "description": "Maîtrise supérieure de la magie élémentaire",
+          "effet": "Vous gagnez un bonus de +1k0 à tous les jets de Lancer de Sorts. De plus, vous pouvez choisir un élément supplémentaire comme affinité (pas de déficience)."
+        }
+      ],
+      "source": {
+        "livre": "L5R 4e Core",
+        "page": 128
+      },
+      "canon_status": "verified"
+    },
+    {
+      "id": "bayushi_bushi",
+      "clan_id": "scorpion",
+      "nom": "Bushi de la famille Bayushi",
+      "type": "bushi",
+      "trait_favori": "agilite",
+      "competences": [
+        {
+          "competence": "armes_de_ninja",
+          "rang": 1
+        },
+        {
+          "competence": "defense",
+          "rang": 1
+        },
+        {
+          "competence": "iaijutsu",
+          "rang": 1
+        },
+        {
+          "competence": "kenjutsu",
+          "rang": 2
+        },
+        {
+          "competence": "poisons",
+          "rang": 1
+        },
+        {
+          "competence": "sincerite",
+          "rang": 1
+        }
+      ],
+      "competences_bugei": 5,
+      "competences_hautes": 1,
+      "competences_marchandes": 0,
+      "competences_basses": 1,
+      "honneur": 2.5,
+      "argent": "4 koku",
+      "equipement": [
+        "Armure légère",
+        "Katana",
+        "Wakizashi",
+        "Arc ou arme de ninja",
+        "Couteau",
+        "Kimono de voyage",
+        "Nécessaire de calligraphie",
+        "5 koku"
+      ],
+      "techniques": [
+        {
+          "rang": 1,
+          "nom": "Le Chemin du Scorpion",
+          "description": "Vous pouvez effectuer des Attaques Sournoises. Vous conservez un dé supplémentaire sur les jets d'attaque et de dégâts lorsque vous effectuez une Attaque Sournoise."
+        }
+      ]
+    },
+    {
+      "id": "shinjo_bushi",
+      "clan_id": "licorne",
+      "nom": "Bushi de la famille Shinjo",
+      "type": "bushi",
+      "trait_favori": "reflexes",
+      "competences": [
+        {
+          "competence": "art_de_la_guerre",
+          "rang": 1
+        },
+        {
+          "competence": "chasse",
+          "rang": 1
+        },
+        {
+          "competence": "defense",
+          "rang": 1
+        },
+        {
+          "competence": "equitation",
+          "rang": 2
+        },
+        {
+          "competence": "jiujutsu",
+          "rang": 1
+        },
+        {
+          "competence": "kenjutsu",
+          "rang": 1
+        },
+        {
+          "competence": "kyujutsu",
+          "rang": 1
+        }
+      ],
+      "competences_bugei": 6,
+      "competences_hautes": 0,
+      "competences_marchandes": 0,
+      "competences_basses": 1,
+      "honneur": 4.5,
+      "argent": "4 koku",
+      "equipement": [
+        "Armure légère",
+        "Cimeterre",
+        "Wakizashi",
+        "Arc (flèches avec cordes de vol)",
+        "Couteau",
+        "Kimono de voyage",
+        "Cheval Utaku ou poney des steppes",
+        "Nécessaire de calligraphie",
+        "5 koku"
+      ],
+      "techniques": [
+        {
+          "rang": 1,
+          "nom": "Le Chemin de la Licorne",
+          "description": "Vous pouvez attaquer normalement en étant à cheval. De plus, lorsque vous faites une Attaque en Charge, vous gagnez un bonus de +1K0 aux jets d'attaque et de dégâts."
+        }
+      ]
+    },
+    {
+      "id": "kakita_bushi",
+      "nom": "École Bushi Kakita",
+      "clan": "grue",
+      "type": "bushi",
+      "rang_initial": 1,
+      "bonus_trait": "Réflexes",
+      "competences_ecole": [
+        {
+          "nom": "Calligraphie",
+          "rang": 1
+        },
+        {
+          "nom": "Iaijutsu",
+          "rang": 2
+        },
+        {
+          "nom": "Kenjutsu",
+          "rang": 1
+        },
+        {
+          "nom": "Kyujutsu",
+          "rang": 1
+        },
+        {
+          "nom": "Étiquette",
+          "rang": 1
+        },
+        {
+          "nom": "Sincérité",
+          "rang": 1
+        }
+      ],
+      "competences_bugei": 3,
+      "competences_hautes": 3,
+      "competences_marchandes": 0,
+      "competences_basses": 1,
+      "honneur_depart": 5.5,
+      "argent_depart": "4 koku",
+      "equipement_depart": [
+        "Kimono de soie",
+        "Katana",
+        "Wakizashi",
+        "Arc ou yari",
+        "Couteau",
+        "Nécessaire de calligraphie",
+        "8 koku"
+      ],
+      "techniques": [
+        {
+          "rang": 1,
+          "nom": "La Voie de la Grue",
+          "description": "Maître du iaijutsu et du duel",
+          "effet": "Vous gagnez un bonus de +1k0 à tous les jets d'attaque avec un katana. De plus, vous pouvez ajouter votre rang d'Iaijutsu à votre Initiative lors d'un duel formel."
+        }
+      ],
+      "source": {
+        "livre": "L5R 4e Core",
+        "page": 104
+      },
+      "canon_status": "verified"
+    }
+  ],
+  "meta": {
+    "last_updated": "2025-11-03T19:31:30.343Z",
+    "count": 8
+  }
+}

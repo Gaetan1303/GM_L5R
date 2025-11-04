@@ -1,0 +1,96 @@
+{
+  "wounds": {
+    "health_ranks": [
+      {"level":"Healthy","penalty":0,"description":"En pleine santé, aucune pénalité"},
+      {"level":"Nicked","penalty":3,"description":"Légèrement blessé (-3 à tous les jets)"},
+      {"level":"Grazed","penalty":5,"description":"Blessure superficielle (-5 à tous les jets)"},
+      {"level":"Hurt","penalty":10,"description":"Blessé (-10 à tous les jets)"},
+      {"level":"Injured","penalty":15,"description":"Gravement blessé (-15 à tous les jets)"},
+      {"level":"Crippled","penalty":20,"description":"Estropié (-20 à tous les jets)"},
+      {"level":"Down","penalty":40,"description":"Au sol, inconscient ou à peine conscient"},
+      {"level":"Out","penalty":null,"description":"Hors combat, mort ou mourant"}
+    ],
+    "calculation": {
+      "healthy": "Terre x 2",
+      "nicked": "Terre x 1 (next 2 ranks)",
+      "grazed": "Terre x 1",
+      "hurt": "Terre x 1",
+      "injured": "Terre x 1",
+      "crippled": "Terre x 1",
+      "down": "Terre x 1",
+      "out": "Terre x 1"
+    }
+  },
+  "conditions": [
+    {"name":"Aveuglé","effect":"Ne peut utiliser Perception pour la vision. -10 à tous les jets nécessitant la vue.","duration":"Variable"},
+    {"name":"Assourdi","effect":"Ne peut entendre. -10 aux jets de Perception auditive.","duration":"Variable"},
+    {"name":"Étourdi","effect":"Perd la prochaine action. -10 à tous les jets jusqu'à la prochaine action.","duration":"1 round"},
+    {"name":"Renversé","effect":"Au sol. Se relever = action simple. -10 pour attaquer et défendre tant qu'au sol.","duration":"Jusqu'à action de se relever"},
+    {"name":"Désarmé","effect":"A perdu son arme. Doit la récupérer ou utiliser arme de secours.","duration":"Jusqu'à récupération"},
+    {"name":"Paralysé","effect":"Ne peut bouger ni agir. Défense réduite de moitié.","duration":"Variable"},
+    {"name":"Empoisonné","effect":"Effet dépend du poison. Jet de Terre pour résister.","duration":"Variable"},
+    {"name":"En feu","effect":"Prend 1k1 dégâts par round. Action simple pour éteindre (Agilité TN 15).","duration":"Jusqu'à extinction"},
+    {"name":"Sonné","effect":"Perd Initiative. -5 à tous les jets pour 1 round.","duration":"1 round"},
+    {"name":"Empêtré","effect":"Mouvement réduit de moitié. -5 aux jets d'Agilité.","duration":"Variable"},
+    {"name":"Peur","effect":"Jet de Volonté TN variable ou fuit/paralysé. Dépend du rang de Peur.","duration":"Variable"},
+    {"name":"Maudit","effect":"Effet dépend de la malédiction. Peut affecter Honneur, Gloire, ou capacités.","duration":"Variable ou permanent"},
+    {"name":"Souillé","effect":"Souillure augmentée. Risque de transformation si Souillure >= Terre x 10.","duration":"Permanent sauf purification"},
+    {"name":"Fatigué","effect":"-10 à tous les jets. Besoin de repos (8h).","duration":"Jusqu'à repos"},
+    {"name":"Affamé","effect":"Perd 1 rang de Terre après 3 jours sans nourriture. Mort si Terre = 0.","duration":"Jusqu'à nourriture"},
+    {"name":"Assoiffé","effect":"Perd 1 rang de Eau après 1 jour sans eau. Mort si Eau = 0.","duration":"Jusqu'à eau"},
+    {"name":"Gelé","effect":"Perd 1k1 Blessures/heure. -10 à Agilité. Besoin de chaleur.","duration":"Jusqu'à réchauffement"},
+    {"name":"Saignant","effect":"Perd 1 Blessure par round. Nécessite Médecine TN 15 pour arrêter.","duration":"Jusqu'à soins"}
+  ],
+  "healing": {
+    "natural": {
+      "description":"Guérison naturelle sans intervention",
+      "rate":"1 Blessure par jour de repos complet",
+      "accelerated":"2 Blessures par jour avec soins médicaux (Médecine TN 15)"
+    },
+    "medical": {
+      "first_aid":{
+        "skill":"Médecine",
+        "TN":15,
+        "effect":"Stabilise et arrête saignement. Guérit 1k1 Blessures.",
+        "time":"5 minutes"
+      },
+      "surgery":{
+        "skill":"Médecine",
+        "TN":20,
+        "effect":"Guérit 2k2 Blessures. Peut réparer membres brisés.",
+        "time":"1 heure",
+        "requirement":"Outils chirurgicaux"
+      },
+      "long_term_care":{
+        "skill":"Médecine",
+        "TN":15,
+        "effect":"Double vitesse de guérison naturelle pendant soins.",
+        "time":"Continue (quotidien)"
+      }
+    },
+    "magical": {
+      "spells":[
+        "Guérison Réflexe (Eau 2): Guérit 2k1 Blessures instantanément",
+        "Purification (Eau 2): Soigne poisons et maladies",
+        "Toucher de Clarté (Kiho Eau 1): Guérit 1k1 + Anneau Eau"
+      ],
+      "potions":[
+        "Potion de guérison: Guérit 3k3 Blessures",
+        "Antidote: Neutralise poisons",
+        "Remède universel: Soigne maladies"
+      ]
+    }
+  },
+  "death": {
+    "dying":{
+      "description":"Personnage au niveau 'Out'. Perd 3 Blessures par round.",
+      "stabilization":"Médecine TN 20 pour stabiliser. Si réussi, ne perd plus de Blessures.",
+      "death":"Mort si perd Blessures totales à nouveau après niveau Out."
+    },
+    "resurrection":{
+      "description":"Possible seulement avec magie très puissante ou intervention divine",
+      "cost":"Énorme, souvent Souillure ou prix terrible",
+      "rarity":"Extrêmement rare"
+    }
+  }
+}

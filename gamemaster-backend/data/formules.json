@@ -1,0 +1,481 @@
+{
+  "meta": {
+    "version": "0.1",
+    "description": "Formules mécaniques canoniques L5R 4e avec tests de validation",
+    "last_updated": "2025-11-03",
+    "canon_status": "verified",
+    "note": "Toutes formules extraites du L5R 4e Core Rulebook"
+  },
+  "personnage": {
+    "description": "Formules de base du personnage",
+    "insight": {
+      "nom": "Insight (Perspicacité)",
+      "formule": "(Somme de tous les Anneaux) × 10 + Somme de toutes les Compétences",
+      "description": "Mesure l'expérience et la maîtrise globale du personnage",
+      "exemple": {
+        "anneaux": { "Terre": 3, "Eau": 2, "Feu": 3, "Air": 2, "Vide": 2 },
+        "somme_anneaux": 12,
+        "competences_total": 45,
+        "calcul": "(12 × 10) + 45 = 165",
+        "insight": 165
+      },
+      "tests": [
+        {
+          "nom": "Personnage débutant",
+          "anneaux_total": 10,
+          "competences_total": 30,
+          "insight_attendu": 130
+        },
+        {
+          "nom": "Personnage Rang 2",
+          "anneaux_total": 13,
+          "competences_total": 60,
+          "insight_attendu": 190
+        },
+        {
+          "nom": "Personnage Rang 3",
+          "anneaux_total": 16,
+          "competences_total": 90,
+          "insight_attendu": 250
+        },
+        {
+          "nom": "Personnage Rang 4",
+          "anneaux_total": 20,
+          "competences_total": 120,
+          "insight_attendu": 320
+        },
+        {
+          "nom": "Personnage Rang 5",
+          "anneaux_total": 24,
+          "competences_total": 150,
+          "insight_attendu": 390
+        }
+      ]
+    },
+    "rang_ecole": {
+      "nom": "Rang d'École",
+      "formule": "Déterminé par seuils d'Insight",
+      "seuils": [
+        { "rang": 1, "insight_min": 0, "insight_max": 149 },
+        { "rang": 2, "insight_min": 150, "insight_max": 199 },
+        { "rang": 3, "insight_min": 200, "insight_max": 249 },
+        { "rang": 4, "insight_min": 250, "insight_max": 299 },
+        { "rang": 5, "insight_min": 300, "insight_max": 349 },
+        { "rang": 6, "insight_min": 350, "insight_max": 399 },
+        { "rang": 7, "insight_min": 400, "insight_max": 449 },
+        { "rang": 8, "insight_min": 450, "insight_max": 499 },
+        { "rang": 9, "insight_min": 500, "insight_max": 549 },
+        { "rang": 10, "insight_min": 550, "insight_max": null }
+      ],
+      "tests": [
+        { "insight": 130, "rang_attendu": 1 },
+        { "insight": 149, "rang_attendu": 1 },
+        { "insight": 150, "rang_attendu": 2 },
+        { "insight": 199, "rang_attendu": 2 },
+        { "insight": 250, "rang_attendu": 4 },
+        { "insight": 500, "rang_attendu": 9 }
+      ]
+    },
+    "initiative": {
+      "nom": "Initiative",
+      "formule": "Jet de (Réflexes + Perspicacité)k(Réflexes)",
+      "description": "Détermine l'ordre d'action en combat",
+      "exemple": {
+        "Reflexes": 3,
+        "Perspicacite_competence": 2,
+        "formule": "5k3",
+        "note": "Jet de 5 dés, garde les 3 meilleurs"
+      },
+      "modificateurs": [
+        { "source": "Technique d'école", "modificateur": "Variable (ex: +1k1, +5, +10)" },
+        { "source": "Avantage : Réflexes Rapides", "modificateur": "+3" },
+        { "source": "Désavantage : Réflexes Lents", "modificateur": "-3" },
+        { "source": "Blessure", "modificateur": "Malus de Blessure s'applique" },
+        { "source": "Position Centre", "modificateur": "+10" }
+      ],
+      "tests": [
+        { "Reflexes": 2, "Perspicacite": 1, "formule": "3k2", "moyenne_approximative": 13 },
+        { "Reflexes": 3, "Perspicacite": 3, "formule": "6k3", "moyenne_approximative": 21 },
+        { "Reflexes": 4, "Perspicacite": 2, "formule": "6k4", "moyenne_approximative": 25 }
+      ]
+    }
+  },
+  "combat": {
+    "description": "Formules de combat",
+    "atn": {
+      "nom": "ATN (Armour TN / Nombre-Cible d'Armure)",
+      "formule": "Réflexes × 5 + Bonus Armure + 5 (base)",
+      "description": "Difficulté pour toucher le personnage",
+      "exemple": {
+        "Reflexes": 3,
+        "bonus_armure": 5,
+        "calcul": "(3 × 5) + 5 + 5 = 25",
+        "ATN": 25
+      },
+      "modificateurs": [
+        { "source": "Armure légère", "bonus": "+3" },
+        { "source": "Armure lourde", "bonus": "+5" },
+        { "source": "Armure complète (o-yoroi)", "bonus": "+5 + Réduction 3" },
+        { "source": "Position Défense Totale", "bonus": "+10" },
+        { "source": "Position Attaque Totale", "malus": "-10" },
+        { "source": "Monté", "bonus": "+5" },
+        { "source": "Couvert partiel", "bonus": "+5" },
+        { "source": "Couvert total", "bonus": "+10" },
+        { "source": "Stunned/Étourdi", "malus": "-10" },
+        { "source": "À terre", "malus": "-10" },
+        { "source": "Technique d'école", "variable": "+0 à +10 ou plus" }
+      ],
+      "tests": [
+        { "Reflexes": 2, "armure": 0, "ATN_attendu": 15 },
+        { "Reflexes": 3, "armure": 3, "ATN_attendu": 23 },
+        { "Reflexes": 3, "armure": 5, "ATN_attendu": 25 },
+        { "Reflexes": 4, "armure": 5, "ATN_attendu": 30 },
+        { "Reflexes": 5, "armure": 5, "defense_totale": true, "ATN_attendu": 45 }
+      ]
+    },
+    "jet_attaque": {
+      "nom": "Jet d'Attaque",
+      "formule": "(Trait d'Anneau approprié + Compétence d'Arme)k(Trait d'Anneau)",
+      "description": "Test pour toucher une cible",
+      "traits_par_arme": [
+        { "arme": "Katana, Wakizashi, Tanto", "trait": "Agilité", "competence": "Kenjutsu" },
+        { "arme": "No-dachi, Naginata", "trait": "Agilité", "competence": "Kenjutsu" },
+        { "arme": "Yari", "trait": "Agilité", "competence": "Yarijutsu" },
+        { "arme": "Tetsubo, Dai-tsuchi", "trait": "Agilité", "competence": "Armes Lourdes" },
+        { "arme": "Arc (Yumi)", "trait": "Réflexes", "competence": "Kyujutsu" },
+        { "arme": "Armes de paysan", "trait": "Agilité", "competence": "Jiujutsu" },
+        { "arme": "À mains nues", "trait": "Agilité", "competence": "Jiujutsu" }
+      ],
+      "exemple": {
+        "arme": "Katana",
+        "Agilite": 3,
+        "Kenjutsu": 5,
+        "formule": "8k3",
+        "ATN_cible": 20,
+        "resultat_jet": 24,
+        "touche": true
+      },
+      "modificateurs": [
+        { "source": "Attaque Totale", "bonus": "+2k1" },
+        { "source": "Frappe ciblée (main)", "malus": "+10 au ND" },
+        { "source": "Frappe ciblée (tête)", "malus": "+15 au ND" },
+        { "source": "Cible en mouvement", "malus": "+5 au ND" },
+        { "source": "Tir à distance longue", "malus": "+10 au ND" },
+        { "source": "Arme improvisée", "malus": "-1k1" },
+        { "source": "Blessure", "malus": "Selon niveau" }
+      ]
+    },
+    "degats": {
+      "nom": "Dégâts",
+      "formule": "Jet de dés de l'arme + bonus Force (si mêlée)",
+      "description": "Dommages infligés en cas de touche",
+      "armes_degats": [
+        { "arme": "Katana", "degats": "3k2", "notes": "Samouraï" },
+        { "arme": "Wakizashi", "degats": "2k2", "notes": "Samouraï" },
+        { "arme": "Tanto", "degats": "1k2", "notes": "Petit" },
+        { "arme": "No-dachi", "degats": "4k2", "notes": "Deux mains" },
+        { "arme": "Yari", "degats": "2k2", "notes": "Allonge 2" },
+        { "arme": "Naginata", "degats": "3k2", "notes": "Deux mains, Allonge 3" },
+        { "arme": "Tetsubo", "degats": "4k3", "notes": "Deux mains, Écrase armure" },
+        { "arme": "Arc (Yumi)", "degats": "2k2", "notes": "Portée 250m" },
+        { "arme": "Flèche de chasse", "degats": "1k2", "notes": "Portée 200m" },
+        { "arme": "Mains nues", "degats": "0k1", "notes": "+Force" }
+      ],
+      "bonus_force": {
+        "description": "Pour armes de mêlée seulement",
+        "formule": "Anneau de Force du personnage ajouté au total non-gardé",
+        "exemple": {
+          "arme": "Katana (3k2)",
+          "Force": 3,
+          "jet_degats": "3k2+3",
+          "resultat_des": 15,
+          "degats_total": 18
+        }
+      },
+      "reduction_armure": {
+        "description": "Certaines armures réduisent les dégâts reçus",
+        "armures": [
+          { "armure": "Armure légère", "reduction": 0 },
+          { "armure": "Armure lourde", "reduction": 0 },
+          { "armure": "Armure complète (o-yoroi)", "reduction": 3 }
+        ],
+        "note": "Réduction soustraite APRÈS calcul des dégâts"
+      },
+      "tests": [
+        {
+          "arme": "Katana",
+          "Force": 3,
+          "jet_des": [7, 8],
+          "calcul": "7 + 8 + 3 = 18",
+          "degats_bruts": 18,
+          "reduction_armure": 0,
+          "degats_finaux": 18
+        },
+        {
+          "arme": "Katana",
+          "Force": 3,
+          "jet_des": [7, 8],
+          "calcul": "7 + 8 + 3 = 18",
+          "degats_bruts": 18,
+          "reduction_armure": 3,
+          "degats_finaux": 15
+        },
+        {
+          "arme": "Tetsubo",
+          "Force": 4,
+          "jet_des": [9, 9, 8],
+          "calcul": "9 + 9 + 8 + 4 = 30",
+          "degats_bruts": 30,
+          "reduction_armure": 3,
+          "degats_finaux": 27,
+          "note": "Tetsubo ignore réduction d'armure selon MJ"
+        }
+      ]
+    },
+    "blessures": {
+      "nom": "Niveaux de Blessure",
+      "description": "État de santé basé sur Terre × 2 par niveau",
+      "formule_seuil": "Terre × 2 par niveau (Égratignure non inclus)",
+      "niveaux": [
+        { "niveau": "Pleine Santé", "seuil": "0", "malus": "Aucun" },
+        { "niveau": "Égratignure (+0)", "seuil": "Terre × 2", "malus": "Aucun", "note": "Niveau gratuit" },
+        { "niveau": "Blessé (+3)", "seuil": "Terre × 2", "malus": "+3 à tous ND" },
+        { "niveau": "Gravement Blessé (+5)", "seuil": "Terre × 2", "malus": "+5 à tous ND" },
+        { "niveau": "Invalide (+10)", "seuil": "Terre × 2", "malus": "+10 à tous ND" },
+        { "niveau": "Estropié (+15)", "seuil": "Terre × 2", "malus": "+15 à tous ND" },
+        { "niveau": "Mourant (+20)", "seuil": "Terre × 2", "malus": "+20 à tous ND, Test Terre TN 15/round" },
+        { "niveau": "Mort", "seuil": "Terre × 2 au-delà", "malus": "Décès" }
+      ],
+      "exemple": {
+        "Terre": 3,
+        "seuil_niveau": 6,
+        "total_blessures": {
+          "Pleine_Sante": 0,
+          "Egratignure": 6,
+          "Blesse": 6,
+          "Gravement_Blesse": 6,
+          "Invalide": 6,
+          "Estropie": 6,
+          "Mourant": 6,
+          "Mort": "Au-delà de 36"
+        },
+        "total_max": 42
+      },
+      "tests": [
+        { "Terre": 2, "seuil": 4, "total_avant_mort": 28 },
+        { "Terre": 3, "seuil": 6, "total_avant_mort": 42 },
+        { "Terre": 4, "seuil": 8, "total_avant_mort": 56 },
+        { "Terre": 5, "seuil": 10, "total_avant_mort": 70 }
+      ]
+    }
+  },
+  "magie": {
+    "description": "Formules pour la magie shugenja et kiho",
+    "lancer_sort": {
+      "nom": "Lancer un Sort",
+      "formule": "(Anneau Élément + Compétence Élément)k(Anneau Élément)",
+      "nd_base": "5 × Maîtrise du sort",
+      "description": "Test pour lancer avec succès un sort shugenja",
+      "exemple": {
+        "sort": "Flèche de Feu",
+        "maitrise": 3,
+        "nd_base": 15,
+        "Anneau_Feu": 3,
+        "competence_Feu": 5,
+        "formule": "8k3",
+        "resultat": 22,
+        "succes": true
+      },
+      "modificateurs": [
+        { "source": "Relance (augmentation effets)", "malus": "+5 au ND par relance" },
+        { "source": "Portée augmentée", "malus": "+5 au ND" },
+        { "source": "Zone augmentée", "malus": "+5 au ND" },
+        { "source": "Durée augmentée", "malus": "+5 au ND" },
+        { "source": "Affinité élément", "bonus": "+1k0" },
+        { "source": "Déficience élément", "malus": "-1k0" },
+        { "source": "Focalisateur (cristal, etc.)", "bonus": "+1k0" },
+        { "source": "Souillure élevée", "malus": "Variable" }
+      ],
+      "tests": [
+        { "maitrise": 1, "nd_attendu": 5 },
+        { "maitrise": 2, "nd_attendu": 10 },
+        { "maitrise": 3, "nd_attendu": 15 },
+        { "maitrise": 4, "nd_attendu": 20 },
+        { "maitrise": 5, "nd_attendu": 25 },
+        { "maitrise": 6, "nd_attendu": 30 }
+      ]
+    },
+    "degats_sort": {
+      "nom": "Dégâts de Sort",
+      "description": "Formules variables selon le sort",
+      "exemples": [
+        { "sort": "Flèche de Feu", "maitrise": 3, "degats_base": "3k3", "relances": "Chaque relance ajoute +1k1" },
+        { "sort": "Tempête de Jade", "maitrise": 5, "degats_base": "5k5", "relances": "+1k1 par relance" },
+        { "sort": "Regard du Tonnerre", "maitrise": 4, "degats_base": "5k5", "relances": "Aucune (sort fixe)" }
+      ],
+      "note": "Les sorts de dégâts n'ajoutent PAS le bonus de Force"
+    },
+    "kiho": {
+      "nom": "Activation Kiho",
+      "formule": "Test Vide vs ND du kiho (généralement 15-25)",
+      "description": "Moines utilisent Anneau de Vide pour activer kiho",
+      "exemple": {
+        "kiho": "Toucher du Vide",
+        "nd": 20,
+        "Vide": 3,
+        "competence_non_applicable": 0,
+        "formule": "3k3",
+        "resultat": 17,
+        "echec": true
+      },
+      "types": [
+        { "type": "Interne", "activation": "Vide", "duree": "Variable" },
+        { "type": "Externe (Mystique)", "activation": "Vide", "duree": "Instantané ou rounds" },
+        { "type": "Martial", "activation": "Vide", "duree": "Variable" }
+      ]
+    }
+  },
+  "autres_formules": {
+    "description": "Formules diverses",
+    "chute": {
+      "nom": "Dégâts de Chute",
+      "formule": "1k1 par tranche de 3 mètres",
+      "nd_reduction": "TN 15 en Athlétisme réduit de 1k1",
+      "tests": [
+        { "hauteur_m": 3, "degats": "1k1", "moyenne": 6 },
+        { "hauteur_m": 6, "degats": "2k2", "moyenne": 13 },
+        { "hauteur_m": 9, "degats": "3k3", "moyenne": 21 },
+        { "hauteur_m": 15, "degats": "5k5", "moyenne": 37 },
+        { "hauteur_m": 30, "degats": "10k10", "moyenne": 75 }
+      ],
+      "exemple": {
+        "hauteur": 9,
+        "degats_base": "3k3",
+        "test_Athletisme": 18,
+        "nd": 15,
+        "succes": true,
+        "reduction": "1k1",
+        "degats_finaux": "2k2"
+      }
+    },
+    "suffocation": {
+      "nom": "Asphyxie/Noyade",
+      "formule": "Retenir souffle Terre × 2 rounds, puis 1k1/round",
+      "description": "Dégâts par manque d'air",
+      "tests": [
+        { "Terre": 2, "rounds_apnee": 4, "degats_par_round_apres": "1k1" },
+        { "Terre": 3, "rounds_apnee": 6, "degats_par_round_apres": "1k1" },
+        { "Terre": 5, "rounds_apnee": 10, "degats_par_round_apres": "1k1" }
+      ]
+    },
+    "encombrement": {
+      "nom": "Charge Maximale",
+      "formule": "Force × 20 kg (maximum absolu)",
+      "seuils": [
+        { "niveau": "Léger", "formule": "Force × 5 kg", "malus": "Aucun" },
+        { "niveau": "Moyen", "formule": "Force × 10 kg", "malus": "-1k0 Agilité" },
+        { "niveau": "Lourd", "formule": "Force × 15 kg", "malus": "-1k0 Agilité/Réflexes, -25% vitesse" },
+        { "niveau": "Maximum", "formule": "Force × 20 kg", "malus": "-2k0 Agilité/Réflexes, -50% vitesse" }
+      ],
+      "tests": [
+        { "Force": 2, "charge_legere": 10, "charge_max": 40 },
+        { "Force": 3, "charge_legere": 15, "charge_max": 60 },
+        { "Force": 4, "charge_legere": 20, "charge_max": 80 },
+        { "Force": 5, "charge_legere": 25, "charge_max": 100 }
+      ]
+    },
+    "vitesse_deplacement": {
+      "nom": "Vitesse de Déplacement",
+      "formule_combat": "Eau × 1.5 mètres (arrondi sup) en Action Simple",
+      "formule_course": "Eau × 3 mètres en Action Complexe",
+      "tests": [
+        { "Eau": 2, "marche_m": 3, "course_m": 6 },
+        { "Eau": 3, "marche_m": 5, "course_m": 9 },
+        { "Eau": 4, "marche_m": 6, "course_m": 12 },
+        { "Eau": 5, "marche_m": 8, "course_m": 15 }
+      ],
+      "note": "Vitesse de voyage longue distance dans voyage.json"
+    },
+    "elevation_competence": {
+      "nom": "Coût XP d'élévation de Compétence",
+      "formule": "Rang Actuel × multiplicateur (1 si école, 2 sinon)",
+      "description": "Points d'expérience pour augmenter une compétence",
+      "exemples": [
+        { "rang_actuel": 0, "vers_rang": 1, "cout_ecole": 1, "cout_hors_ecole": 2 },
+        { "rang_actuel": 1, "vers_rang": 2, "cout_ecole": 1, "cout_hors_ecole": 2 },
+        { "rang_actuel": 2, "vers_rang": 3, "cout_ecole": 2, "cout_hors_ecole": 4 },
+        { "rang_actuel": 3, "vers_rang": 4, "cout_ecole": 3, "cout_hors_ecole": 6 },
+        { "rang_actuel": 4, "vers_rang": 5, "cout_ecole": 4, "cout_hors_ecole": 8 },
+        { "rang_actuel": 5, "vers_rang": 6, "cout_ecole": 5, "cout_hors_ecole": 10 }
+      ],
+      "note": "Compétence Rang 0→1 coûte toujours 1 XP (école) ou 2 XP (hors école)"
+    },
+    "elevation_trait": {
+      "nom": "Coût XP d'élévation de Trait",
+      "formule": "Nouveau Rang × 4",
+      "description": "Points d'expérience pour augmenter un trait d'Anneau",
+      "exemples": [
+        { "rang_actuel": 2, "vers_rang": 3, "cout": 12 },
+        { "rang_actuel": 3, "vers_rang": 4, "cout": 16 },
+        { "rang_actuel": 4, "vers_rang": 5, "cout": 20 },
+        { "rang_actuel": 5, "vers_rang": 6, "cout": 24 }
+      ],
+      "limite": "Aucun trait ne peut dépasser Vide + Rang d'École"
+    },
+    "elevation_vide": {
+      "nom": "Coût XP d'élévation du Vide",
+      "formule": "Nouveau Rang × 6",
+      "description": "Augmenter l'Anneau de Vide",
+      "exemples": [
+        { "rang_actuel": 2, "vers_rang": 3, "cout": 18 },
+        { "rang_actuel": 3, "vers_rang": 4, "cout": 24 },
+        { "rang_actuel": 4, "vers_rang": 5, "cout": 30 }
+      ]
+    }
+  },
+  "utilitaires": {
+    "description": "Fonctions utilitaires pour validation",
+    "lancer_des": {
+      "description": "Simuler un jet XkY (lancé X dés, garde Y)",
+      "formule": "Lancer X dés à 10 faces, garder Y meilleurs, additionner",
+      "explosions": "Sur résultat 10, relancer et ajouter (récursif)",
+      "exemples": [
+        {
+          "notation": "5k3",
+          "lancer": [10, 8, 7, 3, 2],
+          "explosion": [10, 6],
+          "gardes": [16, 8, 7],
+          "total": 31
+        },
+        {
+          "notation": "3k2",
+          "lancer": [9, 5, 4],
+          "gardes": [9, 5],
+          "total": 14
+        }
+      ],
+      "moyenne_theorique": {
+        "1k1": 5.5,
+        "2k2": 11,
+        "3k2": 13,
+        "3k3": 16.5,
+        "5k3": 21,
+        "10k10": 75,
+        "note": "Approximatif, explosions augmentent moyenne réelle"
+      }
+    },
+    "validation_nd": {
+      "description": "Vérifier cohérence des ND (Nombre-Cible)",
+      "echelle": [
+        { "nd": 5, "difficulte": "Très Facile", "contexte": "Tâche routinière" },
+        { "nd": 10, "difficulte": "Facile", "contexte": "Tâche simple avec un peu de concentration" },
+        { "nd": 15, "difficulte": "Moyen", "contexte": "Tâche standard, compétence requise" },
+        { "nd": 20, "difficulte": "Difficile", "contexte": "Tâche ardue, compétence élevée utile" },
+        { "nd": 25, "difficulte": "Très Difficile", "contexte": "Exploit notable, maîtrise nécessaire" },
+        { "nd": 30, "difficulte": "Héroïque", "contexte": "Acte exceptionnel, légendes commencent ici" },
+        { "nd": 40, "difficulte": "Quasi-impossible", "contexte": "Niveau de maître légendaire" },
+        { "nd": 50, "difficulte": "Miraculeux", "contexte": "Dépasse la compréhension mortelle" }
+      ]
+    }
+  }
+}
