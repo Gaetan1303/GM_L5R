@@ -1,0 +1,50 @@
+[
+  {
+    "id": "flèche_de_feu",
+    "nom": "Flèche de Feu",
+    "element": "Feu",
+    "maitrise": 1,
+    "portee": "30 mètres",
+    "zone": "1 cible",
+    "duree": "Instantané",
+    "relances": "Dégâts (+1k1), Portée (+10m)",
+    "description": "Projectile de feu pur infligeant 2k2 dégâts. Le sort crée une flèche de flamme qui peut être dirigée vers une cible.",
+    "temps_lancement": "Action complexe",
+    "universel": false,
+    "keywords": ["offensif", "elemental", "degats"],
+    "source": {"livre": "L5R 4e Core", "page": 166},
+    "canon_status": "verified"
+  },
+  {
+    "id": "guerison_reflexe",
+    "nom": "Guérison Réflexe",
+    "element": "Eau",
+    "maitrise": 2,
+    "portee": "Contact",
+    "zone": "1 personne",
+    "duree": "Instantané",
+    "relances": "Guérison (+1k1)",
+    "description": "Guérit immédiatement 2k1 points de Blessures. L'eau apaise et répare les tissus endommagés.",
+    "temps_lancement": "Action complexe",
+    "universel": false,
+    "keywords": ["guerison", "soutien"],
+    "source": {"livre": "L5R 4e Core", "page": 170},
+    "canon_status": "verified"
+  },
+  {
+    "id": "communion_kamis",
+    "nom": "Communion avec les Kamis",
+    "element": "Vide",
+    "maitrise": 1,
+    "portee": "Personnel",
+    "zone": "Lanceur",
+    "duree": "Concentration",
+    "relances": "Durée (+10 minutes)",
+    "description": "Permet de parler avec les esprits kamis pour obtenir des informations ou des conseils sur une situation.",
+    "temps_lancement": "Action complexe",
+    "universel": true,
+    "keywords": ["divination", "spirituel", "communication"],
+    "source": {"livre": "L5R 4e Core", "page": 176},
+    "canon_status": "verified"
+  }
+]

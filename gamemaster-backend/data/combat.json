@@ -1,0 +1,69 @@
+{
+  "source": "part-3",
+  "analysis": {
+    "bytes": 298506613,
+    "matches": {
+      "combat": 0,
+      "duel": 125,
+      "magie": 186,
+      "batailles": 0
+    }
+  },
+  "sequence": [
+    {
+      "step": "Déclaration Stance",
+      "description": "Chaque personnage choisit une posture (attaque, défense, centre, etc.)"
+    },
+    {
+      "step": "Initiative",
+      "description": "Déterminer l’ordre d’action pour le round"
+    },
+    {
+      "step": "Actions",
+      "description": "Chaque personnage agit selon initiative (actions simples/complexes/libres)"
+    },
+    {
+      "step": "Résolution",
+      "description": "Jets d’attaque vs ND d’Armure ; dégâts et effets appliqués"
+    },
+    {
+      "step": "Fin de round",
+      "description": "Effets de durée, saignements, feux, etc."
+    }
+  ],
+  "actions": {
+    "simples": [
+      "Attaque (arme prête)",
+      "Mouvement (jusqu’à la moitié du déplacement)",
+      "Se relever",
+      "Viser (+1k0 au prochain tir)",
+      "Activer un objet (rapide)"
+    ],
+    "complexes": [
+      "Attaque complexe (arme lourde ou technique)",
+      "Lancer un sort",
+      "Course (plein déplacement)",
+      "Manœuvre complexe (Désarmement/Immobilisation selon MJ)"
+    ],
+    "libres": [
+      "Parler de manière courte",
+      "Lâcher un objet",
+      "Regard rapide/évaluer la scène"
+    ]
+  },
+  "resolution_attaque": {
+    "jet": "Trait pertinent + Compétence (ex: Agilité + Kenjutsu) en XkY",
+    "opposition": "Comparer au ND d’Armure de la cible (Réflexes x5 + armure/bonus)",
+    "degats": "Arme (XkY) + bonus ; Réduction d’armure soustraite des dégâts finaux",
+    "raises": "Chaque Relance (+5 ND) ajoute un effet : +1k0 dégâts, effets spéciaux de style, etc."
+  },
+  "mouvement": {
+    "base": "Déplacement de base défini par le MJ et la scène (ex: 10m par round)",
+    "terrain": "Terrain difficile réduit de moitié le mouvement ; obstacles requièrent Athlétisme",
+    "chute": "Dégâts de chute progressifs ; Athlétisme peut réduire"
+  },
+  "initiative": {
+    "base": "Jet d’Initiative au début du combat ; modificateurs de Stance et effets",
+    "changement": "Certaines capacités permettent de modifier l’ordre en cours de combat"
+  }
+}

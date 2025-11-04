@@ -1,0 +1,130 @@
+[
+  {
+    "id": "hida_bushi",
+    "nom": "École Bushi Hida",
+    "clan": "crabe",
+    "type": "bushi",
+    "rang_initial": 1,
+    "bonus_trait": "Constitution",
+    "competences_ecole": [
+      {"nom": "Art de la Guerre", "rang": 1},
+      {"nom": "Défense", "rang": 1},
+      {"nom": "Kenjutsu", "rang": 1},
+      {"nom": "Jiujutsu", "rang": 1},
+      {"nom": "Kyujutsu", "rang": 1},
+      {"nom": "Armes Lourdes", "rang": 1}
+    ],
+    "competences_bugei": 5,
+    "competences_hautes": 0,
+    "competences_marchandes": 0,
+    "competences_basses": 1,
+    "honneur_depart": 3.5,
+    "argent_depart": "5 koku",
+    "equipement_depart": [
+      "Armure légère",
+      "Armure lourde ou arme de clan Kaiu",
+      "Katana",
+      "Wakizashi",
+      "Arc ou arme lourde",
+      "Couteau",
+      "Kimono de voyage",
+      "Nécessaire de calligraphie",
+      "10 koku"
+    ],
+    "techniques": [
+      {
+        "rang": 1,
+        "nom": "Le Chemin du Crabe",
+        "description": "Technique emblématique du Crabe : défense absolue",
+        "effet": "Vous pouvez réduire le montant des blessures subies d'un montant égal à votre rang d'école × 2. Le montant peut être réparti entre plusieurs attaques."
+      }
+    ],
+    "source": {"livre": "L5R 4e Core", "page": 92},
+    "canon_status": "verified"
+  },
+  {
+    "id": "kakita_bushi",
+    "nom": "École Bushi Kakita",
+    "clan": "grue",
+    "type": "bushi",
+    "rang_initial": 1,
+    "bonus_trait": "Réflexes",
+    "competences_ecole": [
+      {"nom": "Calligraphie", "rang": 1},
+      {"nom": "Iaijutsu", "rang": 2},
+      {"nom": "Kenjutsu", "rang": 1},
+      {"nom": "Kyujutsu", "rang": 1},
+      {"nom": "Étiquette", "rang": 1},
+      {"nom": "Sincérité", "rang": 1}
+    ],
+    "competences_bugei": 3,
+    "competences_hautes": 3,
+    "competences_marchandes": 0,
+    "competences_basses": 1,
+    "honneur_depart": 5.5,
+    "argent_depart": "4 koku",
+    "equipement_depart": [
+      "Kimono de soie",
+      "Katana",
+      "Wakizashi",
+      "Arc ou yari",
+      "Couteau",
+      "Nécessaire de calligraphie",
+      "8 koku"
+    ],
+    "techniques": [
+      {
+        "rang": 1,
+        "nom": "La Voie de la Grue",
+        "description": "Maître du iaijutsu et du duel",
+        "effet": "Vous gagnez un bonus de +1k0 à tous les jets d'attaque avec un katana. De plus, vous pouvez ajouter votre rang d'Iaijutsu à votre Initiative lors d'un duel formel."
+      }
+    ],
+    "source": {"livre": "L5R 4e Core", "page": 104},
+    "canon_status": "verified"
+  },
+  {
+    "id": "isawa_shugenja",
+    "nom": "École Shugenja Isawa",
+    "clan": "phenix",
+    "type": "shugenja",
+    "rang_initial": 1,
+    "bonus_trait": "Intelligence",
+    "competences_ecole": [
+      {"nom": "Calligraphie", "rang": 1},
+      {"nom": "Connaissance (Théologie)", "rang": 1},
+      {"nom": "Divination", "rang": 1},
+      {"nom": "Étiquette", "rang": 1},
+      {"nom": "Méditation", "rang": 1},
+      {"nom": "Lancer de Sorts", "rang": 1}
+    ],
+    "competences_bugei": 0,
+    "competences_hautes": 5,
+    "competences_marchandes": 0,
+    "competences_basses": 2,
+    "honneur_depart": 4.5,
+    "argent_depart": "3 koku",
+    "equipement_depart": [
+      "Kimono de qualité",
+      "Wakizashi",
+      "Couteau",
+      "Nécessaire de calligraphie",
+      "Parchemins de sorts",
+      "Kit de voyage",
+      "5 koku"
+    ],
+    "affinite": "Choix d'un élément",
+    "deficience": "Aucune",
+    "sorts_depart": 3,
+    "techniques": [
+      {
+        "rang": 1,
+        "nom": "Le Chemin du Phénix",
+        "description": "Maîtrise supérieure de la magie élémentaire",
+        "effet": "Vous gagnez un bonus de +1k0 à tous les jets de Lancer de Sorts. De plus, vous pouvez choisir un élément supplémentaire comme affinité (pas de déficience)."
+      }
+    ],
+    "source": {"livre": "L5R 4e Core", "page": 128},
+    "canon_status": "verified"
+  }
+]

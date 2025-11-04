@@ -1,0 +1,179 @@
+{
+  "disadvantages": [
+    {
+      "id": "handicap-physique",
+      "name": "Handicap physique",
+      "xpGain": 4,
+      "category": "Physique",
+      "description": "Vous souffrez d'un handicap physique qui vous pénalise."
+    },
+    {
+      "id": "mauvaise-sante",
+      "name": "Mauvaise santé",
+      "xpGain": 3,
+      "category": "Physique",
+      "description": "-1 dans votre total de Blessures."
+    },
+    {
+      "id": "petite-taille",
+      "name": "Petite taille",
+      "xpGain": 2,
+      "category": "Physique",
+      "description": "-1k0 aux jets d'Intimidation, +1k0 aux jets de Discrétion."
+    },
+    {
+      "id": "albinos",
+      "name": "Albinos",
+      "xpGain": 3,
+      "category": "Physique",
+      "description": "Vous êtes facilement reconnaissable et sensible au soleil."
+    },
+    {
+      "id": "maladroit",
+      "name": "Maladroit",
+      "xpGain": 3,
+      "category": "Physique",
+      "description": "Vous avez tendance à faire tomber ou casser des objets."
+    },
+    {
+      "id": "distrait",
+      "name": "Distrait",
+      "xpGain": 3,
+      "category": "Mental",
+      "description": "-1k0 aux jets de Perception et d'Investigation."
+    },
+    {
+      "id": "phobie",
+      "name": "Phobie",
+      "xpGain": 4,
+      "category": "Mental",
+      "description": "Vous avez une peur irrationnelle de quelque chose."
+    },
+    {
+      "id": "faible-volonte",
+      "name": "Faible volonté",
+      "xpGain": 6,
+      "category": "Mental",
+      "description": "-1k0 aux jets de résistance mentale et de Méditation."
+    },
+    {
+      "id": "compulsion",
+      "name": "Compulsion",
+      "xpGain": 2,
+      "category": "Mental",
+      "description": "Vous devez accomplir un acte particulier régulièrement."
+    },
+    {
+      "id": "amnesia",
+      "name": "Amnésie",
+      "xpGain": 4,
+      "category": "Mental",
+      "description": "Vous avez perdu une partie de vos souvenirs."
+    },
+    {
+      "id": "status-inferieur",
+      "name": "Statut inférieur",
+      "xpGain": 6,
+      "category": "Social",
+      "description": "Votre statut social est inférieur à la normale."
+    },
+    {
+      "id": "enemies",
+      "name": "Ennemis",
+      "xpGain": 3,
+      "category": "Social",
+      "description": "Vous avez des ennemis qui cherchent à vous nuire."
+    },
+    {
+      "id": "mauvaise-reputation",
+      "name": "Mauvaise réputation",
+      "xpGain": 4,
+      "category": "Social",
+      "description": "Vous êtes mal vu par certains groupes de la société."
+    },
+    {
+      "id": "obligations",
+      "name": "Obligations",
+      "xpGain": 2,
+      "category": "Social",
+      "description": "Vous avez des obligations qui limitent votre liberté d'action."
+    },
+    {
+      "id": "naif",
+      "name": "Naïf",
+      "xpGain": 4,
+      "category": "Social",
+      "description": "-2k0 aux jets pour détecter les mensonges ou les tromperies."
+    },
+    {
+      "id": "maudit",
+      "name": "Maudit",
+      "xpGain": 6,
+      "category": "Spirituel",
+      "description": "Vous êtes affecté par une malédiction spirituelle."
+    },
+    {
+      "id": "maho-tsukai",
+      "name": "Maho-Tsukai (Pratiquant de Magie Noire)",
+      "xpGain": 0,
+      "category": "Spirituel",
+      "description": "Vous avez choisi la voie interdite du Maho (magie de sang). Vous commencez avec 2 points de Souillure et pouvez apprendre des sorts Maho. ATTENTION : Si découvert, vous serez chassé et exécuté. Ce désavantage donne accès aux sorts Maho lors de la création du personnage."
+    },
+    {
+      "id": "souille",
+      "name": "Souillé",
+      "xpGain": 5,
+      "category": "Spirituel",
+      "description": "Vous portez une souillure spirituelle."
+    },
+    {
+      "id": "malchance",
+      "name": "Malchance",
+      "xpGain": 5,
+      "category": "Spirituel",
+      "description": "Une fois par session, le MJ peut vous faire relancer un jet réussi."
+    },
+    {
+      "id": "insensible-kami",
+      "name": "Insensible aux kami",
+      "xpGain": 4,
+      "category": "Spirituel",
+      "description": "-1k0 aux jets liés aux interactions spirituelles."
+    },
+    {
+      "id": "colere",
+      "name": "Colère",
+      "xpGain": 3,
+      "category": "Comportemental",
+      "description": "Vous avez du mal à contrôler votre colère."
+    },
+    {
+      "id": "honneur-excessif",
+      "name": "Honneur excessif",
+      "xpGain": 2,
+      "category": "Comportemental",
+      "description": "Vous suivez Bushido de manière si stricte que cela vous cause des problèmes."
+    },
+    {
+      "id": "impulsif",
+      "name": "Impulsif",
+      "xpGain": 2,
+      "category": "Comportemental",
+      "description": "Vous agissez souvent sans réfléchir."
+    },
+    {
+      "id": "cruel",
+      "name": "Cruel",
+      "xpGain": 3,
+      "category": "Comportemental",
+      "description": "Vous prenez plaisir à infliger de la souffrance."
+    },
+    {
+      "id": "soft-hearted",
+      "name": "Cœur tendre",
+      "xpGain": 2,
+      "category": "Comportemental",
+      "description": "Vous avez du mal à faire du mal ou à voir souffrir."
+    }
+  ]
+}

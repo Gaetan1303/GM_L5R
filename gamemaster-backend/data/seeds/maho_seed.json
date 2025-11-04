@@ -1,0 +1,18 @@
+[
+  {
+    "id": "drain_de_vie",
+    "nom": "Drain de Vie",
+    "maitrise": 2,
+    "portee": "Contact",
+    "zone": "1 cible",
+    "duree": "Instantané",
+    "cout_sang": "1k1 Blessures du lanceur",
+    "souillure_gain": 1,
+    "description": "Inflige 3k2 dégâts à la cible et guérit le lanceur de la moitié des dégâts infligés. Le sang versé nourrit le pouvoir corrompu.",
+    "nd_lancement": 20,
+    "relances": "Dégâts (+1k0), Guérison (+50%)",
+    "keywords": ["offensif", "guerison", "vampirique"],
+    "source": {"livre": "L5R 4e Core", "page": 230},
+    "canon_status": "verified"
+  }
+]

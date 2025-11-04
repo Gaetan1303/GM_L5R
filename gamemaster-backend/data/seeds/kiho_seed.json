@@ -1,0 +1,30 @@
+[
+  {
+    "id": "toucher_du_vide",
+    "nom": "Toucher du Vide",
+    "element": "Vide",
+    "maitrise": 1,
+    "type": "mystique",
+    "activation": "Action simple, dépense 1 Point de Vide",
+    "effet": "Votre prochaine attaque à mains nues inflige des dégâts égaux à votre Anneau de Vide en k1, ignorant la réduction d'armure.",
+    "duree": "1 attaque",
+    "prerequis": "Anneau de Vide 2+",
+    "keywords": ["combat", "vide", "attaque"],
+    "source": {"livre": "L5R 4e Core", "page": 200},
+    "canon_status": "verified"
+  },
+  {
+    "id": "paume_du_feu",
+    "nom": "Paume du Feu",
+    "element": "Feu",
+    "maitrise": 1,
+    "type": "interne",
+    "activation": "Action simple",
+    "effet": "Vos attaques à mains nues infligent +1k0 dégâts de feu pendant 3 rounds. Vos mains s'enflamment mais ne brûlent pas votre propre chair.",
+    "duree": "3 rounds",
+    "prerequis": "Jiujutsu 3+",
+    "keywords": ["combat", "feu", "degats"],
+    "source": {"livre": "L5R 4e Core", "page": 201},
+    "canon_status": "verified"
+  }
+]

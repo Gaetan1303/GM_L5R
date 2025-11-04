@@ -1,0 +1,25 @@
+{
+  "meta": {"version": "0.1", "canon_status": "to-verify"},
+  "souillure": {
+    "description": "La Souillure de l'Outremonde corrompt le corps et l'esprit. Elle augmente par exposition aux oni, lieux souillés, maho, etc.",
+    "gain": [
+      {"source": "Contact prolongé Outremonde", "amount": "1-3", "notes": "Selon intensité/temps"},
+      {"source": "Blessures causées par créature souillée", "amount": "1", "notes": "Par blessure sévère"},
+      {"source": "Pratique du maho", "amount": "1+", "notes": "Selon rituel"}
+    ],
+    "test_resistance": {
+      "jet": "Terre + Volonté (XkY)",
+      "nd": "Variable selon source (typ. 15-25)",
+      "effet": "En cas d'échec, gagne les points de Souillure indiqués"
+    },
+    "seuils": [
+      {"level": "Faible", "range": "1 à Terre", "effects": ["Pénalités sociales légères", "Signes physiques mineurs"], "notes": "Réduction 1 par mois de pureté"},
+      {"level": "Modéré", "range": "Terre+1 à Terre x2", "effects": ["Pénalités -1k0 à certains jets", "Rêves, irritabilité"], "notes": "Purification sacrée nécessaire"},
+      {"level": "Sérieux", "range": "Terre x2+", "effects": ["Mutations possibles", "Perte de contrôle"], "notes": "Risque de transformation"}
+    ],
+    "purification": {
+      "jade": {"description": "Le jade protège et peut absorber la Souillure", "mechanics": "+1k1 aux jets pour résister ; protection passive tant qu'empreint"},
+      "rituels": {"description": "Rituels shugenja (eau/terre) et cérémonies", "mechanics": "Réduisent 1+ point(s) par rituel réussi"}
+    }
+  }
+}

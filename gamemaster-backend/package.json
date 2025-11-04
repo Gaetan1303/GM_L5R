@@ -1,0 +1,44 @@
+{
+  "name": "gamemaster-backend",
+  "version": "1.0.0",
+  "description": "Serveur backend GameMaster pour l'application L5R - Gestion des rooms et parties multijoueurs",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:smoke": "node scripts/smoke_test.js",
+    "test:scenarios": "node scripts/test_scenarios.js",
+    "simulate:session": "node scripts/simulate_session.js",
+    "simulate:session:3001": "node scripts/simulate_session.js http://localhost:3001",
+    "start:on": "node scripts/start_on_port.js",
+    "start:3000": "node scripts/start_on_port.js 3000",
+    "start:3001": "node scripts/start_on_port.js 3001"
+  },
+  "keywords": [
+    "gamemaster",
+    "l5r",
+    "legend-of-five-rings",
+    "rpg",
+    "websockets",
+    "rooms",
+    "multiplayer"
+  ],
+  "author": "GameMaster Team",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "body-parser": "^2.2.0",
+    "cheerio": "^1.0.0-rc.12",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "socket.io": "^4.8.1",
+    "uuid": "^13.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10",
+    "socket.io-client": "^4.8.1",
+    "supertest": "^7.1.4"
+  }
+}

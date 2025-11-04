@@ -1,0 +1,152 @@
+{
+  "honor": {
+    "description":"L'Honneur représente l'adhésion d'un personnage au code du Bushido",
+    "scale":{
+      "0":"Sans honneur - Paria, criminel",
+      "1_2":"Très bas - Ronin déshonoré",
+      "3_4":"Bas - Ronin moyen, heimin",
+      "5_6":"Moyen - Samurai typique",
+      "7_8":"Élevé - Samurai honorable",
+      "9":"Très élevé - Parangon du Bushido",
+      "10":"Parfait - Saint vivant (très rare)"
+    },
+    "effects":{
+      "social":"Bonus/malus aux jets sociaux selon différence d'Honneur",
+      "magic":"Certains sorts nécessitent Honneur minimum",
+      "reputation":"Influence Gloire et réputation",
+      "death":"Seppuku restaure Honneur de la famille"
+    },
+    "gains":[
+      {"action":"Respecter un supérieur publiquement","gain":1,"frequency":"Rare"},
+      {"action":"Accomplir un grand service au clan","gain":2,"frequency":"Rare"},
+      {"action":"Se sacrifier pour son seigneur","gain":5,"frequency":"Très rare"},
+      {"action":"Vivre selon le Bushido constamment","gain":1,"frequency":"Annuel"}
+    ],
+    "losses":[
+      {"action":"Mentir à un supérieur","loss":2,"frequency":"Par occurrence"},
+      {"action":"Trahir son seigneur","loss":10,"frequency":"Instantané"},
+      {"action":"Assassinat déshonorant","loss":5,"frequency":"Par occurrence"},
+      {"action":"Lâcheté au combat","loss":3,"frequency":"Par occurrence"},
+      {"action":"Rupture de parole","loss":4,"frequency":"Par occurrence"},
+      {"action":"Pratique du maho","loss":10,"frequency":"Découvert"}
+    ]
+  },
+  "glory": {
+    "description":"La Gloire mesure la renommée et la reconnaissance d'un personnage",
+    "scale":{
+      "0":"Inconnu - Personne ordinaire",
+      "1_2":"Bas - Samurai débutant",
+      "3_4":"Moyen - Samurai établi",
+      "5_6":"Notable - Connu dans sa province",
+      "7_8":"Célèbre - Connu dans tout l'Empire",
+      "9":"Légendaire - Héros vivant",
+      "10":"Immortel - Légende éternelle"
+    },
+    "effects":{
+      "recognition":"Bonus aux jets sociaux avec personnes de Gloire inférieure",
+      "influence":"Accès aux cours et personnages importants",
+      "fear":"Malus aux jets d'intimidation contre soi",
+      "expectation":"Pression sociale pour agir avec dignité"
+    },
+    "gains":[
+      {"action":"Victoire en duel public","gain":1,"frequency":"Par duel"},
+      {"action":"Accomplissement héroïque public","gain":2,"frequency":"Par acte"},
+      {"action":"Service exceptionnel à l'Empereur","gain":3,"frequency":"Rare"},
+      {"action":"Mariage prestigieux","gain":1,"frequency":"Une fois"},
+      {"action":"Création d'une œuvre d'art magistrale","gain":1,"frequency":"Par œuvre"}
+    ],
+    "losses":[
+      {"action":"Défaite humiliante publique","loss":2,"frequency":"Par occurrence"},
+      {"action":"Scandale public","loss":3,"frequency":"Par occurrence"},
+      {"action":"Déshonneur grave","loss":5,"frequency":"Si connu"},
+      {"action":"Seppuku","loss":"Tout","frequency":"Une fois (posthume)"}
+    ]
+  },
+  "status": {
+    "description":"Le Statut représente la position sociale dans la hiérarchie rokugani",
+    "ranks":[
+      {"rank":0,"title":"Eta/Hinin","description":"Intouchables, parias"},
+      {"rank":1,"title":"Heimin","description":"Roturiers (paysans, artisans, marchands)"},
+      {"rank":2,"title":"Budoka","description":"Moines et artistes martiaux"},
+      {"rank":3,"title":"Ronin","description":"Samurai sans maître"},
+      {"rank":4,"title":"Samurai","description":"Guerrier ou courtisan de base"},
+      {"rank":5,"title":"Hatamoto","description":"Garde personnel d'un seigneur"},
+      {"rank":6,"title":"Gunso/Chui","description":"Capitaine, officier"},
+      {"rank":7,"title":"Taisa","description":"Commandant, magistrat provincial"},
+      {"rank":8,"title":"Daimyo mineur","description":"Seigneur d'une famille mineure"},
+      {"rank":9,"title":"Daimyo de famille","description":"Chef d'une grande famille"},
+      {"rank":10,"title":"Champion de Clan","description":"Chef d'un Grand Clan"},
+      {"rank":11,"title":"Conseiller Impérial","description":"Conseiller de l'Empereur"},
+      {"rank":12,"title":"Empereur","description":"Fils du Ciel"}
+    ],
+    "effects":{
+      "authority":"Capacité à donner des ordres",
+      "access":"Accès aux lieux et personnes",
+      "resource":"Richesse et ressources disponibles",
+      "respect":"Révérence due par inférieurs"
+    }
+  },
+  "infamy": {
+    "description":"Réputation négative connue publiquement",
+    "effects":{
+      "social":"Malus aux jets sociaux",
+      "trust":"Difficile à gagner confiance",
+      "opportunities":"Portes fermées socialement",
+      "danger":"Cible de vengeance ou justice"
+    },
+    "sources":[
+      "Crimes connus",
+      "Scandales publics",
+      "Trahisons révélées",
+      "Pratiques honteuses découvertes"
+    ]
+  },
+  "bushido": {
+    "description":"Les sept vertus du code du Bushido",
+    "virtues":[
+      {
+        "name":"Gi (Justice/Rectitude)",
+        "description":"Faire ce qui est juste, même difficile",
+        "test":"Défendre innocent face autorité injuste"
+      },
+      {
+        "name":"Yu (Courage héroïque)",
+        "description":"Bravoure face au danger et à la mort",
+        "test":"Affronter ennemi supérieur sans hésitation"
+      },
+      {
+        "name":"Jin (Compassion)",
+        "description":"Pitié et miséricorde envers faibles",
+        "test":"Aider ennemi vaincu avec dignité"
+      },
+      {
+        "name":"Rei (Courtoisie/Respect)",
+        "description":"Politesse et étiquette en toute situation",
+        "test":"Rester courtois face insulte grave"
+      },
+      {
+        "name":"Makoto (Sincérité/Honnêteté)",
+        "description":"Vérité et parole données",
+        "test":"Dire vérité même si coûteuse"
+      },
+      {
+        "name":"Meiyo (Honneur/Gloire)",
+        "description":"Vivre et mourir avec honneur",
+        "test":"Accepter seppuku plutôt que déshonneur"
+      },
+      {
+        "name":"Chugo (Devoir/Loyauté)",
+        "description":"Fidélité absolue au seigneur",
+        "test":"Obéir ordre même si désastreux"
+      }
+    ],
+    "conflicts":{
+      "description":"Les vertus entrent parfois en conflit",
+      "examples":[
+        "Sincérité vs Courtoisie (dire vérité blessante)",
+        "Compassion vs Devoir (épargner ennemi de son seigneur)",
+        "Justice vs Loyauté (seigneur injuste)"
+      ]
+    }
+  }
+}

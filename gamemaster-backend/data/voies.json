@@ -1,0 +1,176 @@
+{
+  "paths": [
+    {
+      "name":"Voie du Kenshinzen",
+      "clan":"Dragon",
+      "type":"Advanced School",
+      "requirement":"Rang 4+, Kenjutsu 5, Iaijutsu 5",
+      "description":"Maîtres du katana atteignant perfection spirituelle par l'épée",
+      "techniques":[
+        {"rank":1,"name":"Une Seule Frappe","effect":"Peut dépenser Point Vide pour tuer adversaire en 1 coup (TN 30)"},
+        {"rank":2,"name":"Perception du Vide","effect":"Peut voir 1 round dans futur en combat"},
+        {"rank":3,"name":"Transcendance","effect":"Ignore première attaque par round (comme si pas touchée)"}
+      ]
+    },
+    {
+      "name":"Voie du Yojimbo",
+      "clan":"Universel",
+      "type":"Advanced School",
+      "requirement":"Rang 3+, protéger un seigneur pendant 1 an",
+      "description":"Gardes du corps ultimes, vouant vie à protection d'autrui",
+      "techniques":[
+        {"rank":1,"name":"Interception","effect":"Peut bloquer attaque visant son maître (Action Libre)"},
+        {"rank":2,"name":"Vigilance Parfaite","effect":"+2k2 Perception pour dangers visant maître"},
+        {"rank":3,"name":"Sacrifice Ultime","effect":"Peut mourir à place de maître (1/campagne)"}
+      ]
+    },
+    {
+      "name":"Chasseur de Souillure",
+      "clan":"Crabe",
+      "type":"Advanced School",
+      "requirement":"Rang 3+, Connaissance Outremonde 3+, Souillure 1+",
+      "description":"Experts combattant créatures souillées, souvent légèrement corrompus",
+      "techniques":[
+        {"rank":1,"name":"Résistance Souillure","effect":"Ignore effets Souillure jusqu'à Terre x 3"},
+        {"rank":2,"name":"Tueur Oni","effect":"+2k2 dégâts vs créatures Souillure/Outremonde"},
+        {"rank":3,"name":"Fureur Purificatrice","effect":"Peut purifier zone 10m rayon en tuant démon majeur"}
+      ]
+    },
+    {
+      "name":"Maître Sensei",
+      "clan":"Universel",
+      "type":"Advanced School",
+      "requirement":"Rang 5, compétence école primaire à 7+",
+      "description":"Enseignants légendaires formant nouvelle génération",
+      "techniques":[
+        {"rank":1,"name":"Enseignement Supérieur","effect":"Élèves apprennent 2x plus vite sous sa tutelle"},
+        {"rank":2,"name":"Sagesse du Maître","effect":"Peut transmettre 1 technique connue à élève"},
+        {"rank":3,"name":"Héritage","effect":"Fonde nouvelle école (honneur suprême)"}
+      ]
+    },
+    {
+      "name":"Maître des Éléments",
+      "clan":"Phénix",
+      "type":"Advanced School",
+      "requirement":"Rang 4+ Shugenja, Affinité 3 éléments différents",
+      "description":"Shugenja transcendant limitations élémentaires",
+      "techniques":[
+        {"rank":1,"name":"Harmonie Élémentaire","effect":"Peut lancer sorts de 2 éléments différents par round"},
+        {"rank":2,"name":"Fusion Élémentaire","effect":"Combine 2 sorts simultanément (effets cumulés)"},
+        {"rank":3,"name":"Maîtrise Absolue","effect":"Peut lancer n'importe quel sort connu sans round préparation"}
+      ]
+    },
+    {
+      "name":"Ninja (Shadow Brand)",
+      "clan":"Scorpion (secret)",
+      "type":"Alternate Path",
+      "requirement":"Choisi par Scorpion, loyauté absolue",
+      "description":"Assassins d'élite opérant dans l'ombre pour l'Empire",
+      "techniques":[
+        {"rank":1,"name":"Silence Mortel","effect":"+3k0 Discrétion, attaque surprise +2k2 dégâts"},
+        {"rank":2,"name":"Disparition","effect":"Peut devenir invisible 5 minutes 1/jour"},
+        {"rank":3,"name":"Mort Silencieuse","effect":"Victime assassinée ne peut crier ni alerter"}
+      ]
+    },
+    {
+      "name":"Daidoji Iron Warrior",
+      "clan":"Grue",
+      "type":"Alternate Path",
+      "requirement":"Daidoji Bushi Rang 2+",
+      "description":"Guerriers lourdement armurés protégeant les Doji",
+      "techniques":[
+        {"rank":1,"name":"Armure de Fer","effect":"Ignore pénalités armure lourde, +5 Réduction"},
+        {"rank":2,"name":"Mur Vivant","effect":"Alliés derrière lui gagnent +10 ND Armure"},
+        {"rank":3,"name":"Inébranlable","effect":"Immunité Peur, renversement, projection"}
+      ]
+    },
+    {
+      "name":"Kitsuki Investigator",
+      "clan":"Dragon",
+      "type":"Alternate Path",
+      "requirement":"Kitsuki Courtisan Rang 2+",
+      "description":"Détectives utilisant preuves physiques plutôt que témoignages",
+      "techniques":[
+        {"rank":1,"name":"Œil pour Détails","effect":"+2k2 Investigation, peut trouver indices invisibles"},
+        {"rank":2,"name":"Déduction Logique","effect":"Reconstitue scène crime avec précision"},
+        {"rank":3,"name":"Preuve Irréfutable","effect":"Présentation preuves irréfutable en cour"}
+      ]
+    }
+  ],
+  "alternate_schools": [
+    {
+      "name":"Ronin Bushi",
+      "type":"Ronin School",
+      "requirement":"Être ronin",
+      "description":"Formation mixte des samurai sans maître",
+      "bonus":"+1 Réflexes",
+      "skills":["Kenjutsu","Jiujutsu","Athlétisme","Défense","Chasse"],
+      "techniques":[
+        {"rank":1,"name":"Survie du Ronin","effect":"Ignore faim/soif 2x plus longtemps. +1k0 Initiative"}
+      ]
+    },
+    {
+      "name":"Monk of Shinsei",
+      "type":"Brotherhood School",
+      "requirement":"Devenir moine",
+      "description":"Moines suivant Tao de Shinsei",
+      "bonus":"+1 Vide",
+      "skills":["Méditation","Jiujutsu","Théologie","Calligraphie"],
+      "techniques":[
+        {"rank":1,"name":"Voie de l'Illumination","effect":"Peut dépenser Vide pour ignorer pénalités Blessures"}
+      ]
+    }
+  ],
+  "prestige_titles": [
+    {
+      "title":"Topaz Champion",
+      "description":"Vainqueur Tournoi Topaz, compétition pour jeunes samurai",
+      "benefit":"+1 Gloire, accès cour Impériale",
+      "requirement":"Gagner Tournoi Topaz"
+    },
+    {
+      "title":"Emerald Champion",
+      "description":"Champion personnel Empereur, application loi impériale",
+      "benefit":"+5 Statut, autorité suprême magistrats",
+      "requirement":"Choisi par Empereur (unique)"
+    },
+    {
+      "title":"Jade Champion",
+      "description":"Combattant souillure pour l'Empire",
+      "benefit":"+3 Statut, autorité vs maho et Souillure",
+      "requirement":"Choisi par Empereur"
+    },
+    {
+      "title":"Steel Chrysanthemum",
+      "description":"Maître artisan reconnu Empereur",
+      "benefit":"+2 Gloire, œuvres recherchées",
+      "requirement":"Chef-d'œuvre présenté à Empereur"
+    },
+    {
+      "title":"Voice of the Emperor",
+      "description":"Parle avec autorité Empereur",
+      "benefit":"Parole = loi impériale temporairement",
+      "requirement":"Confiance absolue Empereur"
+    }
+  ],
+  "monastic_orders": [
+    {
+      "name":"Ordre du Sanctuaire Fortifié",
+      "description":"Moines guerriers protégeant temples",
+      "focus":"Combat et défense",
+      "special":"Techniques combat + kiho"
+    },
+    {
+      "name":"Ordre de la Flamme Parfaite",
+      "description":"Moines ascètes cherchant illumination",
+      "focus":"Méditation et philosophie",
+      "special":"Bonus Vide et méditation"
+    },
+    {
+      "name":"Ordre du Chemin de l'Homme",
+      "description":"Moines soignant et aidant peuple",
+      "focus":"Guérison et compassion",
+      "special":"Kiho guérison améliorés"
+    }
+  ]
+}

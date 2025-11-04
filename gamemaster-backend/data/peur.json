@@ -1,0 +1,24 @@
+{
+  "meta": {"version": "0.1", "canon_status": "to-verify"},
+  "peur": {
+    "description": "La Peur représente la terreur inspirée par certaines créatures/situations. Un rang de Peur impose un test pour agir normalement.",
+    "test": {
+      "jet": "Volonté (XkY)",
+      "nd": "5 x Rang de Peur",
+      "reussite": "Aucune pénalité",
+      "echec": "Pénalités aux actions contre la source de peur, ou fuite/paralysie (selon MJ et rang)"
+    },
+    "rangs": [
+      {"rang": 1, "effet": "+0/-1k0 à certaines actions si échec"},
+      {"rang": 2, "effet": "+5 ND aux actions ciblant la source si échec"},
+      {"rang": 3, "effet": "Panique potentielle ; -1 action au premier round si échec"},
+      {"rang": 4, "effet": "Fuite probable ; ND +10 ; actions sévèrement limitées si échec"},
+      {"rang": 5, "effet": "Terreur : paralysie/fuite immédiate si échec"}
+    ],
+    "modificateurs": [
+      {"source": "Présence d'alliés courageux", "bonus": "+1k0 au test"},
+      {"source": "Honneur élevé", "bonus": "+1k0"},
+      {"source": "Souillure", "malus": "-1k0"}
+    ]
+  }
+}

@@ -1,0 +1,257 @@
+{
+  "competences": [
+    {
+      "id": "acteur",
+      "nom": "Acteur",
+      "type": "haute",
+      "trait": "conscience",
+      "description": "Compétence à jouer un rôle, à incarner un personnage différent"
+    },
+    {
+      "id": "art_de_la_guerre",
+      "nom": "Art de la Guerre",
+      "type": "bugei",
+      "trait": "intelligence",
+      "description": "Connaissance de la stratégie militaire et de la tactique"
+    },
+    {
+      "id": "armes_de_ninja",
+      "nom": "Armes de Ninja",
+      "type": "bugei",
+      "trait": "agilite",
+      "description": "Maîtrise des armes exotiques et non-conventionnelles"
+    },
+    {
+      "id": "armes_lourdes",
+      "nom": "Armes Lourdes",
+      "type": "bugei",
+      "trait": "force",
+      "description": "Maîtrise des armes de guerre lourdes (tetsubo, no-dachi, etc.)"
+    },
+    {
+      "id": "athletisme",
+      "nom": "Athlétisme",
+      "type": "bugei",
+      "trait": "force",
+      "description": "Capacité physique générale: courir, sauter, grimper, nager"
+    },
+    {
+      "id": "calligraphie",
+      "nom": "Calligraphie",
+      "type": "haute",
+      "trait": "intelligence",
+      "description": "Art de l'écriture élégante et compétences linguistiques",
+      "emphases": ["Chiffres", "Rokugani", "Langue étrangère"]
+    },
+    {
+      "id": "calligraphie_maho",
+      "nom": "Calligraphie (Maho)",
+      "type": "haute",
+      "trait": "intelligence",
+      "description": "Connaissance de l'écriture magique et des symboles de pouvoir"
+    },
+    {
+      "id": "chant",
+      "nom": "Chant",
+      "type": "haute",
+      "trait": "conscience",
+      "description": "Capacité à chanter et à composer de la musique vocale"
+    },
+    {
+      "id": "chasse",
+      "nom": "Chasse",
+      "type": "bugei",
+      "trait": "perspicacite",
+      "description": "Traquer et capturer des animaux sauvages"
+    },
+    {
+      "id": "commerce",
+      "nom": "Commerce",
+      "type": "marchande",
+      "trait": "intelligence",
+      "description": "Négociation commerciale et connaissance des marchés",
+      "emphases": ["Evaluation", "Marchandage"]
+    },
+    {
+      "id": "connaissance",
+      "nom": "Connaissance",
+      "type": "haute",
+      "trait": "intelligence",
+      "description": "Savoir théorique sur un sujet spécifique",
+      "emphases": ["Histoire", "Théologie", "Bushido", "Droit", "Héraldique", "Nature", "Ombres", "Nezumi", "Naga", "Gaijin"]
+    },
+    {
+      "id": "cour",
+      "nom": "Cour",
+      "type": "haute",
+      "trait": "conscience",
+      "description": "Navigation dans les intrigues politiques et manipulation sociale"
+    },
+    {
+      "id": "danse",
+      "nom": "Danse",
+      "type": "haute",
+      "trait": "agilite",
+      "description": "Art de la danse traditionnelle et performance artistique"
+    },
+    {
+      "id": "defense",
+      "nom": "Défense",
+      "type": "bugei",
+      "trait": "reflexes",
+      "description": "Capacité à éviter et parer les attaques"
+    },
+    {
+      "id": "divination",
+      "nom": "Divination",
+      "type": "haute",
+      "trait": "intelligence",
+      "description": "Prédire l'avenir par divers moyens mystiques"
+    },
+    {
+      "id": "eloquence",
+      "nom": "Eloquence",
+      "type": "haute",
+      "trait": "conscience",
+      "description": "Capacité à persuader et convaincre par la parole"
+    },
+    {
+      "id": "equitation",
+      "nom": "Equitation",
+      "type": "bugei",
+      "trait": "agilite",
+      "description": "Monter et contrôler un cheval au combat et en voyage"
+    },
+    {
+      "id": "etiquette",
+      "nom": "Etiquette",
+      "type": "haute",
+      "trait": "conscience",
+      "description": "Connaissance et respect des règles de conduite sociale"
+    },
+    {
+      "id": "iaijutsu",
+      "nom": "Iaijutsu",
+      "type": "bugei",
+      "trait": "reflexes",
+      "description": "Art du dégainage rapide du katana et du duel formel"
+    },
+    {
+      "id": "investigation",
+      "nom": "Investigation",
+      "type": "haute",
+      "trait": "perspicacite",
+      "description": "Recherche d'indices et résolution de mystères"
+    },
+    {
+      "id": "jiujutsu",
+      "nom": "Jiujutsu",
+      "type": "bugei",
+      "trait": "agilite",
+      "description": "Combat à mains nues et techniques de lutte"
+    },
+    {
+      "id": "jeu",
+      "nom": "Jeu",
+      "type": "marchande",
+      "trait": "perspicacite",
+      "description": "Maîtrise des jeux de hasard et de stratégie",
+      "emphases": ["Dés", "Go", "Shogi", "Sadane"]
+    },
+    {
+      "id": "kenjutsu",
+      "nom": "Kenjutsu",
+      "type": "bugei",
+      "trait": "agilite",
+      "description": "Maîtrise du katana au combat"
+    },
+    {
+      "id": "kyujutsu",
+      "nom": "Kyujutsu",
+      "type": "bugei",
+      "trait": "reflexes",
+      "description": "Maîtrise de l'arc et du tir à l'arc"
+    },
+    {
+      "id": "lances",
+      "nom": "Lances",
+      "type": "bugei",
+      "trait": "agilite",
+      "description": "Maîtrise des armes d'hast: yari, naginata, etc."
+    },
+    {
+      "id": "medicine",
+      "nom": "Médecine",
+      "type": "haute",
+      "trait": "intelligence",
+      "description": "Soigner les blessures et les maladies"
+    },
+    {
+      "id": "meditation",
+      "nom": "Méditation",
+      "type": "haute",
+      "trait": "vide",
+      "description": "Concentration spirituelle et maîtrise de soi"
+    },
+    {
+      "id": "origami",
+      "nom": "Origami",
+      "type": "haute",
+      "trait": "intelligence",
+      "description": "Art du pliage de papier"
+    },
+    {
+      "id": "passe_passe",
+      "nom": "Passe-passe",
+      "type": "basse",
+      "trait": "agilite",
+      "description": "Tours de main, pickpocket, escamotage"
+    },
+    {
+      "id": "poisons",
+      "nom": "Poisons",
+      "type": "basse",
+      "trait": "intelligence",
+      "description": "Connaissance et utilisation des substances toxiques"
+    },
+    {
+      "id": "sincerite",
+      "nom": "Sincérité",
+      "type": "haute",
+      "trait": "conscience",
+      "description": "Capacité à paraître honnête et détecter la malhonnêteté"
+    },
+    {
+      "id": "discretion",
+      "nom": "Discrétion",
+      "type": "bugei",
+      "trait": "agilite",
+      "description": "Se déplacer furtivement et se cacher"
+    },
+    {
+      "id": "the",
+      "nom": "Thé",
+      "type": "haute",
+      "trait": "vide",
+      "description": "Cérémonie du thé et méditation par le rituel"
+    }
+  ],
+  "types_competences": {
+    "bugei": {
+      "nom": "Bugei",
+      "description": "Compétences martiales et militaires"
+    },
+    "haute": {
+      "nom": "Haute",
+      "description": "Compétences nobles et artistiques"
+    },
+    "marchande": {
+      "nom": "Marchande",
+      "description": "Compétences commerciales"
+    },
+    "basse": {
+      "nom": "Basse",
+      "description": "Compétences peu honorables"
+    }
+  }
+}

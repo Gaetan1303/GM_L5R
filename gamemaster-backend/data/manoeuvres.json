@@ -1,0 +1,88 @@
+{
+  "combat_maneuvers": [
+    {"name":"Attaque Totale","type":"Offensif","effect":"+2k2 aux dégâts, mais -10 ND d'Armure jusqu'à prochaine action","requirement":"Action d'attaque","TN":"Normal"},
+    {"name":"Défense Totale","type":"Défensif","effect":"+10 ND d'Armure, ne peut attaquer","requirement":"Action simple ou complexe","TN":"Aucun"},
+    {"name":"Garde","type":"Défensif","effect":"+5 ND d'Armure, peut contre-attaquer si évite attaque","requirement":"Kenjutsu 3+","TN":"Variable"},
+    {"name":"Feinte","type":"Offensif","effect":"Jet opposé. Si réussi, adversaire perd bonus Réflexes au ND","requirement":"Kenjutsu 3+","TN":"Opposé"},
+    {"name":"Désarmement","type":"Offensif","effect":"Jet opposé. Si réussi +10, adversaire lâche arme","requirement":"Jiujutsu ou Kenjutsu 3+","TN":"Opposé +10"},
+    {"name":"Renversement","type":"Offensif","effect":"Jet opposé. Si réussi +5, adversaire tombe au sol","requirement":"Jiujutsu 2+","TN":"Opposé +5"},
+    {"name":"Immobilisation","type":"Contrôle","effect":"Jet opposé. Si réussi +10, adversaire immobilisé","requirement":"Jiujutsu 4+","TN":"Opposé +10"},
+    {"name":"Étranglement","type":"Contrôle","effect":"Cible immobilisée perd Terre en Blessures/round. Inconscient à 0.","requirement":"Jiujutsu 5+, immobilisation","TN":"Maintien"},
+    {"name":"Frappe ciblée","type":"Offensif","effect":"Viser partie spécifique. +5 TN attaque, effets variables","requirement":"Kenjutsu 3+","TN":"+5"},
+    {"name":"Charge","type":"Offensif","effect":"Mouvement + attaque. +1k1 dégâts si 3m+ parcourus","requirement":"Équitation (à cheval)","TN":"Normal"},
+    {"name":"Tir de couverture","type":"Soutien","effect":"Cibles dans zone -5 pour avancer ou attaquer","requirement":"Kyujutsu 3+","TN":"15"},
+    {"name":"Tir de précision","type":"Offensif","effect":"+1k0 attaque, round de visée requis","requirement":"Kyujutsu 2+","TN":"Normal"},
+    {"name":"Tir rapide","type":"Offensif","effect":"2 attaques par round, -1k1 chacune","requirement":"Kyujutsu 4+","TN":"Normal -1k1"},
+    {"name":"Blocage","type":"Défensif","effect":"Utiliser arme pour bloquer. +3 ND, arme peut se briser","requirement":"Arme en main","TN":"Aucun"},
+    {"name":"Parade","type":"Défensif","effect":"Jet opposé vs attaque. Si gagne, annule attaque","requirement":"Kenjutsu 4+","TN":"Opposé"},
+    {"name":"Riposte","type":"Contre","effect":"Après parade réussie, contre-attaque immédiate","requirement":"Kenjutsu 5+, parade réussie","TN":"Normal"},
+    {"name":"Frappe puissante","type":"Offensif","effect":"Dépenser Action Simple supplémentaire. +2k0 dégâts","requirement":"Force 3+","TN":"Normal"},
+    {"name":"Frappe rapide","type":"Offensif","effect":"Attaque avant Initiative. -1k1 dégâts","requirement":"Réflexes 4+","TN":"Normal"},
+    {"name":"Balayage","type":"Offensif","effect":"Attaque tous adversaires adjacents. -2k0 par cible","requirement":"Kenjutsu 4+, arme appropriée","TN":"Normal -2k0"},
+    {"name":"Projection","type":"Offensif","effect":"Jet opposé. Si réussi +5, jette adversaire 1m/Rang Force","requirement":"Jiujutsu 3+","TN":"Opposé +5"},
+    {"name":"Clé articulaire","type":"Contrôle","effect":"Adversaire immobilisé prend 1k2 dégâts non létaux/round","requirement":"Jiujutsu 4+","TN":"Maintien"},
+    {"name":"Frappe aux points vitaux","type":"Offensif","effect":"+5 TN attaque. Si touche, ignore Réduction armure","requirement":"Jiujutsu 5+ ou Médecine 5+","TN":"+5"},
+    {"name":"Esquive","type":"Défensif","effect":"Action Simple. +10 ND contre 1 attaque","requirement":"Réflexes 3+","TN":"Aucun"},
+    {"name":"Saut périlleux","type":"Mouvement","effect":"Saute par-dessus adversaire. Athlétisme TN 20","requirement":"Athlétisme 3+","TN":"20"},
+    {"name":"Combat monté","type":"Spécial","effect":"Bonus si Équitation > adversaire au sol","requirement":"Équitation 2+, monture","TN":"Variable"}
+  ],
+  "dueling": {
+    "iaijutsu_duel":{
+      "description":"Duel au premier sang, résolution d'honneur",
+      "phases":[
+        {
+          "name":"Évaluation",
+          "skill":"Iaijutsu/Perception",
+          "description":"Jets opposés. Gagnant obtient Bonus Gratuit = différence",
+          "effect":"Bonus aux jets suivants"
+        },
+        {
+          "name":"Concentration",
+          "skill":"Iaijutsu/Vide",
+          "description":"Jets opposés. Gagnant peut dépenser Points Vide pour Relances",
+          "effect":"Relances gratuites"
+        },
+        {
+          "name":"Frappe",
+          "skill":"Iaijutsu/Réflexes",
+          "description":"Jets opposés pour déterminer qui frappe en premier",
+          "effect":"Premier frappeur attaque. Perdant peut riposter si survit"
+        }
+      ],
+      "results":{
+        "first_blood":"Duel à première touche. Vainqueur honoré",
+        "to_death":"Duel à mort. Rare, très grave",
+        "to_yield":"Jusqu'à abandon. Perdant déshonoré"
+      }
+    },
+    "taryu_jiai":{
+      "description":"Duel de shugenja, affrontement magique",
+      "rules":"Jets opposés de Sorts. Perdant prend dégâts du sort gagnant",
+      "honor":"Moins d'implications d'honneur qu'Iaijutsu"
+    }
+  },
+  "combat_stances": [
+    {"name":"Stance d'Attaque","effect":"+2k2 dégâts, -10 ND Armure","requirement":"Aucun"},
+    {"name":"Stance de Défense","effect":"+10 ND Armure, -1k1 attaques","requirement":"Aucun"},
+    {"name":"Stance Complète","effect":"Équilibre attaque/défense, aucun modificateur","requirement":"Aucun"},
+    {"name":"Stance du Centre","effect":"+5 ND, +1k0 Initiative round suivant","requirement":"Kenjutsu 3+"},
+    {"name":"Stance de l'Eau","effect":"Réduire pénalités terrain/conditions de 5","requirement":"Kenjutsu 4+"},
+    {"name":"Stance du Feu","effect":"Premiers dégâts ignorent 5 pts Réduction","requirement":"Kenjutsu 4+"},
+    {"name":"Stance du Vide","effect":"Peut dépenser Vide pour +1k1 attaque ou défense","requirement":"Kenjutsu 5+"}
+  ],
+  "mass_combat": {
+    "description":"Règles pour batailles à grande échelle",
+    "units":{
+      "ashigaru":"Infanterie de base (Force 20-40)",
+      "samurai":"Guerriers d'élite (Force 30-50)",
+      "cavalry":"Cavalerie (Force 40-60)",
+      "archers":"Archers (Force 25-45)"
+    },
+    "commanders":{
+      "role":"Donnent ordres et bonus tactiques",
+      "skill":"Commandement + Bataille/Tactique",
+      "bonus":"Bonus aux jets d'unité = Commandement/2"
+    },
+    "resolution":"Jets opposés Force unité + modificateurs"
+  }
+}

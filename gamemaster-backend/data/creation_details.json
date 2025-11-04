@@ -1,0 +1,55 @@
+{
+  "source": "part-2",
+  "analysis": {
+    "bytes": 475829254,
+    "matches": {
+      "competences": 0,
+      "ecoles": 21,
+      "equipement": 0,
+      "avantages": 0,
+      "desavantages": 0
+    }
+  },
+  "couts_xp": {
+    "description": "Coûts d'expérience pour progression (jeu en cours)",
+    "competences": "Nouveau rang x 1 XP (compétence d'école) ; Nouveau rang x 2 XP (autres)",
+    "anneaux": "Nouveau rang x 3 XP par trait, deux traits d'un Anneau doivent être augmentés pour augmenter l'Anneau",
+    "traits": "Nouveau rang x 4 XP (si traits traités individuellement)",
+    "ecoles": "Rang d'École suivant = 3 x nouveau rang (si applicable)",
+    "emphases": "2 XP pour une emphase sur une compétence"
+  },
+  "creation_precisions": {
+    "depart": {
+      "anneaux": "Tous les Anneaux commencent à 2 (sauf particularités d'école/famille)",
+      "competences": "+40 points de compétence (x1 école, x2 autres)",
+      "avantages": "Max 10 points de Désavantages ; pas de limite stricte aux Avantages mais soumis au MJ",
+      "sorts_shugenja": "Commencent avec 3 sorts de rang 1 de leurs affinités"
+    },
+    "outfit_ecole": "L'équipement de départ est défini par l'école (voir ecoles.json -> equipement)",
+    "honneur_glorie_statut": "Valeurs initiales définies par l'école et le clan (voir honneur.json et ecoles.json)",
+    "renommage_termes": {
+      "competence_school_cost": "coût x1",
+      "competence_other_cost": "coût x2",
+      "raise": "relance (+5 ND)",
+      "tn": "ND (Nombre Cible)"
+    }
+  },
+  "tables_reference": {
+    "competences_types": [
+      "bugei",
+      "haute",
+      "marchande",
+      "basse"
+    ],
+    "actions_creation": [
+      "choisir clan/famille",
+      "choisir école",
+      "personnaliser anneaux",
+      "personnaliser compétences",
+      "avantages/désavantages",
+      "équipement",
+      "honneur/gloire/statut",
+      "détails personnels"
+    ]
+  }
+}

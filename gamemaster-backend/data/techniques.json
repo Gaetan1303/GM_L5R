@@ -1,0 +1,25 @@
+{
+  "clan_techniques": [
+    {"name":"Frappe Dévastatrice","clan":"Crabe","type":"technique","rank":1,"description":"Technique emblématique du Crabe pour détruire les ennemis.","effect":"+1k0 aux dégâts avec les armes lourdes. Peut ignorer 5 points d'Armure.","mastery":"Force"},
+    {"name":"Mur de Jade","clan":"Crabe","type":"technique","rank":2,"description":"Défense inébranlable comme le Mur Kaiu.","effect":"+10 en ND pour être Touché en posture de défense totale.","mastery":"Constitution"},
+    {"name":"Coup de l'Aile","clan":"Grue","type":"technique","rank":1,"description":"Attaque rapide et précise de la Grue.","effect":"+1k1 au premier jet d'attaque de chaque combat.","mastery":"Agilité"},
+    {"name":"Danse des Grues","clan":"Grue","type":"technique","rank":2,"description":"Mouvement gracieux qui désoriente l'adversaire.","effect":"Peut esquiver une attaque par round sans dépenser d'action.","mastery":"Réflexes"},
+    {"name":"Frappe du Vent et de la Foudre","clan":"Dragon","type":"technique","rank":1,"description":"Combat à deux armes emblématique du Dragon.","effect":"Combat à deux armes sans pénalités. +1k0 aux dégâts avec katana et wakizashi.","mastery":"Agilité"},
+    {"name":"Méditation du Vide","clan":"Dragon","type":"technique","rank":2,"description":"Connexion profonde avec le Vide.","effect":"Peut dépenser un point de Vide pour relancer n'importe quel jet.","mastery":"Vide"},
+    {"name":"Rugissement du Lion","clan":"Lion","type":"technique","rank":1,"description":"Cri de guerre intimidant du Lion.","effect":"Les ennemis à 10m: Volonté ND 20 ou intimidés (-1k1 1 round).","mastery":"Volonté"},
+    {"name":"Tactique du Général Akodo","clan":"Lion","type":"technique","rank":2,"description":"Maîtrise tactique légendaire.","effect":"+2k0 Initiative. Donne +5 ND d'Armure aux alliés à 20m.","mastery":"Intelligence"},
+    {"name":"Flamme Intérieure","clan":"Phénix","type":"technique","rank":1,"description":"Canalisation de l'énergie élémentaire.","effect":"Lancer un sort de rang 1 sans round de lancement.","mastery":"Intelligence"},
+    {"name":"Ailes du Phénix","clan":"Phénix","type":"technique","rank":2,"description":"Maîtrise des éléments pour la protection.","effect":"Résistance +10 contre sorts et effets magiques.","mastery":"Vide"},
+    {"name":"Dard Empoisonné","clan":"Scorpion","type":"technique","rank":1,"description":"Attaque furtive et mortelle.","effect":"Surprise : +2k1 dégâts. +1k0 avec armes légères.","mastery":"Agilité"},
+    {"name":"Masque d'Illusion","clan":"Scorpion","type":"technique","rank":2,"description":"Art de la tromperie perfectionné.","effect":"+3k0 Discrétion et Déguisement. Ennemis -1k1 pour détecter mensonges.","mastery":"Intelligence"},
+    {"name":"Charge de la Licorne","clan":"Licorne","type":"technique","rank":1,"description":"Charge dévastatrice à cheval.","effect":"Charge à cheval : +3k1 dégâts, renverse humains.","mastery":"Force"},
+    {"name":"Maîtrise du Moto","clan":"Licorne","type":"technique","rank":2,"description":"Combat monté légendaire.","effect":"Combat à cheval sans pénalité. +2k0 Équitation.","mastery":"Agilité"}
+  ],
+  "kata": [
+    {"name":"Frappe Précise","clan":"Universel","type":"kata","rank":1,"description":"Kata enseignant la précision au combat.","effect":"Convertir 2 points de dégâts en +5 au jet d'attaque.","mastery":"Perception"},
+    {"name":"Esprit de Fer","clan":"Universel","type":"kata","rank":1,"description":"Kata renforçant la volonté.","effect":"+1k0 à tous les jets de Volonté. Immunité Peur rang 1.","mastery":"Volonté"},
+    {"name":"Mouvement Fluide","clan":"Universel","type":"kata","rank":1,"description":"Kata améliorant la mobilité.","effect":"+1,5m de déplacement sans action par round.","mastery":"Agilité"},
+    {"name":"Défense du Samouraï","clan":"Universel","type":"kata","rank":1,"description":"Kata défensif fondamental.","effect":"+5 ND d'Armure contre la première attaque de chaque round.","mastery":"Réflexes"},
+    {"name":"Frappe Foudroyante","clan":"Universel","type":"kata","rank":2,"description":"Kata pour frapper avec une vitesse surhumaine.","effect":"1 fois/combat, une attaque supplémentaire en Action Simple.","mastery":"Réflexes"}
+  ]
+}

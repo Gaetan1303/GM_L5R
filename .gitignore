@@ -1,0 +1,13 @@
+# Global ignores for the repo
+
+# Node modules (all packages)
+node_modules/
+**/node_modules/
+
+# Ignore any scripts folder at any depth
+scripts/
+**/scripts/
+
+# Environment files (optional)
+.env
+*.local

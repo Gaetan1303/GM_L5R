@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "L5R 4e Sort Schema",
+  "description": "Canonical schema for shugenja spells",
+  "type": "object",
+  "required": ["id", "nom", "element", "maitrise"],
+  "properties": {
+    "id": {"type": "string", "description": "Unique identifier"},
+    "nom": {"type": "string", "description": "Nom du sort"},
+    "element": {"type": "string", "enum": ["Air", "Eau", "Feu", "Terre", "Vide"], "description": "Élément du sort"},
+    "maitrise": {"type": "integer", "minimum": 1, "maximum": 6, "description": "Rang de maîtrise requis"},
+    "portee": {"type": "string", "description": "Portée du sort (ex: '30 mètres', 'Contact')"},
+    "zone": {"type": "string", "description": "Zone d'effet (ex: '1 cible', 'Rayon 10m')"},
+    "duree": {"type": "string", "description": "Durée (ex: 'Instantané', '10 minutes', 'Concentration')"},
+    "relances": {"type": "string", "description": "Effets des relances possibles"},
+    "description": {"type": "string", "description": "Effet complet du sort"},
+    "nd_lancement": {"type": "integer", "description": "ND de base pour lancer (si spécifique)"},
+    "temps_lancement": {"type": "string", "description": "Temps d'incantation (Action complexe, simple, etc.)"},
+    "universel": {"type": "boolean", "default": false, "description": "Sort universel (tous éléments)"},
+    "keywords": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Mots-clés (offensif, défensif, guérison, divination, etc.)"
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "livre": {"type": "string"},
+        "page": {"type": "integer"}
+      }
+    },
+    "canon_status": {"type": "string", "enum": ["verified", "to-verify", "homebrew"], "default": "to-verify"}
+  }
+}

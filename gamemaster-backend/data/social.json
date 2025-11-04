@@ -1,0 +1,380 @@
+{
+  "meta": {
+    "version": "0.1",
+    "description": "Règles sociales L5R 4e : étiquette, conflits sociaux, réputation, investigations",
+    "last_updated": "2025-11-03",
+    "canon_status": "to-verify"
+  },
+  "etiquette": {
+    "description": "L'étiquette rokugani régit toutes les interactions sociales",
+    "competence_cle": "Étiquette (Intelligence)",
+    "regles_base": {
+      "salutations": {
+        "description": "La profondeur de la révérence indique le statut relatif",
+        "nd_base": 15,
+        "modificateurs": [
+          { "situation": "Saluer un supérieur", "modificateur": "+5 ND" },
+          { "situation": "Saluer un égal", "modificateur": "ND 15" },
+          { "situation": "Saluer un inférieur", "modificateur": "ND 10" },
+          { "situation": "Première rencontre importante", "modificateur": "+5 ND" }
+        ],
+        "consequences_echec": "Perte d'Honneur ou de Gloire selon le contexte"
+      },
+      "conversation": {
+        "description": "Les sujets de conversation sont strictement codifiés",
+        "sujets_acceptables": ["Arts", "Poésie", "Philosophie", "Histoire", "Nature", "Cérémonie du thé"],
+        "sujets_interdits": ["Commerce (sauf pour marchands)", "Nourriture", "Argent", "Mort", "Maladie"],
+        "nd_navigation": 20,
+        "consequence_sujet_interdit": "Test d'Étiquette ND 25 ou perte 1-3 points de Gloire"
+      },
+      "cadeaux": {
+        "description": "Offrir et recevoir des cadeaux suit un protocole strict",
+        "regles": [
+          "Un cadeau ne doit jamais être refusé",
+          "Un cadeau doit être réciproqué dans les 3 jours",
+          "La valeur du cadeau reflète l'estime portée",
+          "Ouvrir un cadeau en présence du donateur est grossier"
+        ],
+        "nd_evaluation": 15,
+        "nd_reciprocite": 20
+      }
+    },
+    "faux_pas": {
+      "description": "Violations de l'étiquette et leurs conséquences",
+      "types": [
+        {
+          "gravite": "Mineur",
+          "exemples": ["Tutoyement inapproprié", "Rire trop fort", "Geste déplacé"],
+          "consequence": "Perte de 1-2 points de Gloire",
+          "nd_rattrapage": 20
+        },
+        {
+          "gravite": "Modéré",
+          "exemples": ["Parler de commerce", "Mentionner la mort", "Refuser un cadeau"],
+          "consequence": "Perte de 3-5 points de Gloire",
+          "nd_rattrapage": 25
+        },
+        {
+          "gravite": "Grave",
+          "exemples": ["Insulter publiquement", "Toucher quelqu'un sans permission", "Refuser l'hospitalité"],
+          "consequence": "Perte de 5-10 points de Gloire, possible duel",
+          "nd_rattrapage": 30
+        },
+        {
+          "gravite": "Impardonnable",
+          "exemples": ["Accusation publique de mensonge", "Violence en cour", "Blasphème"],
+          "consequence": "Seppuku ou exil, perte de tout Honneur/Gloire",
+          "nd_rattrapage": "Impossible"
+        }
+      ]
+    }
+  },
+  "conflits_sociaux": {
+    "description": "Résolution des affrontements verbaux et politiques",
+    "types": {
+      "debat": {
+        "description": "Affrontement intellectuel sur un sujet précis",
+        "competences": ["Étiquette", "Connaissance (selon sujet)", "Sincérité"],
+        "resolution": {
+          "type": "Opposition",
+          "trait_cle": "Intelligence",
+          "duree": "3-5 rounds",
+          "victoire": "Accumulation de 3 succès avant l'adversaire"
+        },
+        "modificateurs": [
+          { "situation": "Connaissance supérieure du sujet", "bonus": "+1k0" },
+          { "situation": "Public favorable", "bonus": "+1k1" },
+          { "situation": "Public hostile", "malus": "-1k0" }
+        ]
+      },
+      "seduction": {
+        "description": "Charmer ou manipuler émotionnellement",
+        "competences": ["Sincérité", "Courtisan", "Art (Poésie)"],
+        "resolution": {
+          "type": "Opposition vs Étiquette",
+          "trait_cle": "Charisme",
+          "nd_resistance": "15 + Volonté cible"
+        },
+        "modificateurs": [
+          { "situation": "Cadeau approprié", "bonus": "+1k0" },
+          { "situation": "Poème improvisé réussi", "bonus": "+2k0" },
+          { "situation": "Réputation de séducteur", "malus": "-1k0" }
+        ]
+      },
+      "intimidation": {
+        "description": "Contraindre par la peur ou la menace implicite",
+        "competences": ["Intimidation", "Étiquette (pour menaces voilées)"],
+        "resolution": {
+          "type": "Opposition vs Volonté",
+          "trait_cle": "Charisme ou Force (selon contexte)",
+          "nd_base": 20
+        },
+        "modificateurs": [
+          { "situation": "Statut supérieur", "bonus": "+1k1" },
+          { "situation": "Réputation féroce", "bonus": "+2k0" },
+          { "situation": "En public (risque d'Honneur)", "malus": "-1k0" }
+        ],
+        "consequence_echec": "Cible gagne +1k0 à ses actions sociales contre vous"
+      },
+      "negociation": {
+        "description": "Parvenir à un accord mutuellement acceptable",
+        "competences": ["Courtisan", "Commerce", "Sincérité"],
+        "resolution": {
+          "type": "Opposition étendue",
+          "trait_cle": "Intelligence ou Charisme",
+          "duree": "Variable (1 heure à plusieurs jours)",
+          "victoire": "Premier à 5 succès ou compromis à 3-3"
+        },
+        "modificateurs": [
+          { "situation": "Position de force", "bonus": "+1k1" },
+          { "situation": "Information privilégiée", "bonus": "+1k0" },
+          { "situation": "Deadline pressante", "malus": "-1k0" }
+        ]
+      }
+    }
+  },
+  "reputation": {
+    "description": "Gestion de l'Honneur, Gloire et Statut",
+    "honneur": {
+      "description": "Mesure de l'intégrité morale et du respect des codes",
+      "rang_initial": "Selon école (généralement 2.5 à 4.5)",
+      "rang_maximum": 10,
+      "gains": [
+        { "action": "Acte de grande vertu", "gain": "+0.5 à +2" },
+        { "action": "Tenir parole malgré coût élevé", "gain": "+0.3 à +1" },
+        { "action": "Protéger les faibles", "gain": "+0.2 à +0.5" },
+        { "action": "Dire la vérité (difficile)", "gain": "+0.1 à +0.3" }
+      ],
+      "pertes": [
+        { "action": "Mentir (découvert)", "perte": "-0.5 à -2" },
+        { "action": "Trahir la confiance", "perte": "-1 à -3" },
+        { "action": "Acte lâche", "perte": "-0.5 à -1.5" },
+        { "action": "Violer le Bushido", "perte": "-1 à -5" }
+      ],
+      "effets": [
+        { "rang": "0-1", "effet": "Méprisé, -2k0 à tous jets sociaux" },
+        { "rang": "1.1-2.4", "effet": "Peu fiable, -1k0 aux jets sociaux" },
+        { "rang": "2.5-4.4", "effet": "Honorable, pas de modificateur" },
+        { "rang": "4.5-6.9", "effet": "Très honorable, +1k0 aux jets sociaux" },
+        { "rang": "7+", "effet": "Parangon de vertu, +2k0 aux jets sociaux" }
+      ]
+    },
+    "gloire": {
+      "description": "Mesure de la renommée et de la reconnaissance publique",
+      "rang_initial": "Selon école (généralement 1.0 à 3.0)",
+      "rang_maximum": 10,
+      "gains": [
+        { "action": "Victoire en duel public", "gain": "+0.5 à +2" },
+        { "action": "Exploit militaire", "gain": "+1 à +3" },
+        { "action": "Création artistique reconnue", "gain": "+0.3 à +1" },
+        { "action": "Service remarquable au seigneur", "gain": "+0.5 à +2" }
+      ],
+      "pertes": [
+        { "action": "Défaite publique", "perte": "-0.5 à -2" },
+        { "action": "Faux pas social grave", "perte": "-0.3 à -1" },
+        { "action": "Échec de mission importante", "perte": "-1 à -3" }
+      ],
+      "effets": [
+        { "rang": "0-2", "effet": "Inconnu, pas de reconnaissance" },
+        { "rang": "2.1-4", "effet": "Connu localement, +0k1 Étiquette locale" },
+        { "rang": "4.1-6", "effet": "Réputé régionalement, +1k0 interactions sociales" },
+        { "rang": "6.1-8", "effet": "Célèbre empire-wide, +1k1 interactions sociales" },
+        { "rang": "8.1+", "effet": "Légendaire, +2k1 interactions sociales" }
+      ]
+    },
+    "statut": {
+      "description": "Position dans la hiérarchie sociale (rang familial + modifications)",
+      "rang_initial": "Rang familial (0.0 à 9.5+)",
+      "hierarchie": [
+        { "rang": "0-0.9", "titre": "Eta/Hinin (Intouchables)", "privileges": "Aucun" },
+        { "rang": "1.0-2.9", "titre": "Heimin (Paysans/Artisans)", "privileges": "Protection du clan" },
+        { "rang": "3.0-4.9", "titre": "Budoka (Samouraï de base)", "privileges": "Port des armes, nom de famille" },
+        { "rang": "5.0-6.9", "titre": "Samouraï accompli", "privileges": "Commandement de petites unités" },
+        { "rang": "7.0-8.9", "titre": "Dignitaire", "privileges": "Influence provinciale, terres" },
+        { "rang": "9.0-9.9", "titre": "Champion/Daimyo", "privileges": "Commandement de clan/famille" },
+        { "rang": "10", "titre": "Empereur", "privileges": "Autorité absolue" }
+      ],
+      "modificateurs": [
+        { "situation": "Promotion impériale", "gain": "+0.5 à +2" },
+        { "situation": "Disgrâce publique", "perte": "-1 à -3" },
+        { "situation": "Mariage avantageux", "gain": "+0.3 à +1" }
+      ],
+      "effets_pratiques": "Le Statut détermine qui salue en premier, qui parle en premier, qui s'assoit où, qui mange quoi"
+    }
+  },
+  "investigations": {
+    "description": "Mener des enquêtes et découvrir la vérité",
+    "competences_cles": ["Investigation", "Connaissance (Droit)", "Sincérité", "Étiquette"],
+    "phases": {
+      "collecte_indices": {
+        "description": "Rassembler des preuves physiques et témoignages",
+        "competences": ["Investigation", "Perception"],
+        "nd_base": 15,
+        "types_indices": [
+          { "type": "Preuve matérielle", "nd": 15, "exemples": "Arme, vêtement, document" },
+          { "type": "Trace physique", "nd": 20, "exemples": "Empreinte, sang, cheveu" },
+          { "type": "Indice subtil", "nd": 25, "exemples": "Odeur, trace chimique, détail architectural" },
+          { "type": "Preuve dissimulée", "nd": 30, "exemples": "Cache secrète, document falsifié" }
+        ],
+        "modificateurs": [
+          { "situation": "Scène préservée", "bonus": "+0k1" },
+          { "situation": "Scène contaminée", "malus": "-1k0" },
+          { "situation": "Temps écoulé (par jour)", "malus": "-1 au ND par jour" }
+        ]
+      },
+      "interrogatoires": {
+        "description": "Questionner les témoins et suspects",
+        "competences": ["Sincérité (détecter mensonge)", "Intimidation", "Courtisan"],
+        "nd_base": "15 + Volonté de la cible",
+        "techniques": [
+          {
+            "nom": "Questionnement amical",
+            "competence": "Courtisan",
+            "modificateur": "+1k0 si cible coopérative",
+            "risque": "Faible"
+          },
+          {
+            "nom": "Interrogatoire formel",
+            "competence": "Étiquette + Investigation",
+            "modificateur": "ND +5 mais autorise coercition légale",
+            "risque": "Moyen"
+          },
+          {
+            "nom": "Intimidation directe",
+            "competence": "Intimidation",
+            "modificateur": "+2k0 mais risque de Gloire/Honneur",
+            "risque": "Élevé"
+          }
+        ],
+        "detection_mensonge": {
+          "test": "Sincérité (Perception) vs Sincérité (Charisme) du menteur",
+          "nd_base": 20,
+          "modificateurs": [
+            { "situation": "Menteur expérimenté", "malus": "-1k0" },
+            { "situation": "Connaître bien la personne", "bonus": "+1k0" },
+            { "situation": "Mensonge préparé", "malus": "-1k1" }
+          ]
+        }
+      },
+      "analyse": {
+        "description": "Recouper les informations et établir la vérité",
+        "competence": "Investigation (Intelligence)",
+        "nd_base": 25,
+        "modificateurs": [
+          { "situation": "Indices contradictoires", "malus": "-1k0" },
+          { "situation": "Témoins multiples cohérents", "bonus": "+1k0" },
+          { "situation": "Expertise pertinente", "bonus": "+1k1" }
+        ]
+      },
+      "presentation": {
+        "description": "Présenter les conclusions à l'autorité compétente",
+        "competence": "Étiquette ou Connaissance (Droit)",
+        "nd_base": 20,
+        "consequence_echec": "Conclusions rejetées même si exactes",
+        "modificateurs": [
+          { "situation": "Preuves irréfutables", "bonus": "+2k0" },
+          { "situation": "Accusé de haut statut", "malus": "-1k1" },
+          { "situation": "Public nombreux", "malus": "-1k0" }
+        ]
+      }
+    },
+    "magistrats": {
+      "description": "Pouvoirs et devoirs des magistrats",
+      "types": [
+        {
+          "type": "Magistrat impérial",
+          "autorite": "Tout l'empire",
+          "pouvoirs": ["Arrêter n'importe qui sauf famille impériale", "Réquisitionner ressources", "Juger affaires impériales"],
+          "statut": 7.0
+        },
+        {
+          "type": "Magistrat d'émeraude",
+          "autorite": "Tout l'empire (routes impériales)",
+          "pouvoirs": ["Arrêter voyageurs", "Juger crimes sur routes", "Enquêter commerce illégal"],
+          "statut": 6.5
+        },
+        {
+          "type": "Magistrat de clan",
+          "autorite": "Terres du clan",
+          "pouvoirs": ["Arrêter membres du clan", "Juger affaires internes", "Enquêter au nom du Daimyo"],
+          "statut": 5.5
+        },
+        {
+          "type": "Doshin (assistant)",
+          "autorite": "Locale",
+          "pouvoirs": ["Assister magistrat", "Arrêter heimin", "Patrouiller"],
+          "statut": 3.0
+        }
+      ],
+      "crimes": [
+        { "crime": "Meurtre d'un samouraï", "jugement": "Seppuku ou exécution", "enquete_nd": 25 },
+        { "crime": "Vol", "jugement": "Mutilation ou exécution", "enquete_nd": 20 },
+        { "crime": "Contrebande", "jugement": "Amende, confiscation, exil", "enquete_nd": 25 },
+        { "crime": "Blasphème", "jugement": "Seppuku", "enquete_nd": 20 },
+        { "crime": "Trahison", "jugement": "Exécution de la famille entière", "enquete_nd": 30 },
+        { "crime": "Maho", "jugement": "Exécution immédiate, purification du site", "enquete_nd": 30 }
+      ]
+    }
+  },
+  "cours_imperiale": {
+    "description": "Fonctionnement de la cour impériale et des cours de clan",
+    "sessions": {
+      "cour_hiver": {
+        "description": "Session annuelle rassemblant tous les clans",
+        "duree": "3 mois (mois du Serpent au mois du Cheval)",
+        "participants": "Tous les Champions de Clan, ambassadeurs, invités impériaux",
+        "activites": ["Négociations politiques", "Compétitions artistiques", "Tournois", "Mariages arrangés"],
+        "importance": "Très élevée - définit alliances pour l'année"
+      },
+      "cour_clan": {
+        "description": "Cours permanentes ou saisonnières tenues par les Daimyo",
+        "frequence": "Continue ou saisonnière selon le clan",
+        "participants": "Vassaux du clan, invités, ambassadeurs",
+        "activites": ["Administration", "Réception d'ambassades", "Fêtes", "Jugements"],
+        "importance": "Élevée - gestion des affaires du clan"
+      }
+    },
+    "positions": [
+      { "titre": "Empereur", "role": "Autorité divine absolue", "statut": 10.0 },
+      { "titre": "Champion de Clan", "role": "Diriger le clan, représenter aux conseils impériaux", "statut": 9.0 },
+      { "titre": "Conseiller impérial", "role": "Conseiller l'Empereur sur domaine spécifique", "statut": 8.5 },
+      { "titre": "Daimyo", "role": "Gouverner une province/famille", "statut": 7.5 },
+      { "titre": "Ambassadeur", "role": "Représenter le clan dans autre cour", "statut": 6.0 },
+      { "titre": "Conseiller de Daimyo", "role": "Conseiller technique ou politique", "statut": 5.5 },
+      { "titre": "Courtisan", "role": "Servir à la cour, négocier, intriguer", "statut": 4.0 }
+    ],
+    "intrigues": {
+      "description": "Manœuvres politiques et complots de cour",
+      "types": [
+        {
+          "type": "Alliance matrimoniale",
+          "competence": "Courtisan",
+          "duree": "Semaines à mois",
+          "nd": 25,
+          "risque": "Faible à moyen"
+        },
+        {
+          "type": "Diffamation",
+          "competence": "Sincérité + Courtisan",
+          "duree": "Jours à semaines",
+          "nd": 30,
+          "risque": "Élevé (duel possible si découvert)"
+        },
+        {
+          "type": "Manipulation économique",
+          "competence": "Commerce + Courtisan",
+          "duree": "Mois",
+          "nd": 30,
+          "risque": "Moyen"
+        },
+        {
+          "type": "Coup d'état politique",
+          "competence": "Multiple (Courtisan, Connaissance Droit, Étiquette)",
+          "duree": "Mois à années",
+          "nd": 40,
+          "risque": "Très élevé (exécution si échec)"
+        }
+      ]
+    }
+  }
+}

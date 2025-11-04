@@ -1,0 +1,534 @@
+{
+  "meta": {
+    "version": "0.1",
+    "description": "Règles de voyage L5R 4e : déplacement, terrain, encombrement, événements",
+    "last_updated": "2025-11-03",
+    "canon_status": "to-verify"
+  },
+  "vitesses_deplacement": {
+    "description": "Vitesses de déplacement selon le mode de transport et terrain",
+    "a_pied": {
+      "description": "Voyage à pied en marche normale",
+      "vitesse_jour": "30 km/jour (terrain normal)",
+      "vitesse_heure": "4 km/heure",
+      "duree_marche": "8 heures/jour sans fatigue",
+      "modificateurs": [
+        { "condition": "Marche forcée (12h)", "vitesse_jour": "45 km/jour", "effet": "Test Terre TN 15/jour ou 1 niveau Fatigue" },
+        { "condition": "Course (1 heure max)", "vitesse_heure": "12 km/heure", "effet": "Test Terre TN 20 ou 1 niveau Fatigue" },
+        { "condition": "Sprint (Eau rounds)", "vitesse_round": "Eau × 3 mètres/round", "effet": "Action Complexe" },
+        { "condition": "Charge lourde", "modificateur": "-25% vitesse", "seuil": ">Force × 10 kg" },
+        { "condition": "Charge très lourde", "modificateur": "-50% vitesse", "seuil": ">Force × 15 kg" }
+      ]
+    },
+    "a_cheval": {
+      "description": "Voyage monté sur cheval",
+      "cheval_marche": {
+        "vitesse_jour": "50 km/jour",
+        "vitesse_heure": "6 km/heure",
+        "duree": "8 heures/jour"
+      },
+      "cheval_trot": {
+        "vitesse_jour": "70 km/jour",
+        "vitesse_heure": "10 km/heure",
+        "duree": "6 heures/jour",
+        "effet": "Test Équitation TN 15/jour ou cheval fatigué"
+      },
+      "cheval_galop": {
+        "vitesse_heure": "20 km/heure",
+        "duree_max": "2 heures",
+        "effet": "Test Équitation TN 20/heure, cheval épuisé après"
+      },
+      "cheval_charge": {
+        "vitesse_round": "20 mètres/round (destrier) ou 15 mètres/round (poney)",
+        "duree_max": "10 rounds",
+        "effet": "Test Équitation TN 25, cheval doit se reposer 1 heure"
+      },
+      "notes": [
+        "Destrier : Meilleure endurance, +5 km/jour",
+        "Poney : -10 km/jour mais plus résistant en montagne",
+        "Cheval fatigué : -50% vitesse jusqu'à repos 1 jour"
+      ]
+    },
+    "bateau": {
+      "description": "Voyage par voie fluviale ou maritime",
+      "barque_riviere": {
+        "vitesse_jour": "40 km/jour (en descendant)",
+        "vitesse_jour_remonte": "15 km/jour (en remontant)",
+        "conditions": "Rivière calme, halage ou rames"
+      },
+      "jonque_cotiere": {
+        "vitesse_jour": "60 km/jour (vent favorable)",
+        "vitesse_jour_calme": "20 km/jour (rame)",
+        "equipage_min": 8,
+        "capacite": "20 tonnes"
+      },
+      "navire_haute_mer": {
+        "vitesse_jour": "100 km/jour (vent favorable)",
+        "vitesse_jour_calme": "30 km/jour",
+        "equipage_min": 30,
+        "capacite": "100 tonnes",
+        "note": "Rare à Rokugan, surtout Mante et Grue"
+      },
+      "modificateurs_vent": [
+        { "condition": "Vent arrière fort", "modificateur": "+50% vitesse" },
+        { "condition": "Vent de travers", "modificateur": "+0% vitesse" },
+        { "condition": "Vent contraire", "modificateur": "-50% vitesse ou impossible" },
+        { "condition": "Tempête", "modificateur": "Navigation impossible", "risque": "Test Navigation TN 25 ou naufrage" }
+      ]
+    },
+    "autres": {
+      "palanquin": {
+        "vitesse_jour": "25 km/jour",
+        "porteurs": 4,
+        "note": "Confort mais lent, réservé hauts statuts"
+      },
+      "chariot": {
+        "vitesse_jour": "20 km/jour",
+        "traction": "Bœuf ou cheval",
+        "capacite": "500 kg"
+      }
+    }
+  },
+  "types_terrain": {
+    "description": "Effets du terrain sur la vitesse et difficulté",
+    "terrains": [
+      {
+        "type": "Route impériale",
+        "modificateur_vitesse": "+25%",
+        "nd_navigation": 5,
+        "description": "Large route pavée, bien entretenue, patrouillée",
+        "qualite": "Excellente"
+      },
+      {
+        "type": "Route secondaire",
+        "modificateur_vitesse": "+0%",
+        "nd_navigation": 10,
+        "description": "Chemin de terre battu, utilisé régulièrement",
+        "qualite": "Bonne"
+      },
+      {
+        "type": "Sentier",
+        "modificateur_vitesse": "-25%",
+        "nd_navigation": 15,
+        "description": "Piste étroite, peu entretenue",
+        "qualite": "Médiocre"
+      },
+      {
+        "type": "Plaine/Prairie",
+        "modificateur_vitesse": "-10%",
+        "nd_navigation": 10,
+        "description": "Terrain dégagé, herbe courte",
+        "note": "Facile à cheval, sans chemin tracé"
+      },
+      {
+        "type": "Forêt dense",
+        "modificateur_vitesse": "-50%",
+        "nd_navigation": 20,
+        "description": "Sous-bois épais, visibilité réduite",
+        "risque": "Facile de se perdre sans guide"
+      },
+      {
+        "type": "Collines",
+        "modificateur_vitesse": "-30%",
+        "nd_navigation": 15,
+        "description": "Terrain vallonné, montées/descentes fréquentes",
+        "effet_fatigue": "Test Terre TN 15/jour ou +1 Fatigue"
+      },
+      {
+        "type": "Montagnes",
+        "modificateur_vitesse": "-60%",
+        "nd_navigation": 25,
+        "description": "Haute altitude, pentes raides, passages difficiles",
+        "effet_fatigue": "Test Terre TN 20/jour ou +1 Fatigue",
+        "risque": "Chutes, avalanches, air raréfié"
+      },
+      {
+        "type": "Marais/Marécage",
+        "modificateur_vitesse": "-70%",
+        "nd_navigation": 30,
+        "description": "Sol instable, eau stagnante, végétation dense",
+        "risque": "Maladies, enlisement, créatures dangereuses",
+        "note": "Chevaux inutilisables"
+      },
+      {
+        "type": "Désert",
+        "modificateur_vitesse": "-40%",
+        "nd_navigation": 25,
+        "description": "Sable, chaleur extrême, manque d'eau",
+        "effet_fatigue": "Test Terre TN 20/jour ou +2 Fatigue",
+        "risque": "Déshydratation, tempêtes de sable"
+      },
+      {
+        "type": "Neige profonde",
+        "modificateur_vitesse": "-50%",
+        "nd_navigation": 20,
+        "description": "Accumulation de neige >30 cm",
+        "effet_fatigue": "Test Terre TN 15/jour ou +1 Fatigue",
+        "note": "Raquettes annulent malus vitesse"
+      }
+    ],
+    "navigation": {
+      "competence": "Chasse (Perception) ou Connaissance : Terrain local",
+      "test_frequence": "1/jour en terrain difficile",
+      "resultat_echec": "Groupe se perd, perd 1d10 km dans direction aléatoire",
+      "resultat_echec_majeur": "Complètement perdu, 1-3 jours pour se retrouver",
+      "modificateurs": [
+        { "condition": "Carte détaillée", "bonus": "+1k1" },
+        { "condition": "Guide local", "bonus": "+2k0" },
+        { "condition": "Boussole", "bonus": "+1k0" },
+        { "condition": "Repères visibles (montagne, fleuve)", "bonus": "+1k0" },
+        { "condition": "Brouillard/nuit", "malus": "-2k0" },
+        { "condition": "Tempête", "malus": "-3k0" }
+      ]
+    }
+  },
+  "encombrement": {
+    "description": "Gestion de la charge transportée",
+    "seuils": {
+      "charge_legere": {
+        "poids": "Force × 5 kg ou moins",
+        "effet": "Aucun malus",
+        "note": "Armes et armure légère, sac léger"
+      },
+      "charge_moyenne": {
+        "poids": "Force × 10 kg",
+        "effet": "Aucun malus au déplacement, -1k0 aux jets d'Agilité",
+        "note": "Armure complète, sac de voyage plein"
+      },
+      "charge_lourde": {
+        "poids": "Force × 15 kg",
+        "effet": "-25% vitesse, -1k0 Agilité et Réflexes",
+        "note": "Très chargé, nécessite Force élevée"
+      },
+      "charge_maximum": {
+        "poids": "Force × 20 kg",
+        "effet": "-50% vitesse, -2k0 Agilité et Réflexes, Test Terre TN 15/heure ou Fatigue",
+        "note": "Limite absolue, mouvement très pénible"
+      },
+      "surcarge": {
+        "poids": ">Force × 20 kg",
+        "effet": "Ne peut pas se déplacer",
+        "note": "Doit abandonner équipement"
+      }
+    },
+    "poids_objets": {
+      "description": "Poids approximatifs des objets courants",
+      "armes": [
+        { "objet": "Katana", "poids_kg": 1.5 },
+        { "objet": "Wakizashi", "poids_kg": 1 },
+        { "objet": "Tanto", "poids_kg": 0.3 },
+        { "objet": "Yari", "poids_kg": 2 },
+        { "objet": "Naginata", "poids_kg": 2.5 },
+        { "objet": "Tetsubo", "poids_kg": 4 },
+        { "objet": "Arc (yumi)", "poids_kg": 1 },
+        { "objet": "Flèches (20)", "poids_kg": 1 }
+      ],
+      "armures": [
+        { "objet": "Armure légère", "poids_kg": 5 },
+        { "objet": "Armure lourde", "poids_kg": 15 },
+        { "objet": "Armure complète (o-yoroi)", "poids_kg": 20 }
+      ],
+      "equipement": [
+        { "objet": "Sac à dos vide", "poids_kg": 1 },
+        { "objet": "Couverture", "poids_kg": 1.5 },
+        { "objet": "Tente (2 pers)", "poids_kg": 3 },
+        { "objet": "Corde 10m", "poids_kg": 2 },
+        { "objet": "Rations 1 jour", "poids_kg": 0.5 },
+        { "objet": "Outre d'eau (2L)", "poids_kg": 2.5 },
+        { "objet": "Lanterne", "poids_kg": 1 },
+        { "objet": "Huile 1L", "poids_kg": 1 }
+      ]
+    },
+    "portage_collectif": {
+      "description": "Transport avec animaux de bât ou serviteurs",
+      "cheval_bat": {
+        "capacite_kg": 100,
+        "note": "Nécessite guide, réduit vitesse groupe de 10%"
+      },
+      "boeuf_trait": {
+        "capacite_kg": 300,
+        "note": "Lent, réduit vitesse groupe de 40%"
+      },
+      "porteur_heimin": {
+        "capacite_kg": 30,
+        "cout_jour": "5 zeni + nourriture",
+        "note": "Vitesse normale à pied"
+      }
+    }
+  },
+  "fatigue": {
+    "description": "Gestion de l'épuisement lors de longs voyages",
+    "niveaux": [
+      {
+        "niveau": 0,
+        "etat": "Reposé",
+        "effet": "Aucun malus"
+      },
+      {
+        "niveau": 1,
+        "etat": "Fatigué",
+        "effet": "-1k0 à tous jets physiques (Force, Agilité, Terre)",
+        "duree_repos": "1 nuit de sommeil"
+      },
+      {
+        "niveau": 2,
+        "etat": "Épuisé",
+        "effet": "-2k0 à tous jets physiques et mentaux",
+        "duree_repos": "1 jour de repos complet"
+      },
+      {
+        "niveau": 3,
+        "etat": "Exténué",
+        "effet": "-3k0 à tous jets, vitesse réduite de 50%",
+        "duree_repos": "2 jours de repos complet",
+        "risque": "Peut tomber inconscient (Test Terre TN 20)"
+      },
+      {
+        "niveau": 4,
+        "etat": "Inconscient",
+        "effet": "Effondrement complet",
+        "duree_repos": "3 jours de repos + soins",
+        "risque": "Dommages permanents possibles"
+      }
+    ],
+    "causes_fatigue": [
+      { "cause": "Marche forcée (12h)", "test": "Terre TN 15/jour", "gain": "+1 si échec" },
+      { "cause": "Course prolongée (>1h)", "test": "Terre TN 20", "gain": "+1 si échec" },
+      { "cause": "Manque de sommeil (nuit blanche)", "test": "Automatique", "gain": "+1" },
+      { "cause": "Combat intense", "test": "Terre TN 15", "gain": "+1 si échec" },
+      { "cause": "Chaleur/Froid extrême", "test": "Terre TN 15-25/jour", "gain": "+1 si échec" },
+      { "cause": "Blessures graves", "test": "Automatique", "gain": "+1 par niveau Blessure" },
+      { "cause": "Maladie", "test": "Variable", "gain": "+1-2/jour" }
+    ],
+    "recuperation": {
+      "repos_normal": "Réduit Fatigue de 1 niveau après 8h sommeil",
+      "repos_complet": "Réduit Fatigue de 2 niveaux après 24h repos",
+      "soins_medicaux": "Médecine TN 15 permet +1k0 à test récupération",
+      "nourriture_qualite": "Repas chaud et copieux donne +1k0 à test récupération",
+      "confort": "Auberge de qualité permet repos comme repos complet"
+    }
+  },
+  "evenements_voyage": {
+    "description": "Rencontres et incidents lors des déplacements",
+    "frequence": "1 jet/jour en terres civilisées, 2 jets/jour en terres sauvages",
+    "table_rencontre": {
+      "competence": "Perception ou Investigation",
+      "nd_detection": 15,
+      "categories": [
+        {
+          "resultat_de": "1-20",
+          "type": "Rien",
+          "description": "Voyage sans incident"
+        },
+        {
+          "resultat_de": "21-40",
+          "type": "Voyageurs",
+          "description": "Rencontre d'autres voyageurs (marchands, pèlerins, messagers)",
+          "attitude": "Généralement amicale ou neutre"
+        },
+        {
+          "resultat_de": "41-55",
+          "type": "Patrouille",
+          "description": "Gardes du clan ou magistrats en patrouille",
+          "attitude": "Demandent papiers de voyage",
+          "nd_etiquette": 15
+        },
+        {
+          "resultat_de": "56-65",
+          "type": "Animaux sauvages",
+          "description": "Cerfs, sangliers, singes, oiseaux",
+          "danger": "Généralement inoffensifs sauf si provoqués"
+        },
+        {
+          "resultat_de": "66-75",
+          "type": "Météo difficile",
+          "description": "Pluie, vent fort, brouillard",
+          "effet": "Réduit visibilité, vitesse -25%"
+        },
+        {
+          "resultat_de": "76-82",
+          "type": "Lieu d'intérêt",
+          "description": "Temple, sanctuaire, ruine, point de vue remarquable",
+          "opportunite": "Repos, prière, exploration"
+        },
+        {
+          "resultat_de": "83-88",
+          "type": "Village",
+          "description": "Petit hameau de paysans",
+          "opportunite": "Nourriture, abri, informations locales"
+        },
+        {
+          "resultat_de": "89-92",
+          "type": "Bandits",
+          "description": "Ronin déchus ou criminels (2d6 individus)",
+          "danger": "Combat ou négociation",
+          "nd_intimidation": 20
+        },
+        {
+          "resultat_de": "93-95",
+          "type": "Créature dangereuse",
+          "description": "Ours, tigre, loup (en meute), oni mineur",
+          "danger": "Combat probable",
+          "note": "Test Chasse TN 20 pour éviter"
+        },
+        {
+          "resultat_de": "96-97",
+          "type": "Obstacle naturel",
+          "description": "Pont effondré, éboulement, crue",
+          "effet": "Détour (1-3 jours) ou test Athlétisme/Ingénieur TN 25"
+        },
+        {
+          "resultat_de": "98-99",
+          "type": "Phénomène surnaturel",
+          "description": "Apparition de yūrei, lieu maudit, manifestation de kami",
+          "danger": "Variable, souvent Test Peur",
+          "note": "Peut nécessiter shugenja"
+        },
+        {
+          "resultat_de": "100",
+          "type": "Événement majeur",
+          "description": "Au choix du MJ : rencontre importante, trésor caché, danger mortel, quête secondaire",
+          "note": "Opportunité narrative"
+        }
+      ]
+    }
+  },
+  "hebergement": {
+    "description": "Options de logement durant le voyage",
+    "types": [
+      {
+        "type": "Camping sauvage",
+        "cout_zeni": 0,
+        "qualite_repos": "Médiocre (-1k0 récupération Fatigue)",
+        "risque": "Animaux, bandits, météo",
+        "note": "Nécessite tente ou bivouac"
+      },
+      {
+        "type": "Temple/Sanctuaire",
+        "cout_zeni": 0,
+        "qualite_repos": "Standard",
+        "conditions": "Don suggéré (5-20 zeni), respect des règles",
+        "avantage": "Sécurité, bénédictions possibles"
+      },
+      {
+        "type": "Auberge médiocre",
+        "cout_zeni": 5,
+        "qualite_repos": "Médiocre",
+        "conditions": "Chambre partagée, confort minimal",
+        "note": "Heimin principalement"
+      },
+      {
+        "type": "Auberge standard",
+        "cout_zeni": 20,
+        "qualite_repos": "Standard",
+        "conditions": "Chambre privée, repas inclus",
+        "note": "Acceptable pour samouraï"
+      },
+      {
+        "type": "Auberge de qualité",
+        "cout_bu": 2,
+        "qualite_repos": "Supérieur (+1k0 récupération)",
+        "conditions": "Suite, bain chaud, repas raffinés",
+        "note": "Pour samouraï aisés"
+      },
+      {
+        "type": "Résidence de clan",
+        "cout_zeni": 0,
+        "qualite_repos": "Excellent (+1k1 récupération)",
+        "conditions": "Membres du clan ou alliés, étiquette requise",
+        "avantage": "Sécurité maximale, contacts politiques"
+      },
+      {
+        "type": "Hospitalité privée",
+        "cout_zeni": 0,
+        "qualite_repos": "Variable",
+        "conditions": "Invitation, obligations sociales (cadeau, service futur)",
+        "note": "Coutume samouraï importante"
+      }
+    ],
+    "etiquette_hospitalite": {
+      "description": "Règles sociales de l'hospitalité rokugani",
+      "regles": [
+        "Refuser l'hospitalité offerte est une grave insulte",
+        "Hôte doit offrir nourriture et toit sans question",
+        "Invité doit apporter cadeau de remerciement (valeur 1-10% revenus)",
+        "Invité ne peut rester plus de 3 jours sans invitation explicite prolongée",
+        "Discussions d'affaires interdites premier soir (impoli)"
+      ],
+      "nd_etiquette": 15,
+      "consequence_echec": "Perte de Gloire 1-3 points"
+    }
+  },
+  "distances": {
+    "description": "Distances approximatives entre lieux importants de Rokugan",
+    "routes_majeures": [
+      { "de": "Otosan Uchi (Capitale)", "a": "Kyuden Doji (Grue)", "distance_km": 200, "duree_pied": "7 jours", "duree_cheval": "4 jours" },
+      { "de": "Otosan Uchi", "a": "Shiro Shiba (Phénix)", "distance_km": 400, "duree_pied": "13 jours", "duree_cheval": "8 jours" },
+      { "de": "Otosan Uchi", "a": "Kyuden Bayushi (Scorpion)", "distance_km": 300, "duree_pied": "10 jours", "duree_cheval": "6 jours" },
+      { "de": "Otosan Uchi", "a": "Kyuden Hida (Crabe)", "distance_km": 500, "duree_pied": "17 jours", "duree_cheval": "10 jours" },
+      { "de": "Otosan Uchi", "a": "Shiro Akodo (Lion)", "distance_km": 250, "duree_pied": "8 jours", "duree_cheval": "5 jours" },
+      { "de": "Otosan Uchi", "a": "Shiro Shinjo (Licorne)", "distance_km": 600, "duree_pied": "20 jours", "duree_cheval": "12 jours" },
+      { "de": "Kyuden Hida", "a": "Mur Kaiu", "distance_km": 100, "duree_pied": "3 jours", "duree_cheval": "2 jours" },
+      { "de": "Kyuden Doji", "a": "Toshi Ranbo (contestée)", "distance_km": 350, "duree_pied": "12 jours", "duree_cheval": "7 jours" }
+    ],
+    "note": "Durées basées sur terrain normal, routes secondaires. Route impériale réduit de 20-30%."
+  },
+  "papiers_voyage": {
+    "description": "Documents requis pour voyager légalement à Rokugan",
+    "types": [
+      {
+        "type": "Laissez-passer de clan",
+        "description": "Document autorisant voyage dans terres du clan",
+        "emetteur": "Daimyo ou magistrat du clan",
+        "validite": "1-6 mois",
+        "obligatoire": "Pour heimin voyageant hors village natal"
+      },
+      {
+        "type": "Sauf-conduit impérial",
+        "description": "Autorisation impériale de voyager partout",
+        "emetteur": "Administration impériale",
+        "validite": "1 an",
+        "prestige": "Très rare, marque de grande confiance",
+        "statut_min": 5.0
+      },
+      {
+        "type": "Lettre de mission",
+        "description": "Ordre de voyage pour mission spécifique",
+        "emetteur": "Seigneur direct",
+        "validite": "Durée de la mission",
+        "obligatoire": "Pour samouraïs en déplacement officiel"
+      },
+      {
+        "type": "Autorisation commerciale",
+        "description": "Permis de transport de marchandises",
+        "emetteur": "Magistrat ou gouverneur",
+        "validite": "1 an",
+        "cout_koku": 1,
+        "obligatoire": "Pour marchands"
+      }
+    ],
+    "controle": {
+      "frequence": "Checkpoints aux frontières de clan, ponts importants, portes de ville",
+      "procedure": "Présentation papiers + test Étiquette TN 10-20",
+      "consequence_absence": "Arrestation, amende 1-10 koku, retour forcé",
+      "exception": "Samouraïs de haut statut (6.0+) rarement contrôlés"
+    }
+  },
+  "meteo": {
+    "description": "Effets de la météo sur le voyage (référence environnement.json pour détails)",
+    "conditions": [
+      { "type": "Beau temps", "effet": "Aucun", "frequence": "60%" },
+      { "type": "Pluie légère", "effet": "Moral -1k0, chemin boueux", "frequence": "20%" },
+      { "type": "Pluie forte", "effet": "Visibilité réduite, vitesse -25%", "frequence": "10%" },
+      { "type": "Orage", "effet": "Vitesse -50%, risque foudre", "frequence": "5%" },
+      { "type": "Brouillard", "effet": "Navigation TN +10, vitesse -25%", "frequence": "3%" },
+      { "type": "Tempête", "effet": "Voyage impossible", "frequence": "2%" }
+    ],
+    "saisons": {
+      "printemps": "Pluies fréquentes, chemins boueux, fleurs de cerisier",
+      "ete": "Chaleur, typhons côtiers, saison des pluies (6e mois)",
+      "automne": "Temps clément, meilleure saison pour voyager",
+      "hiver": "Froid, neige en montagne, routes difficiles"
+    }
+  }
+}
