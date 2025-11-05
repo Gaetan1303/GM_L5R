@@ -32,19 +32,19 @@ const wsAuth = require('./middleware/wsAuth');
 const app = express();
 const server = http.createServer(app);
 
-//  CONFIGURATION DES ORIGINES AUTORISÉES
+// CONFIGURATION DES ORIGINES AUTORISÉES
 const allowedOrigins = process.env.ALLOWED_ORIGINS 
   ? process.env.ALLOWED_ORIGINS.split(',')
   : [
-      "http://localhost:",
-      "http://localhost:",
-      "http://localhost:",
-      "https://gaetan.github.io"
+      "http://localhost:4200",
+      "http://localhost:3000",
+      "http://localhost:3001",
+      "https://gaetan1303.github.io"
     ];
 
-console.log(` CORS configuré pour: ${allowedOrigins.join(', ')}`);
+console.log(`CORS configuré pour: ${allowedOrigins.join(', ')}`);
 
-//  SOCKET.IO AVEC AUTHENTIFICATION ET CORS STRICT
+// SOCKET.IO AVEC AUTHENTIFICATION ET CORS STRICT
 const io = socketIo(server, {
   cors: {
     origin: validateOrigin(allowedOrigins),
@@ -52,11 +52,11 @@ const io = socketIo(server, {
     credentials: true
   },
   // Sécurité WebSocket
-  pingTimeout: parseInt(process.env.WS_TIMEOUT) || ,
-  pingInterval: parseInt(process.env.WS_HEARTBEAT_INTERVAL) || ,
-  maxHttpBufferSize: e, // MB max par message
+  pingTimeout: parseInt(process.env.WS_TIMEOUT) || 60000,
+  pingInterval: parseInt(process.env.WS_HEARTBEAT_INTERVAL) || 30000,
+  maxHttpBufferSize: 1e6, // 1MB max par message
   transports: ['websocket', 'polling'], // Préférer websocket
-  allowEIO: false // Désactiver les anciennes versions
+  allowEIO3: false // Désactiver les anciennes versions
 });
 
 //  Authentification WebSocket
@@ -65,39 +65,39 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // ============================================
-//  MIDDLEWARES DE SÉCURITÉ HTTP
+// MIDDLEWARES DE SÉCURITÉ HTTP
 // ============================================
 
-// . Helmet - Headers de sécurité
+// 1. Helmet - Headers de sécurité
 if (process.env.HELMET_ENABLED !== 'false') {
   app.use(helmetConfig);
 }
 
-// . CORS strict
+// 2. CORS strict
 app.use(cors({
   origin: validateOrigin(allowedOrigins),
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   exposedHeaders: ['X-Total-Count'],
-  maxAge:  // Cache preflight h
+  maxAge: 86400 // Cache preflight 24h
 }));
 
-// . Limitation de taille des requêtes
+// 3. Limitation de taille des requêtes
 app.use(bodyParser.json({ limit: requestSizeLimit }));
 app.use(bodyParser.urlencoded({ extended: true, limit: requestSizeLimit }));
 
-// . Sanitization des données
+// 4. Sanitization des données
 app.use(sanitizeData);
 
-// . Logger de sécurité
+// 5. Logger de sécurité
 app.use(securityLogger);
 
-// . Rate limiting global
+// 6. Rate limiting global
 app.use('/api', apiLimiter);
 
 // ============================================
-//  ROUTES API
+// ROUTES API
 // ============================================
 
 // Routes d'authentification (sans rate limit strict)
@@ -115,9 +115,9 @@ app.use('/api/frontend', frontendRoutes);
 app.get('/api/health', (req, res) => {
   res.json({ 
     status: 'healthy',
-    message: 'Serveur GameMaster LR opérationnel',
+    message: 'Serveur GameMaster L5R opérationnel',
     timestamp: new Date().toISOString(),
-    version: '..',
+    version: '1.0.0',
     environment: process.env.NODE_ENV || 'development'
   });
 });
@@ -140,12 +140,12 @@ app.get('/api/stats', (req, res) => {
 socketHandler(io, wsAuth);
 
 // ============================================
-//  GESTION DES ERREURS
+// GESTION DES ERREURS
 // ============================================
 
 // Gestionnaire d'erreurs global
 app.use((err, req, res, next) => {
-  console.error(' Erreur serveur:', err.message);
+  console.error('Erreur serveur:', err.message);
   
   // Log complet en développement seulement
   if (process.env.NODE_ENV === 'development') {
@@ -160,12 +160,12 @@ app.use((err, req, res, next) => {
       : err.message
   };
   
-  res.status(err.status || ).json(errorResponse);
+  res.status(err.status || 500).json(errorResponse);
 });
 
-// Route 
+// Route 404
 app.use((req, res) => {
-  res.status().json({
+  res.status(404).json({
     success: false,
     message: 'Route non trouvée',
     path: req.path
@@ -173,43 +173,43 @@ app.use((req, res) => {
 });
 
 // ============================================
-//  DÉMARRAGE DU SERVEUR
+// DÉMARRAGE DU SERVEUR
 // ============================================
 
-const PORT = process.env.PORT || ;
+const PORT = process.env.PORT || 3000;
 
 server.listen(PORT, () => {
   console.log('');
   console.log('====================================');
-  console.log('    SERVEUR GAMEMASTER LR SÉCURISÉ');
+  console.log('  SERVEUR GAMEMASTER L5R SÉCURISÉ');
   console.log('====================================');
-  console.log(` Environnement: ${process.env.NODE_ENV || 'development'}`);
-  console.log(` Port: ${PORT}`);
-  console.log(` CORS: ${allowedOrigins.length} origine(s) autorisée(s)`);
-  console.log(`  Helmet: ${process.env.HELMET_ENABLED !== 'false' ? 'Activé' : 'Désactivé'}`);
-  console.log(` Rate Limit: ${process.env.RATE_LIMIT_MAX_REQUESTS || } req/${process.env.RATE_LIMIT_WINDOW_MS || }ms`);
-  console.log(` WebSocket Auth: ${process.env.NODE_ENV === 'production' ? 'Activé' : 'Désactivé (dev)'}`);
-  console.log(` API: http://localhost:${PORT}/api`);
-  console.log(`  Health: http://localhost:${PORT}/api/health`);
-  console.log(` Stats: http://localhost:${PORT}/api/stats`);
+  console.log(`Environnement: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`Port: ${PORT}`);
+  console.log(`CORS: ${allowedOrigins.length} origine(s) autorisée(s)`);
+  console.log(`Helmet: ${process.env.HELMET_ENABLED !== 'false' ? 'Activé' : 'Désactivé'}`);
+  console.log(`Rate Limit: ${process.env.RATE_LIMIT_MAX_REQUESTS || 100} req/${process.env.RATE_LIMIT_WINDOW_MS || 900000}ms`);
+  console.log(`WebSocket Auth: ${process.env.NODE_ENV === 'production' ? 'Activé' : 'Désactivé (dev)'}`);
+  console.log(`API: http://localhost:${PORT}/api`);
+  console.log(`Health: http://localhost:${PORT}/api/health`);
+  console.log(`Stats: http://localhost:${PORT}/api/stats`);
   console.log('====================================');
   console.log('');
 });
 
 // Gestion des arrêts propres
 process.on('SIGTERM', () => {
-  console.log(' SIGTERM reçu. Arrêt du serveur...');
+  console.log('SIGTERM reçu. Arrêt du serveur...');
   server.close(() => {
-    console.log(' Serveur arrêté proprement');
-    process.exit();
+    console.log('Serveur arrêté proprement');
+    process.exit(0);
   });
 });
 
 process.on('SIGINT', () => {
-  console.log('\n SIGINT reçu. Arrêt du serveur...');
+  console.log('\nSIGINT reçu. Arrêt du serveur...');
   server.close(() => {
-    console.log(' Serveur arrêté proprement');
-    process.exit();
+    console.log('Serveur arrêté proprement');
+    process.exit(0);
   });
 });
 

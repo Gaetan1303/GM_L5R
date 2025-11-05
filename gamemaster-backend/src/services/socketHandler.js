@@ -1,7 +1,7 @@
 const roomService = require('./roomService');
 const scenarioService = require('./scenarioService');
 
-// Gestion des connexions WebSocket pour GameMaster LR
+// Gestion des connexions WebSocket pour GameMaster L5R
 function socketHandler(io, wsAuth) {
   // Map pour associer les socket IDs aux users
   const connectedUsers = new Map();
@@ -10,7 +10,7 @@ function socketHandler(io, wsAuth) {
     const userData = socket.userData || { userId: socket.id, userName: 'Guest', authenticated: false };
     const ip = socket.handshake.address;
     
-    console.log(` Nouvelle connexion WebSocket: ${socket.id} (${userData.userName}) - IP: ${ip}`);
+    console.log(`Nouvelle connexion WebSocket: ${socket.id} (${userData.userName}) - IP: ${ip}`);
     
     // Gestion de la déconnexion pour nettoyer le tracking
     socket.on('disconnect', () => {
@@ -18,7 +18,7 @@ function socketHandler(io, wsAuth) {
         wsAuth.onDisconnect(socket);
       }
       connectedUsers.delete(socket.id);
-      console.log(` Déconnexion: ${socket.id}`);
+      console.log(`Déconnexion: ${socket.id}`);
     });
 
     // Rejoindre une room
