@@ -31,8 +31,10 @@ const wsAuth = require('./middleware/wsAuth');
 const app = express();
 const server = http.createServer(app);
 
+app.set('trust proxy', true); // Pour correct IP si derrière un proxy
+
 // CONFIGURATION DES ORIGINES AUTORISÉES
-const allowedOrigins = process.env.ALLOWED_ORIGINS 
+const allowedOrigins = process.env.ALLOWED_ORIGINS
   ? process.env.ALLOWED_ORIGINS.split(',')
   : [
       "http://localhost:4200",
