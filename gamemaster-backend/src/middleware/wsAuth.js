@@ -8,11 +8,11 @@ const jwt = require('jsonwebtoken');
 class WebSocketAuth {
   constructor() {
     this.secret = process.env.WEBSOCKET_SECRET || 'default_secret_CHANGE_ME';
-    this.tokenExpiration = 'h';
+    this.tokenExpiration = process.env.WS_TOKEN_EXPIRATION || '24h';
     
     // Tracking des connexions par IP pour prévenir les abus
-    this.connectionsByIP = new Map();
-    this.maxConnectionsPerIP = parseInt(process.env.WS_MAX_CONNECTIONS_PER_IP) || ;
+  this.connectionsByIP = new Map();
+  this.maxConnectionsPerIP = parseInt(process.env.WS_MAX_CONNECTIONS_PER_IP) || 10;
     
     if (this.secret === 'default_secret_CHANGE_ME' && process.env.NODE_ENV === 'production') {
       console.error(' ALERTE SÉCURITÉ: WEBSOCKET_SECRET non configuré en production!');
@@ -28,7 +28,7 @@ class WebSocketAuth {
       userName,
       userType,
       roomId,
-      iat: Math.floor(Date.now() / )
+  iat: Math.floor(Date.now() / 1000)
     };
 
     return jwt.sign(payload, this.secret, { 
@@ -60,7 +60,7 @@ class WebSocketAuth {
       const ip = socket.handshake.address;
       
       // . Vérifier le nombre de connexions par IP
-      const currentConnections = this.connectionsByIP.get(ip) || ;
+  const currentConnections = this.connectionsByIP.get(ip) || 0;
       if (currentConnections >= this.maxConnectionsPerIP) {
         console.warn(` IP ${ip} a atteint la limite de connexions (${this.maxConnectionsPerIP})`);
         return next(new Error('Trop de connexions depuis cette IP'));
@@ -111,15 +111,15 @@ class WebSocketAuth {
    */
   trackConnection(ip, action = 'connect') {
     if (action === 'connect') {
-      const current = this.connectionsByIP.get(ip) || ;
-      this.connectionsByIP.set(ip, current + );
+      const current = this.connectionsByIP.get(ip) || 0;
+      this.connectionsByIP.set(ip, current + 1);
     } else if (action === 'disconnect') {
-      const current = this.connectionsByIP.get(ip) || ;
-      if (current > ) {
-        this.connectionsByIP.set(ip, current - );
+      const current = this.connectionsByIP.get(ip) || 0;
+      if (current > 1) {
+        this.connectionsByIP.set(ip, current - 1);
       }
       // Nettoyer si plus de connexions
-      if (current <= ) {
+      if (current <= 1) {
         this.connectionsByIP.delete(ip);
       }
     }
