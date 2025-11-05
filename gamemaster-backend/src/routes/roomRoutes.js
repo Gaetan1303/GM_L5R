@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
     });
   } catch (error) {
     console.error('Erreur récupération rooms:', error);
-    res.status().json({
+    res.status(500).json({
       success: false,
       message: 'Erreur lors de la récupération des rooms',
       error: error.message
@@ -34,7 +34,7 @@ router.get('/stats', (req, res) => {
     });
   } catch (error) {
     console.error('Erreur récupération stats:', error);
-    res.status().json({
+    res.status(500).json({
       success: false,
       message: 'Erreur lors de la récupération des statistiques',
       error: error.message
@@ -53,7 +53,7 @@ router.get('/gm/:gmId', (req, res) => {
     });
   } catch (error) {
     console.error('Erreur récupération rooms GM:', error);
-    res.status().json({
+    res.status(500).json({
       success: false,
       message: 'Erreur lors de la récupération des rooms du GM',
       error: error.message
@@ -72,7 +72,7 @@ router.get('/player/:playerId', (req, res) => {
     });
   } catch (error) {
     console.error('Erreur récupération rooms joueur:', error);
-    res.status().json({
+    res.status(500).json({
       success: false,
       message: 'Erreur lors de la récupération des rooms du joueur',
       error: error.message
@@ -85,7 +85,7 @@ router.get('/:roomId', (req, res) => {
   try {
     const room = roomService.getRoomById(req.params.roomId);
     if (!room) {
-      return res.status().json({
+      return res.status(404).json({
         success: false,
         message: 'Room non trouvée'
       });
@@ -97,7 +97,7 @@ router.get('/:roomId', (req, res) => {
     });
   } catch (error) {
     console.error('Erreur récupération room:', error);
-    res.status().json({
+    res.status(500).json({
       success: false,
       message: 'Erreur lors de la récupération de la room',
       error: error.message
@@ -111,29 +111,29 @@ router.post('/', (req, res) => {
     const { name, gmName, scenario, isPrivate = false, password } = req.body;
     
     // Validation des données
-    if (!name || name.trim().length === ) {
-      return res.status().json({
+    if (!name || name.trim().length === 0) {
+      return res.status(400).json({
         success: false,
         message: 'Le nom de la room est requis'
       });
     }
 
-    if (!gmName || gmName.trim().length === ) {
-      return res.status().json({
+    if (!gmName || gmName.trim().length === 0) {
+      return res.status(400).json({
         success: false,
         message: 'Le nom du GM est requis'
       });
     }
 
-    if (name.length > ) {
-      return res.status().json({
+    if (name.length > 100) {
+      return res.status(400).json({
         success: false,
-        message: 'Le nom de la room ne peut pas dépasser  caractères'
+        message: 'Le nom de la room ne peut pas dépasser 100 caractères'
       });
     }
 
-    if (isPrivate && (!password || password.trim().length === )) {
-      return res.status().json({
+    if (isPrivate && (!password || password.trim().length === 0)) {
+      return res.status(400).json({
         success: false,
         message: 'Un mot de passe est requis pour les rooms privées'
       });
@@ -149,7 +149,7 @@ router.post('/', (req, res) => {
       password?.trim()
     );
 
-    res.status().json({
+    res.status(201).json({
       success: true,
       message: 'Room créée avec succès',
       room: room.toJSON(),
@@ -158,7 +158,7 @@ router.post('/', (req, res) => {
     });
   } catch (error) {
     console.error('Erreur création room:', error);
-    res.status().json({
+    res.status(500).json({
       success: false,
       message: 'Erreur lors de la création de la room',
       error: error.message
@@ -173,17 +173,17 @@ router.post('/:roomId/join', (req, res) => {
     const roomId = req.params.roomId;
     
     // Validation des données
-    if (!playerName || playerName.trim().length === ) {
-      return res.status().json({
+    if (!playerName || playerName.trim().length === 0) {
+      return res.status(400).json({
         success: false,
         message: 'Le nom du joueur est requis'
       });
     }
 
-    if (playerName.length > ) {
-      return res.status().json({
+    if (playerName.length > 50) {
+      return res.status(400).json({
         success: false,
-        message: 'Le nom du joueur ne peut pas dépasser  caractères'
+        message: 'Le nom du joueur ne peut pas dépasser 50 caractères'
       });
     }
 
@@ -207,8 +207,8 @@ router.post('/:roomId/join', (req, res) => {
     });
   } catch (error) {
     console.error('Erreur rejoindre room:', error);
-    const statusCode = error.message.includes('mot de passe') ?  : 
-                      error.message.includes('pleine') ?  : ;
+    const statusCode = error.message.includes('mot de passe') ? 403 : 
+                      error.message.includes('pleine') ? 409 : 500;
     res.status(statusCode).json({
       success: false,
       message: error.message
@@ -223,7 +223,7 @@ router.post('/:roomId/leave', (req, res) => {
     const roomId = req.params.roomId;
     
     if (!playerId) {
-      return res.status().json({
+      return res.status(400).json({
         success: false,
         message: 'L\'ID du joueur est requis'
       });
@@ -248,7 +248,7 @@ router.post('/:roomId/leave', (req, res) => {
     }
   } catch (error) {
     console.error('Erreur quitter room:', error);
-    res.status().json({
+    res.status(500).json({
       success: false,
       message: error.message
     });
@@ -263,14 +263,14 @@ router.put('/:roomId/status', (req, res) => {
     
     const room = roomService.getRoomById(roomId);
     if (!room) {
-      return res.status().json({
+      return res.status(404).json({
         success: false,
         message: 'Room non trouvée'
       });
     }
 
     if (room.gmId !== gmId) {
-      return res.status().json({
+      return res.status(403).json({
         success: false,
         message: 'Seul le GM peut changer le statut de la room'
       });
@@ -278,7 +278,7 @@ router.put('/:roomId/status', (req, res) => {
 
     const validStatuses = ['waiting', 'active', 'paused', 'completed'];
     if (!validStatuses.includes(status)) {
-      return res.status().json({
+      return res.status(400).json({
         success: false,
         message: 'Statut invalide. Valeurs autorisées: ' + validStatuses.join(', ')
       });
@@ -293,7 +293,7 @@ router.put('/:roomId/status', (req, res) => {
     });
   } catch (error) {
     console.error('Erreur changement statut:', error);
-    res.status().json({
+    res.status(500).json({
       success: false,
       message: 'Erreur lors de la mise à jour du statut',
       error: error.message
@@ -309,14 +309,14 @@ router.delete('/:roomId', (req, res) => {
     
     const room = roomService.getRoomById(roomId);
     if (!room) {
-      return res.status().json({
+      return res.status(404).json({
         success: false,
         message: 'Room non trouvée'
       });
     }
 
     if (room.gmId !== gmId) {
-      return res.status().json({
+      return res.status(403).json({
         success: false,
         message: 'Seul le GM peut supprimer sa room'
       });
@@ -330,14 +330,14 @@ router.delete('/:roomId', (req, res) => {
         message: 'Room supprimée avec succès'
       });
     } else {
-      res.status().json({
+      res.status(500).json({
         success: false,
         message: 'Erreur lors de la suppression de la room'
       });
     }
   } catch (error) {
     console.error('Erreur suppression room:', error);
-    res.status().json({
+    res.status(500).json({
       success: false,
       message: 'Erreur lors de la suppression de la room',
       error: error.message
@@ -354,7 +354,7 @@ router.post('/with-scenario', (req, res) => {
     const { name, gmName, isPrivate = false, password, scenarioId, scenario, generate } = req.body || {};
 
     if (!name || !gmName) {
-      return res.status().json({ success: false, message: 'name et gmName sont requis' });
+      return res.status(400).json({ success: false, message: 'name et gmName sont requis' });
     }
 
     const gmId = uuidv();
@@ -363,7 +363,7 @@ router.post('/with-scenario', (req, res) => {
     let scenarioData = null;
     if (scenarioId) {
       const found = scenarioService.get(scenarioId);
-      if (!found) return res.status().json({ success: false, message: 'Scénario introuvable' });
+      if (!found) return res.status(404).json({ success: false, message: 'Scénario introuvable' });
       scenarioData = found.toJSON ? found.toJSON() : found;
     } else if (generate) {
       // generate peut être true ou un objet d'options
@@ -383,7 +383,7 @@ router.post('/with-scenario', (req, res) => {
       password?.trim()
     );
 
-    res.status().json({
+    res.status(201).json({
       success: true,
       room: room.toJSON(),
       gmId,
@@ -391,7 +391,7 @@ router.post('/with-scenario', (req, res) => {
     });
   } catch (error) {
     console.error('Erreur création room with-scenario:', error);
-    res.status().json({ success: false, message: error.message });
+    res.status(500).json({ success: false, message: error.message });
   }
 });
 
@@ -400,7 +400,7 @@ router.put('/:roomId/scenario/scene', (req, res) => {
   try {
     const { sceneIndex, title } = req.body || {};
     const room = roomService.getRoomById(req.params.roomId);
-    if (!room) return res.status().json({ success: false, message: 'Room non trouvée' });
+    if (!room) return res.status(404).json({ success: false, message: 'Room non trouvée' });
 
     // Accepte soit un index de scène, soit un titre
     let currentScene = null;
@@ -410,7 +410,7 @@ router.put('/:roomId/scenario/scene', (req, res) => {
         currentScene = { index: sceneIndex, ...scenariosScenes[sceneIndex] };
       } else if (title) {
         const idx = scenariosScenes.findIndex(s => s.title === title);
-        if (idx >= ) currentScene = { index: idx, ...scenariosScenes[idx] };
+        if (idx >= 0) currentScene = { index: idx, ...scenariosScenes[idx] };
       }
     }
 
@@ -424,13 +424,13 @@ router.put('/:roomId/scenario/scene', (req, res) => {
 
     const history = Array.isArray(room.gameData.scenesHistory) ? room.gameData.scenesHistory.slice() : [];
     if (entry) history.push(entry);
-    if (history.length > ) history.splice(, history.length - );
+    if (history.length > 100) history.splice(0, history.length - 100);
 
     room.updateGameData({ currentScene: currentScene || (title ? { title } : null), scenesHistory: history });
 
     res.json({ success: true, room: room.toJSON() });
   } catch (error) {
     console.error('Erreur update current scene:', error);
-    res.status().json({ success: false, message: error.message });
+    res.status(500).json({ success: false, message: error.message });
   }
 });
