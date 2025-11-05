@@ -741,9 +741,9 @@ function socketHandler(io, wsAuth) {
         }
       }
     }
-  }, ); // Toutes les  secondes
+  }, 60000); // Toutes les 60 secondes
 
-  console.log('Gestionnaire WebSocket GameMaster LR initialisé');
+  console.log('Gestionnaire WebSocket GameMaster L5R initialisé');
 }
 
 module.exports = socketHandler;
