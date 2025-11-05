@@ -8,7 +8,6 @@ const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
 const cors = require('cors');
-const bodyParser = require('body-parser');
 
 const roomRoutes = require('./routes/roomRoutes');
 const referenceRoutes = require('./routes/referenceRoutes');
@@ -83,9 +82,9 @@ app.use(cors({
   maxAge: 86400 // Cache preflight 24h
 }));
 
-// 3. Limitation de taille des requêtes
-app.use(bodyParser.json({ limit: requestSizeLimit }));
-app.use(bodyParser.urlencoded({ extended: true, limit: requestSizeLimit }));
+// 3. Limitation de taille des requêtes (Express 5 natif)
+app.use(express.json({ limit: requestSizeLimit }));
+app.use(express.urlencoded({ extended: true, limit: requestSizeLimit }));
 
 // 4. Sanitization des données
 app.use(sanitizeData);
