@@ -25,7 +25,7 @@ const helmetConfig = helmet({
     },
   },
   hsts: {
-    maxAge: , //  an
+    maxAge: 31536000, // 1 an en secondes
     includeSubDomains: true,
     preload: true
   },
@@ -37,8 +37,8 @@ const helmetConfig = helmet({
 
 // . RATE LIMITING - Protection DDoS
 const apiLimiter = rateLimit({
-  windowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS) ||  *  * , //  min
-  max: parseInt(process.env.RATE_LIMIT_MAX_REQUESTS) || ,
+  windowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS) || 15 * 60 * 1000, // 15 min
+  max: parseInt(process.env.RATE_LIMIT_MAX_REQUESTS) || 100,
   message: {
     success: false,
     message: 'Trop de requêtes depuis cette IP, veuillez réessayer plus tard.'
@@ -51,8 +51,8 @@ const apiLimiter = rateLimit({
 
 // Rate limiter strict pour les routes sensibles (création de room, etc.)
 const strictLimiter = rateLimit({
-  windowMs:  *  * , //  min
-  max: , // max  requêtes
+  windowMs: 15 * 60 * 1000, // 15 min
+  max: 20, // max 20 requêtes
   message: {
     success: false,
     message: 'Trop de tentatives. Action temporairement bloquée.'
@@ -78,7 +78,7 @@ const validateOrigin = (allowedOrigins) => {
 
     // En production, strictement vérifier l'origine
     if (process.env.NODE_ENV === 'production') {
-      if (allowedOrigins.indexOf(origin) === -) {
+      if (allowedOrigins.indexOf(origin) === -1) {
         const msg = ` CORS bloqué: origine ${origin} non autorisée`;
         console.warn(msg);
         return callback(new Error('Non autorisé par CORS'), false);
@@ -116,7 +116,7 @@ const securityLogger = (req, res, next) => {
     Path: ${req.path}
     User-Agent: ${userAgent}
     Timestamp: ${timestamp}
-    Body: ${JSON.stringify(req.body).substring(, )}
+    Body: ${JSON.stringify(req.body).substring(0, 1000)}
     Query: ${JSON.stringify(req.query)}`);
   }
 
@@ -128,8 +128,8 @@ const securityLogger = (req, res, next) => {
   next();
 };
 
-// . LIMITATION DE TAILLE DES REQUÊTES
-const requestSizeLimit = process.env.MAX_REQUEST_SIZE || 'kb';
+// LIMITATION DE TAILLE DES REQUÊTES
+const requestSizeLimit = process.env.MAX_REQUEST_SIZE || '10kb';
 
 module.exports = {
   helmetConfig,

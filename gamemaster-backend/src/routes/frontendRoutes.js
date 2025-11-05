@@ -8,7 +8,7 @@ const DATA_DIR = path.join(__dirname, '../../data');
 async function loadJsonFile(filename) {
     try {
         const filePath = path.join(DATA_DIR, filename);
-        const data = await fs.readFile(filePath, 'utf-');
+        const data = await fs.readFile(filePath, 'utf-8');
         return JSON.parse(data);
     } catch (error) {
         console.error(`Error loading ${filename}:`, error);
@@ -25,7 +25,7 @@ router.get('/clans', async (req, res) => {
         // Return just the clans array for frontend compatibility
         res.json(data.clans || []);
     } catch (error) {
-        res.status().json({ error: 'Failed to load clans data' });
+        res.status(500).json({ error: 'Failed to load clans data' });
     }
 });
 
@@ -41,19 +41,18 @@ router.get('/schools', async (req, res) => {
             traitBonus: school.bonus_trait,
             skills: school.competences_ecole || [],
             technique: school.techniques?.rang_ || school.technique_rang_ || '',
-            honor: school.honneur_initial || .,
+            honor: school.honneur_initial || 3,
             outfit: school.equipement_depart || [],
-            startingMoney: school.argent_depart || 'd',
+            startingMoney: school.argent_depart || '0',
             spellLimits: school.limites_sorts || (school.type === 'shugenja' ? {
-                rank: ,
-                rank: ,
+                rank: 1,
                 affinity: school.affinite || 'Terre',
                 deficiency: school.deficience || 'Air'
             } : undefined)
         }));
         res.json(schools);
     } catch (error) {
-        res.status().json({ error: 'Failed to load schools data' });
+        res.status(500).json({ error: 'Failed to load schools data' });
     }
 });
 
@@ -71,7 +70,7 @@ router.get('/advantages', async (req, res) => {
         }));
         res.json(advantages);
     } catch (error) {
-        res.status().json({ error: 'Failed to load advantages data' });
+        res.status(500).json({ error: 'Failed to load advantages data' });
     }
 });
 
@@ -89,7 +88,7 @@ router.get('/disadvantages', async (req, res) => {
         }));
         res.json(disadvantages);
     } catch (error) {
-        res.status().json({ error: 'Failed to load disadvantages data' });
+        res.status(500).json({ error: 'Failed to load disadvantages data' });
     }
 });
 
@@ -109,7 +108,7 @@ router.get('/spells', async (req, res) => {
         }));
         res.json(spells);
     } catch (error) {
-        res.status().json({ error: 'Failed to load spells data' });
+        res.status(500).json({ error: 'Failed to load spells data' });
     }
 });
 
@@ -129,7 +128,7 @@ router.get('/maho', async (req, res) => {
         }));
         res.json(mahoSpells);
     } catch (error) {
-        res.status().json({ error: 'Failed to load maho data' });
+        res.status(500).json({ error: 'Failed to load maho data' });
     }
 });
 
@@ -141,13 +140,13 @@ router.get('/kiho', async (req, res) => {
             name: k.nom,
             element: k.element,
             type: k.type,
-            mastery: k.rang || k.mastery || ,
+            mastery: k.rang || k.mastery || 1,
             activation: k.activation,
             description: k.effet || k.description
         }));
         res.json(kiho);
     } catch (error) {
-        res.status().json({ error: 'Failed to load kiho data' });
+        res.status(500).json({ error: 'Failed to load kiho data' });
     }
 });
 
@@ -169,7 +168,7 @@ router.get('/equipment', async (req, res) => {
                 name: a.nom,
                 type: a.type,
                 tn: a.nd_armure,
-                reduction: a.reduction || ,
+                reduction: a.reduction || 0,
                 price: a.prix,
                 description: a.description || ''
             })),
@@ -182,7 +181,7 @@ router.get('/equipment', async (req, res) => {
         };
         res.json(equipment);
     } catch (error) {
-        res.status().json({ error: 'Failed to load equipment data' });
+        res.status(500).json({ error: 'Failed to load equipment data' });
     }
 });
 
@@ -194,13 +193,13 @@ router.get('/techniques', async (req, res) => {
             name: t.nom,
             clan: t.clan,
             type: t.type,
-            rank: t.rang || t.mastery || ,
+            rank: t.rang || t.mastery || 1,
             description: t.effet || t.description,
             keywords: t.mots_cles || []
         }));
         res.json(techniques);
     } catch (error) {
-        res.status().json({ error: 'Failed to load techniques data' });
+        res.status(500).json({ error: 'Failed to load techniques data' });
     }
 });
 
@@ -213,13 +212,13 @@ router.get('/kata', async (req, res) => {
             .map(t => ({
                 name: t.nom,
                 clan: t.clan,
-                mastery: t.rang || t.mastery || ,
+                mastery: t.rang || t.mastery || 1,
                 description: t.effet || t.description,
                 keywords: t.mots_cles || []
             }));
         res.json(kata);
     } catch (error) {
-        res.status().json({ error: 'Failed to load kata data' });
+        res.status(500).json({ error: 'Failed to load kata data' });
     }
 });
 
@@ -250,7 +249,7 @@ router.get('/all', async (req, res) => {
             techniques
         });
     } catch (error) {
-        res.status().json({ error: 'Failed to load data bundle' });
+        res.status(500).json({ error: 'Failed to load data bundle' });
     }
 });
 

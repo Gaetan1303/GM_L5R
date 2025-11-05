@@ -24,24 +24,24 @@ router.post('/ws-token', (req, res) => {
 
     // Validation
     if (!userId || !userName) {
-      return res.status().json({
+      return res.status(400).json({
         success: false,
         message: 'userId et userName sont obligatoires'
       });
     }
 
     if (userType && !['gm', 'player'].includes(userType)) {
-      return res.status().json({
+      return res.status(400).json({
         success: false,
         message: 'userType doit être "gm" ou "player"'
       });
     }
 
     // Validation du nom d'utilisateur (sécurité)
-    if (userName.length <  || userName.length > ) {
-      return res.status().json({
+    if (userName.length < 2 || userName.length > 50) {
+      return res.status(400).json({
         success: false,
-        message: 'Le nom d\'utilisateur doit contenir entre  et  caractères'
+        message: 'Le nom d\'utilisateur doit contenir entre 2 et 50 caractères'
       });
     }
 
@@ -51,7 +51,7 @@ router.post('/ws-token', (req, res) => {
     res.json({
       success: true,
       token,
-      expiresIn: 'h',
+      expiresIn: '24h',
       user: {
         userId,
         userName,
@@ -62,7 +62,7 @@ router.post('/ws-token', (req, res) => {
 
   } catch (error) {
     console.error('Erreur génération token WebSocket:', error);
-    res.status().json({
+    res.status(500).json({
       success: false,
       message: 'Erreur lors de la génération du token'
     });
@@ -78,7 +78,7 @@ router.post('/verify-token', (req, res) => {
     const { token } = req.body;
 
     if (!token) {
-      return res.status().json({
+      return res.status(400).json({
         success: false,
         message: 'Token manquant'
       });
@@ -93,7 +93,7 @@ router.post('/verify-token', (req, res) => {
     });
 
   } catch (error) {
-    res.status().json({
+    res.status(401).json({
       success: false,
       valid: false,
       message: error.message
