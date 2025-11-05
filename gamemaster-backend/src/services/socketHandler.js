@@ -37,7 +37,7 @@ function socketHandler(io, wsAuth) {
     // Créer une room (ack via callback)
     socket.on('create-room', (data, callback) => {
       try {
-        const { name, gmId, gmName, maxPlayers = , isPublic = true, scenarioId, scenario, generateScenario, generateOptions } = data || {};
+        const { name, gmId, gmName, maxPlayers = 6, isPublic = true, scenarioId, scenario, generateScenario, generateOptions } = data || {};
         if (!name || !gmId || !gmName) {
           return callback && callback({ ok: false, error: 'Paramètres manquants (name, gmId, gmName)' });
         }
@@ -64,7 +64,7 @@ function socketHandler(io, wsAuth) {
 
         const room = roomService.createRoom(name, gmId, gmName, scenarioData);
         // Ajuster options de la room selon la demande du front
-        room.maxPlayers = Math.max(, Math.min(, Number(maxPlayers) || ));
+        room.maxPlayers = Math.max(1, Math.min(10, Number(maxPlayers) || 6));
         room.isPrivate = !isPublic;
 
         // Notifier tous les clients comme dans le serveur de référence JDR-test
@@ -167,7 +167,7 @@ function socketHandler(io, wsAuth) {
           success: true,
           room: room.toJSON(),
           userType: isGM ? 'gm' : 'player',
-          chatHistory: room.chat.slice(-),
+          chatHistory: room.chat.slice(-50),
           timestamp: new Date()
         };
 
@@ -261,7 +261,7 @@ function socketHandler(io, wsAuth) {
           return;
         }
 
-        if (!message || message.trim().length === ) {
+        if (!message || message.trim().length === 0) {
           socket.emit('error', { 
             type: 'EMPTY_MESSAGE',
             message: 'Le message ne peut pas être vide' 
@@ -269,10 +269,10 @@ function socketHandler(io, wsAuth) {
           return;
         }
 
-        if (message.length > ) {
+        if (message.length > 500) {
           socket.emit('error', { 
             type: 'MESSAGE_TOO_LONG',
-            message: 'Le message est trop long (max  caractères)' 
+            message: 'Le message est trop long (max 500 caractères)' 
           });
           return;
         }
@@ -425,7 +425,7 @@ function socketHandler(io, wsAuth) {
             currentScene = { index: sceneIndex, ...scenes[sceneIndex] };
           } else if (title) {
             const idx = scenes.findIndex(s => s.title === title);
-            if (idx >= ) currentScene = { index: idx, ...scenes[idx] };
+            if (idx >= 0) currentScene = { index: idx, ...scenes[idx] };
           }
         }
 
@@ -444,7 +444,7 @@ function socketHandler(io, wsAuth) {
 
         const history = Array.isArray(room.gameData.scenesHistory) ? room.gameData.scenesHistory.slice() : [];
         history.push(historyEntry);
-        if (history.length > ) history.splice(, history.length - );
+        if (history.length > 100) history.splice(0, history.length - 100);
 
         room.updateGameData({ currentScene: currentScene, scenesHistory: history });
 
@@ -520,10 +520,10 @@ function socketHandler(io, wsAuth) {
         const userInfo = connectedUsers.get(socket.id);
         if (!userInfo) return;
 
-        const { roomId, diceType, numberOfDice, modifier = , description = '', isPrivate = false } = data;
+        const { roomId, diceType, numberOfDice, modifier = 0, description = '', isPrivate = false } = data;
 
         // Validation
-        if (!diceType || ![, , , , , , ].includes(diceType)) {
+        if (!diceType || ![2, 4, 6, 8, 10, 12, 20, 100].includes(diceType)) {
           socket.emit('error', { 
             type: 'INVALID_DICE',
             message: 'Type de dé invalide' 
@@ -531,28 +531,28 @@ function socketHandler(io, wsAuth) {
           return;
         }
 
-        if (!numberOfDice || numberOfDice <  || numberOfDice > ) {
+        if (!numberOfDice || numberOfDice < 1 || numberOfDice > 100) {
           socket.emit('error', { 
             type: 'INVALID_DICE_COUNT',
-            message: 'Nombre de dés invalide (-)' 
+            message: 'Nombre de dés invalide (1-100)' 
           });
           return;
         }
 
-        if (modifier < - || modifier > ) {
+        if (modifier < -100 || modifier > 100) {
           socket.emit('error', { 
             type: 'INVALID_MODIFIER',
-            message: 'Modificateur invalide (- à +)' 
+            message: 'Modificateur invalide (-100 à +100)' 
           });
           return;
         }
 
         // Simuler le lancer de dés
         const results = [];
-        let total = ;
+        let total = 0;
 
-        for (let i = ; i < numberOfDice; i++) {
-          const roll = Math.floor(Math.random() * diceType) + ;
+        for (let i = 0; i < numberOfDice; i++) {
+          const roll = Math.floor(Math.random() * diceType) + 1;
           results.push(roll);
           total += roll;
         }
@@ -589,7 +589,7 @@ function socketHandler(io, wsAuth) {
           io.to(roomId).emit('dice-rolled', rollResult);
         }
 
-        console.log(`${userInfo.userName} a lancé ${numberOfDice}d${diceType}${modifier >=  ? '+' : ''}${modifier}: ${total}${isPrivate ? ' (privé)' : ''}`);
+        console.log(`${userInfo.userName} a lancé ${numberOfDice}d${diceType}${modifier >= 0 ? '+' : ''}${modifier}: ${total}${isPrivate ? ' (privé)' : ''}`);
 
       } catch (error) {
         console.error('Erreur lors du lancer de dés:', error);
@@ -696,14 +696,14 @@ function socketHandler(io, wsAuth) {
     const stats = {
       totalConnections: connectedUsers.size,
       connectionsByRoom: {},
-      connectionsByType: { gm: , player:  },
+      connectionsByType: { gm: 0, player: 0 },
       connectionsDetails: []
     };
 
     for (const [socketId, userInfo] of connectedUsers.entries()) {
       // Par room
       if (!stats.connectionsByRoom[userInfo.roomId]) {
-        stats.connectionsByRoom[userInfo.roomId] = ;
+        stats.connectionsByRoom[userInfo.roomId] = 0;
       }
       stats.connectionsByRoom[userInfo.roomId]++;
 

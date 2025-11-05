@@ -132,3 +132,13 @@ scripts/
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+
+# Custom ignores
+generate-secrets.js
+.env
+*.local
+package-lock.json
+yarn.lock
+package.json
+test-security.js

@@ -111,6 +111,26 @@ app.use('/api/scenarios', strictLimiter, scenarioRoutes);
 app.use('/api/reference', referenceRoutes);
 app.use('/api/frontend', frontendRoutes);
 
+// Route racine - Page d'accueil de l'API
+app.get('/', (req, res) => {
+  res.json({
+    success: true,
+    name: 'GameMaster L5R API',
+    version: '1.0.0',
+    description: 'API backend pour l\'application GameMaster Legend of the Five Rings',
+    endpoints: {
+      health: '/api/health',
+      stats: '/api/stats',
+      rooms: '/api/rooms',
+      scenarios: '/api/scenarios',
+      reference: '/api/reference',
+      auth: '/api/auth'
+    },
+    documentation: 'https://github.com/Gaetan1303/GM_L5R',
+    status: 'online'
+  });
+});
+
 // Route de santé du serveur (sans rate limit)
 app.get('/api/health', (req, res) => {
   res.json({ 
