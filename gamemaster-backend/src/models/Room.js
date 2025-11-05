@@ -10,7 +10,7 @@ class Room {
     this.status = 'waiting'; // waiting, active, paused, completed
     this.createdAt = new Date();
     this.lastActivity = new Date();
-    this.maxPlayers = ; // Limite typique pour LR
+    this.maxPlayers = 6; // Limite typique pour L5R
     this.isPrivate = false;
     this.password = null;
     this.currentSession = null;
@@ -25,7 +25,7 @@ class Room {
   }
 
   generateId() {
-    return Math.random().toString().substr(, ).toUpperCase();
+    return Math.random().toString(36).substr(2, 9).toUpperCase();
   }
 
   addPlayer(playerId, playerName, character = null) {
@@ -44,7 +44,7 @@ class Room {
         name: playerName,
         clan: null,
         school: null,
-        rank: 
+        rank: 1
       },
       isConnected: true,
       joinedAt: new Date(),
@@ -68,8 +68,8 @@ class Room {
 
   removePlayer(playerId) {
     const index = this.players.findIndex(p => p.id === playerId);
-    if (index > -) {
-      const removedPlayer = this.players.splice(index, )[];
+    if (index > -1) {
+      const removedPlayer = this.players.splice(index, 1)[0];
       this.updateActivity();
       return removedPlayer;
     }
@@ -107,9 +107,9 @@ class Room {
     this.chat.push(chatMessage);
     this.updateActivity();
     
-    // Garder seulement les  derniers messages
-    if (this.chat.length > ) {
-      this.chat = this.chat.slice(-);
+    // Garder seulement les 100 derniers messages
+    if (this.chat.length > 100) {
+      this.chat = this.chat.slice(-100);
     }
     
     return chatMessage;
