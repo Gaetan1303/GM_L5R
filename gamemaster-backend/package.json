@@ -4,8 +4,8 @@
   "description": "Serveur backend GameMaster pour l'application L5R - Gestion des rooms et parties multijoueurs",
   "main": "dist/server.js",
   "scripts": {
-    "build": "tsc",
-    "start": "node dist/server.js",
+  "build": "tsc",
+  "start": "node dist/server.js",
     "dev": "tsx src/server.ts",
     "watch": "tsc -w",
     "test": "echo \"Error: no test specified\" && exit 1",
