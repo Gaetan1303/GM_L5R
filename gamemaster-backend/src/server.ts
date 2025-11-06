@@ -41,10 +41,9 @@ export default app;
 // [INFRA] Active le mode proxy pour récupérer l'IP réelle derrière un reverse proxy
 app.set('trust proxy', true);
 
-// [SECURITE] Définition des origines autorisées pour CORS (à adapter selon le contexte déploiement)
-const allowedOrigins = [
-  "https://gaetan1303.github.io/JDR-test/"
-];
+
+// [SECURITE] Définition dynamique des origines autorisées pour CORS via .env
+const allowedOrigins = (process.env.ALLOWED_ORIGINS || "").split(",").map(o => o.trim()).filter(o => o);
 
 // [LOG] Affichage des origines CORS configurées pour vérification en dev
 console.log(`CORS configuré pour: ${allowedOrigins.join(', ')}`);
