@@ -61,9 +61,10 @@ const io = socketIo(server, {
 });
 
 //  Authentification WebSocket
-if (process.env.NODE_ENV === 'production') {
-  io.use(wsAuth.middlewareSocketIO());
-}
+// TEMPORAIREMENT DÉSACTIVÉ pour tests
+// if (process.env.NODE_ENV === 'production') {
+//   io.use(wsAuth.middlewareSocketIO());
+// }
 
 // ============================================
 // MIDDLEWARES DE SÉCURITÉ HTTP

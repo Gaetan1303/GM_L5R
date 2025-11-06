@@ -46,7 +46,12 @@ const apiLimiter = rateLimit({
   standardHeaders: true,
   legacyHeaders: false,
   // Skip rate limiting pour les health checks
-  skip: (req) => req.path === '/api/health'
+  skip: (req) => req.path === '/api/health',
+  // Configuration pour Render (behind proxy)
+  validate: {
+    trustProxy: false, // Désactive la validation stricte du trust proxy
+    xForwardedForHeader: false
+  }
 });
 
 // Rate limiter strict pour les routes sensibles (création de room, etc.)
@@ -58,7 +63,11 @@ const strictLimiter = rateLimit({
     message: 'Trop de tentatives. Action temporairement bloquée.'
   },
   standardHeaders: true,
-  legacyHeaders: false
+  legacyHeaders: false,
+  validate: {
+    trustProxy: false,
+    xForwardedForHeader: false
+  }
 });
 
 // . SANITIZATION - Protection contre les injections
