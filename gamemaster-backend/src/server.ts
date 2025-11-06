@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 /**
  * [DEV SENIOR] Point d'entrée principal du backend GameMaster L5R
  * - Structure modulaire, sécurité renforcée, gestion des erreurs et du temps réel.
@@ -55,7 +56,7 @@ const io = new SocketIOServer(server, {
     methods: ["GET", "POST"],
     credentials: true
   },
-  pingTimeout: parseInt(process.env.WS_TIMEOUT ?? '60000'),
+  pingTimeout: parseInt(process.env.WS_TIMEOUT ?? '60000'), 
   pingInterval: parseInt(process.env.WS_HEARTBEAT_INTERVAL ?? '30000'),
   maxHttpBufferSize: 1e6, // 1MB max par message
   transports: ['websocket', 'polling'], // Préférer websocket

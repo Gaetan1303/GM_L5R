@@ -5,9 +5,25 @@
  */
 
 // [IMPORTS] Import des modules Express et du middleware d'authentification WebSocket
-import express from 'express';
-const router = express.Router();
-import wsAuth from '../middleware/wsAuth.js';
+import { Router, Request, Response } from 'express';
+import { AuthService } from '../services/authService.js';
+
+const router = Router();
+const auth = new AuthService();
+
+router.post('/register', async (req: Request, res: Response) => {
+  const { name, email, password } = req.body;
+  if (!name || !email || !password) return res.status(400).json({ ok: false, error: 'Champs requis manquants' });
+  const result = await auth.register(name, email, password);
+  res.json(result);
+});
+
+router.post('/login', async (req: Request, res: Response) => {
+  const { email, password } = req.body;
+  if (!email || !password) return res.status(400).json({ ok: false, error: 'Champs requis manquants' });
+  const result = await auth.login(email, password);
+  res.json(result);
+});
 
 // [MAPPING] Mapping des endpoints vers la logique d'authentification WebSocket
 /**
@@ -53,8 +69,8 @@ router.post('/ws-token', (req, res) => {
       });
     }
 
-    // Générer le token
-    const token = wsAuth.generateToken(userId, userName, userType, roomId);
+  // Générer le token JWT via AuthService
+  const token = auth.generateToken({ userId, userName, userType, roomId });
 
     res.json({
       success: true,
@@ -92,7 +108,7 @@ router.post('/verify-token', (req, res) => {
       });
     }
 
-    const decoded = wsAuth.verifyToken(token);
+  const decoded = auth.verifyToken(token);
 
     res.json({
       success: true,

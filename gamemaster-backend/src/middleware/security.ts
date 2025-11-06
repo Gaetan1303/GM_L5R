@@ -44,7 +44,7 @@ const helmetConfig = helmet({
 // . RATE LIMITING - Protection DDoS
 const apiLimiter = rateLimit({
   windowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS ?? '900000'), // 15 min par défaut
-  max: parseInt(process.env.RATE_LIMIT_MAX_REQUESTS ?? '100'),
+  max: parseInt(process.env.RATE_LIMIT_MAX_REQUESTS ?? '100'), 
   message: {
     success: false,
     message: 'Trop de requêtes depuis cette IP, veuillez réessayer plus tard.'

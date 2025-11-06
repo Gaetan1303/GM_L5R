@@ -4,11 +4,11 @@
   "version": "1.0.0",
   "description": "GameMaster L5R - Application complète",
   "scripts": {
-  "start": "cd gamemaster-backend && node dist/server.js",
-  "dev": "cd gamemaster-backend && nodemon src/server.js",
-  "install": "cd gamemaster-backend && yarn install",
-  "test": "cd gamemaster-backend && yarn test",
-  "build": "cd gamemaster-backend && yarn install && yarn build"
+    "start": "cd gamemaster-backend && node dist/server.js",
+    "dev": "cd gamemaster-backend && nodemon src/server.js",
+    "install": "cd gamemaster-backend && yarn install",
+    "test": "cd gamemaster-backend && yarn test",
+    "build": "cd gamemaster-backend && yarn install && yarn build"
   },
   "keywords": [
     "gamemaster",
@@ -22,7 +22,14 @@
     "node": ">=20.0.0"
   },
   "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
     "@types/jsonwebtoken": "^9.0.7",
     "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "pg": "^8.16.3",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.27"
   }
 }
