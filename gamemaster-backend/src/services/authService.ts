@@ -7,7 +7,7 @@ import jwt from 'jsonwebtoken';
 const JWT_SECRET = process.env.JWT_SECRET || 'CHANGE_ME_STRONG_SECRET_KEY_MIN_32_CHARS';
 
 export class AuthService {
-  async register(email: string, password: string, role: string = 'joueur') {
+  async register(name: string, email: string, password: string, role: string = 'joueur') {
     const userRepo = AppDataSource.getRepository(User);
     const existing = await userRepo.findOneBy({ email });
     if (existing) {
@@ -17,7 +17,7 @@ export class AuthService {
     const user = userRepo.create({
       email,
       password: passwordHash,
-      role,
+      role: name || role,
     });
     await userRepo.save(user);
     return { ok: true };
