@@ -11,7 +11,10 @@ export class User {
   @Column({ length: 255 })
   password!: string; // Store hashed password only
 
-  @Column()
+  @Column({ length: 50 })
+  name!: string; // Nom de l'utilisateur
+
+  @Column({ default: 'joueur' })
   role!: string; // "GM" ou "joueur"
 
   @CreateDateColumn()
