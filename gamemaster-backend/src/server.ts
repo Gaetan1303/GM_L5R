@@ -1,4 +1,5 @@
 import 'reflect-metadata';
+import { AppDataSource } from './data-source.js';
 /**
  * [DEV SENIOR] Point d'entrée principal du backend GameMaster L5R
  * - Structure modulaire, sécurité renforcée, gestion des erreurs et du temps réel.
@@ -27,6 +28,7 @@ import scenarioRoutes from './routes/scenarioRoutes.js';
 import frontendRoutes from './routes/frontendRoutes.js';
 import authRoutes from './routes/authRoutes.js';
 import socketHandler from './services/socketHandler.js';
+import { home } from './controllers/homeController.js';
 
 // [SECURITE] Import des middlewares de sécurité et d'authentification WebSocket
 import { helmetConfig, apiLimiter, strictLimiter, sanitizeData, validateOrigin, securityLogger, requestSizeLimit } from './middleware/security.js';
@@ -118,6 +120,9 @@ app.use('/api/scenarios', strictLimiter, scenarioRoutes);
 app.use('/api/reference', referenceRoutes);
 app.use('/api/frontend', frontendRoutes);
 
+// [HOME] Route d'accueil
+app.get('/', home);
+
 // [MONITORING] Endpoint de health check pour le monitoring et l'orchestration
 app.get('/api/health', (req: Request, res: Response) => {
   res.json({
@@ -183,24 +188,40 @@ app.use((req: Request, res: Response) => {
 
 const PORT = process.env.PORT || 3000;
 
-// [INFRA] Démarrage du serveur et affichage des paramètres clés en console
-server.listen(PORT, () => {
-  console.log('');
-  console.log('====================================');
-  console.log('  SERVEUR GAMEMASTER L5R SÉCURISÉ');
-  console.log('====================================');
-  console.log(`Environnement: ${process.env.NODE_ENV || 'development'}`);
-  console.log(`Port: ${PORT}`);
-  console.log(`CORS: ${allowedOrigins.length} origine(s) autorisée(s)`);
-  console.log(`Helmet: ${process.env.HELMET_ENABLED !== 'false' ? 'Activé' : 'Désactivé'}`);
-  console.log(`Rate Limit: ${process.env.RATE_LIMIT_MAX_REQUESTS || 100} req/${process.env.RATE_LIMIT_WINDOW_MS || 900000}ms`);
-  console.log(`WebSocket Auth: ${process.env.NODE_ENV === 'production' ? 'Activé' : 'Désactivé (dev)'}`);
-  console.log(`API: http://localhost:${PORT}/api`);
-  console.log(`Health: http://localhost:${PORT}/api/health`);
-  console.log(`Stats: http://localhost:${PORT}/api/stats`);
-  console.log('====================================');
-  console.log('');
-});
+
+// [BDD] Initialisation de la connexion PostgreSQL via TypeORM
+AppDataSource.initialize()
+  .then(() => {
+    console.log(' Connexion à la base de données PostgreSQL réussie !');
+    server.listen(PORT, () => {
+      console.log('');
+      console.log('====================================');
+      console.log('  SERVEUR GAMEMASTER L5R SÉCURISÉ');
+      console.log('====================================');
+      console.log(`Environnement: ${process.env.NODE_ENV || 'development'}`);
+      console.log(`Port: ${PORT}`);
+      console.log(`CORS: ${allowedOrigins.length} origine(s) autorisée(s)`);
+      console.log(`Helmet: ${process.env.HELMET_ENABLED !== 'false' ? 'Activé' : 'Désactivé'}`);
+      console.log(`Rate Limit: ${process.env.RATE_LIMIT_MAX_REQUESTS || 100} req/${process.env.RATE_LIMIT_WINDOW_MS || 900000}ms`);
+      console.log(`WebSocket Auth: ${process.env.NODE_ENV === 'production' ? 'Activé' : 'Désactivé (dev)'}`);
+      const apiBaseUrl = process.env.NODE_ENV === 'production'
+        ? 'https://gm-l5r.onrender.com'
+        : `http://localhost:${PORT}`;
+      console.log(`API: ${apiBaseUrl}/api`);
+      console.log(`Health: ${apiBaseUrl}/api/health`);
+      console.log(`Stats: ${apiBaseUrl}/api/stats`);
+      console.log('====================================');
+      console.log('');
+    });
+  })
+  .catch((error) => {
+    if (process.env.NODE_ENV === 'production') {
+      console.error(' Erreur de connexion à la base de données. Vérifiez la configuration.');
+    } else {
+      console.error(' Erreur de connexion à la base de données :', error);
+    }
+    process.exit(1);
+  });
 
 // [INFRA] Gestion propre des signaux d'arrêt (SIGTERM/SIGINT) pour éviter les corruptions de données
 process.on('SIGTERM', () => {
