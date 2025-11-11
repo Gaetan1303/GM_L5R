@@ -13,5 +13,4 @@ scripts/
 *.local
 package-lock.json
 yarn.lock
-dist
-docs
+package.json

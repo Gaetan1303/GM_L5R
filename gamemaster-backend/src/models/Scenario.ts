@@ -1,3 +1,6 @@
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Scene } from './Scene';
+
 /**
  * [DEV SENIOR] Modèle Scenario - structure et logique métier d'un scénario de jeu.
  * - Définit les propriétés, méthodes et interactions des scénarios.
@@ -5,7 +8,7 @@
  */
 
 // [INTERFACES] Définition des types principaux pour les scènes, PNJ, factions, lieux et récompenses
-export interface Scene {
+export interface ScenarioScene {
   title: string;
   description: string;
   objectives?: string[];
@@ -37,77 +40,45 @@ export interface Reward {
 }
 
 // [MODEL] Classe Scenario - encapsule la logique métier et les propriétés d'un scénario
+@Entity()
 export class Scenario {
-  id: string;
-  title: string;
-  synopsis: string;
-  hooks: string[];
-  scenes: Scene[];
-  npcs: NPC[];
-  factions: Faction[];
-  locations: Location[];
-  rewards: Reward[];
-  difficulty: string;
-  tags: string[];
-  createdAt: Date;
+  @PrimaryGeneratedColumn('uuid')
+  id!: string;
 
-  constructor({
-    id,
-    title,
-    synopsis,
-    hooks = [],
-    scenes = [],
-    npcs = [],
-    factions = [],
-    locations = [],
-    rewards = [],
-    difficulty = 'standard',
-    tags = []
-  }: {
-    id?: string;
-    title?: string;
-    synopsis?: string;
-    hooks?: string[];
-    scenes?: Scene[];
-    npcs?: NPC[];
-    factions?: Faction[];
-    locations?: Location[];
-    rewards?: Reward[];
-    difficulty?: string;
-    tags?: string[];
-  }) {
-    this.id = id || this.generateId();
-    this.title = title || 'Scénario sans titre';
-    this.synopsis = synopsis || '';
-    this.hooks = hooks;
-    this.scenes = scenes;
-    this.npcs = npcs;
-    this.factions = factions;
-    this.locations = locations;
-    this.rewards = rewards;
-    this.difficulty = difficulty;
-    this.tags = tags;
-    this.createdAt = new Date();
-  }
+  @Column()
+  title!: string;
 
-  private generateId(): string {
-    return Math.random().toString(36).substr(2, 9).toUpperCase();
-  }
+  @Column({ nullable: true })
+  synopsis?: string;
 
-  toJSON(): Record<string, any> {
-    return {
-      id: this.id,
-      title: this.title,
-      synopsis: this.synopsis,
-      hooks: this.hooks,
-      scenes: this.scenes,
-      npcs: this.npcs,
-      factions: this.factions,
-      locations: this.locations,
-      rewards: this.rewards,
-      difficulty: this.difficulty,
-      tags: this.tags,
-      createdAt: this.createdAt
-    };
-  }
+  @Column('simple-array', { nullable: true })
+  hooks?: string[];
+
+  @OneToMany(() => Scene, (scene: Scene) => scene.scenario, { cascade: true, eager: true })
+  scenes!: Scene[];
+
+  // Utilise les interfaces pour typer les champs JSONB
+  @Column('jsonb', { nullable: true })
+  npcs?: NPC[];
+
+  @Column('jsonb', { nullable: true })
+  factions?: Faction[];
+
+  @Column('jsonb', { nullable: true })
+  locations?: Location[];
+
+  @Column('jsonb', { nullable: true })
+  rewards?: Reward[];
+
+  @Column({ default: 'standard' })
+  difficulty!: string;
+
+  @Column('simple-array', { nullable: true })
+  tags?: string[];
+
+  @CreateDateColumn()
+  createdAt!: Date;
+
+  @UpdateDateColumn()
+  updatedAt!: Date;
 }

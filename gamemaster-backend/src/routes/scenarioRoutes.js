@@ -1,24 +1,40 @@
-/**
- * [DEV SENIOR] Routes Scenario - expose les endpoints REST pour la gestion des scénarios.
- * - Mapping direct vers le contrôleur, endpoints pour accès, création, génération, suppression.
- * - Adapter les routes selon l'évolution des besoins métier et la structure des scénarios.
- */
-// [IMPORTS] Import des modules Express et du contrôleur Scenario
-import { Router } from 'express';
-import ScenarioController from '../controllers/ScenarioController.js';
-// [ROUTER] Instanciation du routeur Express pour centraliser les endpoints
-const router = Router();
-// [MAPPING] Mapping des endpoints vers les méthodes du contrôleur Scenario
-// Lister les scénarios
-router.get('/', ScenarioController.list);
+const express = require('express');
+const router = express.Router();
+const scenarioService = require('../services/scenarioService');
+
+// Lister les scénarios (en mémoire)
+router.get('/', (req, res) => {
+  res.json({ success: true, scenarios: scenarioService.list() });
+});
+
 // Obtenir un scénario par ID
-router.get('/:id', ScenarioController.get);
+router.get('/:id', (req, res) => {
+  const s = scenarioService.get(req.params.id);
+  if (!s) return res.status(404).json({ success: false, message: 'Scénario introuvable' });
+  res.json({ success: true, scenario: s.toJSON ? s.toJSON() : s });
+});
+
 // Créer un scénario
-router.post('/', ScenarioController.create);
+router.post('/', (req, res) => {
+  const { title, synopsis } = req.body || {};
+  if (!title || !synopsis) {
+    return res.status(400).json({ success: false, message: 'title et synopsis sont requis' });
+  }
+  const created = scenarioService.create(req.body);
+  res.status(201).json({ success: true, scenario: created });
+});
+
 // Générer un scénario automatiquement
-router.post('/generate', ScenarioController.generate);
+router.post('/generate', (req, res) => {
+  const created = scenarioService.generate(req.body || {});
+  res.status(201).json({ success: true, scenario: created });
+});
+
 // Supprimer un scénario
-router.delete('/:id', ScenarioController.remove);
-// [EXPORT] Export du routeur principal pour intégration dans le serveur
-export default router;
-//# sourceMappingURL=scenarioRoutes.js.map
+router.delete('/:id', (req, res) => {
+  const ok = scenarioService.remove(req.params.id);
+  if (!ok) return res.status(404).json({ success: false, message: 'Scénario introuvable' });
+  res.json({ success: true });
+});
+
+module.exports = router;

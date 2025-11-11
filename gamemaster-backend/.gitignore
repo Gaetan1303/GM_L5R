@@ -38,12 +38,11 @@ build/Release
 node_modules/
 jspm_packages/
 
-# TypeScript
-dist/
-*.tsbuildinfo
-
 # TypeScript v1 declaration files
 typings/
+
+# TypeScript cache
+*.tsbuildinfo
 
 # Optional npm cache directory
 .npm
@@ -84,10 +83,6 @@ typings/
 secrets/
 config/secrets.json
 .secrets
-
-# Clé API Render
-.render_api_key
-rnd_5OYo0LJVE9ocDfU5EW4EZB3b3788
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
