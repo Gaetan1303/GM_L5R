@@ -6,42 +6,39 @@ import type { Request, Response } from 'express';
  */
 
 // [IMPORTS] Import des modèles et services nécessaires
-import { Scenario } from '../models/Scenario.js';
-import { ScenarioService } from '../services/scenarioService.js';
-
-const scenarioService = new ScenarioService();
+import { scenarioService } from '../services/scenarioService.js';
 
 class ScenarioController {
-  static list(req: Request, res: Response) {
-    res.json({ success: true, scenarios: scenarioService.list() });
+  static async list(_req: Request, res: Response) {
+    const scenarios = await scenarioService.list();
+    res.json({ success: true, scenarios });
   }
 
-  static get(req: Request, res: Response) {
-  const s = scenarioService.get(req.params.id ?? '');
+  static async get(req: Request, res: Response) {
+    const s = await scenarioService.get(req.params.id ?? '');
     if (!s) return res.status(404).json({ success: false, message: 'Scénario introuvable' });
-    res.json({ success: true, scenario: s.toJSON ? s.toJSON() : s });
+    res.json({ success: true, scenario: s });
   }
 
-  static create(req: Request, res: Response) {
+  static async create(req: Request, res: Response) {
     const { title, synopsis } = req.body || {};
     if (!title || !synopsis) {
       return res.status(400).json({ success: false, message: 'title et synopsis sont requis' });
     }
-    const created = scenarioService.create(req.body);
+    const created = await scenarioService.create(req.body);
     res.status(201).json({ success: true, scenario: created });
   }
 
-  static generate(req: Request, res: Response) {
-    const created = scenarioService.generate(req.body || {});
+  static async generate(req: Request, res: Response) {
+    const created = await scenarioService.generate(req.body || {});
     res.status(201).json({ success: true, scenario: created });
   }
 
-  static remove(req: Request, res: Response) {
-  const ok = scenarioService.remove(req.params.id ?? '');
+  static async remove(req: Request, res: Response) {
+    const ok = await scenarioService.remove(req.params.id ?? '');
     if (!ok) return res.status(404).json({ success: false, message: 'Scénario introuvable' });
     res.json({ success: true });
   }
 }
 
-// [EXPORT] Export du contrôleur principal pour intégration dans les routes
 export default ScenarioController;

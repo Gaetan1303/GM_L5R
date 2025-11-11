@@ -39,7 +39,7 @@ export class ScenarioService {
   }
 
   list(): any[] {
-    return Array.from(this.scenarios.values()).map((s: Scenario) => s.toJSON());
+    return Array.from(this.scenarios.values());
   }
 
   get(id: string): Scenario | null {
@@ -47,7 +47,8 @@ export class ScenarioService {
   }
 
   create(payload: Partial<Scenario>): Scenario {
-    const scenario = new Scenario(payload || {});
+    // Remplacer par repo.create lors de la migration TypeORM
+    const scenario = Object.assign(new Scenario(), payload || {});
     this.scenarios.set(scenario.id, scenario);
     return scenario;
   }
@@ -119,27 +120,6 @@ export class ScenarioService {
       `Un dojo propose d'observer une démonstration de ${kata || 'technique martiale'} qui attire des convoitises.`
     ];
 
-    const scenes = [
-      {
-        title: 'Accroche et arrivée',
-        description: `Voyage vers ${lieu} ponctué par ${voyageEvt}. Mise en place des enjeux sociaux (${etiquette}).`,
-        objectives: ['Comprendre la demande', 'Gagner la confiance des notables'],
-        challenges: ['Protocole', 'Orientation', 'Suspicion']
-      },
-      {
-        title: 'Enquête et tensions',
-        description: 'Indices contradictoires, factions locales en désaccord, un témoin-clé disparaît.',
-        objectives: ['Identifier les meneurs', 'Recueillir des preuves'],
-        challenges: ['Intimidation', 'Diplomatie', 'Filature']
-      },
-      {
-        title: 'Confrontation et résolution',
-        description: `Face-à-face avec les instigateurs. Possible duel impliquant ${kata || 'un champion'} ou rituel lié à ${spell || 'une magie ancienne'}.`,
-        objectives: ['Neutraliser la menace', 'Sauver les innocents'],
-        challenges: ['Duel', 'Rituel', 'Choix moral']
-      }
-    ];
-
     const npcs = [
       { name: `Daimyo du ${clan}`, role: 'commanditaire', clan, notes: 'Pragmatique, sensible à l’honneur.' },
       { name: 'Moine errant', role: 'témoin', notes: 'Aperçu des forces en présence.' },
@@ -164,10 +144,40 @@ export class ScenarioService {
     const difficulty = options.difficulty ?? 'standard';
     const tags = [clan, season, lieu].filter(Boolean);
 
-    return this.create({ title, synopsis, hooks, scenes, npcs, factions, locations, rewards, difficulty, tags });
+    // Crée d'abord le scénario sans les scènes
+    const scenario = this.create({ title, synopsis, hooks, npcs, factions, locations, rewards, difficulty, tags });
+
+    // Génère les scènes avec la bonne référence
+    const scenes = [
+      {
+        id: 'scene-1',
+        scenario: scenario,
+        title: 'Accroche et arrivée',
+        description: `Voyage vers ${lieu} ponctué par ${voyageEvt}. Mise en place des enjeux sociaux (${etiquette}).`,
+        objectives: ['Comprendre la demande', 'Gagner la confiance des notables'],
+        challenges: ['Protocole', 'Orientation', 'Suspicion']
+      },
+      {
+        id: 'scene-2',
+        scenario: scenario,
+        title: 'Enquête et tensions',
+        description: 'Indices contradictoires, factions locales en désaccord, un témoin-clé disparaît.',
+        objectives: ['Identifier les meneurs', 'Recueillir des preuves'],
+        challenges: ['Intimidation', 'Diplomatie', 'Filature']
+      },
+      {
+        id: 'scene-3',
+        scenario: scenario,
+        title: 'Confrontation et résolution',
+        description: `Face-à-face avec les instigateurs. Possible duel impliquant ${kata || 'un champion'} ou rituel lié à ${spell || 'une magie ancienne'}.`,
+        objectives: ['Neutraliser la menace', 'Sauver les innocents'],
+        challenges: ['Duel', 'Rituel', 'Choix moral']
+      }
+    ];
+    scenario.scenes = scenes;
+    return scenario;
   }
 }
 
-const scenarioService = new ScenarioService();
 // [EXPORT] Export du service principal pour intégration dans les contrôleurs
-export default scenarioService;
+export const scenarioService = new ScenarioService();
