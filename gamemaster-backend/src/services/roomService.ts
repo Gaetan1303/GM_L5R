@@ -1,4 +1,5 @@
 
+
 // Nouvelle version RoomService pour TypeORM
 import { AppDataSource } from '../data-source';
 import { Room } from '../models/Room';
@@ -8,6 +9,10 @@ import { Scenario } from '../models/Scenario';
 import { Repository } from 'typeorm';
 
 export class RoomService {
+  // Récupère un joueur dans une room (PlayerInRoom) par roomId et userId
+  async getPlayerInRoom(roomId: string, userId: string): Promise<PlayerInRoom | null> {
+    return await this.playerRepo.findOne({ where: { room: { id: roomId }, user: { id: userId } }, relations: ['user', 'room'] });
+  }
   private roomRepo: Repository<Room>;
   private playerRepo: Repository<PlayerInRoom>;
   private userRepo: Repository<User>;

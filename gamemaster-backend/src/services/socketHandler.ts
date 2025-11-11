@@ -55,83 +55,65 @@ function socketHandler(io: Server, wsAuth: any) {
     // =============================
 
     // Créer une room (ack via callback)
-    socket.on('create-room', (data, callback) => {
+    socket.on('create-room', async (data, callback) => {
       try {
-        const { name, gmId, gmName, maxPlayers = 6, isPublic = true, scenarioId, scenario, generateScenario, generateOptions } = data || {};
-        if (!name || !gmId || !gmName) {
-          return callback && callback({ ok: false, error: 'Paramètres manquants (name, gmId, gmName)' });
+        const { name, gmId, maxPlayers = 6, isPublic = true, scenarioId, scenario, generateScenario, generateOptions, password } = data || {};
+        if (!name || !gmId) {
+          return callback && callback({ ok: false, error: 'Paramètres manquants (name, gmId)' });
         }
 
         // Préparer le scénario si fourni/demandé
-        let scenarioData = null;
-        try {
-          if (scenarioId) {
-            const found = scenarioService.get(scenarioId);
-            if (found) scenarioData = found.toJSON ? found.toJSON() : found;
-          } else if (generateScenario || generateOptions) {
-            const created = scenarioService.generate(generateOptions || {});
-            scenarioData = created;
-          } else if (typeof scenario === 'object' && scenario) {
-            // Si un objet scénario est passé directement
-            const created = scenarioService.create(scenario);
-            scenarioData = created;
-          } else if (typeof scenario === 'string') {
-            scenarioData = scenario; // simple titre/label
-          }
-        } catch (e) {
-          console.warn('create-room: scénario ignoré suite à erreur:', (e as Error).message);
+        let scenarioEntityId: string | undefined = undefined;
+        if (scenarioId) {
+          scenarioEntityId = scenarioId;
+        } else if (generateScenario || generateOptions) {
+          // Génère un scénario et le sauvegarde si besoin (ici, on suppose que scenarioService.generate retourne un objet compatible)
+          const created = scenarioService.generate(generateOptions || {});
+          // TODO: sauvegarder le scénario en BDD si besoin et récupérer son id
         }
 
-  // Si scenarioData est null, passer une chaîne vide
-        // Convertir scenarioData en string si nécessaire
-        let scenarioString: string = '';
-        if (typeof scenarioData === 'string') {
-          scenarioString = scenarioData;
-        } else if (scenarioData && typeof scenarioData === 'object') {
-          scenarioString = JSON.stringify(scenarioData);
-        }
-        const room = roomService.createRoom(name, gmId, gmName, scenarioString);
-        // Ajuster options de la room selon la demande du front
-        room.maxPlayers = Math.max(1, Math.min(10, Number(maxPlayers) || 6));
-        room.isPrivate = !isPublic;
-
-        // Notifier tous les clients comme dans le serveur de référence JDR-test
-        io.emit('room-created', room.toPublicJSON());
-
-        callback && callback({ ok: true, room: room.toJSON() });
+        const room = await roomService.createRoom({
+          name,
+          gmId,
+          scenarioId: scenarioEntityId,
+          isPrivate: !isPublic,
+          password: password ?? null
+        });
+        // Notifier tous les clients
+        io.emit('room-created', room);
+        callback && callback({ ok: true, room });
       } catch (error) {
         console.error('Erreur create-room:', error);
-  callback && callback({ ok: false, error: (error as Error).message });
+        callback && callback({ ok: false, error: (error as Error).message });
       }
     });
 
     // Lister les rooms publiques (ack)
-    socket.on('list-rooms', (callback) => {
+    socket.on('list-rooms', async (callback) => {
       try {
-        const rooms = roomService.getPublicRooms();
-  callback && callback({ ok: true, rooms: rooms.map((r: any) => r.toPublicJSON()) });
+        const rooms = await roomService.getPublicRooms();
+        callback && callback({ ok: true, rooms });
       } catch (error) {
         console.error('Erreur list-rooms:', error);
-  callback && callback({ ok: false, error: (error as Error).message });
+        callback && callback({ ok: false, error: (error as Error).message });
       }
     });
 
     // Chercher une room par ID (ack)
-    socket.on('find-room', (roomId, callback) => {
+    socket.on('find-room', async (roomId, callback) => {
       try {
-        const room = roomService.getRoomById(roomId);
+        const room = await roomService.getRoomById(roomId);
         if (!room) return callback && callback({ ok: false, error: 'Session introuvable' });
-        callback && callback({ ok: true, room: room.toJSON() });
+        callback && callback({ ok: true, room });
       } catch (error) {
         console.error('Erreur find-room:', error);
-  callback && callback({ ok: false, error: (error as Error).message });
+        callback && callback({ ok: false, error: (error as Error).message });
       }
     });
-    socket.on('join-room', (data, callback) => {
+    socket.on('join-room', async (data, callback) => {
       try {
-        const { roomId, userId, userType, userName, character } = data; // userType: 'gm' ou 'player'
-        
-        const room = roomService.getRoomById(roomId);
+        const { roomId, userId, userType, userName, character } = data;
+        const room = await roomService.getRoomById(roomId);
         if (!room) {
           const errPayload = { type: 'ROOM_NOT_FOUND', message: 'Room non trouvée' };
           if (typeof callback === 'function') return callback({ ok: false, error: errPayload.message });
@@ -139,14 +121,18 @@ function socketHandler(io: Server, wsAuth: any) {
           return;
         }
 
-        // Vérifier si l'utilisateur a le droit de rejoindre cette room
-        const isGM = room.gmId === userId;
-  let isPlayer = room.players.some((p: any) => p.id === userId);
+        // Vérifier si l'utilisateur est GM
+        const isGM = room.gm && room.gm.id === userId;
 
-        // Compat: si le joueur n'existe pas encore et que c'est un player, tenter l'ajout auto
+  // Vérifier si l'utilisateur est déjà joueur dans la room
+  let isPlayer = false;
+  const playerRecord = await roomService.getPlayerInRoom(roomId, userId);
+  isPlayer = !!playerRecord;
+
+        // Si le joueur n'existe pas encore et que c'est un player, tenter l'ajout auto
         if (!isGM && !isPlayer && userType === 'player') {
           try {
-            roomService.addPlayerToRoom(roomId, userId, userName, character || null);
+            await roomService.addPlayerToRoom(roomId, userId, character || null);
             isPlayer = true;
           } catch (e) {
             const errPayload = { type: 'JOIN_ERROR', message: (e as Error).message };
@@ -165,7 +151,7 @@ function socketHandler(io: Server, wsAuth: any) {
 
         // Rejoindre la room Socket.IO
         socket.join(roomId);
-        
+
         // Enregistrer la connexion
         connectedUsers.set(socket.id, {
           userId,
@@ -175,11 +161,6 @@ function socketHandler(io: Server, wsAuth: any) {
           connectedAt: new Date()
         });
 
-        // Mettre à jour le statut de connexion du joueur
-        if (isPlayer) {
-          room.updatePlayerConnection(userId, true);
-        }
-
         console.log(`${userName} (${isGM ? 'GM' : 'Joueur'}) a rejoint la room ${room.name} (${roomId})`);
 
         // Notifier les autres utilisateurs de la room
@@ -187,35 +168,34 @@ function socketHandler(io: Server, wsAuth: any) {
           userId,
           userName,
           userType: isGM ? 'gm' : 'player',
-          room: room.toJSON(),
+          room,
           timestamp: new Date()
         });
 
         const joinPayload = {
           success: true,
-          room: room.toJSON(),
+          room,
           userType: isGM ? 'gm' : 'player',
-          chatHistory: room.chat.slice(-50),
+          // chatHistory: à implémenter si tu veux l'historique
           timestamp: new Date()
         };
 
         if (typeof callback === 'function') {
-          callback({ ok: true, room: room.toJSON() });
+          callback({ ok: true, room });
         } else {
-          // Confirmer la connexion à l'utilisateur (événement natif)
           socket.emit('room-joined', joinPayload);
         }
 
       } catch (error) {
         console.error('Erreur lors de la connexion à la room:', error);
-  if (typeof callback === 'function') return callback({ ok: false, error: (error as Error).message });
-  socket.emit('error', { type: 'JOIN_ERROR', message: (error as Error).message });
+        if (typeof callback === 'function') return callback({ ok: false, error: (error as Error).message });
+        socket.emit('error', { type: 'JOIN_ERROR', message: (error as Error).message });
       }
     });
 
     // Mettre à jour le personnage du joueur (compat sessions utilisateur)
     // Attendu: { roomId, userId, character }
-    socket.on('update-character', (data, callback) => {
+    socket.on('update-character', async (data, callback) => {
       try {
         const { roomId, userId, character } = data || {};
         if (!roomId || !userId || !character) {
@@ -230,53 +210,59 @@ function socketHandler(io: Server, wsAuth: any) {
           return socket.emit('error', { type: 'ACCESS_DENIED', message: 'Accès refusé' });
         }
 
-        const updated = roomService.updatePlayerCharacter(roomId, userId, character);
-        // Diffuser à la room
-        io.to(roomId).emit('character-updated', { roomId, player: updated });
-        callback && callback({ ok: true, player: updated });
+        // Met à jour le personnage via PlayerInRoom
+        const player = await roomService.getPlayerInRoom(roomId, userId);
+        if (!player) {
+          return callback && callback({ ok: false, error: 'Joueur introuvable dans la room' });
+        }
+  player.character = character;
+  // Utilise le repository pour sauvegarder
+  await roomService['playerRepo'].save(player);
+  io.to(roomId).emit('character-updated', { roomId, player });
+  callback && callback({ ok: true, player });
 
       } catch (error) {
         console.error('Erreur update-character:', error);
-  if (typeof callback === 'function') return callback({ ok: false, error: (error as Error).message });
-  socket.emit('error', { type: 'CHARACTER_UPDATE_ERROR', message: (error as Error).message });
+        if (typeof callback === 'function') return callback({ ok: false, error: (error as Error).message });
+        socket.emit('error', { type: 'CHARACTER_UPDATE_ERROR', message: (error as Error).message });
       }
     });
 
     // Quitter une room
     socket.on('leave-room', (data) => {
-      try {
-        const userInfo = connectedUsers.get(socket.id);
-        if (!userInfo) return;
+      (async () => {
+        try {
+          const userInfo = connectedUsers.get(socket.id);
+          if (!userInfo) return;
 
-        const { roomId, userId } = userInfo;
-        const room = roomService.getRoomById(roomId);
+          const { roomId, userId } = userInfo;
+          const room = await roomService.getRoomById(roomId);
 
-        if (room) {
-          // Mettre à jour le statut de connexion
-          room.updatePlayerConnection(userId, false);
+          if (room) {
+            // (updatePlayerConnection supprimé)
+            // Notifier les autres utilisateurs
+            socket.to(roomId).emit('user-left', {
+              userId,
+              userName: userInfo.userName,
+              userType: userInfo.userType,
+              room,
+              timestamp: new Date()
+            });
+          }
 
-          // Notifier les autres utilisateurs
-          socket.to(roomId).emit('user-left', {
-            userId,
-            userName: userInfo.userName,
-            userType: userInfo.userType,
-            room: room.toJSON(),
-            timestamp: new Date()
-          });
+          socket.leave(roomId);
+          connectedUsers.delete(socket.id);
+
+          console.log(`${userInfo.userName} a quitté la room ${roomId}`);
+
+        } catch (error) {
+          console.error('Erreur lors de la déconnexion de la room:', error);
         }
-
-        socket.leave(roomId);
-        connectedUsers.delete(socket.id);
-
-        console.log(`${userInfo.userName} a quitté la room ${roomId}`);
-
-      } catch (error) {
-        console.error('Erreur lors de la déconnexion de la room:', error);
-      }
+      })();
     });
 
     // Envoyer un message de chat
-    socket.on('chat-message', (data) => {
+    socket.on('chat-message', async (data) => {
       try {
         const { roomId, message } = data;
         const userInfo = connectedUsers.get(socket.id);
@@ -305,12 +291,14 @@ function socketHandler(io: Server, wsAuth: any) {
           return;
         }
 
-        const chatMessage = roomService.addChatMessage(
+        // Ici, tu peux stocker le message dans une table dédiée si tu veux la persistance
+        const chatMessage = {
           roomId,
-          userInfo.userId,
-          userInfo.userName,
-          message.trim()
-        );
+          userId: userInfo.userId,
+          userName: userInfo.userName,
+          text: message.trim(),
+          timestamp: new Date()
+        };
 
         // Diffuser le message à tous les utilisateurs de la room
         io.to(roomId).emit('chat-message', chatMessage);
@@ -330,7 +318,7 @@ function socketHandler(io: Server, wsAuth: any) {
         const { roomId, message } = data || {};
         if (!message || !message.text) return;
         // Ajouter au chat interne pour l'historique
-        roomService.addChatMessage(roomId, message.userId, message.userName, message.text);
+  // (addChatMessage supprimé, persistance non implémentée ici)
         // Relayer tel quel pour le front existant
         io.to(roomId).emit('chat', message);
       } catch (error) {
@@ -361,12 +349,11 @@ function socketHandler(io: Server, wsAuth: any) {
           return;
         }
 
-        const room = roomService.updateRoomStatus(roomId, status);
-
-        // Notifier tous les utilisateurs du changement de statut
+        // TODO: Implémenter updateRoomStatus avec TypeORM si besoin
+        // Suppression de l'appel à toJSON obsolète
         io.to(roomId).emit('room-status-changed', {
           status,
-          room: room.toJSON(),
+          room: null,
           changedBy: userInfo.userName,
           timestamp: new Date()
         });
@@ -439,54 +426,14 @@ function socketHandler(io: Server, wsAuth: any) {
         }
 
         const { roomId, sceneIndex, title } = data || {};
-        const room = roomService.getRoomById(roomId);
-        if (!room) {
-          if (typeof callback === 'function') return callback({ ok: false, error: 'Room non trouvée' });
-          return socket.emit('error', { type: 'ROOM_NOT_FOUND', message: 'Room non trouvée' });
-        }
-
-        // Trouver la scène dans room.scenario.scenes si possible
-        let currentScene = null;
-  // Vérifier que scenario est un objet et possède scenes
-  const scenarioObj = typeof room?.scenario === 'object' && room?.scenario !== null ? room.scenario as any : null;
-  const scenes = Array.isArray(scenarioObj?.scenes) ? scenarioObj.scenes : null;
-        if (scenes) {
-          if (typeof sceneIndex === 'number' && scenes[sceneIndex]) {
-            currentScene = { index: sceneIndex, ...scenes[sceneIndex] };
-          } else if (title) {
-            const idx = scenes.findIndex((s: any) => s.title === title);
-            if (idx >= 0) currentScene = { index: idx, ...scenes[idx] };
-          }
-        }
-
-        // Si aucune scène trouvée mais un titre fourni, stocker un stub
-        if (!currentScene && title) {
-          currentScene = { title };
-        }
-
-        // Mettre à jour la scène courante et l'historique
-        const historyEntry = currentScene ? {
-          index: currentScene.index ?? null,
-          title: currentScene.title || (currentScene?.description ? undefined : null),
-          at: new Date(),
-          by: userInfo.userName
-        } : { title, at: new Date(), by: userInfo.userName };
-
-        const history = Array.isArray(room.gameData.scenesHistory) ? room.gameData.scenesHistory.slice() : [];
-        history.push(historyEntry);
-        if (history.length > 100) history.splice(0, history.length - 100);
-
-        room.updateGameData({ currentScene: currentScene, scenesHistory: history });
-
-        // Diffuser aux clients de la room
+        // TODO: Refaire la logique de scène avec TypeORM (stub temporaire)
         io.to(roomId).emit('scene-changed', {
           roomId,
-          currentScene,
-          by: userInfo.userName,
-          timestamp: new Date()
+          currentScene: null,
+          history: []
         });
 
-        if (typeof callback === 'function') return callback({ ok: true, currentScene });
+  if (typeof callback === 'function') return callback({ ok: true });
 
       } catch (error) {
         console.error('Erreur set-current-scene:', error);
@@ -692,22 +639,16 @@ function socketHandler(io: Server, wsAuth: any) {
         
         if (userInfo) {
           const { roomId, userId, userName } = userInfo;
-          const room = roomService.getRoomById(roomId);
-
-          if (room) {
-            // Mettre à jour le statut de connexion
-            room.updatePlayerConnection(userId, false);
-
-            // Notifier les autres utilisateurs
-            socket.to(roomId).emit('user-disconnected', {
-              userId,
-              userName,
-              userType: userInfo.userType,
-              room: room.toJSON(),
-              reason: reason,
-              timestamp: new Date()
-            });
-          }
+          // TODO: Mettre à jour le statut de connexion dans la BDD si besoin
+          // Suppression de l'appel à toJSON et updatePlayerConnection
+          socket.to(roomId).emit('user-disconnected', {
+            userId,
+            userName,
+            userType: userInfo.userType,
+            room: null,
+            reason: reason,
+            timestamp: new Date()
+          });
 
           connectedUsers.delete(socket.id);
           console.log(`${userName} s'est déconnecté de la room ${roomId} (raison: ${reason})`);
@@ -777,16 +718,13 @@ function socketHandler(io: Server, wsAuth: any) {
         connectedUsers.delete(socketId);
         
         // Mettre à jour le statut dans la room
-        const room = roomService.getRoomById(userInfo.roomId);
-        if (room) {
-          room.updatePlayerConnection(userInfo.userId, false);
-        }
+        // TODO: Nettoyage du statut de connexion dans la BDD si besoin
       }
     }
   }, 60000); // Toutes les 60 secondes
 
   console.log('Gestionnaire WebSocket GameMaster L5R initialisé');
-}
+// Fin du fichier
 
-// [EXPORT] Export du handler principal pour intégration dans le serveur
-export default socketHandler;
+}
+// Fin de socketHandler
