@@ -1,204 +1,116 @@
-/**
- * [DEV SENIOR] Service Room - logique métier et accès aux rooms.
- * - Centralise les opérations sur les rooms, gestion des joueurs, accès et stats.
- * - Respecter la séparation des responsabilités et documenter toute évolution majeure.
- */
 
-// [IMPORTS] Import des modèles et interfaces nécessaires
-import type { IRoomService } from './IRoomService.js';
-import { Room } from '../models/Room.js';
+// Nouvelle version RoomService pour TypeORM
+import { AppDataSource } from '../data-source';
+import { Room } from '../models/Room';
+import { PlayerInRoom } from '../models/PlayerInRoom';
+import { User } from '../models/User';
+import { Scenario } from '../models/Scenario';
+import { Repository } from 'typeorm';
 
-export class RoomService implements IRoomService {
-  rooms: Map<string, Room>;
+export class RoomService {
+  private roomRepo: Repository<Room>;
+  private playerRepo: Repository<PlayerInRoom>;
+  private userRepo: Repository<User>;
+  private scenarioRepo: Repository<Scenario>;
 
   constructor() {
-    this.rooms = new Map<string, Room>();
-    console.log('Service de gestion des rooms GameMaster initialisé');
+    this.roomRepo = AppDataSource.getRepository(Room);
+    this.playerRepo = AppDataSource.getRepository(PlayerInRoom);
+    this.userRepo = AppDataSource.getRepository(User);
+    this.scenarioRepo = AppDataSource.getRepository(Scenario);
   }
 
-  createRoom(name: string, gmId: string, gmName: string, scenario: string = '', isPrivate: boolean = false, password: string | null = null): Room {
-    const room = new Room(name, gmId, gmName, scenario);
-    room.isPrivate = isPrivate;
-    room.password = password;
-    this.rooms.set(room.id, room);
-    console.log(`Nouvelle room créée: ${room.name} (${room.id}) par ${gmName}`);
-    return room;
-  }
-
-  getRoomById(roomId: string): Room | undefined {
-    return this.rooms.get(roomId);
-  }
-
-  getAllRooms(): Room[] {
-    return Array.from(this.rooms.values());
-  }
-
-  getPublicRooms(): Room[] {
-    return Array.from(this.rooms.values())
-      .filter((room: Room) => !room.isPrivate)
-      .sort((a: Room, b: Room) => b.lastActivity.getTime() - a.lastActivity.getTime());
-  }
-
-  getRoomsByGM(gmId: string): Room[] {
-    return Array.from(this.rooms.values())
-      .filter((room: Room) => room.gmId === gmId)
-      .sort((a: Room, b: Room) => b.createdAt.getTime() - a.createdAt.getTime());
-  }
-
-  getRoomsByPlayer(playerId: string): Room[] {
-    return Array.from(this.rooms.values())
-      .filter((room: Room) => room.players.some((player: any) => player.id === playerId))
-      .sort((a: Room, b: Room) => b.lastActivity.getTime() - a.lastActivity.getTime());
-  }
-
-  deleteRoom(roomId: string): boolean {
-    const room = this.rooms.get(roomId);
-    if (room) {
-      console.log(`Room supprimée: ${room.name} (${roomId})`);
-      return this.rooms.delete(roomId);
+  async createRoom({ name, gmId, scenarioId, isPrivate = false, password = null }: {
+    name: string;
+    gmId: string;
+    scenarioId?: string;
+    isPrivate?: boolean;
+    password?: string | null;
+  }): Promise<Room> {
+    const gm = await this.userRepo.findOneByOrFail({ id: gmId });
+    let scenario: Scenario | undefined = undefined;
+    if (scenarioId) {
+      // findOneBy retourne Scenario | null, donc on convertit null en undefined
+      const found = await this.scenarioRepo.findOneBy({ id: scenarioId });
+      scenario = found === null ? undefined : found;
     }
-    return false;
+    const room = this.roomRepo.create({
+      name,
+      gm,
+      scenario,
+      isPrivate,
+      password: password ?? undefined,
+      status: 'waiting',
+      currentScene: 0,
+      scenesHistory: [],
+      maxPlayers: 6
+    });
+    return await this.roomRepo.save(room);
   }
 
-  addPlayerToRoom(roomId: string, playerId: string, playerName: string, character?: any, password?: string | null): any {
-    const room = this.getRoomById(roomId);
-    if (!room) {
-      throw new Error('Room non trouvée');
-    }
-
-    if (room.isPrivate && room.password !== password) {
-      throw new Error('Mot de passe incorrect');
-    }
-
-    if (room.status === 'completed') {
-      throw new Error('Cette partie est terminée');
-    }
-
-  const player = room.addPlayer(playerId, playerName, character ?? undefined);
-    console.log(`${playerName} a rejoint la room ${room.name} (${roomId})`);
-    return player;
+  async getRoomById(roomId: string): Promise<Room | null> {
+    return await this.roomRepo.findOne({
+      where: { id: roomId },
+      relations: ['gm', 'scenario', 'players', 'players.user']
+    });
   }
 
-  updatePlayerCharacter(roomId: string, playerId: string, character: any): any {
-    const room = this.getRoomById(roomId);
+  async getAllRooms(): Promise<Room[]> {
+    return await this.roomRepo.find({ relations: ['gm', 'scenario', 'players', 'players.user'] });
+  }
+
+  async getPublicRooms(): Promise<Room[]> {
+    return await this.roomRepo.find({ where: { isPrivate: false }, relations: ['gm', 'scenario', 'players', 'players.user'] });
+  }
+
+  async getRoomsByGM(gmId: string): Promise<Room[]> {
+    return await this.roomRepo.find({ where: { gm: { id: gmId } }, relations: ['gm', 'scenario', 'players', 'players.user'] });
+  }
+
+  async getRoomsByPlayer(playerId: string): Promise<Room[]> {
+  const playerRooms = await this.playerRepo.find({ where: { user: { id: playerId } }, relations: ['room'] });
+  // getRoomById peut retourner null, donc on filtre les nulls
+  const rooms = await Promise.all(playerRooms.map(async pr => await this.getRoomById(pr.room.id)));
+  return rooms.filter((r): r is Room => r !== null);
+  }
+
+  async deleteRoom(roomId: string): Promise<boolean> {
+  const res = await this.roomRepo.delete(roomId);
+  return (res.affected ?? 0) > 0;
+  }
+
+  async addPlayerToRoom(roomId: string, userId: string, character?: any, role: 'player' | 'gm' = 'player'): Promise<PlayerInRoom> {
+    const room = await this.getRoomById(roomId);
     if (!room) throw new Error('Room non trouvée');
-    return room.updatePlayerCharacter(playerId, character);
+    const user = await this.userRepo.findOneByOrFail({ id: userId });
+    const player = this.playerRepo.create({ room, user, character, role, joinedAt: new Date() });
+    return await this.playerRepo.save(player);
   }
 
-  getPlayer(roomId: string, playerId: string): any {
-    const room = this.getRoomById(roomId);
+  async removePlayerFromRoom(roomId: string, userId: string): Promise<boolean> {
+    const player = await this.playerRepo.findOne({ where: { room: { id: roomId }, user: { id: userId } } });
+    if (!player) return false;
+    await this.playerRepo.remove(player);
+    return true;
+  }
+
+  async updateRoomStatus(roomId: string, status: 'waiting' | 'active' | 'paused' | 'completed'): Promise<Room | null> {
+    const room = await this.getRoomById(roomId);
     if (!room) throw new Error('Room non trouvée');
-    return room.players.find(p => p.id === playerId) || null;
-  }
-
-  removePlayerFromRoom(roomId: string, playerId: string): any {
-    const room = this.getRoomById(roomId);
-    if (!room) {
-      throw new Error('Room non trouvée');
-    }
-
-    const removedPlayer = room.removePlayer(playerId);
-    
-    // Si c'était le GM qui quitte, supprimer la room
-    if (playerId === room.gmId) {
-      this.deleteRoom(roomId);
-      console.log(`Le GM ${removedPlayer?.name} a quitté sa room ${room.name}, room supprimée`);
-      return { roomDeleted: true, player: removedPlayer };
-    }
-
-    if (removedPlayer) {
-      console.log(`${removedPlayer.name} a quitté la room ${room.name} (${roomId})`);
-    }
-
-    return { roomDeleted: false, player: removedPlayer };
-  }
-
-  updateRoomStatus(roomId: string, status: string): any {
-    const room = this.getRoomById(roomId);
-    if (!room) {
-      throw new Error('Room non trouvée');
-    }
-
-    const oldStatus = room.status;
     room.status = status;
-    room.updateActivity();
-    
-    console.log(`Statut de la room ${room.name} (${roomId}) changé de ${oldStatus} à ${status}`);
-    return room;
+    return await this.roomRepo.save(room);
   }
 
-  addChatMessage(roomId: string, senderId: string, senderName: string, message: string): any {
-    const room = this.getRoomById(roomId);
-    if (!room) {
-      throw new Error('Room non trouvée');
-    }
-
-    const isGM = senderId === room.gmId;
-    const chatMessage = room.addChatMessage(senderId, senderName, message, isGM);
-    
-    console.log(`[${room.name}] ${senderName}${isGM ? ' (GM)' : ''}: ${message.substring(0, 50)}${message.length > 50 ? '...' : ''}`);
-    return chatMessage;
-  }
-
-  updateGameData(roomId: string, updates: any): any {
-    const room = this.getRoomById(roomId);
-    if (!room) {
-      throw new Error('Room non trouvée');
-    }
-
-    room.updateGameData(updates);
-    console.log(`Données de jeu mises à jour pour la room ${room.name} (${roomId})`);
-    return room;
-  }
-
-  // Nettoyer les rooms vides ou anciennes
-  cleanupRooms(): number {
-    const now = new Date();
-    const maxAge = 24 * 60 * 60 * 1000; // 24 heures
-    const emptyRoomMaxAge = 2 * 60 * 60 * 1000; // 2 heures pour les rooms vides
-    
-    let cleanedCount = 0;
-
-    for (const [roomId, room] of this.rooms.entries()) {
-      let shouldDelete = false;
-      let reason = '';
-
-      // Supprimer les rooms vides depuis plus de 2 heures
-  if (room.players.length === 0 && (now.getTime() - room.createdAt.getTime()) > emptyRoomMaxAge) {
-        shouldDelete = true;
-        reason = 'room vide depuis plus de 2 heures';
-      }
-      
-      // Supprimer les rooms très anciennes sans activité récente
-  else if ((now.getTime() - room.lastActivity.getTime()) > maxAge && room.status === 'waiting') {
-        shouldDelete = true;
-        reason = 'inactivité depuis plus de 24 heures';
-      }
-      
-      // Supprimer les rooms terminées depuis plus de 24 heures
-  else if (room.status === 'completed' && (now.getTime() - room.lastActivity.getTime()) > maxAge) {
-        shouldDelete = true;
-        reason = 'partie terminée depuis plus de 24 heures';
-      }
-
-      if (shouldDelete) {
-        this.rooms.delete(roomId);
-        cleanedCount++;
-        console.log(`Room ${room.name} (${roomId}) nettoyée: ${reason}`);
-      }
-    }
-
-    if (cleanedCount > 0) {
-      console.log(`Nettoyage terminé: ${cleanedCount} room(s) supprimée(s)`);
-    }
-
-    return cleanedCount;
-  }
-
-  // Obtenir des statistiques
-  getStats() {
-    const rooms = Array.from(this.rooms.values());
-    
+  async getStats() {
+    const rooms = await this.getAllRooms();
+    // On ne peut plus compter room.players car la propriété n'existe plus directement sur Room (relation via PlayerInRoom)
+    // On compte les PlayerInRoom associés à chaque room
+    const playerCounts = await Promise.all(
+      rooms.map(async room => {
+        const count = await this.playerRepo.count({ where: { room: { id: room.id } } });
+        return count;
+      })
+    );
     return {
       totalRooms: rooms.length,
       publicRooms: rooms.filter(r => !r.isPrivate).length,
@@ -207,26 +119,10 @@ export class RoomService implements IRoomService {
       waitingRooms: rooms.filter(r => r.status === 'waiting').length,
       pausedRooms: rooms.filter(r => r.status === 'paused').length,
       completedRooms: rooms.filter(r => r.status === 'completed').length,
-      totalPlayers: rooms.reduce((sum, room) => sum + room.players.length, 0),
-      connectedPlayers: rooms.reduce((sum, room) => sum + room.getConnectedPlayers().length, 0)
+      totalPlayers: playerCounts.reduce((sum, c) => sum + c, 0)
     };
   }
 }
 
-// Instance singleton
-const roomService = new RoomService();
-
-// Nettoyage automatique toutes les heures
-setInterval(() => {
-  console.log('Démarrage du nettoyage automatique des rooms...');
-  roomService.cleanupRooms();
-}, 60 * 60 * 1000);
-
-// Nettoyage au démarrage après 5 minutes
-setTimeout(() => {
-  console.log('Premier nettoyage automatique...');
-  roomService.cleanupRooms();
-}, 5 * 60 * 1000);
-
-// [EXPORT] Export du service principal pour intégration dans les contrôleurs
-export default roomService;
+// Singleton
+export const roomService = new RoomService();
