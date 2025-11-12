@@ -30,7 +30,7 @@
   ],
   "author": "GameMaster Team",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "dependencies": {
     "ajv": "^8.17.1",
     "cheerio": "^1.0.0-rc.12",
