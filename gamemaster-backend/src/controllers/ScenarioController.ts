@@ -25,8 +25,9 @@ class ScenarioController {
     if (!title || !synopsis) {
       return res.status(400).json({ success: false, message: 'title et synopsis sont requis' });
     }
-  const created = await scenarioService.create(req.body);
-  res.status(201).json({ success: true, scenario: { ...created, id: created.id } });
+    const created = await scenarioService.create(req.body);
+    // On retourne toutes les propriétés du scénario, y compris l'id
+    res.status(201).json({ success: true, scenario: created });
   }
 
   static async generate(req: Request, res: Response) {
