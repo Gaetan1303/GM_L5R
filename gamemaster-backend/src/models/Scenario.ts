@@ -1,24 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, CreateDateColumn, UpdateDateColumn, ManyToOne } from 'typeorm';
-@Entity()
-export class Scene {
-  @PrimaryGeneratedColumn('uuid')
-  id!: string;
-
-  @Column()
-  title!: string;
-
-  @Column('text')
-  description!: string;
-
-  @Column('simple-array', { nullable: true })
-  objectives?: string[];
-
-  @Column('simple-array', { nullable: true })
-  challenges?: string[];
-
-  @ManyToOne(() => Scenario, scenario => scenario.scenes, { onDelete: 'CASCADE' })
-  scenario!: Scenario;
-}
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Scene } from './Scene.js';
 
 /**
  * [DEV SENIOR] Modèle Scenario - structure et logique métier d'un scénario de jeu.
@@ -73,7 +54,7 @@ export class Scenario {
   @Column('simple-array', { nullable: true })
   hooks?: string[];
 
-  @OneToMany(() => Scene, (scene: Scene) => scene.scenario, { cascade: true, eager: true })
+  @OneToMany(() => Scene, scene => scene.scenario, { cascade: true, eager: true })
   scenes!: Scene[];
 
   // Utilise les interfaces pour typer les champs JSONB

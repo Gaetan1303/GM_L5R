@@ -1,5 +1,10 @@
+
+import 'dotenv/config';
 import { DataSource } from "typeorm";
+
 import { User } from "./models/User.js";
+import { Scene } from "./models/Scene.js";
+import { Scenario } from "./models/Scenario.js";
 
 const databaseUrl = process.env.DATABASE_URL;
 if (!databaseUrl) {
@@ -11,6 +16,6 @@ export const AppDataSource = new DataSource({
   url: databaseUrl,
   synchronize: true,
   logging: false,
-  entities: [User],
+  entities: [User, Scene, Scenario],
   ssl: { rejectUnauthorized: false }
 });

@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import 'reflect-metadata';
 import fs from 'fs';
 import path from 'path';
@@ -101,7 +102,9 @@ import { hppMiddleware } from './middleware/security.js';
 // [SECURITE] Protection contre HTTP Parameter Pollution (HPP)
 app.use(hppMiddleware);
 // [SECURITE] Nettoyage des données entrantes pour éviter les injections
-app.use(...sanitizeData);
+if (Array.isArray(sanitizeData) && sanitizeData.length > 0) {
+  app.use(...sanitizeData);
+}
 
 // [MONITORING] Logger de sécurité pour tracer toutes les requêtes et détecter les comportements suspects
 app.use(securityLogger);
