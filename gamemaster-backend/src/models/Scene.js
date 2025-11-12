@@ -39,9 +39,10 @@ var __setFunctionName = (this && this.__setFunctionName) || function (f, name, p
 };
 var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.User = void 0;
+exports.Scene = void 0;
 var typeorm_1 = require("typeorm");
-var User = exports.User = function () {
+var Scenario_js_1 = require("./Scenario.js");
+var Scene = exports.Scene = function () {
     var _classDecorators = [(0, typeorm_1.Entity)()];
     var _classDescriptor;
     var _classExtraInitializers = [];
@@ -49,44 +50,44 @@ var User = exports.User = function () {
     var _instanceExtraInitializers = [];
     var _id_decorators;
     var _id_initializers = [];
-    var _email_decorators;
-    var _email_initializers = [];
-    var _password_decorators;
-    var _password_initializers = [];
-    var _name_decorators;
-    var _name_initializers = [];
-    var _role_decorators;
-    var _role_initializers = [];
-    var _createdAt_decorators;
-    var _createdAt_initializers = [];
-    var User = _classThis = /** @class */ (function () {
-        function User_1() {
+    var _title_decorators;
+    var _title_initializers = [];
+    var _description_decorators;
+    var _description_initializers = [];
+    var _objectives_decorators;
+    var _objectives_initializers = [];
+    var _challenges_decorators;
+    var _challenges_initializers = [];
+    var _scenario_decorators;
+    var _scenario_initializers = [];
+    var Scene = _classThis = /** @class */ (function () {
+        function Scene_1() {
             this.id = (__runInitializers(this, _instanceExtraInitializers), __runInitializers(this, _id_initializers, void 0));
-            this.email = __runInitializers(this, _email_initializers, void 0);
-            this.password = __runInitializers(this, _password_initializers, void 0); // Store hashed password only
-            this.name = __runInitializers(this, _name_initializers, void 0); // Nom de l'utilisateur
-            this.role = __runInitializers(this, _role_initializers, void 0); // "GM" ou "joueur"
-            this.createdAt = __runInitializers(this, _createdAt_initializers, void 0);
+            this.title = __runInitializers(this, _title_initializers, void 0);
+            this.description = __runInitializers(this, _description_initializers, void 0);
+            this.objectives = __runInitializers(this, _objectives_initializers, void 0);
+            this.challenges = __runInitializers(this, _challenges_initializers, void 0);
+            this.scenario = __runInitializers(this, _scenario_initializers, void 0);
         }
-        return User_1;
+        return Scene_1;
     }());
-    __setFunctionName(_classThis, "User");
+    __setFunctionName(_classThis, "Scene");
     (function () {
         _id_decorators = [(0, typeorm_1.PrimaryGeneratedColumn)('uuid')];
-        _email_decorators = [(0, typeorm_1.Column)({ unique: true })];
-        _password_decorators = [(0, typeorm_1.Column)({ length: 255 })];
-        _name_decorators = [(0, typeorm_1.Column)({ length: 50 })];
-        _role_decorators = [(0, typeorm_1.Column)({ default: 'joueur' })];
-        _createdAt_decorators = [(0, typeorm_1.CreateDateColumn)()];
+        _title_decorators = [(0, typeorm_1.Column)()];
+        _description_decorators = [(0, typeorm_1.Column)('text')];
+        _objectives_decorators = [(0, typeorm_1.Column)('simple-array', { nullable: true })];
+        _challenges_decorators = [(0, typeorm_1.Column)('simple-array', { nullable: true })];
+        _scenario_decorators = [(0, typeorm_1.ManyToOne)(function () { return Scenario_js_1.Scenario; }, function (scenario) { return scenario.scenes; }, { onDelete: 'CASCADE' })];
         __esDecorate(null, null, _id_decorators, { kind: "field", name: "id", static: false, private: false, access: { has: function (obj) { return "id" in obj; }, get: function (obj) { return obj.id; }, set: function (obj, value) { obj.id = value; } } }, _id_initializers, _instanceExtraInitializers);
-        __esDecorate(null, null, _email_decorators, { kind: "field", name: "email", static: false, private: false, access: { has: function (obj) { return "email" in obj; }, get: function (obj) { return obj.email; }, set: function (obj, value) { obj.email = value; } } }, _email_initializers, _instanceExtraInitializers);
-        __esDecorate(null, null, _password_decorators, { kind: "field", name: "password", static: false, private: false, access: { has: function (obj) { return "password" in obj; }, get: function (obj) { return obj.password; }, set: function (obj, value) { obj.password = value; } } }, _password_initializers, _instanceExtraInitializers);
-        __esDecorate(null, null, _name_decorators, { kind: "field", name: "name", static: false, private: false, access: { has: function (obj) { return "name" in obj; }, get: function (obj) { return obj.name; }, set: function (obj, value) { obj.name = value; } } }, _name_initializers, _instanceExtraInitializers);
-        __esDecorate(null, null, _role_decorators, { kind: "field", name: "role", static: false, private: false, access: { has: function (obj) { return "role" in obj; }, get: function (obj) { return obj.role; }, set: function (obj, value) { obj.role = value; } } }, _role_initializers, _instanceExtraInitializers);
-        __esDecorate(null, null, _createdAt_decorators, { kind: "field", name: "createdAt", static: false, private: false, access: { has: function (obj) { return "createdAt" in obj; }, get: function (obj) { return obj.createdAt; }, set: function (obj, value) { obj.createdAt = value; } } }, _createdAt_initializers, _instanceExtraInitializers);
+        __esDecorate(null, null, _title_decorators, { kind: "field", name: "title", static: false, private: false, access: { has: function (obj) { return "title" in obj; }, get: function (obj) { return obj.title; }, set: function (obj, value) { obj.title = value; } } }, _title_initializers, _instanceExtraInitializers);
+        __esDecorate(null, null, _description_decorators, { kind: "field", name: "description", static: false, private: false, access: { has: function (obj) { return "description" in obj; }, get: function (obj) { return obj.description; }, set: function (obj, value) { obj.description = value; } } }, _description_initializers, _instanceExtraInitializers);
+        __esDecorate(null, null, _objectives_decorators, { kind: "field", name: "objectives", static: false, private: false, access: { has: function (obj) { return "objectives" in obj; }, get: function (obj) { return obj.objectives; }, set: function (obj, value) { obj.objectives = value; } } }, _objectives_initializers, _instanceExtraInitializers);
+        __esDecorate(null, null, _challenges_decorators, { kind: "field", name: "challenges", static: false, private: false, access: { has: function (obj) { return "challenges" in obj; }, get: function (obj) { return obj.challenges; }, set: function (obj, value) { obj.challenges = value; } } }, _challenges_initializers, _instanceExtraInitializers);
+        __esDecorate(null, null, _scenario_decorators, { kind: "field", name: "scenario", static: false, private: false, access: { has: function (obj) { return "scenario" in obj; }, get: function (obj) { return obj.scenario; }, set: function (obj, value) { obj.scenario = value; } } }, _scenario_initializers, _instanceExtraInitializers);
         __esDecorate(null, _classDescriptor = { value: _classThis }, _classDecorators, { kind: "class", name: _classThis.name }, null, _classExtraInitializers);
-        User = _classThis = _classDescriptor.value;
+        Scene = _classThis = _classDescriptor.value;
         __runInitializers(_classThis, _classExtraInitializers);
     })();
-    return User = _classThis;
+    return Scene = _classThis;
 }();

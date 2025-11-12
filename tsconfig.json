@@ -10,6 +10,9 @@
   "module": "NodeNext",
   "moduleResolution": "NodeNext",
   "target": "ES2020",
+  "experimentalDecorators": true,
+  "emitDecoratorMetadata": true,
+  "useDefineForClassFields": false,
     "types": [],
     // For nodejs:
     // "lib": ["esnext"],

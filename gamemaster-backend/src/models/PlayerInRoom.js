@@ -39,9 +39,11 @@ var __setFunctionName = (this && this.__setFunctionName) || function (f, name, p
 };
 var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.User = void 0;
+exports.PlayerInRoom = void 0;
 var typeorm_1 = require("typeorm");
-var User = exports.User = function () {
+var Room_js_1 = require("./Room.js");
+var User_js_1 = require("./User.js");
+var PlayerInRoom = exports.PlayerInRoom = function () {
     var _classDecorators = [(0, typeorm_1.Entity)()];
     var _classDescriptor;
     var _classExtraInitializers = [];
@@ -49,44 +51,49 @@ var User = exports.User = function () {
     var _instanceExtraInitializers = [];
     var _id_decorators;
     var _id_initializers = [];
-    var _email_decorators;
-    var _email_initializers = [];
-    var _password_decorators;
-    var _password_initializers = [];
-    var _name_decorators;
-    var _name_initializers = [];
+    var _room_decorators;
+    var _room_initializers = [];
+    var _user_decorators;
+    var _user_initializers = [];
     var _role_decorators;
     var _role_initializers = [];
-    var _createdAt_decorators;
-    var _createdAt_initializers = [];
-    var User = _classThis = /** @class */ (function () {
-        function User_1() {
+    var _character_decorators;
+    var _character_initializers = [];
+    var _joinedAt_decorators;
+    var _joinedAt_initializers = [];
+    var _lastSeen_decorators;
+    var _lastSeen_initializers = [];
+    var PlayerInRoom = _classThis = /** @class */ (function () {
+        function PlayerInRoom_1() {
             this.id = (__runInitializers(this, _instanceExtraInitializers), __runInitializers(this, _id_initializers, void 0));
-            this.email = __runInitializers(this, _email_initializers, void 0);
-            this.password = __runInitializers(this, _password_initializers, void 0); // Store hashed password only
-            this.name = __runInitializers(this, _name_initializers, void 0); // Nom de l'utilisateur
-            this.role = __runInitializers(this, _role_initializers, void 0); // "GM" ou "joueur"
-            this.createdAt = __runInitializers(this, _createdAt_initializers, void 0);
+            this.room = __runInitializers(this, _room_initializers, void 0);
+            this.user = __runInitializers(this, _user_initializers, void 0);
+            this.role = __runInitializers(this, _role_initializers, void 0);
+            this.character = __runInitializers(this, _character_initializers, void 0); // Structure complète L5R (anneaux, compétences, etc.)
+            this.joinedAt = __runInitializers(this, _joinedAt_initializers, void 0);
+            this.lastSeen = __runInitializers(this, _lastSeen_initializers, void 0);
         }
-        return User_1;
+        return PlayerInRoom_1;
     }());
-    __setFunctionName(_classThis, "User");
+    __setFunctionName(_classThis, "PlayerInRoom");
     (function () {
         _id_decorators = [(0, typeorm_1.PrimaryGeneratedColumn)('uuid')];
-        _email_decorators = [(0, typeorm_1.Column)({ unique: true })];
-        _password_decorators = [(0, typeorm_1.Column)({ length: 255 })];
-        _name_decorators = [(0, typeorm_1.Column)({ length: 50 })];
-        _role_decorators = [(0, typeorm_1.Column)({ default: 'joueur' })];
-        _createdAt_decorators = [(0, typeorm_1.CreateDateColumn)()];
+        _room_decorators = [(0, typeorm_1.ManyToOne)(function () { return Room_js_1.Room; }, { onDelete: 'CASCADE' })];
+        _user_decorators = [(0, typeorm_1.ManyToOne)(function () { return User_js_1.User; }, { eager: true, onDelete: 'CASCADE' })];
+        _role_decorators = [(0, typeorm_1.Column)({ default: 'player' })];
+        _character_decorators = [(0, typeorm_1.Column)('jsonb', { nullable: true })];
+        _joinedAt_decorators = [(0, typeorm_1.Column)({ type: 'timestamp', default: function () { return 'CURRENT_TIMESTAMP'; } })];
+        _lastSeen_decorators = [(0, typeorm_1.Column)({ type: 'timestamp', nullable: true })];
         __esDecorate(null, null, _id_decorators, { kind: "field", name: "id", static: false, private: false, access: { has: function (obj) { return "id" in obj; }, get: function (obj) { return obj.id; }, set: function (obj, value) { obj.id = value; } } }, _id_initializers, _instanceExtraInitializers);
-        __esDecorate(null, null, _email_decorators, { kind: "field", name: "email", static: false, private: false, access: { has: function (obj) { return "email" in obj; }, get: function (obj) { return obj.email; }, set: function (obj, value) { obj.email = value; } } }, _email_initializers, _instanceExtraInitializers);
-        __esDecorate(null, null, _password_decorators, { kind: "field", name: "password", static: false, private: false, access: { has: function (obj) { return "password" in obj; }, get: function (obj) { return obj.password; }, set: function (obj, value) { obj.password = value; } } }, _password_initializers, _instanceExtraInitializers);
-        __esDecorate(null, null, _name_decorators, { kind: "field", name: "name", static: false, private: false, access: { has: function (obj) { return "name" in obj; }, get: function (obj) { return obj.name; }, set: function (obj, value) { obj.name = value; } } }, _name_initializers, _instanceExtraInitializers);
+        __esDecorate(null, null, _room_decorators, { kind: "field", name: "room", static: false, private: false, access: { has: function (obj) { return "room" in obj; }, get: function (obj) { return obj.room; }, set: function (obj, value) { obj.room = value; } } }, _room_initializers, _instanceExtraInitializers);
+        __esDecorate(null, null, _user_decorators, { kind: "field", name: "user", static: false, private: false, access: { has: function (obj) { return "user" in obj; }, get: function (obj) { return obj.user; }, set: function (obj, value) { obj.user = value; } } }, _user_initializers, _instanceExtraInitializers);
         __esDecorate(null, null, _role_decorators, { kind: "field", name: "role", static: false, private: false, access: { has: function (obj) { return "role" in obj; }, get: function (obj) { return obj.role; }, set: function (obj, value) { obj.role = value; } } }, _role_initializers, _instanceExtraInitializers);
-        __esDecorate(null, null, _createdAt_decorators, { kind: "field", name: "createdAt", static: false, private: false, access: { has: function (obj) { return "createdAt" in obj; }, get: function (obj) { return obj.createdAt; }, set: function (obj, value) { obj.createdAt = value; } } }, _createdAt_initializers, _instanceExtraInitializers);
+        __esDecorate(null, null, _character_decorators, { kind: "field", name: "character", static: false, private: false, access: { has: function (obj) { return "character" in obj; }, get: function (obj) { return obj.character; }, set: function (obj, value) { obj.character = value; } } }, _character_initializers, _instanceExtraInitializers);
+        __esDecorate(null, null, _joinedAt_decorators, { kind: "field", name: "joinedAt", static: false, private: false, access: { has: function (obj) { return "joinedAt" in obj; }, get: function (obj) { return obj.joinedAt; }, set: function (obj, value) { obj.joinedAt = value; } } }, _joinedAt_initializers, _instanceExtraInitializers);
+        __esDecorate(null, null, _lastSeen_decorators, { kind: "field", name: "lastSeen", static: false, private: false, access: { has: function (obj) { return "lastSeen" in obj; }, get: function (obj) { return obj.lastSeen; }, set: function (obj, value) { obj.lastSeen = value; } } }, _lastSeen_initializers, _instanceExtraInitializers);
         __esDecorate(null, _classDescriptor = { value: _classThis }, _classDecorators, { kind: "class", name: _classThis.name }, null, _classExtraInitializers);
-        User = _classThis = _classDescriptor.value;
+        PlayerInRoom = _classThis = _classDescriptor.value;
         __runInitializers(_classThis, _classExtraInitializers);
     })();
-    return User = _classThis;
+    return PlayerInRoom = _classThis;
 }();
