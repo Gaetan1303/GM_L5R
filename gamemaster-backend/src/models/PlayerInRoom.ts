@@ -6,7 +6,7 @@ export class PlayerInRoom {
   @PrimaryGeneratedColumn('uuid')
   id!: string;
 
-  @ManyToOne(() => require('./Room.js').Room, (room: any) => room.players, { onDelete: 'CASCADE' })
+  @ManyToOne('Room', (room: any) => room.players, { onDelete: 'CASCADE' })
   room!: any;
 
   @ManyToOne(() => User, { eager: true, onDelete: 'CASCADE' })
