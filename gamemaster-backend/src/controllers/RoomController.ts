@@ -40,6 +40,10 @@ export class RoomController {
     try {
       const { userId, role } = req.body;
       const { roomId } = req.params;
+      // Vérification du token (authentification)
+      if (!req.headers.authorization) {
+        return res.status(401).json({ success: false, message: "Vous n'êtes pas autorisé à rejoindre la salle sans l'autorisation du Champion d'Émeraude." });
+      }
       if (!userId || !role) {
         return res.status(400).json({ success: false, message: "L'identité et le rôle sont requis pour rejoindre la cour de Rokugan." });
       }

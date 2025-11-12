@@ -1,3 +1,43 @@
+async function testAddPlayerNoToken(roomId: string, userId: string) {
+	const step: Step = { action: 'Ajout de joueur sans token', start: Date.now(), input: { userId, role: 'player' }, expected: '401 Unauthorized' };
+	try {
+		const res = await fetch(`${BASE_URL}/api/rooms/${roomId}/players`, {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({ userId, role: 'player' })
+		});
+		step.code = res.status;
+		step.message = await res.text();
+		step.success = res.status === 401;
+		step.comment = step.success ? 'Erreur attendue (401)' : 'Erreur non conforme';
+	} catch (e) {
+		step.success = false;
+		step.error = String(e);
+	}
+	step.end = Date.now();
+	step.duration = step.end - step.start;
+	return step;
+}
+
+async function testDeleteRoomInexistante(token: string) {
+	const step: Step = { action: 'Suppression d’une room inexistante', start: Date.now(), input: { roomId: '00000000-0000-0000-0000-000000000000' }, expected: '404 Not Found' };
+	try {
+		const res = await fetch(`${BASE_URL}/api/rooms/00000000-0000-0000-0000-000000000000`, {
+			method: 'DELETE',
+			headers: { Authorization: `Bearer ${token}` }
+		});
+		step.code = res.status;
+		step.message = await res.text();
+		step.success = res.status === 404;
+		step.comment = step.success ? 'Erreur attendue (404)' : 'Erreur non conforme';
+	} catch (e) {
+		step.success = false;
+		step.error = String(e);
+	}
+	step.end = Date.now();
+	step.duration = step.end - step.start;
+	return step;
+}
 import fs from 'fs';
 const BASE_URL = 'https://gm-l5r.onrender.com';
 type Step = {
@@ -127,7 +167,14 @@ async function main() {
 	if (token && roomId && userId) {
 		const step = await testAddPlayerBadRole(token, roomId, userId);
 		report.push(step);
+			// 6. Ajout de joueur sans token
+			report.push(await testAddPlayerNoToken(roomId, userId));
 	}
+
+		// 7. Suppression d’une room inexistante
+		if (token) {
+			report.push(await testDeleteRoomInexistante(token));
+		}
 
 	// Génération du rapport markdown
 	let md = `# Rapport de test d’erreur : test de room\n\n`;
