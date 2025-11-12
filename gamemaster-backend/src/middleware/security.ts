@@ -7,8 +7,25 @@
 // [IMPORTS] Import des modules nécessaires pour la sécurité
 import rateLimit from 'express-rate-limit';
 import helmet from 'helmet';
-import hpp from 'hpp';
-import type { Request, Response, NextFunction } from 'express';
+// Middleware maison HPP compatible Express 5
+
+
+/**
+ * Middleware simple pour supprimer les doublons de paramètres dans req.query
+ * (Protection basique contre HTTP Parameter Pollution)
+ */
+export const hppMiddleware: RequestHandler = (req, res, next) => {
+  if (req.query && typeof req.query === 'object') {
+    for (const key of Object.keys(req.query)) {
+      const value = req.query[key];
+      if (Array.isArray(value)) {
+        req.query[key] = value[0]; // Ne garde que la première valeur
+      }
+    }
+  }
+  next();
+};
+import type { Request, Response, NextFunction, RequestHandler } from 'express';
 
 /**
  * MIDDLEWARE DE SÉCURITÉ - PROTECTION MULTICOUCHE
@@ -77,17 +94,12 @@ const strictLimiter = rateLimit({
 });
 
 // . SANITIZATION - Protection contre les injections
-// Note: mongoSanitize et xss-clean désactivés (incompatibles Express 5 - req.query readonly)
-const sanitizeData = [
-  // mongoSanitize(), // DÉSACTIVÉ: incompatible avec Express 5
-  // xss(), // DÉSACTIVÉ: incompatible avec Express 5
-  hpp() // Protection contre HTTP Parameter Pollution
-];
+const sanitizeData: RequestHandler[] = [];
 
 // . VALIDATION DES ORIGINES CORS
 const validateOrigin = (allowedOrigins: string[]) => {
   return (origin: string | undefined, callback: Function) => {
-    // Autoriser les requêtes sans origin (ex: Postman, mobile apps)
+    // Autoriser les requêtes sans origin 
     if (!origin) {
       return callback(null, true);
     }

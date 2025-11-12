@@ -97,8 +97,11 @@ app.use(cors({
 app.use(express.json({ limit: requestSizeLimit }));
 app.use(express.urlencoded({ extended: true, limit: requestSizeLimit }));
 
+import { hppMiddleware } from './middleware/security.js';
+// [SECURITE] Protection contre HTTP Parameter Pollution (HPP)
+app.use(hppMiddleware);
 // [SECURITE] Nettoyage des données entrantes pour éviter les injections
-app.use(sanitizeData);
+app.use(...sanitizeData);
 
 // [MONITORING] Logger de sécurité pour tracer toutes les requêtes et détecter les comportements suspects
 app.use(securityLogger);
