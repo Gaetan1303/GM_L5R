@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, CreateDateColumn, UpdateDateColumn } from 'typeorm';
-import { Scenario } from './Scenario';
-import { User } from './User';
+import { Scenario } from './Scenario.js';
+import { User } from './User.js';
 
 @Entity()
 export class Room {

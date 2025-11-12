@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, CreateDateColumn, UpdateDateColumn } from 'typeorm';
-import { Scene } from './Scene';
+import { Scene } from './Scene.js';
 
 /**
  * [DEV SENIOR] Modèle Scenario - structure et logique métier d'un scénario de jeu.

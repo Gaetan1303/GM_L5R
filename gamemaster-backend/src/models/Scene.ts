@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
-import { Scenario } from './Scenario';
+import { Scenario } from './Scenario.js';
 
 @Entity()
 export class Scene {
