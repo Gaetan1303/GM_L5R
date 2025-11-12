@@ -15,7 +15,7 @@ export class Room {
   gm!: User;
 
   // Relation avec PlayerInRoom (plus flexible que User[])
-  @OneToMany(() => PlayerInRoom, pir => pir.room)
+  @OneToMany(() => PlayerInRoom, (pir) => pir.room)
   players!: PlayerInRoom[];
 
   @ManyToOne(() => Scenario, { eager: true, nullable: true })

@@ -108,8 +108,8 @@ async function main() {
       });
     } catch (e) {
       // Affiche la réponse brute de l'inscription même en cas d'erreur
-      if (e && e.message) {
-        console.error('DEBUG registerUser error:', e.message);
+      if (e && typeof e === 'object' && 'message' in e) {
+        console.error('DEBUG registerUser error:', (e as { message: string }).message);
       } else {
         console.error('DEBUG registerUser error (raw):', e);
       }
