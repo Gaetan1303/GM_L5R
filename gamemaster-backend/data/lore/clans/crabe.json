@@ -1,0 +1,27 @@
+{
+  "id": "crabe",
+  "nom": "Clan du Crabe",
+  "description": "Le Clan du Crabe est le rempart inébranlable de Rokugan, dressé face aux ténèbres de l’Outremonde. Massifs, endurcis par des générations de guerre contre les créatures corrompues, les samouraïs du Crabe vivent dans la rudesse et le sacrifice. Leur pragmatisme, leur force brute et leur mépris affiché pour les subtilités de la cour leur valent une réputation d’hommes et de femmes austères, mais indispensables. La Grande Muraille Kaiu, chef-d’œuvre d’ingénierie, symbolise leur engagement total : chaque pierre est un serment de protection, chaque cicatrice un rappel du prix à payer pour la survie de l’Empire.",
+  "histoire": "Depuis la chute des Kamis, le Crabe a été investi d’une mission sacrée : défendre Rokugan contre les forces du mal rampant à ses frontières. Leur histoire est une succession de veilles sans sommeil, de batailles désespérées et de sacrifices silencieux. Souvent incompris, parfois méprisés par la cour impériale, les Crabes n’ont jamais failli à leur devoir. Hida, leur fondateur, a posé les fondations d’une lignée de héros prêts à tout perdre pour l’Empire. Yakamo, Kisada et tant d’autres ont mené la défense lors des pires invasions, tenant la Muraille contre des vagues d’horreurs indicibles. Les Crabes savent que la paix de Rokugan repose sur leurs épaules meurtries, et ils l’acceptent avec une résignation farouche.",
+  "figures_majeures": ["hida", "hida_yakamo", "hida_kisada"],
+  "evenements_marquants": [
+    {
+      "id": "guerre_des_destructeurs",
+      "titre": "La Guerre des Destructeurs",
+      "description": "Une invasion sans précédent des forces de l’Outremonde, où le Crabe a tenu la Muraille au prix de pertes immenses. Yakamo et Kisada se sont illustrés par leur héroïsme et leur abnégation."
+    },
+    {
+      "id": "defense_de_la_muraille",
+      "titre": "La Défense de la Muraille Kaiu",
+      "description": "Chaque génération de Crabe a connu son heure de vérité sur la Muraille. Les assauts incessants des créatures corrompues forgent le clan dans le sang et la sueur, rappelant à tous que la vigilance est le prix de la survie."
+    }
+  ],
+  "relations": {
+    "alliés": ["phénix", "licorne"],
+    "rivaux": ["grue", "scorpion"]
+  },
+  "references": {
+    "personnages": ["hida", "hida_yakamo", "hida_kisada"],
+    "evenements": ["guerre_des_destructeurs", "defense_de_la_muraille"]
+  }
+}

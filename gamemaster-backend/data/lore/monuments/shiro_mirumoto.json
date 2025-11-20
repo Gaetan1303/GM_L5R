@@ -1,0 +1,12 @@
+{
+  "id": "shiro_mirumoto",
+  "nom": "Shiro Mirumoto (Forteresse Mirumoto)",
+  "type": "forteresse",
+  "description": "Shiro Mirumoto est la forteresse principale du Clan du Dragon, perchée dans les montagnes. Elle est réputée pour son architecture sobre et ses salles d’entraînement au kenjutsu.",
+  "histoire": "Bâtie par Mirumoto, la forteresse a résisté à de nombreux sièges et abrite les secrets martiaux du clan. C’est un lieu de méditation et de discipline.",
+  "evenements_marquants": [
+    {"id": "retraite_du_dragon", "description": "Le clan s’est replié dans la forteresse lors de périodes de troubles."}
+  ],
+  "clan_associe": "dragon",
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Shiro_Mirumoto"]
+}

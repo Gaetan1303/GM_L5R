@@ -1,0 +1,10 @@
+{
+  "id": "hiruma",
+  "nom": "Hiruma",
+  "clan": "crabe",
+  "role": "Éclaireur légendaire du Clan du Crabe",
+  "description": "Hiruma fut le fondateur de la famille éponyme, célèbre pour sa ruse et sa capacité à survivre derrière les lignes ennemies. Après la perte de son château face à l’Outremonde, il a juré de reconquérir les terres perdues, forgeant l’esprit indomptable des Hiruma.",
+  "evenements": ["perte_chateau_hiruma", "guerre_des_destructeurs"],
+  "relations": {"alliés": ["hida"], "rivaux": ["oni_no_akuma"]},
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Hiruma"]
+}

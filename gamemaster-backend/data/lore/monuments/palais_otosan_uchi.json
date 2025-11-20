@@ -1,0 +1,13 @@
+{
+  "id": "palais_otosan_uchi",
+  "nom": "Palais impérial d’Otosan Uchi",
+  "type": "palais",
+  "description": "Le Palais impérial d’Otosan Uchi est le cœur politique et symbolique de l’Empire d’Émeraude. Majestueux, entouré de jardins raffinés et de salles de cérémonie, il accueille l’Empereur, la cour et les ambassadeurs de tous les clans.",
+  "histoire": "Construit par Hantei, le premier Empereur, le palais a été le théâtre de complots, de couronnements et de tragédies. Il incarne la stabilité et la grandeur de Rokugan, mais aussi ses luttes de pouvoir.",
+  "evenements_marquants": [
+    {"id": "coup_du_scorpion", "description": "Le palais fut le centre de la rébellion du Scorpion, marquant l’histoire de l’Empire."},
+    {"id": "sacre_hantei", "description": "Couronnement du premier Empereur Hantei."}
+  ],
+  "clan_associe": "imperial",
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Otosan_Uchi"]
+}

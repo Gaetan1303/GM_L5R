@@ -1,0 +1,10 @@
+{
+  "id": "benkei",
+  "nom": "Benkei",
+  "ordre": "Moines Fortunés",
+  "role": "Moine fortuné, protecteur des temples",
+  "description": "Benkei est un moine fortuné célèbre pour sa force et sa piété. Il a défendu de nombreux temples contre les bandits et les forces de l’Outremonde, devenant un modèle de courage pour les siens.",
+  "evenements": ["defense_temples"],
+  "relations": {"alliés": ["hida"], "rivaux": ["oni_no_akuma"]},
+  "sources": ["https://l5r.fandom.com/wiki/Benkei"]
+}

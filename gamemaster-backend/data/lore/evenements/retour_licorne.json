@@ -1,0 +1,18 @@
+{
+  "id": "retour_licorne",
+  "titre": "Retour du Clan de la Licorne",
+  "date": "1120 EC",
+  "ere": "Ère des Troubles",
+  "resume": "Le Clan de la Licorne revient après huit siècles d’exil.",
+  "description": "Après des siècles d’exploration au-delà des frontières, le Clan de la Licorne revient à Rokugan, apportant avec lui des coutumes étrangères et bouleversant l’équilibre des forces. Leur retour suscite méfiance et fascination.",
+  "protagonistes": ["Shinjo", "Otaku", "Iuchi"],
+  "lieux": ["Frontières de Rokugan", "Terres de la Licorne"],
+  "consequences": [
+    "Changements dans l’équilibre des clans",
+    "Introduction de nouvelles pratiques"
+  ],
+  "citations": [
+    "« Nous sommes revenus, mais sommes-nous encore Rokugani ? »"
+  ],
+  "sources": ["Livre de Base L5R 4e édition"]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "ere_des_guerres",
+  "titre": "L’Âge des Guerres",
+  "date": "-900 à -300 EC",
+  "ere": "Âge des Guerres",
+  "resume": "Période de conflits, d’invasions gaijin et de luttes contre l’Ombre.",
+  "description": "Rokugan est secoué par des guerres incessantes, des invasions étrangères et la menace croissante de l’Ombre. Les clans majeurs s’affirment, les clans mineurs apparaissent, et la société rokugani se structure autour du Bushido.",
+  "protagonistes": ["Akodo", "Hida", "Shinjo", "Bayushi"],
+  "lieux": ["Frontières de Rokugan", "Terres de l’Ombre"],
+  "consequences": [
+    "Consolidation des clans majeurs",
+    "Apparition des clans mineurs"
+  ],
+  "citations": [
+    "« La guerre forge le caractère d’un peuple. »"
+  ],
+  "sources": ["Livre de Base L5R 4e édition"]
+}

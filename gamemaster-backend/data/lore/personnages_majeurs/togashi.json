@@ -1,0 +1,13 @@
+{
+  "id": "togashi",
+  "nom": "Togashi",
+  "role": "Kami fondateur du Clan du Dragon",
+  "type": "protagoniste majeur",
+  "evenements": ["chute_des_kamis", "ere_des_guerres", "ere_des_troubles"],
+  "resume": "Togashi est le Kami du mystère et de la prophétie, fondateur du Clan du Dragon, gardien des secrets et des énigmes de Rokugan.",
+  "description": "Togashi incarne la méditation, l’énigme et la vision à long terme. Il se retire dans les montagnes pour guider ses descendants par des messages cryptiques et des épreuves spirituelles.",
+  "alliances": ["Hantei", "Shiba"],
+  "rivalites": ["Fu Leng", "Bayushi"],
+  "citations": ["« La vérité se cache derrière le voile du doute. »"],
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Togashi"]
+}

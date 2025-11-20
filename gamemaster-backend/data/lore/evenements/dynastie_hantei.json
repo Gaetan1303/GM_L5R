@@ -1,0 +1,18 @@
+{
+  "id": "dynastie_hantei",
+  "titre": "Dynastie Hantei et Empire d’Émeraude",
+  "date": "-300 EC à 1120 EC",
+  "ere": "Empire d’Émeraude",
+  "resume": "Ère de paix relative, intrigues de cour et menaces surnaturelles.",
+  "description": "La dynastie Hantei règne sur Rokugan, assurant une stabilité fragile. Les intrigues de cour, les duels et les menaces surnaturelles rythment la vie de l’Empire. L’Empereur est le garant de l’ordre céleste, mais l’équilibre reste précaire.",
+  "protagonistes": ["Empereur Hantei", "Doji", "Bayushi", "Shinjo"],
+  "lieux": ["Kyuden Hantei", "Capitale impériale"],
+  "consequences": [
+    "Stabilité politique relative",
+    "Développement de la culture rokugani"
+  ],
+  "citations": [
+    "« Sous l’œil du Ciel, l’Empire prospère… ou vacille. »"
+  ],
+  "sources": ["Livre de Base L5R 4e édition"]
+}

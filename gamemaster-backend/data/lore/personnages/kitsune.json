@@ -1,0 +1,10 @@
+{
+  "id": "kitsune",
+  "nom": "Kitsune",
+  "clan": "renard",
+  "role": "Fondatrice du Clan du Renard, chamane des forêts",
+  "description": "Kitsune est une shugenja réputée pour ses liens avec les esprits animaux et la nature. Elle a protégé les forêts sacrées et guidé son clan dans l’harmonie avec le monde spirituel.",
+  "evenements": ["protection_forets_sacrees"],
+  "relations": {"alliés": ["asako"], "rivaux": []},
+  "sources": ["https://l5r.fandom.com/wiki/Kitsune"]
+}

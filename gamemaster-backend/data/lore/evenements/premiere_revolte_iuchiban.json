@@ -1,0 +1,13 @@
+{
+  "id": "premiere_revolte_iuchiban",
+  "titre": "Première Révolte d’Iuchiban",
+  "date": "8e siècle EC",
+  "ere": "Empire d’Émeraude",
+  "resume": "Iuchiban, nécromancien immortel, tente de renverser l’Empire par la magie du sang, semant la terreur et la mort.",
+  "description": "Ancien shugenja devenu nécromancien, Iuchiban lève une armée de morts et de Bloodspeakers pour défier l’Empereur. Sa révolte est écrasée au prix de lourdes pertes, mais son nom devient synonyme de peur et de corruption.",
+  "protagonistes": ["Iuchiban", "Empereur Hantei", "Clans majeurs"],
+  "lieux": ["Otosan Uchi", "Rokugan"],
+  "consequences": ["Renforcement de la chasse aux maho-tsukai", "Création de nouvelles lois contre la magie du sang"],
+  "citations": ["« Le sang versé ne sèche jamais vraiment. »"],
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Iuchiban"]
+}

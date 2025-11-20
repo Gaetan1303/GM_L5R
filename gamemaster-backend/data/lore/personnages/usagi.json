@@ -1,0 +1,10 @@
+{
+  "id": "usagi",
+  "nom": "Usagi",
+  "clan": "lievre",
+  "role": "Fondateur du Clan du Lièvre, maître de la ruse",
+  "description": "Usagi a survécu à de nombreuses injustices grâce à son intelligence et sa rapidité. Il a fait du Clan du Lièvre un symbole de résilience et d’ingéniosité face à l’adversité.",
+  "evenements": ["fausse_accusation_maho"],
+  "relations": {"alliés": [], "rivaux": ["scorpion"]},
+  "sources": ["https://l5r.fandom.com/wiki/Usagi"]
+}

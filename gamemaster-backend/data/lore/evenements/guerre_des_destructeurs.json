@@ -1,0 +1,13 @@
+{
+  "id": "guerre_des_destructeurs",
+  "titre": "La Guerre des Destructeurs",
+  "date": "1170-1173 EC",
+  "ere": "Fin de l’Ère des Troubles",
+  "resume": "Invasion apocalyptique menée par Kali-Ma et ses armées de Destructeurs, menaçant l’existence même de Rokugan.",
+  "description": "Kali-Ma, déesse étrangère, lance une invasion dévastatrice sur Rokugan. Les clans doivent s’unir pour survivre à la menace des Destructeurs, qui bouleverse l’ordre établi et provoque la fin de l’ère classique de l’Empire.",
+  "protagonistes": ["Kali-Ma", "Daigotsu", "Kanpeki", "Clans majeurs", "Iweko I"],
+  "lieux": ["Rokugan", "Fingers of Bone", "Shinomen Mori"],
+  "consequences": ["Chute de l’ordre ancien", "Naissance d’une nouvelle dynastie"],
+  "citations": ["« Quand les cieux saignent, même les fortunes tremblent. »"],
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Destroyer_War"]
+}

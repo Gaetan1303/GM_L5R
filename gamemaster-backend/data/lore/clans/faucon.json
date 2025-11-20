@@ -1,0 +1,16 @@
+{
+  "id": "faucon",
+  "nom": "Clan du Faucon",
+  "description": "Spécialistes de la chasse aux esprits, les samouraïs du Clan du Faucon sont craints et respectés pour leur capacité à affronter les morts et les fantômes. Leur mission est sacrée et solitaire.",
+  "histoire": "Fondé par Toritaka, le clan a développé des rituels et des techniques uniques pour protéger Rokugan des menaces surnaturelles. Leur fusion avec le Clan du Crabe a marqué la fin de leur indépendance, mais leur héritage perdure.",
+  "figures_majeures": ["toritaka"],
+  "evenements_marquants": ["chasse_aux_esprits"],
+  "relations": {
+    "alliés": ["crabe"],
+    "rivaux": ["aucun"]
+  },
+  "references": {
+    "personnages": ["toritaka"],
+    "evenements": ["chasse_aux_esprits"]
+  }
+}

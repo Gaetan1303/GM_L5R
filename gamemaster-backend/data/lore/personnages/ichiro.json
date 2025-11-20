@@ -1,0 +1,10 @@
+{
+  "id": "ichiro",
+  "nom": "Ichiro",
+  "clan": "blaireau",
+  "role": "Fondateur du Clan du Blaireau, défenseur des montagnes",
+  "description": "Ichiro a forgé la réputation de robustesse et de loyauté de son clan. Gardien des cols du nord, il a toujours servi l’Empire avec courage malgré la modestie de ses moyens.",
+  "evenements": ["defense_col_nord"],
+  "relations": {"alliés": ["hida"], "rivaux": []},
+  "sources": ["https://l5r.fandom.com/wiki/Ichiro"]
+}

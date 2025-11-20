@@ -1,0 +1,10 @@
+{
+  "id": "mirumoto_hitomi",
+  "nom": "Mirumoto Hitomi",
+  "clan": "dragon",
+  "role": "Dueliste et championne du Dragon",
+  "description": "Hitomi est connue pour sa détermination farouche et son destin tragique. Marquée par la perte de son frère, elle a affronté des épreuves mystiques et porté le fardeau du pouvoir, jusqu’à devenir une figure quasi mythique.",
+  "evenements": ["duel_avec_yokuni", "guerre_des_destructeurs"],
+  "relations": {"alliés": ["togashi_yokuni"], "rivaux": ["bayushi_kachiko"]},
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Mirumoto_Hitomi"]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "lievre",
+  "nom": "Clan du Lièvre",
+  "description": "Connus pour leur rapidité et leur ruse, les Lièvres sont des survivants. Victimes de nombreuses injustices, ils ont toujours su rebondir grâce à leur ingéniosité.",
+  "histoire": "Fondé par Usagi, le clan a été faussement accusé de maho et presque détruit. Leur histoire est celle d’une lutte pour la réhabilitation et la survie.",
+  "figures_majeures": ["usagi"],
+  "evenements_marquants": ["fausse_accusation_maho"],
+  "relations": {
+    "alliés": ["aucun"],
+    "rivaux": ["scorpion"]
+  },
+  "references": {
+    "personnages": ["usagi"],
+    "evenements": ["fausse_accusation_maho"]
+  }
+}

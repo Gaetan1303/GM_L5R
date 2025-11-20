@@ -1,0 +1,12 @@
+{
+  "id": "temple_fortunes",
+  "nom": "Temple des Fortunes",
+  "type": "temple",
+  "description": "Le Temple des Fortunes est le principal lieu de culte des divinités célestes de Rokugan. Il accueille pèlerins, prêtres et cérémonies majeures du calendrier impérial.",
+  "histoire": "Érigé à l’aube de l’Empire, le temple a été agrandi par les différents clans et abrite de nombreux artefacts sacrés. Il est le centre du culte officiel des Fortunes.",
+  "evenements_marquants": [
+    {"id": "festival_des_fortunes", "description": "Le temple accueille chaque année le grand festival des Fortunes, rassemblant tout l’Empire."}
+  ],
+  "clan_associe": "imperial",
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Fortunes"]
+}

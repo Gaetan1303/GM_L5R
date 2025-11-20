@@ -1,0 +1,10 @@
+{
+  "id": "matsu_tsuko",
+  "nom": "Matsu Tsuko",
+  "clan": "lion",
+  "role": "Générale et héroïne du Clan du Lion",
+  "description": "Tsuko incarne la fierté et la rage du Lion. Stratège redoutable, elle a mené ses troupes avec une loyauté sans faille, mais aussi une passion qui l’a parfois conduite à la tragédie.",
+  "evenements": ["guerre_du_chrysanthème", "duel_avec_toshimoko"],
+  "relations": {"alliés": ["akodo_toturi"], "rivaux": ["kakita_toshimoko"]},
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Matsu_Tsuko"]
+}

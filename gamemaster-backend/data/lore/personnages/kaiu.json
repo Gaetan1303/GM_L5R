@@ -1,0 +1,10 @@
+{
+  "id": "kaiu",
+  "nom": "Kaiu",
+  "clan": "crabe",
+  "role": "Ingénieur et bâtisseur du Clan du Crabe",
+  "description": "Kaiu est le génie à l’origine de la Grande Muraille. Sa famille perpétue l’art de la fortification et de l’ingénierie militaire, essentielle à la survie du clan face à l’Outremonde.",
+  "evenements": ["construction_muraille_kaiu"],
+  "relations": {"alliés": ["hida"], "rivaux": []},
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Kaiu"]
+}

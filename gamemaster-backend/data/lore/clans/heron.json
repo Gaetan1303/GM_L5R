@@ -1,0 +1,16 @@
+{
+  "id": "heron",
+  "nom": "Clan du Héron",
+  "description": "Esthètes raffinés, les Hérons sont célèbres pour leur mécénat artistique et leur sens aigu de la beauté. Leur influence à la cour est subtile mais réelle.",
+  "histoire": "Fondé par Doji Shizue, le clan a toujours encouragé les arts et la poésie. Malgré leur petite taille, les Hérons ont souvent servi d’intermédiaires dans les intrigues de la Grue.",
+  "figures_majeures": ["doji_shizue"],
+  "evenements_marquants": ["festival_des_arts"],
+  "relations": {
+    "alliés": ["grue"],
+    "rivaux": ["aucun"]
+  },
+  "references": {
+    "personnages": ["doji_shizue"],
+    "evenements": ["festival_des_arts"]
+  }
+}

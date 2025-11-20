@@ -1,0 +1,12 @@
+{
+  "id": "kyuden_doji",
+  "nom": "Kyuden Doji (Château Doji)",
+  "type": "château",
+  "description": "Kyuden Doji est le siège du Clan de la Grue, réputé pour son élégance, ses jardins et ses salles de réception. C’est le centre de la diplomatie et de l’art à Rokugan.",
+  "histoire": "Fondé par Doji, le château a accueilli d’innombrables négociations, duels et fêtes somptueuses. Il symbolise la grâce et l’influence subtile de la Grue.",
+  "evenements_marquants": [
+    {"id": "duel_centenaire", "description": "Un duel légendaire opposa Kakita à Matsu, scellant la rivalité entre Grue et Lion."}
+  ],
+  "clan_associe": "grue",
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Kyuden_Doji"]
+}

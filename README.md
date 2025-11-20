@@ -1,1 +1,1 @@
-# GM_LR
+# Rokugan, le monde de L5R

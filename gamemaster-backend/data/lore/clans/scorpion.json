@@ -1,0 +1,16 @@
+{
+  "id": "scorpion",
+  "nom": "Clan du Scorpion",
+  "description": "Maîtres de l’espionnage, du chantage et du sacrifice, les Scorpions protègent l’Empire par tous les moyens, même les plus sombres. Leur réputation sulfureuse masque une loyauté sans faille envers le Trône d’Émeraude.",
+  "histoire": "Fondé par Bayushi, le clan a toujours opéré dans l’ombre, manipulant les secrets et les faiblesses de ses ennemis. Les Scorpions ont souvent été exilés ou persécutés, mais ils reviennent toujours, plus dangereux que jamais.",
+  "figures_majeures": ["bayushi", "shosuro", "yogo"],
+  "evenements_marquants": ["coup_du_scorpion", "guerre_des_clans"],
+  "relations": {
+    "alliés": ["aucun"],
+    "rivaux": ["lion", "grue", "phénix"]
+  },
+  "references": {
+    "personnages": ["bayushi", "shosuro", "yogo"],
+    "evenements": ["coup_du_scorpion", "guerre_des_clans"]
+  }
+}

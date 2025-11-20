@@ -1,0 +1,13 @@
+{
+  "id": "iuchiban",
+  "nom": "Iuchiban",
+  "role": "Nécromancien, ennemi immortel de l’Empire",
+  "type": "antagoniste majeur",
+  "evenements": ["ere_des_guerres", "troisieme_rise_iuchiban", "ere_des_troubles"],
+  "resume": "Iuchiban est un sorcier immortel, maître de la magie du sang (maho), qui a défié l’Empire à plusieurs reprises, semant la terreur et la mort.",
+  "description": "Ancien shugenja devenu nécromancien, Iuchiban a tenté de renverser l’Empire par la magie noire et la manipulation des morts. Son nom est synonyme de peur et de corruption, et ses résurgences marquent les périodes les plus sombres de l’histoire de Rokugan.",
+  "alliances": ["Bloodspeakers", "Oni", "traîtres divers"],
+  "rivalites": ["Toturi", "Daigotsu", "Clans majeurs"],
+  "citations": ["« Le sang est la clef de tous les pouvoirs. »"],
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Iuchiban"]
+}

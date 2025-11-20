@@ -1,0 +1,46 @@
+{
+  "titre": "Histoire des Kamis",
+  "resume": "Les Kamis sont les enfants de la déesse Soleil et du dieu Lune, tombés du Ciel pour fonder les clans majeurs et l’Empire de Rokugan.",
+  "kamis": [
+    {
+      "nom": "Hantei",
+      "role": "Premier Empereur, garant de l’ordre céleste."
+    },
+    {
+      "nom": "Hida",
+      "role": "Fondateur du Clan du Crabe, symbole de la force."
+    },
+    {
+      "nom": "Doji",
+      "role": "Fondatrice du Clan de la Grue, muse de la beauté et de l’art."
+    },
+    {
+      "nom": "Togashi",
+      "role": "Fondateur du Clan du Dragon, gardien des secrets mystiques."
+    },
+    {
+      "nom": "Akodo",
+      "role": "Fondateur du Clan du Lion, parangon de la guerre et de la stratégie."
+    },
+    {
+      "nom": "Shiba",
+      "role": "Fondateur du Clan du Phénix, protecteur des shugenja."
+    },
+    {
+      "nom": "Bayushi",
+      "role": "Fondateur du Clan du Scorpion, maître de l’ombre et du sacrifice."
+    },
+    {
+      "nom": "Shinjo",
+      "role": "Fondatrice du Clan de la Licorne, exploratrice et guide."
+    },
+    {
+      "nom": "Fu Leng",
+      "role": "Le Kami déchu, source de la Souillure et des forces de l’Outremonde."
+    }
+  ],
+  "sources": [
+    "Livre de base L5R 4e édition",
+    "Livre des Cinq Anneaux"
+  ]
+}

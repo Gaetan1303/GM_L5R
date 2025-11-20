@@ -1,0 +1,10 @@
+{
+  "id": "toku",
+  "nom": "Toku",
+  "clan": "singe",
+  "role": "Fondateur du Clan du Singe, héros du peuple",
+  "description": "Toku est un homme du peuple devenu samouraï par ses actes de bravoure. Loyal, débrouillard et doté d’un humour légendaire, il a gagné la reconnaissance de l’Empereur et fondé le Clan du Singe, symbole d’espoir pour les humbles.",
+  "evenements": ["reconnaissance_empire", "guerre_des_clans"],
+  "relations": {"alliés": ["hida", "akodo_toturi"], "rivaux": []},
+  "sources": ["https://l5r.fandom.com/wiki/Toku"]
+}

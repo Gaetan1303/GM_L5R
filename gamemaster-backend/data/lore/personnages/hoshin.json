@@ -1,0 +1,10 @@
+{
+  "id": "hoshin",
+  "nom": "Hoshin",
+  "ordre": "Frères de Shinsei",
+  "role": "Moine errant, réformateur du shintao",
+  "description": "Hoshin est un moine célèbre pour avoir redécouvert et diffusé les enseignements de Shinsei à travers Rokugan. Son humilité et sa quête de vérité ont inspiré des générations de moines et de samouraïs.",
+  "evenements": ["reforme_shintao"],
+  "relations": {"alliés": ["shinsei"], "rivaux": []},
+  "sources": ["https://l5r.fandom.com/wiki/Hoshin"]
+}

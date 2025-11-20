@@ -1,0 +1,10 @@
+{
+  "id": "togashi_mitsu",
+  "nom": "Togashi Mitsu",
+  "ordre": "Moines du Dragon",
+  "role": "Moine tatoué, héros du Clan du Dragon",
+  "description": "Mitsu est un moine tatoué du Dragon, célèbre pour sa sagesse, sa puissance mystique et son humour. Il a joué un rôle clé dans de nombreux événements majeurs, guidant et protégeant les siens avec une foi inébranlable.",
+  "evenements": ["guerre_des_clans", "quete_du_vide"],
+  "relations": {"alliés": ["togashi"], "rivaux": ["iuchiban"]},
+  "sources": ["https://l5r.fandom.com/wiki/Togashi_Mitsu"]
+}

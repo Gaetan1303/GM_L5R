@@ -1,0 +1,12 @@
+{
+  "id": "plaine_batailles",
+  "nom": "Plaine des Batailles",
+  "type": "plaine",
+  "description": "La Plaine des Batailles est le champ de guerre le plus célèbre de Rokugan. De nombreuses armées s’y sont affrontées pour l’honneur, le pouvoir ou la survie.",
+  "histoire": "Lieu de mémoire et de deuil, la plaine est jonchée de stèles et de reliques. Elle rappelle la fragilité de la paix dans l’Empire.",
+  "evenements_marquants": [
+    {"id": "guerre_des_clans", "description": "La plaine fut le théâtre de la bataille décisive entre les clans majeurs."}
+  ],
+  "clan_associe": "lion",
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Battle_Plains"]
+}

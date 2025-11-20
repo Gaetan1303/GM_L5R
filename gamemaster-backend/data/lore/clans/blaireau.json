@@ -1,0 +1,16 @@
+{
+  "id": "blaireau",
+  "nom": "Clan du Blaireau",
+  "description": "Petit mais tenace, le Clan du Blaireau garde les frontières nord de Rokugan. Réputés pour leur robustesse et leur loyauté, ses membres sont des bâtisseurs et des défenseurs acharnés.",
+  "histoire": "Fondé par Ichiro, le clan a toujours été fidèle à l’Empire, protégeant les cols montagneux contre les menaces extérieures. Malgré leur taille modeste, les Blaireaux ont prouvé leur valeur lors de nombreuses crises.",
+  "figures_majeures": ["ichiro"],
+  "evenements_marquants": ["defense_col_nord"],
+  "relations": {
+    "alliés": ["crabe"],
+    "rivaux": ["aucun"]
+  },
+  "references": {
+    "personnages": ["ichiro"],
+    "evenements": ["defense_col_nord"]
+  }
+}

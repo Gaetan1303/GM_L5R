@@ -1,0 +1,12 @@
+{
+  "id": "kyuden_shinjo",
+  "nom": "Kyuden Shinjo (Château Shinjo)",
+  "type": "château",
+  "description": "Kyuden Shinjo est le siège du Clan de la Licorne, vaste et ouvert sur les steppes. Il reflète l’esprit nomade et l’ouverture sur le monde du clan.",
+  "histoire": "Construit au retour de la Licorne à Rokugan, le château mêle architecture traditionnelle et influences étrangères. Il accueille les plus grands rassemblements de cavaliers.",
+  "evenements_marquants": [
+    {"id": "retour_clan_licorne", "description": "Le château fut le théâtre du retour triomphal de la Licorne."}
+  ],
+  "clan_associe": "licorne",
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Kyuden_Shinjo"]
+}

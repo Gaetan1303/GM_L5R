@@ -1,0 +1,12 @@
+{
+  "id": "kyuden_bayushi",
+  "nom": "Kyuden Bayushi (Château Bayushi)",
+  "type": "château",
+  "description": "Kyuden Bayushi est le siège du Clan du Scorpion, réputé pour ses labyrinthes, ses pièges et ses salles secrètes. C’est un lieu d’intrigues et de formation des meilleurs espions de l’Empire.",
+  "histoire": "Fondé par Bayushi, le château a été le théâtre de complots majeurs et de luttes de pouvoir internes. Il incarne la duplicité et la loyauté paradoxale du Scorpion.",
+  "evenements_marquants": [
+    {"id": "coup_du_scorpion", "description": "Le château fut le centre de la rébellion du Scorpion contre l’Empire."}
+  ],
+  "clan_associe": "scorpion",
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Kyuden_Bayushi"]
+}

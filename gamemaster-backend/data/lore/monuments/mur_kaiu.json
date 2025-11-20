@@ -1,0 +1,19 @@
+{
+  "id": "mur_kaiu",
+  "nom": "La Grande Muraille Kaiu",
+  "type": "fortification",
+  "description": "La Grande Muraille Kaiu, aussi appelée le Mur des Crabes, est la plus imposante fortification de Rokugan. S’étendant sur des centaines de kilomètres, elle sépare l’Empire des terres corrompues de l’Outremonde. Construite et entretenue par le Clan du Crabe, elle incarne le sacrifice, la vigilance et la résilience face à l’horreur.",
+  "histoire": "Édifiée peu après la chute des Kamis par Hida et Kaiu, la Muraille a été le théâtre de batailles innombrables contre les forces de la Souillure. Chaque pierre porte la marque du sang et de la sueur des générations de Crabes qui l’ont défendue. Elle a été agrandie, réparée et renforcée au fil des siècles, devenant le symbole du devoir inlassable du Clan du Crabe.",
+  "evenements_marquants": [
+    {
+      "id": "guerre_des_destructeurs",
+      "description": "La Muraille a tenu face à l’assaut massif des armées de l’Outremonde, au prix de pertes immenses."
+    },
+    {
+      "id": "defense_de_la_muraille",
+      "description": "Chaque génération de Crabe a connu son heure de vérité sur la Muraille, repoussant les horreurs de la Souillure."
+    }
+  ],
+  "clan_associe": "crabe",
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Kaiu_Wall"]
+}

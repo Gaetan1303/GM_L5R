@@ -1,9 +1,9 @@
 import 'reflect-metadata';
-import { AppDataSource } from '../gamemaster-backend/src/data-source.js';
-import { User } from '../gamemaster-backend/src/models/User.js';
-import { Scenario } from '../gamemaster-backend/src/models/Scenario.js';
-import { Room } from '../gamemaster-backend/src/models/Room.js';
-import { PlayerInRoom } from '../gamemaster-backend/src/models/PlayerInRoom.js';
+import { AppDataSource } from '../../gamemaster-backend/src/data-source.js';
+import { User } from '../../gamemaster-backend/src/models/User.js';
+import { Scenario } from '../../gamemaster-backend/src/models/Scenario.js';
+import { Room } from '../../gamemaster-backend/src/models/Room.js';
+import { PlayerInRoom } from '../../gamemaster-backend/src/models/PlayerInRoom.js';
 import { Column } from 'typeorm';
 
 // Patch dynamique du décorateur de la colonne email pour TypeORM (sans toucher au code source)

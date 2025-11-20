@@ -1,0 +1,18 @@
+{
+  "id": "chute_des_kamis",
+  "titre": "La Chute des Kamis",
+  "date": "-1000 EC",
+  "ere": "Préhistoire",
+  "resume": "Les Kamis tombent du Ciel, fondant les grands clans et l’Empire.",
+  "description": "Les Kamis, enfants de la Déesse Soleil et du Seigneur Lune, tombent du Ciel sur le monde mortel. Leur arrivée marque le début de l’histoire de Rokugan. Hantei devient le premier Empereur, tandis que Fu Leng, le Kami déchu, sombre dans le Jigoku, semant la Souillure. Chaque Kami fonde un clan majeur, posant les bases de l’Empire d’Émeraude.",
+  "protagonistes": ["Hantei", "Doji", "Akodo", "Shiba", "Bayushi", "Hida", "Shinjo", "Fu Leng"],
+  "lieux": ["Montagnes de Rokugan", "Empire d’Émeraude"],
+  "consequences": [
+    "Fondation des clans majeurs",
+    "Début de l’Empire d’Émeraude"
+  ],
+  "citations": [
+    "« Ainsi tombèrent les Kamis, et le destin du monde changea à jamais. »"
+  ],
+  "sources": ["Livre de Base L5R 4e édition, p. 12"]
+}

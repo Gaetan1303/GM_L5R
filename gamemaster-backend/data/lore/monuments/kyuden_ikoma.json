@@ -1,0 +1,12 @@
+{
+  "id": "kyuden_ikoma",
+  "nom": "Kyuden Ikoma (Château Ikoma)",
+  "type": "château",
+  "description": "Kyuden Ikoma est le centre culturel et historique du Clan du Lion. Il abrite la plus grande bibliothèque de Rokugan, gardienne des chroniques et des récits de l’Empire.",
+  "histoire": "Fondé par Ikoma, le château est le cœur de la mémoire du Lion. Il accueille les érudits, les conteurs et les stratèges du clan.",
+  "evenements_marquants": [
+    {"id": "guerre_du_chrysanthème", "description": "Le château fut assiégé lors de la Guerre du Chrysanthème."}
+  ],
+  "clan_associe": "lion",
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Kyuden_Ikoma"]
+}

@@ -1,0 +1,10 @@
+{
+  "id": "isawa_tadaka",
+  "nom": "Isawa Tadaka",
+  "clan": "phénix",
+  "role": "Shugenja et enquêteur du Clan du Phénix",
+  "description": "Tadaka est célèbre pour sa lutte contre la Souillure et sa quête de vérité, même au prix de son honneur. Il incarne la tension entre la sagesse du Phénix et la nécessité d’agir contre le mal.",
+  "evenements": ["guerre_des_esprits", "enquete_souillure"],
+  "relations": {"alliés": ["asako"], "rivaux": ["oni_no_tsuburu"]},
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Isawa_Tadaka"]
+}

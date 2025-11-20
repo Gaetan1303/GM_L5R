@@ -1,0 +1,10 @@
+{
+  "id": "kasuga",
+  "nom": "Kasuga",
+  "clan": "tortue",
+  "role": "Fondateur du Clan de la Tortue, gardien des frontières maritimes",
+  "description": "Kasuga a reçu la mission impériale de surveiller les côtes de Rokugan. Diplomate et navigateur, il a fait de la Tortue un clan discret mais essentiel à la sécurité de l’Empire.",
+  "evenements": ["surveillance_cotes"],
+  "relations": {"alliés": [], "rivaux": []},
+  "sources": ["https://l5r.fandom.com/wiki/Kasuga"]
+}

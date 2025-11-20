@@ -1,0 +1,13 @@
+{
+  "id": "shiba",
+  "nom": "Shiba",
+  "role": "Kami fondateur du Clan du Phénix",
+  "type": "protagoniste majeur",
+  "evenements": ["chute_des_kamis", "ere_des_guerres", "ere_des_troubles"],
+  "resume": "Shiba est le Kami de la sagesse et de la magie, fondateur du Clan du Phénix, protecteur des secrets spirituels de Rokugan.",
+  "description": "Shiba incarne la recherche de l’équilibre entre le pouvoir et la compassion. Il s’allie aux shugenja Isawa pour préserver l’harmonie entre les mondes spirituel et matériel. Sa lignée veille sur les mystères de la magie.",
+  "alliances": ["Hantei", "Isawa", "Doji"],
+  "rivalites": ["Fu Leng", "Bayushi"],
+  "citations": ["« La vraie force réside dans la paix intérieure. »"],
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Shiba"]
+}

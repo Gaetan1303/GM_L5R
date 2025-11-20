@@ -1,0 +1,12 @@
+{
+  "id": "shiro_shiba",
+  "nom": "Shiro Shiba (Forteresse Shiba)",
+  "type": "forteresse",
+  "description": "Shiro Shiba est la forteresse du Clan du Phénix, réputée pour sa beauté et sa sérénité. Elle abrite les plus puissants shugenja de l’Empire et de vastes jardins méditatifs.",
+  "histoire": "Fondée par Shiba, la forteresse a été le centre de la magie et de la diplomatie du clan. Elle a survécu à de nombreux conflits grâce à la sagesse de ses occupants.",
+  "evenements_marquants": [
+    {"id": "guerre_des_esprits", "description": "La forteresse fut assiégée lors de la Guerre des Esprits."}
+  ],
+  "clan_associe": "phénix",
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Shiro_Shuba"]
+}

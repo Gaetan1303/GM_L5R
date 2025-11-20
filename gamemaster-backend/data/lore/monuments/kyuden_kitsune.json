@@ -1,0 +1,12 @@
+{
+  "id": "kyuden_kitsune",
+  "nom": "Kyuden Kitsune (Château Kitsune)",
+  "type": "château",
+  "description": "Kyuden Kitsune est le siège du Clan du Renard, niché au cœur de la forêt Shinomen. Il est réputé pour ses liens avec les esprits animaux et la nature.",
+  "histoire": "Fondé par la famille Kitsune, le château est un lieu de rituels et de célébrations en l’honneur des esprits. Il protège les secrets de la forêt.",
+  "evenements_marquants": [
+    {"id": "protection_forets_sacrees", "description": "Le château a résisté à de nombreuses menaces surnaturelles."}
+  ],
+  "clan_associe": "renard",
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Kyuden_Kitsune"]
+}

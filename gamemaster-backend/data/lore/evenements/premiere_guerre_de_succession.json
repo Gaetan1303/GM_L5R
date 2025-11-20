@@ -1,0 +1,18 @@
+{
+  "id": "premiere_guerre_de_succession",
+  "titre": "Première Guerre de Succession",
+  "date": "-950 EC",
+  "ere": "Premiers Âges",
+  "resume": "Conflits entre les clans pour la légitimité du trône impérial.",
+  "description": "Après la fondation de l’Empire, la question de la succession impériale provoque la première grande guerre entre les clans. Alliances, trahisons et batailles forgent les premières rivalités durables de Rokugan.",
+  "protagonistes": ["Hantei II", "Akodo", "Bayushi", "Doji"],
+  "lieux": ["Palais impérial", "Champs de bataille de Rokugan"],
+  "consequences": [
+    "Établissement des règles de succession",
+    "Renforcement des rivalités entre clans"
+  ],
+  "citations": [
+    "« Le sang versé pour le trône ne sèche jamais vraiment. »"
+  ],
+  "sources": ["Livre de Base L5R 4e édition"]
+}

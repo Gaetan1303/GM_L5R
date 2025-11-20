@@ -1,0 +1,10 @@
+{
+  "id": "bayushi_kachiko",
+  "nom": "Bayushi Kachiko",
+  "clan": "scorpion",
+  "role": "Courtisane et intrigante du Clan du Scorpion",
+  "description": "Kachiko est l’une des femmes les plus influentes de la cour impériale. Maîtresse de la manipulation, elle a tissé un réseau d’alliances et de secrets, jouant un rôle clé dans de nombreux complots.",
+  "evenements": ["coup_du_scorpion", "guerre_des_clans"],
+  "relations": {"alliés": ["bayushi_shoju"], "rivaux": ["doji_hoturi"]},
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Bayushi_Kachiko"]
+}

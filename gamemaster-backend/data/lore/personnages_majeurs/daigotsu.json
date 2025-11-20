@@ -1,0 +1,28 @@
+{
+  "id": "daigotsu",
+  "nom": "Daigotsu",
+  "role": "Seigneur des Ténèbres, fondateur du Clan de l’Araignée, Maître de Jigoku",
+  "type": "antagoniste majeur",
+  "evenements": [
+    "ere_des_troubles",
+    "chute_des_kamis",
+    "dynastie_hantei",
+    "chute_otosan_uchi",
+    "fondation_clan_araignee",
+    "mort_de_toturi_i",
+    "guerre_des_destructeurs"
+  ],
+  "resume": "Fils illégitime de l’Empereur Hantei, Daigotsu fut enlevé à la naissance par les Bloodspeakers et élevé dans la Souillure. Il devint le Seigneur des Ténèbres, unifiant les Perdus, fondant la Cité des Perdus et le Clan de l’Araignée. Il fut l’un des plus grands ennemis de l’Empire, cherchant à restaurer Fu Leng et à imposer la volonté de Jigoku sur Rokugan.",
+  "description": "Daigotsu, né en 1112 EC, est le fils de l’Empereur Hantei XXXVIII et de l’Impératrice Hochiahime. Enlevé par les Bloodspeakers, il subit un rituel liant son âme à un Oni. Exilé dans le Jigoku, il revient des années plus tard, rassemble les Perdus et fonde la Cité des Perdus. Stratège, charismatique et impitoyable, il orchestre la Chute d’Otosan Uchi, la mort de Toturi I, et la fondation du Clan de l’Araignée. Il meurt en 1173, acceptant le seppuku pour que son fils Kanpeki puisse intégrer l’Empire. Après sa mort, il devient Maître de Jigoku, capable d’élever des âmes en fortunes noires.",
+  "alliances": ["Shahai", "Goju Kyoden", "Omoni", "Kokujin", "Tsuno Nintai", "Chuda Mishime", "Dragon de l’Ombre"],
+  "rivalites": ["Toturi I", "Hantei Naseru", "Iuchiban", "Kali-Ma", "Clans majeurs"],
+  "citations": [
+    "« Je suis l’ombre qui s’étend sur l’Empire, et nul ne peut m’arrêter. »",
+    "« L’Araignée tisse sa toile dans l’ombre, mais frappe à la lumière. »"
+  ],
+  "sources": [
+    "https://l5r.fandom.com/wiki/Daigotsu",
+    "Livre de Base L5R 4e édition",
+    "Imperial Histories 2"
+  ]
+}

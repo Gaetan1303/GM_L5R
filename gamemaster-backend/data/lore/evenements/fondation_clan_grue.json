@@ -1,0 +1,13 @@
+{
+  "id": "fondation_clan_grue",
+  "titre": "Fondation du Clan de la Grue",
+  "date": "-1000 EC",
+  "ere": "Préhistoire",
+  "resume": "Doji, sœur de Hantei, fonde le Clan de la Grue, symbole de raffinement, d’art et de diplomatie à Rokugan.",
+  "description": "Après la Chute des Kamis, Doji reçoit la mission de civiliser l’Empire naissant. Elle crée le Clan de la Grue, qui devient le modèle de l’étiquette, de la poésie et de la diplomatie. Sa lignée façonne la cour impériale et influence la politique de Rokugan pendant des siècles.",
+  "protagonistes": ["Doji", "Hantei", "Akodo"],
+  "lieux": ["Rokugan", "Kyuden Doji"],
+  "consequences": ["Émergence de la culture rokugani", "Début des rivalités politiques"],
+  "citations": ["« Là où la guerre échoue, la parole triomphe. »"],
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Crane_Clan"]
+}

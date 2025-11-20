@@ -1,0 +1,13 @@
+{
+  "id": "chute_otosan_uchi",
+  "titre": "La Chute d’Otosan Uchi",
+  "date": "1123 EC",
+  "ere": "Ère des Troubles",
+  "resume": "La capitale impériale, Otosan Uchi, tombe sous les assauts conjugués des forces de l’Ombre, des Perdus et de Daigotsu, marquant la fin d’une ère.",
+  "description": "Après des siècles de stabilité, la capitale Otosan Uchi est assiégée et détruite lors d’une série de batailles impliquant Daigotsu, les Onis, et les intrigues des clans. La ville est laissée en ruines, symbole de la fragilité de l’Empire face aux menaces surnaturelles et humaines.",
+  "protagonistes": ["Daigotsu", "Toturi I", "Shahai", "Goju Kyoden", "Clans majeurs"],
+  "lieux": ["Otosan Uchi", "Cité des Perdus"],
+  "consequences": ["Fin de la dynastie Hantei", "Déplacement de la capitale", "Affaiblissement de l’autorité impériale"],
+  "citations": ["« Les murs d’Otosan Uchi sont tombés, mais l’Empire doit survivre. »"],
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Fall_of_Otosan_Uchi"]
+}

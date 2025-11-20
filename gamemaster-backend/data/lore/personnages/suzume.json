@@ -1,0 +1,10 @@
+{
+  "id": "suzume",
+  "nom": "Suzume",
+  "clan": "moineau",
+  "role": "Fondateur du Clan du Moineau, conteur et poète",
+  "description": "Suzume a donné à son clan la force de la modestie et de la parole. Les Moineaux sont réputés pour leur humilité, leur sagesse et leur art du récit, inspirant les plus humbles de Rokugan.",
+  "evenements": ["fondation_clan_moineau"],
+  "relations": {"alliés": [], "rivaux": []},
+  "sources": ["https://l5r.fandom.com/wiki/Suzume"]
+}

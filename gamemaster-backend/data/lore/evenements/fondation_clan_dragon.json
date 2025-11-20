@@ -1,0 +1,13 @@
+{
+  "id": "fondation_clan_dragon",
+  "titre": "Fondation du Clan du Dragon",
+  "date": "-1000 EC",
+  "ere": "Préhistoire",
+  "resume": "Togashi, frère de Hantei, fonde le Clan du Dragon, gardien des mystères et des prophéties de Rokugan.",
+  "description": "Togashi choisit de se retirer dans les montagnes, fondant un clan dédié à la méditation, à l’énigme et à la recherche de la vérité cachée. Le Clan du Dragon devient le dépositaire des secrets et des prophéties qui guideront l’Empire.",
+  "protagonistes": ["Togashi", "Hantei", "Mirumoto"],
+  "lieux": ["Montagnes du Dragon", "Temple Togashi"],
+  "consequences": ["Transmission des prophéties", "Développement d’une culture unique et énigmatique"],
+  "citations": ["« Le silence des montagnes porte plus loin que le tumulte des batailles. »"],
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Dragon_Clan"]
+}

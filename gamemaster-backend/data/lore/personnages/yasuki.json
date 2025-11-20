@@ -1,0 +1,10 @@
+{
+  "id": "yasuki",
+  "nom": "Yasuki",
+  "clan": "crabe",
+  "role": "Diplomate et marchand du Clan du Crabe",
+  "description": "Yasuki a fondé une famille réputée pour son sens du commerce et de la négociation. D’abord Grue, il a rejoint le Crabe, apportant richesse et réseaux au clan, mais aussi une rivalité durable avec la Grue.",
+  "evenements": ["ralliement_crabe", "conflit_avec_grue"],
+  "relations": {"alliés": ["hida"], "rivaux": ["doji"]},
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Yasuki"]
+}

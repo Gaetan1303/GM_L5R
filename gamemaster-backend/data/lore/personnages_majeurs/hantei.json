@@ -1,0 +1,13 @@
+{
+  "id": "hantei",
+  "nom": "Hantei",
+  "role": "Premier Empereur de Rokugan",
+  "type": "protagoniste",
+  "evenements": ["chute_des_kamis", "dynastie_hantei"],
+  "resume": "Fils de la Déesse Soleil, Hantei est le Kami qui devint le premier Empereur de Rokugan, symbole de l’ordre céleste et fondateur de la dynastie impériale.",
+  "description": "Hantei incarne la justice, la sagesse et la légitimité impériale. Sa décision de ne pas participer à la lutte pour le pouvoir, mais d’accepter le trône après avoir été choisi par ses frères et sœurs, marque le début de l’Empire d’Émeraude. Sa lignée règne sur Rokugan pendant plus d’un millénaire.",
+  "alliances": ["Doji", "Akodo", "Shiba", "Bayushi", "Hida", "Shinjo"],
+  "rivalites": ["Fu Leng"],
+  "citations": ["« Je gouvernerai pour le bien de tous, sous l’œil du Ciel. »"],
+  "sources": ["Livre de Base L5R 4e édition"]
+}

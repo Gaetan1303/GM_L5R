@@ -1,0 +1,12 @@
+{
+  "id": "ryoko_owari",
+  "nom": "Ryoko Owari (Cité des Mensonges)",
+  "type": "cité",
+  "description": "Ryoko Owari est la plus grande cité du Clan du Scorpion, célèbre pour ses plaisirs, ses intrigues et ses marchés. Surnommée la Cité des Mensonges, elle attire autant les marchands que les espions.",
+  "histoire": "Fondée par Bayushi, la cité est devenue le centre du commerce de l’opium et des jeux. Elle est le théâtre de complots et de luttes de pouvoir entre familles scorpion et visiteurs étrangers.",
+  "evenements_marquants": [
+    {"id": "coup_du_scorpion", "description": "La cité fut un foyer d’intrigues lors de la rébellion du Scorpion."}
+  ],
+  "clan_associe": "scorpion",
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Ryoko_Owari"]
+}

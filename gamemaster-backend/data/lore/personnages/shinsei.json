@@ -1,0 +1,10 @@
+{
+  "id": "shinsei",
+  "nom": "Shinsei",
+  "ordre": "Frères de Shinsei",
+  "role": "Sage légendaire, fondateur de la philosophie shintao",
+  "description": "Shinsei est le mystérieux sage qui a guidé les Kamis et les premiers samouraïs vers la victoire contre Fu Leng. Porteur de la sagesse du Vide, il a fondé la philosophie shintao et inspiré la création de nombreux ordres monastiques à travers l’Empire.",
+  "evenements": ["premiere_guerre_contre_fu_leng", "fondation_shintao"],
+  "relations": {"alliés": ["hantei", "togashi"], "rivaux": ["fu_leng"]},
+  "sources": ["https://l5r.fandom.com/wiki/Shinsei"]
+}

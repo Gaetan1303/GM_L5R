@@ -1,0 +1,13 @@
+{
+  "id": "hida",
+  "nom": "Hida",
+  "role": "Kami fondateur du Clan du Crabe",
+  "type": "protagoniste majeure",
+  "evenements": ["chute_des_kamis", "ere_des_guerres", "defense_shadowlands"],
+  "resume": "Hida est le Kami de la force et de la résilience, fondateur du Clan du Crabe, défenseur de Rokugan contre les menaces des Terres de l’Ombre.",
+  "description": "Hida incarne la robustesse, le sacrifice et la détermination. Fils de la déesse Soleil, il fut le premier à comprendre la menace de l’Outremonde. Sa stature colossale et son tempérament direct ont forgé l’esprit du Crabe : il préfère l’action aux discours, la loyauté au prestige. Hida a personnellement supervisé la construction de la Grande Muraille Kaiu, sacrifiant des milliers de vies pour dresser ce rempart contre la Souillure. Sa lignée perpétue la tradition du devoir avant tout, et chaque Crabe porte en lui l’héritage du Kami qui a choisi la vigilance éternelle plutôt que la gloire éphémère. Hida n’a jamais recherché l’admiration, mais il a gagné le respect de tous ceux qui comprennent le poids du sacrifice."
+  "alliances": ["Hantei", "Akodo"],
+  "rivalites": ["Fu Leng", "Doji"],
+  "citations": ["« Mieux vaut mourir debout que vivre à genoux. »"],
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Hida"]
+}

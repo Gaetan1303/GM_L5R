@@ -1,0 +1,13 @@
+{
+  "id": "guerre_des_clans",
+  "titre": "La Guerre des Clans",
+  "date": "-800 à -600 EC",
+  "ere": "Âge des Guerres",
+  "resume": "Période de conflits majeurs entre les clans fondateurs pour l’influence, les terres et l’honneur, marquant la structuration politique de Rokugan.",
+  "description": "Après la fondation de l’Empire, les grands clans s’affrontent dans une série de guerres pour affirmer leur suprématie. Ces conflits forgent les alliances, les rivalités et les codes d’honneur qui façonneront la société rokugani pour des siècles.",
+  "protagonistes": ["Akodo", "Doji", "Hida", "Bayushi", "Shiba", "Togashi"],
+  "lieux": ["Rokugan", "Champs de bataille historiques"],
+  "consequences": ["Émergence des vertus du Bushido", "Délimitation des territoires des clans"],
+  "citations": ["« L’acier et l’honneur ont dessiné les frontières de l’Empire. »"],
+  "sources": ["Livre de Base L5R 4e édition"]
+}

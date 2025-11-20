@@ -1,0 +1,12 @@
+{
+  "id": "montagnes_dragon",
+  "nom": "Montagnes du Dragon",
+  "type": "chaîne montagneuse",
+  "description": "Les Montagnes du Dragon dominent le nord de Rokugan. Sauvages, escarpées et souvent enveloppées de brume, elles abritent les monastères et forteresses du Clan du Dragon.",
+  "histoire": "Lieu de retraite et de méditation, les montagnes sont aussi le théâtre de batailles et de quêtes mystiques. Elles sont réputées pour leurs phénomènes surnaturels.",
+  "evenements_marquants": [
+    {"id": "quete_du_vide", "description": "De nombreux moines et samouraïs ont cherché l’illumination dans ces montagnes."}
+  ],
+  "clan_associe": "dragon",
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Dragon_Mountains"]
+}

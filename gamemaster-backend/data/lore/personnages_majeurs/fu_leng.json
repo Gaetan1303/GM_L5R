@@ -1,0 +1,13 @@
+{
+  "id": "fu_leng",
+  "nom": "Fu Leng",
+  "role": "Kami déchu, source de la Souillure",
+  "type": "antagoniste",
+  "evenements": ["chute_des_kamis", "ere_des_troubles"],
+  "resume": "Dernier des Kamis, Fu Leng tombe dans le Jigoku et devient la source de la Souillure, ennemi éternel de l’Empire.",
+  "description": "Fu Leng, frère des autres Kamis, est corrompu par le Jigoku lors de sa chute. Il tente de conquérir Rokugan, semant la Souillure et la peur. Son influence maléfique marque l’histoire de l’Empire et engendre de nombreux conflits.",
+  "alliances": [],
+  "rivalites": ["Hantei", "Akodo", "Shiba", "Bayushi", "Hida", "Shinjo", "Doji"],
+  "citations": ["« Le monde sera à genoux devant ma puissance. »"],
+  "sources": ["Livre de Base L5R 4e édition"]
+}

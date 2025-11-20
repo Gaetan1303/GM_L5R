@@ -1,0 +1,13 @@
+{
+  "id": "hida_yakamo",
+  "nom": "Hida Yakamo",
+  "role": "Champion du Clan du Crabe",
+  "type": "protagoniste majeure",
+  "evenements": ["guerre_des_destructeurs", "defense_de_la_muraille"],
+  "resume": "Fils de Hida Kisada, Yakamo est un guerrier légendaire, symbole de la ténacité du Crabe face à l’Outremonde.",
+  "description": "Yakamo s’est illustré par sa bravoure et sa force inébranlable lors des pires assauts des forces de l’Ombre. Héritier du devoir familial, il a mené ses troupes avec une détermination farouche, sacrifiant tout pour la survie de Rokugan. Marqué par la perte, la colère et la responsabilité, Yakamo a souvent été tiraillé entre la fidélité à son père Kisada et la nécessité de protéger l’Empire, même contre la volonté impériale. Sa rivalité avec les autres clans, notamment le Scorpion, n’a jamais éclipsé son sens du sacrifice. Il est devenu un symbole de la ténacité du Crabe, prêt à mourir debout sur la Muraille plutôt que de céder un pouce de terrain à l’ennemi."
+  "alliances": ["hida_kisada", "yakamo"],
+  "rivalites": ["oni_no_akuma", "scorpion"],
+  "citations": ["« La Muraille ne tombera pas tant que je tiendrai debout. »"],
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Hida_Yakamo"]
+}

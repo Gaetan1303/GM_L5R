@@ -1,0 +1,12 @@
+{
+  "id": "shiro_sano_kakita",
+  "nom": "Shiro Sano Kakita (Château Kakita)",
+  "type": "château",
+  "description": "Shiro Sano Kakita est le centre de l’école de duel la plus prestigieuse de Rokugan. C’est un lieu de raffinement, d’art et de perfection martiale.",
+  "histoire": "Fondé par Kakita, le château a vu naître les plus grands duellistes de l’Empire. Il accueille chaque année des tournois et des concours artistiques.",
+  "evenements_marquants": [
+    {"id": "tournoi_kakita", "description": "Le tournoi annuel de duel attire les meilleurs bretteurs de Rokugan."}
+  ],
+  "clan_associe": "grue",
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Shiro_Sano_Kakita"]
+}

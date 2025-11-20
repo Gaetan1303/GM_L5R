@@ -1,0 +1,16 @@
+{
+  "id": "grue",
+  "nom": "Clan de la Grue",
+  "description": "Le Clan de la Grue incarne l’élégance, la diplomatie et l’art. Maîtres de la cour, ils excellent dans la politique, la poésie et le duel. Leur influence sur l’Empire est immense, car ils fournissent souvent l’Impératrice et manipulent les intrigues avec une grâce redoutable.",
+  "histoire": "Fondé par la Kami Doji, le clan a toujours cherché la perfection dans tous les domaines. Leur histoire est jalonnée de duels célèbres, d’alliances subtiles et de rivalités féroces, notamment avec le Clan du Lion. La Grue a souvent été la cible de jalousies, mais sa résilience et son raffinement lui ont permis de traverser les pires tempêtes.",
+  "figures_majeures": ["doji", "doji_hoturi", "kakita"],
+  "evenements_marquants": ["guerre_du_chrysanthème", "duel_des_centaines_annees"],
+  "relations": {
+    "alliés": ["phénix", "mante"],
+    "rivaux": ["lion", "scorpion", "crabe"]
+  },
+  "references": {
+    "personnages": ["doji", "doji_hoturi", "kakita"],
+    "evenements": ["guerre_du_chrysanthème", "duel_des_centaines_annees"]
+  }
+}

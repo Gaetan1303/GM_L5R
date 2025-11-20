@@ -1,0 +1,10 @@
+{
+  "id": "toritaka",
+  "nom": "Toritaka",
+  "clan": "faucon",
+  "role": "Fondateur du Clan du Faucon, chasseur d’esprits",
+  "description": "Toritaka a bâti la réputation de sa famille sur la lutte contre les fantômes et les esprits malveillants. Son courage face au surnaturel a permis au clan de protéger Rokugan des menaces invisibles.",
+  "evenements": ["chasse_aux_esprits"],
+  "relations": {"alliés": ["hida"], "rivaux": []},
+  "sources": ["https://l5r.fandom.com/wiki/Toritaka"]
+}

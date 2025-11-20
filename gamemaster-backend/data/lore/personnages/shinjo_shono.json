@@ -1,0 +1,10 @@
+{
+  "id": "shinjo_shono",
+  "nom": "Shinjo Shono",
+  "clan": "licorne",
+  "role": "Cavalier et chef de guerre du Clan de la Licorne",
+  "description": "Shono est un meneur audacieux, héritier de la tradition d’exploration de la Licorne. Il a guidé son clan lors de son retour à Rokugan et s’est illustré par sa bravoure et son ouverture d’esprit.",
+  "evenements": ["retour_clan_licorne", "guerre_des_clans"],
+  "relations": {"alliés": ["shinjo"], "rivaux": ["moto_chagatai"]},
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Shinjo_Shono"]
+}

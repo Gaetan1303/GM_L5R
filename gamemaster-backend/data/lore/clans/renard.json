@@ -1,0 +1,16 @@
+{
+  "id": "renard",
+  "nom": "Clan du Renard",
+  "description": "Gardien des forêts et des esprits kitsune, le Clan du Renard est proche de la nature et des forces surnaturelles. Ses membres sont réputés pour leur sagesse et leur discrétion.",
+  "histoire": "Fondé par Kitsune, le clan a toujours protégé les forêts sacrées et entretenu des liens avec les esprits animaux. Leur fusion avec le Clan du Mante a marqué un tournant dans leur histoire.",
+  "figures_majeures": ["kitsune"],
+  "evenements_marquants": ["protection_forets_sacrees"],
+  "relations": {
+    "alliés": ["mante"],
+    "rivaux": ["aucun"]
+  },
+  "references": {
+    "personnages": ["kitsune"],
+    "evenements": ["protection_forets_sacrees"]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "licorne",
+  "nom": "Clan de la Licorne",
+  "description": "Explorateurs et cavaliers hors pair, les Licornes sont revenus à Rokugan après des siècles d’exil. Leur culture, influencée par des terres étrangères, les rend uniques et parfois incompris. Maîtres de la cavalerie, ils sont ouverts à l’innovation et à l’aventure.",
+  "histoire": "Fondé par la Kami Shinjo, le clan a quitté Rokugan pour explorer le monde, revenant des siècles plus tard avec des coutumes et des savoirs nouveaux. Leur retour a bouleversé l’Empire, mais la Licorne a su prouver sa loyauté et sa valeur sur le champ de bataille.",
+  "figures_majeures": ["shinjo", "ide", "utaku"],
+  "evenements_marquants": ["retour_clan_licorne", "guerre_des_clans"],
+  "relations": {
+    "alliés": ["crabe", "phénix"],
+    "rivaux": ["lion", "scorpion"]
+  },
+  "references": {
+    "personnages": ["shinjo", "ide", "utaku"],
+    "evenements": ["retour_clan_licorne", "guerre_des_clans"]
+  }
+}

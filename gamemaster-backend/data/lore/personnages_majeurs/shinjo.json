@@ -1,0 +1,13 @@
+{
+  "id": "shinjo",
+  "nom": "Shinjo",
+  "role": "Kami fondatrice du Clan de la Licorne",
+  "type": "protagoniste",
+  "evenements": ["chute_des_kamis", "retour_licorne"],
+  "resume": "Exploratrice et visionnaire, Shinjo fonde le Clan de la Licorne et part explorer les terres inconnues, avant de revenir bouleverser l’Empire.",
+  "description": "Shinjo incarne la curiosité, l’ouverture et l’adaptabilité. Son retour après des siècles d’exil marque un tournant dans l’histoire de Rokugan.",
+  "alliances": ["Hantei", "Otaku", "Iuchi"],
+  "rivalites": [],
+  "citations": ["« Le voyage est aussi important que la destination. »"],
+  "sources": ["Livre de Base L5R 4e édition"]
+}

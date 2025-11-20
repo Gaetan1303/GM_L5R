@@ -1,0 +1,71 @@
+{
+  "titre": "Histoire principale de Rokugan",
+  "resume": "L’Empire d’Émeraude, fondé par les descendants des Kamis, est le théâtre de luttes de pouvoir, de guerres, de trahisons et de quêtes spirituelles. Le destin de Rokugan est marqué par l’équilibre entre honneur, devoir et passions humaines.",
+  "sections": [
+    {
+      "titre": "La Chute des Kamis",
+      "texte": "Au commencement, les Kamis tombèrent du Ciel sur le monde mortel, fondant les grands clans. Hantei devint le premier Empereur. Fu Leng, le Kami déchu, sombra dans le Jigoku et devint la source de la Souillure."
+    },
+    {
+      "titre": "L’Âge des Guerres",
+      "texte": "Après la fondation, Rokugan fut secoué par des guerres de succession, des invasions gaijin, et la lutte contre les forces de l’Ombre. Les clans majeurs s’affirmèrent, chacun incarnant une vertu du Bushido."
+    },
+    {
+      "titre": "L’Empire d’Émeraude",
+      "texte": "Sous la dynastie Hantei, l’Empire connut des siècles de paix relative, troublée par des intrigues de cour, des duels, et des menaces surnaturelles. L’Empereur est le garant de l’ordre céleste, mais l’équilibre est toujours fragile."
+    },
+    {
+      "titre": "L’Ère des Troubles",
+      "texte": "La Quatrième Édition se situe à une époque de tensions : retour de la Licorne, ambitions du Scorpion, menaces de la Souillure, et prophéties sur la chute de la dynastie. Chaque clan lutte pour sa survie et son honneur."
+    }
+  ],
+  "sources": [
+    "Livre de base L5R 4e édition",
+    "Livre du Clan du Crabe",
+    "Livre du Clan du Scorpion"
+  ],
+  "chronologie": [
+    {
+      "id": "chute_des_kamis",
+      "titre": "La Chute des Kamis",
+      "date": "-1000 EC",
+      "resume": "Les Kamis tombent du Ciel, fondant les grands clans et l’Empire.",
+      "details": "Voir section détaillée ou evenements.json"
+    },
+    {
+      "id": "premiere_guerre_de_succession",
+      "titre": "Première Guerre de Succession",
+      "date": "-950 EC",
+      "resume": "Conflits entre les clans pour la légitimité du trône impérial.",
+      "details": "Début des rivalités majeures entre clans."
+    },
+    {
+      "id": "ere_des_guerres",
+      "titre": "L’Âge des Guerres",
+      "date": "-900 à -300 EC",
+      "resume": "Période de conflits, d’invasions gaijin et de luttes contre l’Ombre.",
+      "details": "Consolidation des clans majeurs, apparition des clans mineurs."
+    },
+    {
+      "id": "dynastie_hantei",
+      "titre": "Dynastie Hantei et Empire d’Émeraude",
+      "date": "-300 EC à 1120 EC",
+      "resume": "Ère de paix relative, intrigues de cour et menaces surnaturelles.",
+      "details": "L’Empereur Hantei règne, équilibre fragile entre les clans."
+    },
+    {
+      "id": "retour_licorne",
+      "titre": "Retour du Clan de la Licorne",
+      "date": "1120 EC",
+      "resume": "Le Clan de la Licorne revient après huit siècles d’exil.",
+      "details": "Changements dans l’équilibre des forces, tensions avec les autres clans."
+    },
+    {
+      "id": "ere_des_troubles",
+      "titre": "L’Ère des Troubles",
+      "date": "1120+ EC",
+      "resume": "Tensions, menaces de la Souillure, ambitions du Scorpion, prophéties de chute.",
+      "details": "Période couverte par la 4e édition, chaque clan lutte pour sa survie."
+    }
+  ]
+}

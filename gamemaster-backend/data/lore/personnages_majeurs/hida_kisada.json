@@ -1,0 +1,13 @@
+{
+  "id": "hida_kisada",
+  "nom": "Hida Kisada",
+  "role": "Daimyo du Clan du Crabe",
+  "type": "protagoniste majeure",
+  "evenements": ["guerre_des_destructeurs", "coup_du_scorpion"],
+  "resume": "Hida Kisada, surnommé l’Ours, est l’un des plus puissants chefs de guerre de l’histoire du Crabe, célèbre pour sa force et sa volonté de fer.",
+  "description": "Kisada, surnommé l’Ours, a mené le Crabe à travers des épreuves terribles, défiant parfois l’Empereur lui-même pour assurer la survie de son clan. Sa stature imposante, son regard perçant et sa voix de tonnerre en ont fait une légende vivante. Kisada n’a jamais hésité à prendre des décisions difficiles, quitte à s’attirer la colère de la cour. Son alliance temporaire avec des forces douteuses lors de la Guerre des Destructeurs a terni sa réputation, mais il l’a fait par sens du devoir envers son peuple. Il incarne le dilemme du chef prêt à tout sacrifier pour ceux qu’il protège, même au prix de son honneur personnel."
+  "alliances": ["hida_yakamo", "hida"],
+  "rivalites": ["scorpion", "oni_no_akuma"],
+  "citations": ["« L’Empire oublie trop vite qui le protège. »"],
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Hida_Kisada"]
+}

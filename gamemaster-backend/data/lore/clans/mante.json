@@ -1,0 +1,16 @@
+{
+  "id": "mante",
+  "nom": "Clan de la Mante",
+  "description": "Né de la volonté d’un homme, le Clan de la Mante a su s’imposer comme une puissance maritime. Pirates devenus seigneurs, ils contrôlent les mers de Rokugan et prospèrent grâce à leur audace et leur sens du commerce.",
+  "histoire": "Fondé par Yoritomo, le clan a défié l’Empire pour obtenir sa reconnaissance. Les Mantes sont fiers, indépendants et toujours prêts à saisir une opportunité. Leur histoire est celle d’une ascension fulgurante, marquée par des alliances et des trahisons.",
+  "figures_majeures": ["yoritomo", "aramasu"],
+  "evenements_marquants": ["guerre_des_clans", "ascension_mante"],
+  "relations": {
+    "alliés": ["grue"],
+    "rivaux": ["crabe", "scorpion"]
+  },
+  "references": {
+    "personnages": ["yoritomo", "aramasu"],
+    "evenements": ["guerre_des_clans", "ascension_mante"]
+  }
+}

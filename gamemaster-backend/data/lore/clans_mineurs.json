@@ -1,0 +1,38 @@
+{
+  "titre": "Histoire des Clans Mineurs",
+  "resume": "Les clans mineurs, fondés par des héros ou des descendants de samurai, jouent un rôle discret mais parfois décisif dans l’histoire de Rokugan.",
+  "clans": [
+    {
+      "nom": "Aigle",
+      "histoire": "Fondé par un vassal du Clan du Lion, le Clan de l’Aigle fut détruit lors d’un conflit avec la Grue."
+    },
+    {
+      "nom": "Blaireau",
+      "histoire": "Gardien des frontières nord, le Clan du Blaireau est réputé pour sa robustesse et sa loyauté envers le Crabe."
+    },
+    {
+      "nom": "Renard",
+      "histoire": "Maîtres des forêts, les Kitsune du Clan du Renard sont proches des esprits et des kami animaux."
+    },
+    {
+      "nom": "Guêpe",
+      "histoire": "Archers et messagers, les Guêpes sont devenus le Clan de la Mante après leur union avec d’autres mineurs."
+    },
+    {
+      "nom": "Tortue",
+      "histoire": "Le Clan de la Tortue gère les ports et les affaires maritimes de l’Empire, souvent à la frontière de la légalité."
+    },
+    {
+      "nom": "Singe",
+      "histoire": "Fondé par un samurai loyal, le Clan du Singe est connu pour sa fidélité et sa discrétion."
+    },
+    {
+      "nom": "Libellule",
+      "histoire": "Le Clan de la Libellule protège les frontières spirituelles et sert d’intermédiaire entre les clans majeurs."
+    }
+  ],
+  "sources": [
+    "Livre de base L5R 4e édition",
+    "Livre des Clans mineurs"
+  ]
+}

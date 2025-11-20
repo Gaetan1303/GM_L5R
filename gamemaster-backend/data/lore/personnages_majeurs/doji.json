@@ -1,0 +1,13 @@
+{
+  "id": "doji",
+  "nom": "Doji",
+  "role": "Kami fondatrice du Clan de la Grue",
+  "type": "protagoniste majeure",
+  "evenements": ["chute_des_kamis", "dynastie_hantei", "ere_des_guerres"],
+  "resume": "Doji, sœur de Hantei, est la Kami de la beauté, de la diplomatie et de la culture. Elle fonde le Clan de la Grue, modèle d’élégance et d’influence politique.",
+  "description": "Doji incarne la grâce, l’intelligence et la capacité à résoudre les conflits par la parole. Elle est à l’origine de nombreuses traditions artistiques et protocolaires de Rokugan. Sa descendance façonne la cour impériale et l’étiquette du pays.",
+  "alliances": ["Hantei", "Akodo", "Shiba"],
+  "rivalites": ["Bayushi", "Hida"],
+  "citations": ["« La beauté est une arme plus subtile que l’acier. »"],
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Doji"]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "kyuden_hida",
+  "nom": "Kyuden Hida (Château Hida)",
+  "type": "château",
+  "description": "Kyuden Hida est la forteresse principale du Clan du Crabe, située à l’extrémité nord de la Grande Muraille Kaiu. Massif, austère et imprenable, il sert de quartier général militaire et de refuge lors des invasions de l’Outremonde.",
+  "histoire": "Fondé par Hida lui-même, le château a résisté à d’innombrables sièges et abrite les plus grands héros du clan. Il incarne la résilience et la discipline du Crabe.",
+  "evenements_marquants": [
+    {"id": "defense_de_la_muraille", "description": "Kyuden Hida a servi de dernier rempart lors des plus grands assauts de l’Outremonde."}
+  ],
+  "clan_associe": "crabe",
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Kyuden_Hida"]
+}

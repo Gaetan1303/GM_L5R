@@ -1,0 +1,10 @@
+{
+  "id": "kakita_toshimoko",
+  "nom": "Kakita Toshimoko",
+  "clan": "grue",
+  "role": "Maître du duel, sensei de l’Académie Kakita",
+  "description": "Toshimoko est une légende vivante, réputé pour son habileté au sabre et son humour décapant. Il a formé des générations de duellistes et servi la Grue avec panache, tout en gardant une indépendance d’esprit rare à la cour.",
+  "evenements": ["duel_centenaire", "guerre_du_chrysanthème"],
+  "relations": {"alliés": ["doji_hoturi"], "rivaux": ["matsu_tsuko"]},
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Kakita_Toshimoko"]
+}

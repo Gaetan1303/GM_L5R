@@ -1,0 +1,16 @@
+{
+  "id": "singe",
+  "nom": "Clan du Singe",
+  "description": "Sympathiques et débrouillards, les Singes sont appréciés pour leur humour et leur capacité à se sortir des situations les plus complexes. Ils servent souvent de messagers ou d’éclaireurs.",
+  "histoire": "Fondé par Toku, le clan a gagné sa reconnaissance par des actes de bravoure et de loyauté. Leur histoire est celle de l’ascension d’un homme ordinaire devenu héros.",
+  "figures_majeures": ["toku"],
+  "evenements_marquants": ["reconnaissance_empire"],
+  "relations": {
+    "alliés": ["aucun"],
+    "rivaux": ["aucun"]
+  },
+  "references": {
+    "personnages": ["toku"],
+    "evenements": ["reconnaissance_empire"]
+  }
+}

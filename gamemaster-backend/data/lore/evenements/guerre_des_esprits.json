@@ -1,0 +1,13 @@
+{
+  "id": "guerre_des_esprits",
+  "titre": "La Guerre des Esprits",
+  "date": "1132-1133 EC",
+  "ere": "Ère des Troubles",
+  "resume": "Les esprits des anciens héros de Rokugan reviennent du royaume des morts pour revendiquer leur place dans l’Empire, provoquant une guerre civile et spirituelle.",
+  "description": "Guidés par Hantei XVI, les esprits des anciens samouraïs (les Revenants) reviennent à Rokugan, refusant de céder leur héritage aux vivants. Cette guerre oppose les clans, bouleverse l’ordre établi et interroge la légitimité du pouvoir.",
+  "protagonistes": ["Hantei XVI", "Toturi I", "Clans majeurs", "Revenants"],
+  "lieux": ["Rokugan", "Otosan Uchi"],
+  "consequences": ["Réconciliation entre vivants et morts", "Renforcement du pouvoir impérial", "Évolution des traditions"],
+  "citations": ["« Les morts réclament ce que les vivants ont oublié. »"],
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Spirit_Wars"]
+}

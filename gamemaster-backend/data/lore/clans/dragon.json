@@ -1,0 +1,16 @@
+{
+  "id": "dragon",
+  "nom": "Clan du Dragon",
+  "description": "Mystérieux et imprévisible, le Clan du Dragon vit reclus dans ses montagnes. Ses membres suivent des voies spirituelles uniques, comme les moines tatoués et les prophètes. Le Dragon intervient rarement dans les affaires de l’Empire, mais ses actions sont toujours lourdes de sens.",
+  "histoire": "Fondé par Togashi, le clan a toujours cultivé le secret et l’introspection. Les Dragons ont souvent été à l’origine de prophéties ou d’événements majeurs, agissant dans l’ombre pour préserver l’équilibre. Leur histoire est marquée par des figures énigmatiques et des choix radicaux.",
+  "figures_majeures": ["togashi", "mirumoto", "kitsuki"],
+  "evenements_marquants": ["guerre_des_destructeurs", "retraite_du_dragon"],
+  "relations": {
+    "alliés": ["phénix"],
+    "rivaux": ["scorpion", "lion"]
+  },
+  "references": {
+    "personnages": ["togashi", "mirumoto", "kitsuki"],
+    "evenements": ["guerre_des_destructeurs", "retraite_du_dragon"]
+  }
+}

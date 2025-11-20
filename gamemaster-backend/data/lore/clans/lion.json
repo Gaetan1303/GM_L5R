@@ -1,0 +1,16 @@
+{
+  "id": "lion",
+  "nom": "Clan du Lion",
+  "description": "Le Clan du Lion est le bras armé de l’Empire, réputé pour sa discipline, son honneur et sa maîtrise de la guerre. Stratèges hors pair, les Lions sont les gardiens de la tradition bushido et servent souvent comme généraux de l’armée impériale.",
+  "histoire": "Fondé par Akodo, le Lion a toujours été au cœur des conflits majeurs de Rokugan. Sa rivalité avec la Grue est légendaire, tout comme ses victoires sur le champ de bataille. Le clan a produit des héros et des martyrs, sacrifiant tout pour l’Empire.",
+  "figures_majeures": ["akodo", "matsu", "kitsu"],
+  "evenements_marquants": ["guerre_du_chrysanthème", "guerre_des_clans"],
+  "relations": {
+    "alliés": ["phénix"],
+    "rivaux": ["grue", "scorpion", "crabe"]
+  },
+  "references": {
+    "personnages": ["akodo", "matsu", "kitsu"],
+    "evenements": ["guerre_du_chrysanthème", "guerre_des_clans"]
+  }
+}

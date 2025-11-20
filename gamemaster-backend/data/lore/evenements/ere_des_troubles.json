@@ -1,0 +1,18 @@
+{
+  "id": "ere_des_troubles",
+  "titre": "L’Ère des Troubles",
+  "date": "1120+ EC",
+  "ere": "Ère des Troubles",
+  "resume": "Tensions, menaces de la Souillure, ambitions du Scorpion, prophéties de chute.",
+  "description": "La période couverte par la 4e édition est marquée par le retour de la Licorne, les ambitions du Scorpion, la menace de la Souillure et des prophéties annonçant la chute de la dynastie. Chaque clan lutte pour sa survie et son honneur dans un Empire au bord du chaos.",
+  "protagonistes": ["Bayushi", "Hantei", "Shinjo", "Isawa"],
+  "lieux": ["Capitale impériale", "Terres de l’Ombre"],
+  "consequences": [
+    "Crises politiques et spirituelles",
+    "Début d’une nouvelle ère d’incertitude"
+  ],
+  "citations": [
+    "« Quand l’Empire vacille, chaque choix devient fatal. »"
+  ],
+  "sources": ["Livre de Base L5R 4e édition"]
+}

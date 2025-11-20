@@ -1,0 +1,10 @@
+{
+  "id": "doji_kuwanan",
+  "nom": "Doji Kuwanan",
+  "clan": "grue",
+  "role": "Général et stratège du Clan de la Grue",
+  "description": "Kuwanan est un chef militaire brillant, frère de Doji Hoturi. Il a mené la Grue lors de conflits majeurs, oscillant entre devoir familial et exigences de la guerre.",
+  "evenements": ["guerre_du_chrysanthème", "conflit_avec_lion"],
+  "relations": {"alliés": ["doji_hoturi"], "rivaux": ["akodo_toturi"]},
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Doji_Kuwanan"]
+}

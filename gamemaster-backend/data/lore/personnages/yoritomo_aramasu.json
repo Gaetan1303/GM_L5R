@@ -1,0 +1,10 @@
+{
+  "id": "yoritomo_aramasu",
+  "nom": "Yoritomo Aramasu",
+  "clan": "mante",
+  "role": "Seigneur et stratège du Clan de la Mante",
+  "description": "Aramasu, fils adoptif de Yoritomo, a joué un rôle clé dans l’ascension du clan. Il a su naviguer entre loyauté familiale et ambitions politiques, incarnant la complexité de la Mante.",
+  "evenements": ["ascension_mante", "guerre_des_clans"],
+  "relations": {"alliés": ["yoritomo"], "rivaux": ["scorpion"]},
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Yoritomo_Aramasu"]
+}

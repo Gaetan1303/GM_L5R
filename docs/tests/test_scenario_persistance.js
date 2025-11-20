@@ -36,11 +36,11 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var data_source_js_1 = require("../gamemaster-backend/src/data-source.js");
-var User_js_1 = require("../gamemaster-backend/src/models/User.js");
-var Scenario_js_1 = require("../gamemaster-backend/src/models/Scenario.js");
-var Room_js_1 = require("../gamemaster-backend/src/models/Room.js");
-var PlayerInRoom_js_1 = require("../gamemaster-backend/src/models/PlayerInRoom.js");
+var data_source_js_1 = require("../../gamemaster-backend/src/data-source.js");
+var User_js_1 = require("../../gamemaster-backend/src/models/User.js");
+var Scenario_js_1 = require("../../gamemaster-backend/src/models/Scenario.js");
+var Room_js_1 = require("../../gamemaster-backend/src/models/Room.js");
+var PlayerInRoom_js_1 = require("../../gamemaster-backend/src/models/PlayerInRoom.js");
 function main() {
     return __awaiter(this, void 0, void 0, function () {
         var gm, joueur1, joueur2, joueur3, scenario, room, pir1, pir2, pir3, pirGM, rooms, players;

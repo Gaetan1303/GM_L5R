@@ -1,0 +1,10 @@
+{
+  "id": "soshi_bantaro",
+  "nom": "Soshi Bantaro",
+  "ordre": "Moines du Vide",
+  "role": "Moine du Vide, maître de la méditation",
+  "description": "Bantaro est un moine du Vide, reconnu pour sa capacité à percevoir les vérités cachées et à guider les âmes égarées. Il a contribué à la diffusion des pratiques méditatives dans tout l’Empire.",
+  "evenements": ["diffusion_meditation_vide"],
+  "relations": {"alliés": ["shinsei"], "rivaux": []},
+  "sources": ["https://l5r.fandom.com/wiki/Soshi_Bantaro"]
+}

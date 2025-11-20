@@ -1,0 +1,10 @@
+{
+  "id": "shosuro",
+  "nom": "Shosuro",
+  "clan": "scorpion",
+  "role": "Maîtresse de l’ombre, fondatrice de la famille Shosuro",
+  "description": "Shosuro est célèbre pour ses talents d’espionne, d’actrice et d’assassin. Elle a posé les bases de l’art du subterfuge au sein du Clan du Scorpion, influençant l’histoire de Rokugan dans l’ombre.",
+  "evenements": ["coup_du_scorpion"],
+  "relations": {"alliés": ["bayushi"], "rivaux": []},
+  "sources": ["https://l5r.fandom.com/wiki/Shosuro"]
+}

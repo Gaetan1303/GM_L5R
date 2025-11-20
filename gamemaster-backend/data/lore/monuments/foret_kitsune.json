@@ -1,0 +1,12 @@
+{
+  "id": "foret_kitsune",
+  "nom": "Forêt Kitsune",
+  "type": "forêt",
+  "description": "La Forêt Kitsune est un lieu sacré pour le Clan du Renard. Peuplée d’esprits animaux, elle est réputée pour ses phénomènes surnaturels et sa beauté sauvage.",
+  "histoire": "Protégée par la famille Kitsune, la forêt est le théâtre de rituels et de légendes. Elle est crainte par les étrangers pour ses illusions et ses gardiens invisibles.",
+  "evenements_marquants": [
+    {"id": "protection_forets_sacrees", "description": "La forêt a résisté à de nombreuses tentatives de déforestation ou d’invasion."}
+  ],
+  "clan_associe": "renard",
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Kitsune_Forest"]
+}

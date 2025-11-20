@@ -1,0 +1,12 @@
+{
+  "id": "foret_shinomen",
+  "nom": "Forêt Shinomen",
+  "type": "forêt",
+  "description": "La Forêt Shinomen est la plus vaste et la plus ancienne forêt de Rokugan. Mystérieuse, peuplée d’esprits et de créatures oubliées, elle est à la fois crainte et vénérée.",
+  "histoire": "Lieu de légendes et de disparitions, la Shinomen a servi de refuge à des clans mineurs et de frontière naturelle contre l’inconnu. De nombreux secrets y dorment encore.",
+  "evenements_marquants": [
+    {"id": "guerre_des_esprits", "description": "La forêt fut le théâtre de la Guerre des Esprits, opposant mortels et revenants."}
+  ],
+  "clan_associe": "renard",
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Shinomen_Forest"]
+}

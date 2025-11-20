@@ -1,0 +1,45 @@
+{
+  "titre": "Histoire des Clans Majeurs",
+  "resume": "Les sept clans majeurs de Rokugan, fondés par les Kamis, incarnent chacun une vertu du Bushido et jouent un rôle central dans l’histoire de l’Empire.",
+  "clans": [
+    {
+      "nom": "Crabe",
+      "resume": "Défenseurs du Mur Kaiu, les Crabes protègent l’Empire contre les horreurs de l’Outremonde. Leur histoire est marquée par le sacrifice et la vigilance.",
+      "histoire": "Fondé par Hida, le Clan du Crabe a bâti le Mur Kaiu pour contenir les forces de Fu Leng. Les Crabes sont réputés pour leur pragmatisme, leur force et leur méfiance envers la politique de cour."
+    },
+    {
+      "nom": "Grue",
+      "resume": "Maîtres de la cour et du duel, les Grues incarnent la beauté, l’honneur et l’art. Leur influence politique est immense.",
+      "histoire": "Fondé par Doji, le Clan de la Grue a façonné l’étiquette et la culture impériale. Les Grues excellent dans l’art, la diplomatie et le iaijutsu. Ils sont souvent rivaux des Lions."
+    },
+    {
+      "nom": "Dragon",
+      "resume": "Mystiques et énigmatiques, les Dragons vivent retirés dans les montagnes. Leur histoire est faite de prophéties et de quêtes spirituelles.",
+      "histoire": "Fondé par Togashi, le Clan du Dragon suit des voies mystérieuses. Les moines tatoués, les Kitsuki enquêteurs et les Mirumoto duellistes incarnent la diversité du clan."
+    },
+    {
+      "nom": "Lion",
+      "resume": "Armée de l’Empereur, le Clan du Lion est le parangon de la guerre et de la loyauté. Leur histoire est celle des batailles et de l’honneur martial.",
+      "histoire": "Fondé par Akodo, le Clan du Lion est le bras armé de l’Empire. Les Akodo, Matsu et Ikoma perpétuent la tradition militaire et la mémoire des héros."
+    },
+    {
+      "nom": "Phénix",
+      "resume": "Gardiens de la magie et de l’équilibre spirituel, les Phénix sont les plus puissants shugenja de l’Empire.",
+      "histoire": "Fondé par Shiba, le Clan du Phénix veille sur les secrets magiques et la paix spirituelle. Les Isawa, Asako et Shiba incarnent la sagesse et la prudence."
+    },
+    {
+      "nom": "Scorpion",
+      "resume": "Maîtres de l’espionnage et du sacrifice, les Scorpions protègent l’Empire par tous les moyens, même les plus sombres.",
+      "histoire": "Fondé par Bayushi, le Clan du Scorpion agit dans l’ombre pour préserver l’Empire. Leur loyauté est absolue, mais leur réputation sulfureuse."
+    },
+    {
+      "nom": "Licorne",
+      "resume": "Explorateurs revenus de l’étranger, les Licornes allient traditions rokugani et innovations gaijin.",
+      "histoire": "Fondé par Shinjo, le Clan de la Licorne a parcouru le monde avant de revenir à Rokugan. Leur cavalerie et leurs coutumes étrangères suscitent la méfiance et l’admiration."
+    }
+  ],
+  "sources": [
+    "Livre de base L5R 4e édition",
+    "Livres des Clans majeurs"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "fondation_clan_phenix",
+  "titre": "Fondation du Clan du Phénix",
+  "date": "-1000 EC",
+  "ere": "Préhistoire",
+  "resume": "Shiba, frère de Hantei, fonde le Clan du Phénix, gardien de la magie et de l’équilibre spirituel de Rokugan.",
+  "description": "Shiba s’allie aux shugenja Isawa pour créer un clan dédié à la compréhension et à la maîtrise des forces spirituelles. Le Clan du Phénix devient le garant de l’harmonie entre les mondes matériel et spirituel, et veille sur les secrets de la magie.",
+  "protagonistes": ["Shiba", "Isawa", "Hantei"],
+  "lieux": ["Kyuden Isawa", "Rokugan"],
+  "consequences": ["Préservation de l’équilibre magique", "Naissance d’une tradition shugenja puissante"],
+  "citations": ["« L’esprit est la clef de tous les mondes. »"],
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Phoenix_Clan"]
+}

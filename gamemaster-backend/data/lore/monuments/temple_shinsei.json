@@ -1,0 +1,12 @@
+{
+  "id": "temple_shinsei",
+  "nom": "Temple de Shinsei",
+  "type": "temple",
+  "description": "Le Temple de Shinsei est le centre spirituel du shintao. Lieu de méditation et de sagesse, il attire pèlerins, moines et samouraïs en quête de vérité.",
+  "histoire": "Fondé peu après la disparition de Shinsei, le temple a été agrandi au fil des siècles. Il abrite de nombreux textes sacrés et accueille les débats philosophiques majeurs de l’Empire.",
+  "evenements_marquants": [
+    {"id": "fondation_shintao", "description": "Le temple fut le point de départ de la diffusion du shintao dans tout Rokugan."}
+  ],
+  "clan_associe": "freres_shinsei",
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Temple_of_Shinsei"]
+}

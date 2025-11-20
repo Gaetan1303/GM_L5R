@@ -1,0 +1,13 @@
+{
+  "id": "fondation_clan_crabe",
+  "titre": "Fondation du Clan du Crabe",
+  "date": "-1000 EC",
+  "ere": "Préhistoire",
+  "resume": "Hida, frère de Hantei, fonde le Clan du Crabe pour défendre Rokugan contre les menaces des Terres de l’Ombre.",
+  "description": "Hida reçoit la mission de protéger l’Empire des horreurs venues du sud. Il fonde le Clan du Crabe, bâtit la Grande Muraille Kaiu et impose une culture du devoir et du sacrifice. Les Crabes deviennent les gardiens inflexibles de la frontière contre la Souillure.",
+  "protagonistes": ["Hida", "Hantei", "Kaiu"],
+  "lieux": ["Muraille Kaiu", "Terres de l’Ombre"],
+  "consequences": ["Protection durable de l’Empire", "Développement d’une culture martiale unique"],
+  "citations": ["« Nous sommes le bouclier de Rokugan. »"],
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Crab_Clan"]
+}

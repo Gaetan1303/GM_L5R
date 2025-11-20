@@ -1,0 +1,12 @@
+{
+  "id": "shiro_hiruma",
+  "nom": "Shiro Hiruma (Forteresse Hiruma)",
+  "type": "forteresse",
+  "description": "Shiro Hiruma est la forteresse avancée du Clan du Crabe, souvent perdue et reprise lors des guerres contre l’Outremonde. Elle symbolise la ténacité et la souffrance du clan.",
+  "histoire": "Fondée par Hiruma, la forteresse a été le théâtre de sièges désespérés et de sacrifices héroïques. Sa reconquête est un objectif constant pour le clan.",
+  "evenements_marquants": [
+    {"id": "perte_chateau_hiruma", "description": "La forteresse fut envahie par les forces de l’Outremonde, marquant une tragédie pour le clan."}
+  ],
+  "clan_associe": "crabe",
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Shiro_Hiruma"]
+}

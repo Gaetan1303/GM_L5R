@@ -1,0 +1,16 @@
+{
+  "id": "tortue",
+  "nom": "Clan de la Tortue",
+  "description": "Gardien des frontières maritimes et des secrets de l’Empire, le Clan de la Tortue agit souvent dans l’ombre. Ses membres sont des navigateurs, des diplomates et parfois des espions.",
+  "histoire": "Fondé par Kasuga, le clan a reçu la mission de surveiller les côtes et de protéger Rokugan contre les menaces extérieures. Leur discrétion et leur efficacité sont légendaires.",
+  "figures_majeures": ["kasuga"],
+  "evenements_marquants": ["surveillance_cotes"],
+  "relations": {
+    "alliés": ["aucun"],
+    "rivaux": ["aucun"]
+  },
+  "references": {
+    "personnages": ["kasuga"],
+    "evenements": ["surveillance_cotes"]
+  }
+}

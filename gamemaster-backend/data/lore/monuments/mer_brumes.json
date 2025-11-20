@@ -1,0 +1,12 @@
+{
+  "id": "mer_brumes",
+  "nom": "Mer des Brumes",
+  "type": "mer",
+  "description": "La Mer des Brumes borde la côte est de Rokugan. Elle est réputée pour ses brouillards épais, ses tempêtes soudaines et ses créatures mystérieuses.",
+  "histoire": "Lieu de commerce et de piraterie, la mer a vu s’affronter les flottes de la Mante, de la Grue et des pirates. Elle est aussi le théâtre de légendes maritimes.",
+  "evenements_marquants": [
+    {"id": "ascension_mante", "description": "La domination de la Mante sur la mer a changé l’équilibre des forces navales."}
+  ],
+  "clan_associe": "mante",
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Sea_of_Mist"]
+}

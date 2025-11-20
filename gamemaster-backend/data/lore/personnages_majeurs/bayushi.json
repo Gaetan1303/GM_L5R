@@ -1,0 +1,13 @@
+{
+  "id": "bayushi",
+  "nom": "Bayushi",
+  "role": "Kami fondateur du Clan du Scorpion",
+  "type": "protagoniste/antagoniste",
+  "evenements": ["chute_des_kamis", "ere_des_guerres", "ere_des_troubles"],
+  "resume": "Maître de la ruse et du secret, Bayushi fonde le Clan du Scorpion, gardien des secrets de l’Empire et manipulateur hors pair.",
+  "description": "Bayushi incarne la duplicité, la stratégie de l’ombre et le sacrifice pour le bien de l’Empire. Son clan protège Rokugan par des moyens que d’autres jugent déshonorants, mais nécessaires.",
+  "alliances": ["Hantei", "Akodo"],
+  "rivalites": ["Doji", "Fu Leng"],
+  "citations": ["« Le masque cache la vérité, mais protège l’Empire. »"],
+  "sources": ["Livre de Base L5R 4e édition"]
+}

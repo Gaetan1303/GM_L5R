@@ -1,0 +1,13 @@
+{
+  "id": "akodo",
+  "nom": "Akodo",
+  "role": "Kami fondateur du Clan du Lion",
+  "type": "protagoniste",
+  "evenements": ["chute_des_kamis", "ere_des_guerres", "premiere_guerre_de_succession"],
+  "resume": "Akodo est le stratège suprême, fondateur du Clan du Lion, modèle de la vertu martiale et de la discipline militaire.",
+  "description": "Akodo incarne la force, la loyauté et la stratégie. Il structure l’armée impériale et pose les bases du Bushido. Son héritage façonne le Clan du Lion et l’histoire militaire de Rokugan.",
+  "alliances": ["Hantei", "Doji", "Shiba"],
+  "rivalites": ["Fu Leng", "Bayushi"],
+  "citations": ["« La victoire appartient à ceux qui la préparent. »"],
+  "sources": ["Livre de Base L5R 4e édition"]
+}

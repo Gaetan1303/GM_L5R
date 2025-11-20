@@ -1,0 +1,42 @@
+{
+  "titre": "Histoire des Fortunes",
+  "resume": "Les Fortunes sont des divinités vénérées à travers Rokugan, incarnant des concepts, des vertus ou des aspects de la vie. Certaines sont d’anciens mortels élevés au rang divin.",
+  "fortunes": [
+    {
+      "nom": "Benten",
+      "sphère": "Amour, éloquence, mariage"
+    },
+    {
+      "nom": "Bishamon",
+      "sphère": "Force, guerre, courage"
+    },
+    {
+      "nom": "Daikoku",
+      "sphère": "Richesse, agriculture, prospérité"
+    },
+    {
+      "nom": "Ebisu",
+      "sphère": "Travail, honnêteté, pêcheurs"
+    },
+    {
+      "nom": "Fukurokujin",
+      "sphère": "Sagesse, longévité, érudition"
+    },
+    {
+      "nom": "Hotei",
+      "sphère": "Bonheur, contentement, chance"
+    },
+    {
+      "nom": "Jurojin",
+      "sphère": "Longévité, santé, paix"
+    },
+    {
+      "nom": "Kisshōten",
+      "sphère": "Beauté, fertilité, abondance"
+    }
+  ],
+  "sources": [
+    "Livre de base L5R 4e édition",
+    "Livre des Fortunes et des Esprits"
+  ]
+}

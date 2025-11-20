@@ -1,0 +1,12 @@
+{
+  "id": "toshi_ranbo",
+  "nom": "Toshi Ranbo",
+  "type": "cité",
+  "description": "Toshi Ranbo est une cité stratégique, souvent disputée entre le Lion et la Grue. Elle contrôle l’accès aux routes commerciales du nord.",
+  "histoire": "La cité a changé de mains à de nombreuses reprises, chaque clan y laissant son empreinte. Elle symbolise la rivalité et la diplomatie armée de Rokugan.",
+  "evenements_marquants": [
+    {"id": "guerre_du_chrysanthème", "description": "La cité fut assiégée lors de la Guerre du Chrysanthème."}
+  ],
+  "clan_associe": "lion",
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Toshi_Ranbo"]
+}

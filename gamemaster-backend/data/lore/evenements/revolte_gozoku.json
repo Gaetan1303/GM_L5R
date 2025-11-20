@@ -1,0 +1,13 @@
+{
+  "id": "revolte_gozoku",
+  "titre": "La Révolte du Gozoku",
+  "date": "7e-8e siècles EC",
+  "ere": "Empire d’Émeraude",
+  "resume": "Une coalition secrète de familles puissantes (le Gozoku) prend le contrôle de l’Empire, reléguant l’Empereur au rang de marionnette avant d’être renversée.",
+  "description": "Le Gozoku, alliance des familles Doji, Shiba et Bayushi, manipule l’Empire dans l’ombre pendant des décennies. Leur règne prend fin grâce à la résistance des clans fidèles et au retour de l’autorité impériale.",
+  "protagonistes": ["Famille Doji", "Famille Shiba", "Famille Bayushi", "Empereur Hantei"],
+  "lieux": ["Otosan Uchi", "Kyuden Doji"],
+  "consequences": ["Renforcement du pouvoir impérial", "Défiance envers les manipulations politiques"],
+  "citations": ["« Même l’Empereur peut être prisonnier de sa cour. »"],
+  "sources": ["Livre de Base L5R 4e édition", "https://l5r.fandom.com/wiki/Gozoku"]
+}
